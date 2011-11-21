@@ -1,0 +1,4 @@
+--type-set=puppet=.pp
+--color
+--ignore-case
+

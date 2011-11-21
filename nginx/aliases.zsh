@@ -1,2 +1,2 @@
-alias nginx-up="sudo nginx -c /usr/local/etc/nginx/nginx.conf"
-alias nginx-down="sudo nginx -s stop"
+alias nginx-up="sudo port load nginx"
+alias nginx-down="sudo port unload nginx"

@@ -1,10 +1,18 @@
+#!/bin/zsh
+
+#for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
+
+zsh_cache=${HOME}/.zsh_cache
+[[ ! -d $zsh_cache ]] && mkdir -p $zsh_cache
+
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Development
 
-# source every .zsh file in this rep
+# source every .zsh file in this repo
 for config_file ($ZSH/**/*.zsh) source $config_file
 
 # use .localrc for SUPER SECRET CRAP that you don't
@@ -14,9 +22,14 @@ then
   source ~/.localrc
 fi
 
+# set the function path
+#fpath=( ~/.zsh/func ~/.zsh/func/VCS_Info/**/ $fpath )
+fpath=($ZSH/zsh/functions $fpath)
+
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
 
 # load every completion after autocomplete loads
-for config_file ($ZSH/**/completion.sh) source $config_file
+#for config_file ($ZSH/**/completion.sh) source $config_file
+

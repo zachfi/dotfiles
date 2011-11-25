@@ -19,7 +19,7 @@ filetype plugin indent on
 " ----------------------------------------------------------------------------
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
-set nowrap                 " do not wrap lines
+set wrap                   " wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
 set shiftround             " round > and < to nearest shiftwitdh
@@ -30,6 +30,19 @@ set formatoptions+=n       " support for numbered/bullet lists
 set textwidth=80           " wrap at 80 chars by default
 set virtualedit=block      " allow virtual edit in visual block ..
 
+" ---------------------------------------------------------------------------
+"  Highlight
+" ---------------------------------------------------------------------------
+highlight Comment         ctermfg=DarkGrey guifg=#444444
+highlight StatusLineNC    ctermfg=Black ctermbg=DarkGrey cterm=bold
+highlight StatusLine      ctermbg=Black ctermfg=LightGrey
+
+" ----------------------------------------------------------------------------
+"   Highlight Trailing Whitespace
+" ----------------------------------------------------------------------------
+set list
+set listchars=tab:»·,trail:·
+highlight SpecialKey ctermfg=DarkGray ctermbg=Black
 
 " ----------------------------------------------------------------------------
 "  Backups
@@ -41,7 +54,6 @@ set backupdir=$HOME/.vim/backup        " store backups under ~/.vim/backup
 set backupcopy=yes                     " keep attributes of original file
 set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 set directory=~/.vim/swp               " keep swp files under ~/.vim/swap
-
 
 " ----------------------------------------------------------------------------
 "  UI
@@ -63,27 +75,14 @@ set showmode
 set statusline=%F%m%r%h%w\ %#LineNr#%{fugitive#statusline()}%#StatusLine#\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set scrolloff=3
 "set ttyfast
-set shortmess=aIoOTt
 set showcmd                " Show (partial) command in status line.
-
-"----- set up my nifty stuff to view tabs and trailing spaces
-set list
-set listchars=tab:»·,trail:·
-
-
-
-" folding
 set nofoldenable
-" set foldmarker={,}
-" set foldmethod=marker
-" set foldlevel=100
-" set foldcolumn=2
 
 "----- I always want to see how many lines were changed
 "----- shows a line when > N lines were changes
 set report=0
 
-""---- when I join lines that end with a sentance, put in two spaces
+""---- join lines that end with a sentance, put in two spaces
 set joinspaces
 
 ""---- Completion improvements
@@ -107,7 +106,6 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 " ---------------------------------------------------------------------------
 " Colors / Theme
 " ---------------------------------------------------------------------------
-
 set guifont=FreeMono\ Bold\ 10
 set gfn=FreeMono\ Bold\ 10
 set background=dark
@@ -125,12 +123,33 @@ else
   set mousehide
 endif
 
-
-
-
 " ----------------------------------------------------------------------------
-"  Remapping
+"  Mappings
 " ----------------------------------------------------------------------------
+
+nnoremap <F7> :set nonumber!<CR>
+
+" reflow paragraph with Q in normal and visual mode
+nnoremap Q gqap
+vnoremap Q gq
+
+" sane movement with wrap turned on
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+vnoremap <Down> gj
+vnoremap <Up> gk
+inoremap <Down> <C-o>gj
+inoremap <Up> <C-o>gk
+
+"----- NERD Tree
+map ;n :NERDTreeToggle <CR><Esc>
+
+"----- time/date stamp
+map ;t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
 
 "---------------------------------------------------
 "----- various encryption and decryption stuff -----
@@ -151,43 +170,11 @@ map ;s :,$! /bin/sh -c 'gpg --clearsign 2>/dev/tty'
 "----- NERD Tree
 map ;n :NERDTreeToggle <CR><Esc>
 
-" toggle number
-nnoremap <F7> :set nonumber!<CR>
-
 "----- gundo
 nnoremap <F5> :GundoToggle<CR>
 let g:gundo_width = 60
 let g:gundo_preview_height = 40
 let g:gundo_right = 1
-
-"----- NERD Tree
-map ;n :NERDTreeToggle <CR><Esc>
-
-"----- time/date stamp
-"map ;t a<c-r>=strftime("%a %b %d %Y %I:%M:%S")<CR><Esc>
-map ;t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
-
-"----- gundo
-nnoremap <F5> :GundoToggle<CR>
-let g:gundo_width = 60
-let g:gundo_preview_height = 40
-let g:gundo_right = 1
-
-" reflow paragraph with Q in normal and visual mode
-nnoremap Q gqap
-vnoremap Q gq
-
-" sane movement with wrap turned on
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
 
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
@@ -209,7 +196,6 @@ map ;j :%!perl -MJSON -e 'local $/; my $j =JSON->new(); print $j->pretty()->enco
 " ----------------------------------------------------------------------------
 " Visual Cues
 " ----------------------------------------------------------------------------
-
 set showmatch              " brackets/braces that is
 set mat=5                  " duration to show matching brace (1/10 sec)
 set incsearch              " do incremental searching
@@ -227,41 +213,9 @@ set printoptions=header:2,syntax:a,number:y,wrap:y,duplex:long,collate:y,jobspli
 " ---------------------------------------------------------------------------
 "  Strip all trailing whitespace in file
 " ---------------------------------------------------------------------------
-
 function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
-
-
-" ----------------------------------------------------------------------------
-"  Shit I don't understand
-" ---------------------------------------------------------------------------
-
-
-" Make p in Visual mode replace the selected text with the "" register.
-vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
-
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse latex-suite. Set your grep
-" program to alway generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" LaTeX Suite settings
-" let g:Tex_UseUtfMenus = 1
-" let g:Tex_UseMakefile = 1
-" let g:Tex_DefaultTargetFormat = 'dvi'
-" let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
-" let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
-" let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
-" let g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
-" let g:Tex_ViewRuleComplete_dvi = 'okular $*.dvi &'
-" let g:Tex_ViewRuleComplete_ps = 'okular $*.ps &'
-" let g:Tex_ViewRuleComplete_pdf = 'okular $*.pdf &'
-
-" MultipleSearch
-"let g:MultipleSearchMaxColors = 8
-"let g:MultipleSearchColorSequence = "red,yellow,blue,green,magenta,cyan,gray,brown"
-"let g:MultipleSearchTextColorSequence = "white,black,white,black,white,black,black,white"
 
 

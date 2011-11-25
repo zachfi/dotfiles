@@ -1,42 +1,51 @@
-" swap dir for all files so we don't litter
-set directory=~/.vim/swp
+" ----------------------------------------------------------------------------
+"  General
+" ----------------------------------------------------------------------------
+set enc=utf-8
+set fenc=utf-8
+set nocompatible
+set history=1000          " keep 50 lines of command line history
+set noexrc
+set paste
+set tabpagemax=50
+set viminfo='20,\"50      " .viminfo, no more than 50 lines of registers
+set autoread              " reload files (no local changes only)
 
-" Use Pathogen for plugins
-call pathogen#infect()
+call pathogen#infect()    " Use Pathogen for plugins
+filetype plugin indent on
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
-
-" encoding
-set enc=utf-8
-set fenc=utf-8
-
-" indent
-set cindent
-set autoindent
-set smartindent
-
-" tabs
+set autoindent             " automatic indent new lines
+set smartindent            " be smart about it
+set nowrap                 " do not wrap lines
+set softtabstop=2          " yep, two
+set shiftwidth=2           " ..
+set shiftround             " round > and < to nearest shiftwitdh
 set tabstop=2
-set softtabstop=2
-set shiftround
-set shiftwidth=2
-set expandtab
-set smarttab
+set expandtab              " expand tabs to spaces
+set nosmarttab             " fuck tabs
+set formatoptions+=n       " support for numbered/bullet lists
+set textwidth=80           " wrap at 80 chars by default
+set virtualedit=block      " allow virtual edit in visual block ..
 
-" launch
-set nocompatible
-set noexrc
-set paste
+
+" ----------------------------------------------------------------------------
+"  Backups
+" ----------------------------------------------------------------------------
+set nobackup                           " do not keep backups after close
+set nowritebackup                      " do not keep a backup while working
+set noswapfile                         " don't keep swp files either
+set backupdir=$HOME/.vim/backup        " store backups under ~/.vim/backup
+set backupcopy=yes                     " keep attributes of original file
+set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
+set directory=~/.vim/swp               " keep swp files under ~/.vim/swap
 
 
 " ----------------------------------------------------------------------------
 "  UI
 " ----------------------------------------------------------------------------
-
-syntax enable
-
 set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
 set nolazyredraw           " turn off lazy redraw
@@ -49,6 +58,7 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
+
 set showmode
 set statusline=%F%m%r%h%w\ %#LineNr#%{fugitive#statusline()}%#StatusLine#\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set scrolloff=3
@@ -60,21 +70,7 @@ set showcmd                " Show (partial) command in status line.
 set list
 set listchars=tab:»·,trail:·
 
-" give me colors
-set t_Co=256
 
-" Color
-set background=dark
-colorscheme molokai
-
-if has("gui")
-  set guioptions-=m  "remove menu bar
-  set guioptions-=T  "remove toolbar
-  set guioptions-=r  "remove right-hand scroll bar
-else
-  "set mouse=a
-  set mousehide
-endif
 
 " folding
 set nofoldenable
@@ -82,25 +78,6 @@ set nofoldenable
 " set foldmethod=marker
 " set foldlevel=100
 " set foldcolumn=2
-
-if has("autocmd")
-  " Enabled file type detection
-  " Use the default filetype settings. If you also want to load indent files
-  " to automatically do language-dependent indenting add 'indent' as well.
-  filetype plugin on
-  filetype indent on
-
-  let git_diff_spawn_mode=2
-
-endif " has ("autocmd")
-
-"----- set for a smaller font in GVIM
-"----- the shine font is available from fonts.themes.org
-"set guifont=Neep\ Semi-Condensed\ 7
-"set guifont=peep\ 7
-"set guifont=ProggyCleanTT\ 9
-set guifont=FreeMono\ Bold\ 10
-set gfn=FreeMono\ Bold\ 10
 
 "----- I always want to see how many lines were changed
 "----- shows a line when > N lines were changes
@@ -113,15 +90,9 @@ set joinspaces
 set completeopt=longest,menuone
 
 setlocal comments-=:#
-set viminfo='20,\"500   " Keep a .viminfo file.
-set history=50          " keep 50 lines of command line history
 set lazyredraw          " Don't redraw the screen during macro execution.
 set hidden              " Enable 'hidden' buffers
 "set list number         " enable line numbers
-set textwidth=0         " Don't wrap words by default
-set nobackup            " Don't keep a backup file
-set viminfo='20,\"50    " read/write a .viminfo file, don't store more than
-                " 50 lines of registers
 
 let g:git_branch_status_head_current = 1
 let g:git_branch_status_ignore_remotes = 1
@@ -132,11 +103,28 @@ let g:git_branch_status_nogit = ''
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
-" The following cause vim to behave a lot different from regular vi.
-" They are highly recommended.
-set autowrite       " Automatically save before commands like :next and :make
-set autowriteall
-match ErrorMsg '\%>80v.+'
+
+" ---------------------------------------------------------------------------
+" Colors / Theme
+" ---------------------------------------------------------------------------
+
+set guifont=FreeMono\ Bold\ 10
+set gfn=FreeMono\ Bold\ 10
+set background=dark
+set t_Co=256         " use 256 colors
+
+syntax enable
+colorscheme molokai
+
+if has("gui")
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+else
+  "set mouse=a
+  set mousehide
+endif
+
 
 
 
@@ -229,7 +217,6 @@ set laststatus=2           " always show the status line
 set ignorecase             " ignore case when searching
 set nohlsearch             " don't highlight searches
 set visualbell             " shut the fuck up
-
 
 " ---------------------------------------------------------------------------
 "  Printing Options

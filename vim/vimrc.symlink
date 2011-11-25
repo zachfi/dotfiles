@@ -78,9 +78,7 @@ set scrolloff=3
 set showcmd                " Show (partial) command in status line.
 set nofoldenable
 
-"----- I always want to see how many lines were changed
-"----- shows a line when > N lines were changes
-set report=0
+set report=0               " report when > 0 lines changed by command
 
 ""---- join lines that end with a sentance, put in two spaces
 set joinspaces
@@ -101,7 +99,6 @@ let g:git_branch_status_nogit = ''
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-
 
 " ---------------------------------------------------------------------------
 " Colors / Theme
@@ -126,6 +123,14 @@ endif
 " ----------------------------------------------------------------------------
 "  Mappings
 " ----------------------------------------------------------------------------
+let mapleader = ';'
+
+"----- NERD Tree
+map <leader>n :NERDTreeToggle <CR><Esc>
+
+"----- Date/Time Stamp
+map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
+
 
 nnoremap <F7> :set nonumber!<CR>
 
@@ -144,12 +149,6 @@ vnoremap <Down> gj
 vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
-
-"----- NERD Tree
-map ;n :NERDTreeToggle <CR><Esc>
-
-"----- time/date stamp
-map ;t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
 
 "---------------------------------------------------
 "----- various encryption and decryption stuff -----
@@ -209,7 +208,6 @@ set visualbell             " shut the fuck up
 " ---------------------------------------------------------------------------
 set printoptions=header:2,syntax:a,number:y,wrap:y,duplex:long,collate:y,jobsplit:y,paper:letter
 
-
 " ---------------------------------------------------------------------------
 "  Strip all trailing whitespace in file
 " ---------------------------------------------------------------------------
@@ -217,5 +215,4 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
-
 

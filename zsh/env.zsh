@@ -10,9 +10,6 @@ GREP_COLOR="4;36"
 WORDCHARS="${WORDCHARS:s#/#}"
 #FONT="terminus"
 
-# All the pretty colors
-[[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
-
 [[ -d /usr/local/bin ]] && PATH+=":/usr/local/bin"
 [[ -d /opt/local/bin ]] && PATH+=":/opt/local/bin"
 
@@ -20,6 +17,9 @@ WORDCHARS="${WORDCHARS:s#/#}"
 [[ -d /opt/local/libexec/gnubin ]] && PATH+=":/opt/local/libexec/gnubin"
 # Source coreutils aliases from brew if it exists
 [[ -f /usr/local/Cellar/coreutils/8.12/aliases ]] && source /usr/local/Cellar/coreutils/8.12/aliases
+
+# All the pretty colors
+[[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
 
 # Keychain
 eval `keychain -q --eval --agents ssh,gpg --timeout 120 id_rsa`

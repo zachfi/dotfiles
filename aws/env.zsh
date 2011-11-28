@@ -10,5 +10,3 @@ if [ -d $HOME/aws ]; then
   [[ -d ${AWS_CLOUTFORMATION_HOME}/bin ]] && PATH="$PATH:$AWS_CLOUDFORMATION_HOME/bin"
 fi
 
-#export RUBYLIB=<%= base_dir %>/lib:$RUBYLIB
-

@@ -6,7 +6,7 @@ if [ -d $HOME/aws ]; then
   export AWS_IAM_HOME="$HOME/aws/IAMCli-1.2.0"
   export AWS_CLOUDFORMATION_HOME="${HOME}/aws/AWSCloudFormation-1.0.9"
   export AWS_CREDENTIAL_FILE="$HOME/.aws/security"
-  [[ -d ${AWS_IAM_HOME}/bin ]]              && PATH="$PATH:$AWS_IAM_HOME/bin"
+  [[ -d ${AWS_IAM_HOME}/bin ]]            && PATH="$PATH:$AWS_IAM_HOME/bin"
   [[ -d ${AWS_CLOUTFORMATION_HOME}/bin ]] && PATH="$PATH:$AWS_CLOUDFORMATION_HOME/bin"
 fi
 

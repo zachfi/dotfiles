@@ -18,7 +18,7 @@ git_bundles = [
   "git://github.com/Raimondi/delimitMate.git",
   "git://github.com/msanders/snipmate.vim.git",
 # Syntax and languages:
-  "git://github.com/scrooloose/syntastic.git",
+  #"git://github.com/scrooloose/syntastic.git",
   "git://github.com/vim-ruby/vim-ruby.git",
   "git://github.com/vim-scripts/Rainbow-Parenthesis.git",
   "git://github.com/tpope/vim-markdown.git",

@@ -17,8 +17,6 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*' insert-unambiguous false
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-#zstyle ':completion:*:default' list-colors 'no=0:fi=0:di=34:ln=36:pi=33:so=35:bd=33:cd=33:or=37;41:su=2;37;41:sg=2;30;43:tw=1;30;42:ow=30;42:st=37:ex=1;32'
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %l \(%p\): Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=**' '+l:|=* r:|=*'
 zstyle ':completion:*' match-original both

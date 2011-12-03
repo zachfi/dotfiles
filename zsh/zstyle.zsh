@@ -1,7 +1,7 @@
 #--------------------------------------------------------------
 # Globals
 #--------------------------------------------------------------
-colors
+zstyle :compinstall filename "${HOME}/.zshrc"
 
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -17,6 +17,8 @@ zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*' insert-unambiguous false
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*:default' list-colors 'no=0:fi=0:di=34:ln=36:pi=33:so=35:bd=33:cd=33:or=37;41:su=2;37;41:sg=2;30;43:tw=1;30;42:ow=30;42:st=37:ex=1;32'
+#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %l \(%p\): Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=**' '+l:|=* r:|=*'
 zstyle ':completion:*' match-original both
@@ -36,8 +38,18 @@ zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ${HOME}/.zsh_cache
 
 
-
+#--------------------------------------------------------------
+# Misc
+#--------------------------------------------------------------
 zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=$color[cyan]=$color[red]"
+
+zstyle ':completion:*:*:*:*:processes' menu yes select
+zstyle ':completion:*:*:*:*:processes' force-list always
+
+# With commands like `rm' it's annoying if one gets offered the same filename
+# again even if it is already on the command line. To avoid that:
+zstyle ':completion:*:rm:*' ignore-line yes
+
 
 #--------------------------------------------------------------
 # Git
@@ -45,9 +57,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=$color[c
 
 zstyle ':completion:*:*:git:*:aliases'  list-colors "=(#b)(*)  #-- alias for *=$color[none]=$color[green]"
 zstyle ':completion:*:*:git:*:commands' list-colors "=(#b)(*)  #-- *=$color[none]=$color[blue]"
-
 zstyle ':completion:*:*:git-branch:*:branch-names' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-
 zstyle ':completion:*:*:git-branch:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-checkout:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-cherry:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
@@ -70,17 +80,4 @@ zstyle ':completion:*:*:git-push:*:remotes' list-colors "=*=$color[green]"
 zstyle ':completion:*:*:git-add:*:modified-files' list-colors "=*=$color[red]"
 zstyle ':completion:*:*:git-add:*:other-files' list-colors "=*=$color[magenta]"
 
-zstyle ':completion:*:default' list-colors 'no=0:fi=0:di=34:ln=36:pi=33:so=35:bd=33:cd=33:or=37;41:su=2;37;41:sg=2;30;43:tw=1;30;42:ow=30;42:st=37:ex=1;32'
-#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-
-zstyle ':completion:*:*:*:*:processes' menu yes select
-zstyle ':completion:*:*:*:*:processes' force-list always
-
-# With commands like `rm' it's annoying if one gets offered the same filename
-# again even if it is already on the command line. To avoid that:
-zstyle ':completion:*:rm:*' ignore-line yes
-
-
-zstyle :compinstall filename "${HOME}/.zshrc"
 

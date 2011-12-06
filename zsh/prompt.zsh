@@ -39,8 +39,14 @@ function lprompt {
 
 }
 
-set_prompt () {
+function rprompt {
+  local git='$vcs_info_msg_0_'
+  RPROMPT=
+  RPROMPT+="${git}"
+}
 
+set_prompt () {
+  rprompt
 }
 
 precmd () {
@@ -52,15 +58,9 @@ precmd () {
       ;;
   esac
 
-}
-
-function rprompt {
-  local git='$vcs_info_msg_0_'
-  RPROMPT=
-  RPROMPT+="${git}"
+  #title "zsh" "%m" "%55<...<%~"
+  set_prompt
 }
 
 lprompt
-rprompt
-
 

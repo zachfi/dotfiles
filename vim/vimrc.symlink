@@ -217,3 +217,11 @@ function! StripWhitespace ()
 endfunction
 map ,s :call StripWhitespace ()<CR>
 
+
+" ---------------------------------------------------------------------------
+"  Type specific things
+" ---------------------------------------------------------------------------
+au BufRead,BufNewFile *.md       set wrap linebreak spell filetype=markdown
+au BufRead,BufNewFile *.markdown set wrap linebreak spell filetype=markdown
+
+

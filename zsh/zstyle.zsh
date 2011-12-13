@@ -28,6 +28,7 @@ zstyle ':completion:*' prompt 'Correct %e errors'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %l \(%p\)%s
 zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
+zstyle ':completion:*' accept-exact '*(N)'
 ## Use cache
 # Some functions, like _apt and _dpkg, are very slow. You can use a cache in
 # order to proxy the list of results (like the list of available debian

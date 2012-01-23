@@ -1,4 +1,12 @@
-# IO
+# ZSH Options, like a warm blanket
+# Section names taken from the zshoptions(1) manpage
+
+# Changing Directories
+setopt AUTO_PUSHD             # automatically append dirs to the push/pop list
+setopt PUSHD_IGNORE_DUPS      # and don't duplicate them
+unsetopt CDABLE_VARS          # stop guessing ~ is at the start of a directory
+setopt CHASE_LINKS
+
 #setopt correct                # spelling correction
 setopt interactivecomments    # escape commands so i can use them later
 setopt printexitvalue         # alert me if something's failed
@@ -6,14 +14,8 @@ setopt short_loops            # allow short forms of loops
 unsetopt clobber              # Safer pipes
 unsetopt ignoreeof            # ^D logs out
 
-# Change Dir
-setopt autocd                 # change to dirs without cd
-setopt autopushd              # automatically append dirs to the push/pop list
-setopt pushdignoredups        # and don't duplicate them
-unsetopt cdablevars           # avoid the need for an explicit $
-
 # Shell State
-setopt nobeep                 # i hate beeps
+setopt nobeep                 # stop beeping
 
 # Prompt
 setopt transient_rprompt      # rprompt can go away when needed
@@ -31,22 +33,21 @@ setopt extendedglob           # weird & wacky pattern matching - yay zsh!
 unsetopt nomatch              # don't print an error when no patch is found
 
 # Completion
-setopt completeinword         # not just at the end
-#setopt alwaystoend            # move the cursor to the end on completion
+#setopt completeinword         # not just at the end
+##setopt alwaystoend            # move the cursor to the end on completion
 setopt complete_aliases       # when doing completion, also complete aliases
-setopt listpacked             # compact completion lists
-setopt listtypes              # show types in completion
-setopt listambiguous          # Show stuff
-setopt recexact               # recognise exact, ambiguous matches
-unsetopt menucomplete           # give the tab completion menu
-unsetopt autoremoveslash      # stop auto removing the slash that the completion did
+#setopt listpacked             # compact completion lists
+#setopt listtypes              # show types in completion
+#setopt listambiguous          # Show stuff
+#setopt recexact               # recognise exact, ambiguous matches
+#unsetopt menucomplete         # give the tab completion menu
+#unsetopt autoremoveslash      # stop auto removing the slash that the completion did
 
 # History
-setopt inc_append_history      # seems to conflict with share_history
-setopt extended_history
+setopt inc_append_history      # write history as soon as its entered
+setopt extended_history        # write timestamp to the file
 setopt hist_ignore_space       # commands beginning with spaces are ommitted from history
-unsetopt histverify              # when using ! cmds, confirm first
-#setopt share_history          # read and write history
+unsetopt histverify            # when using ! cmds, confirm first
 
 # Scripts and Functions
 setopt local_options

@@ -43,6 +43,7 @@ zstyle ':completion:*' cache-path ${HOME}/.zsh_cache
 zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=$color[cyan]=$color[red]"
 
 zstyle ':completion:*:*:*:*:processes' menu yes select
+zstyle ':completion:*:*:*:*:processes' menu search
 zstyle ':completion:*:*:*:*:processes' force-list always
 
 # With commands like `rm' it's annoying if one gets offered the same filename
@@ -64,7 +65,6 @@ zstyle ':completion:*:*:git-cherry-pick:*:heads' list-colors "=(#b)((master)#|(o
 zstyle ':completion:*:*:git-push:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-rebase:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-reset:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-
 zstyle ':completion:*:*:git-branch:*:tags' list-colors "=*=$color[yellow]"
 zstyle ':completion:*:*:git-checkout:*:tags' list-colors "=*=$color[yellow]"
 zstyle ':completion:*:*:git-cherry-pick:*:tags' list-colors "=*=$color[yellow]"
@@ -72,10 +72,8 @@ zstyle ':completion:*:*:git-cherry:*:tags' list-colors "=*=$color[yellow]"
 zstyle ':completion:*:*:git-push:*:tags' list-colors "=*=$color[yellow]"
 zstyle ':completion:*:*:git-rebase:*:tags' list-colors "=*=$color[yellow]"
 zstyle ':completion:*:*:git-reset:*:tags' list-colors "=*=$color[yellow]"
-
 zstyle ':completion:*:*:git-fetch:*:remotes' list-colors "=*=$color[green]"
 zstyle ':completion:*:*:git-push:*:remotes' list-colors "=*=$color[green]"
-
 zstyle ':completion:*:*:git-add:*:modified-files' list-colors "=*=$color[red]"
 zstyle ':completion:*:*:git-add:*:other-files' list-colors "=*=$color[magenta]"
 

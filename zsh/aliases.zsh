@@ -17,6 +17,7 @@ alias irc="ssh -t n3kl.cx tmux -L irc attach"
 alias sudo="sudo HOME=/home/${HOME}"
 alias newpass="LANG=C tr -cd '[:alnum:]' < /dev/random | head -c 20"
 alias vi="vim"
+alias dots="puppet apply -v ~/dotfiles/initialize.rb" 
 
 alias vh="mvim -c 'au VimLeave * maca hide:'"
 # sup

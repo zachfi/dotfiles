@@ -75,7 +75,7 @@ set showmode
 set statusline=%F%m%r%h%w\ %#LineNr#%{fugitive#statusline()}%#StatusLine#\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set scrolloff=3
 "set ttyfast
-set showcmd                " Show (partial) command in status line.
+"set showcmd                " Show (partial) command in status line.
 set nofoldenable
 
 set report=0               " report when > 0 lines changed by command
@@ -116,9 +116,9 @@ if has("gui")
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
 else
-  "set mousehide
-  set mouse=a
-  set ttymouse=xterm2
+  set mousehide
+  "set mouse=a
+  "set ttymouse=xterm2
 endif
 
 " ----------------------------------------------------------------------------
@@ -194,14 +194,19 @@ map <C-c> <Plug>Traditionalj
 map ;j :%!perl -MJSON -e 'local $/; my $j =JSON->new(); print $j->pretty()->encode($j->decode(<>));'<CR>
 
 " ----------------------------------------------------------------------------
+" Searching
+" ----------------------------------------------------------------------------
+set nohlsearch             " don't highlight searches
+set incsearch              " do incremental searching
+set ignorecase             " ignore case when searching
+set smartcase              " ... unless ther's a cApItOl"
+
+" ----------------------------------------------------------------------------
 " Visual Cues
 " ----------------------------------------------------------------------------
 set showmatch              " brackets/braces that is
 set mat=5                  " duration to show matching brace (1/10 sec)
-set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
-set ignorecase             " ignore case when searching
-set nohlsearch             " don't highlight searches
 set visualbell             " shut the fuck up
 
 " ---------------------------------------------------------------------------

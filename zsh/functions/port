@@ -1,6 +1,6 @@
 port() {
     case $1 in
-        'install'|'uninstall'|'sync'|'upgrade'|'edit'|'selfupdate')
+        'install'|'uninstall'|'sync'|'upgrade'|'edit'|'selfupdate'|'load'|'unload')
             sudo nice -20 /usr/bin/env port $*
         ;;
         *)

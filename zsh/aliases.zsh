@@ -3,11 +3,11 @@ alias reload!='. ~/.zshrc'
 [[ `uname` == "Linux" ]] && alias ls="ls -sh --color=auto" || alias ls="ls -GF"
 
 alias ll="ls -lFshp"
-alias lla='ls -lFah'
-alias lls='ls -lFth'
-alias llr='ls -lFthr'
-alias lld='ls -lFd'
-alias llx='ls -lFsxh'
+alias lla='ll -A'
+alias lls='ll -Sr'
+alias llt='ll -Tt'
+alias lld='ll -d'
+alias llf='ll -f'
 alias grep='grep --color=auto'
 alias ping='ping -c 2'
 alias muppet="mutt -F ~/.muppetrc"

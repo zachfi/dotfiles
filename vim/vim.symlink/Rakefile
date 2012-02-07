@@ -35,32 +35,6 @@ vim_org_scripts = [
 #  ["jquery",        "12107", "syntax"],
 ]
 
-desc "Clone nonexistent plugin repositories"
-task :install do
-
-  git_bundles.each do |url|
-    dir = url.split('/').last.split('.git').first.chomp
-    dest = "bundle/#{dir}"
-    unless File.exist?(dest)
-      puts "Cloning #{url} into #{dest}"
-      `git clone #{url} #{dest}`
-    end
-  end
-
-end
-
-desc "Update existing plugin repositories"
-task :update do
-
-  git_bundles.each do |url|
-    dir = url.split('/').last.split('.git').first.chomp
-    dest = "bundle/#{dir}"
-    puts "pulling updates #{dest} from #{url}"
-    `(cd #{dest}; git pull)`
-  end
-
-end
-
 desc "Clone those that don't exist, update those that do."
 task :sync do
 

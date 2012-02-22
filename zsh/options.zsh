@@ -50,6 +50,7 @@ setopt hist_ignore_space       # commands beginning with spaces are ommitted fro
 unsetopt histverify            # when using ! cmds, confirm first
 
 # Scripts and Functions
-setopt local_options
+setopt local_options           # allow functions to have local options
+setopt local_traps             # allow functions to have local traps
 setopt multios
 

@@ -5,7 +5,7 @@ set -g default-terminal "screen-256color"
 set -g prefix `
 
 # General tmux settings
-set-window-option -g utf8
+set-window-option -g utf8 on
 set-option -g status-keys vi
 set-window-option -g mode-keys vi
 set-window-option -g automatic-rename on

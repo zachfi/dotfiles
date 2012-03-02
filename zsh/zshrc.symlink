@@ -26,12 +26,11 @@ then
 fi
 
 # set the function path
-#fpath=( ~/.zsh/func ~/.zsh/func/VCS_Info/**/ $fpath )
 fpath=($ZSH/zsh/functions $fpath)
 
 # initialize autocomplete here, otherwise functions won't be loaded
-#autoload -U compinit
-#compinit
+autoload -U compinit
+compinit
 
 # load every completion after autocomplete loads
 #for config_file ($ZSH/**/completion.sh) source $config_file

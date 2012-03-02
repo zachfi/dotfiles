@@ -1,4 +1,4 @@
-autoload -U compinit; compinit
+#autoload -U compinit; compinit # commented here because its loaded in zshrc
 autoload -U colors; colors
 autoload -Uz vcs_info #zmv zcalc
 autoload -U promptinit; promptinit

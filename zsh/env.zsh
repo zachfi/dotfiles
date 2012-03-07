@@ -22,7 +22,8 @@ WORDCHARS="${WORDCHARS:s#/#}"
 [[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
 
 # Keychain
-eval `keychain -q --eval --agents ssh,gpg --timeout 120 id_rsa`
+# keychain -k mine
+eval `keychain --ignore-missing -q --eval --agents ssh,gpg --timeout 120 id_rsa`
 
 
 # Less Colors for Man Pages

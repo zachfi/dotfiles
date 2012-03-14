@@ -1,2 +1,2 @@
-alias redis-up='redis-server /usr/local/etc/redis.conf > /dev/null &'
-alias redis-down='killall redis-server'
+alias redis-up='sudo port load redis'
+alias redis-down='sudo port unload redis'

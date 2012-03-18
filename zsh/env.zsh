@@ -23,7 +23,7 @@ WORDCHARS="${WORDCHARS:s#/#}"
 
 # Keychain
 # keychain -k mine
-eval `keychain --ignore-missing -q --eval --agents ssh,gpg --timeout 720 id_rsa`
+[[ $UID -ne 0 ]] && eval `keychain --ignore-missing -q --eval --agents ssh,gpg --timeout 720 id_rsa`
 
 
 # Less Colors for Man Pages

@@ -41,3 +41,9 @@ bind - split-window -v
 ## and select text for copying with the mouse
 #setw -g mode-mouse on
 
+set-window-option -g mode-keys vi
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+

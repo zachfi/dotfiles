@@ -18,3 +18,10 @@ defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
+
+# Disable animation for Expose stuff
+defaults write com.apple.dock expose-animation-duration -float 0
+
+# Pin the Dock to the right of the screen
+defaults write com.apple.dock pinning end
+

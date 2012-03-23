@@ -5,3 +5,4 @@ todo.txt/todo.symlink
 /local/
 .DS_Store
 vim/vim.symlink/.netrwhist
+vim/syntasticthing.txt

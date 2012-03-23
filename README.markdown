@@ -1,9 +1,9 @@
-# holman does dotfiles
+# Zach does dotfiles
 
 ## dotfiles
 
 Your dotfiles are how you personalize your system. These are mine. The very
-prejudiced mix: OS X, zsh, Ruby, Rails, git, homebrew, rvm, vim. If you
+prejudiced mix: OS X, zsh, Ruby, git, macports, rvm, vim, puppet. If you
 match up along most of those lines, you may dig my dotfiles.
 
 I was a little tired of having long alias files and everything strewn about
@@ -13,18 +13,22 @@ up into the main areas I used (Ruby, git, system libraries, and so on), so I
 structured the project accordingly.
 
 If you're interested in the philosophy behind why projects like these are
-awesome, you might want to [read my post on the
+awesome, you might want to [read Zach Holman's post on the
 subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
 ## install
 
-- `git clone git://github.com/holman/dotfiles ~/.dotfiles`
-- `cd ~/.dotfiles`
-- `rake install`
+- `git clone git://github.com/xaque208/dotfiles.git ~/dotfiles`
+- `cd ~/dotfiles`
+- `puppet apply -v initialize.rb --noop`
 
-The install rake task will symlink the appropriate files in `.dotfiles` to your
-home directory. Everything is configured and tweaked within `~/.dotfiles`,
-though.
+If you are happy with the proposed changes, run it without the `--noop`
+
+- `puppet apply -v initialize.rb`
+
+The install `initialize.rb` puppet script will symlink the appropriate files in
+`dotfiles` to your home directory. Everything is configured and tweaked within
+`~/dotfiles`, though.
 
 The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
 which sets up a few paths that'll be different on your particular machine.
@@ -82,7 +86,8 @@ and I'd love to get it fixed for you!
 
 ## thanks
 
-I forked [Ryan Bates](http://github.com/ryanb)' excellent
+I forked [Zach Holman's](http://github.com/zachholman)
+who forked [Ryan Bates](http://github.com/ryanb)' excellent
 [dotfiles](http://github.com/ryanb/dotfiles) for a couple years before the
 weight of my changes and tweaks inspired me to finally roll my own. But Ryan's
 dotfiles were an easy way to get into bash customization, and then to jump ship

@@ -30,20 +30,6 @@ set formatoptions+=n       " support for numbered/bullet lists
 set textwidth=80           " wrap at 80 chars by default
 set virtualedit=block      " allow virtual edit in visual block ..
 
-" ---------------------------------------------------------------------------
-"  Highlight
-" ---------------------------------------------------------------------------
-highlight Comment         ctermfg=DarkGrey guifg=#444444
-highlight StatusLineNC    ctermfg=Black ctermbg=DarkGrey cterm=bold
-highlight StatusLine      ctermbg=Black ctermfg=LightGrey
-
-" ----------------------------------------------------------------------------
-"   Highlight Trailing Whitespace
-" ----------------------------------------------------------------------------
-set list
-set listchars=tab:»·,trail:·
-highlight SpecialKey ctermfg=DarkGray ctermbg=Black
-
 " ----------------------------------------------------------------------------
 "  Backups
 " ----------------------------------------------------------------------------
@@ -90,7 +76,6 @@ set completeopt=longest,menuone
 setlocal comments-=:#
 set lazyredraw          " Don't redraw the screen during macro execution.
 set hidden              " Enable 'hidden' buffers
-"set list number         " enable line numbers
 
 let g:git_branch_status_head_current = 1
 let g:git_branch_status_ignore_remotes = 1
@@ -122,35 +107,55 @@ else
   "set ttymouse=xterm2
 endif
 
+" ---------------------------------------------------------------------------
+"  Highlight
+" ---------------------------------------------------------------------------
+highlight Comment         ctermfg=DarkGrey guifg=#444444
+highlight StatusLineNC    ctermfg=Black    ctermbg=DarkGrey cterm=bold
+highlight StatusLine      ctermbg=Black    ctermfg=LightGrey
+highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
+
+" ----------------------------------------------------------------------------
+"   Highlight Trailing Whitespace
+" ----------------------------------------------------------------------------
+set list
+set listchars=tab:»·,trail:·
+set showbreak=↪
+
 " ----------------------------------------------------------------------------
 "  Mappings
 " ----------------------------------------------------------------------------
+
+" Set the leader
 let mapleader = ';'
 
-"----- NERD Tree
+" Toggle NERD Tree
 map <leader>n :NERDTreeToggle <CR><Esc>
 
-"----- Date/Time Stamp
+" Date/Time Stamp
 map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
 
+" Clear search highlights
+noremap <silent><leader>/ :nohls<CR>
 
+" select all
+map <leader>a ggVG
+
+" Disable Ruler
 nnoremap <F7> :set nonumber!<CR>
 
 " reflow paragraph with Q in normal and visual mode
 nnoremap Q gqap
 vnoremap Q gq
 
+" Make Y behave like other capitals
+map Y y$
+
 " sane movement with wrap turned on
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-"nnoremap <Down> gj
-"nnoremap <Up> gk
-"vnoremap <Down> gj
-"vnoremap <Up> gk
-"inoremap <Down> <C-o>gj
-"inoremap <Up> <C-o>gk
 
 " Disable arrow keys for hjkl training
 inoremap  <Up>     <NOP>
@@ -162,6 +167,15 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" Easy split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 "---------------------------------------------------
 "----- various encryption and decryption stuff -----
@@ -208,7 +222,7 @@ map ;j :%!perl -MJSON -e 'local $/; my $j =JSON->new(); print $j->pretty()->enco
 " ----------------------------------------------------------------------------
 " Searching
 " ----------------------------------------------------------------------------
-set nohlsearch             " don't highlight searches
+set hlsearch               " highlight searches
 set incsearch              " do incremental searching
 set ignorecase             " ignore case when searching
 set smartcase              " ... unless ther's a cApItOl"

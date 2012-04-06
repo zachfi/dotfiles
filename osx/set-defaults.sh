@@ -176,7 +176,9 @@ defaults write com.apple.loginwindow LoginwindowLaunchesRelaunchApps -bool false
 defaults write com.apple.dashboard devmode -bool true
 
 # Disable animation for Expose stuff
-defaults write com.apple.dock expose-animation-duration -float 0
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write com.apple.dock springboard-show-duration -int 0.1
+defaults write com.apple.dock springboard-hide-duration -int 0.1
 
 # Pin the Dock to the right of the screen
 defaults write com.apple.dock pinning end

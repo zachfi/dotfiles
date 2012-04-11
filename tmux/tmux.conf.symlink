@@ -1,36 +1,47 @@
 # tmux.conf
 
-start-server
+#start-server
 set -g default-terminal "screen-256color"
 set -g prefix `
 
 # General tmux settings
 set-window-option -g utf8 on
 set-option -g status-keys vi
+
 set-window-option -g mode-keys vi
 set-window-option -g automatic-rename on
 
-# Status bar colors
+# default statusbar colors
 set-option -g status-bg black
 set-option -g status-fg cyan
+
+# default window title colors
 set-window-option -g window-status-bg black
-set-window-option -g window-status-fg cyan
+set-window-option -g window-status-fg default
+
+# active window title colors
 set-window-option -g window-status-current-bg black
 set-window-option -g window-status-current-fg green
+#set-window-option -g window-status-current-attr bold
 
 # Status bar layout
 set-window-option -g window-status-current-format "<#I:#W#F>"
 set-window-option -g window-status-format "#I:#W#F"
 set-option -g status-left '[#S]'
 set-option -g status-right '#22T %H:%M:%S %D'
-set-option -g status-interval 1
+set-option -g status-interval 3
 
 set-window-option -g aggressive-resize off
 # Hunner++
 bind r source-file ~/.tmux.conf
 
+# window splitting
 bind | split-window -h
 bind - split-window -v
+
+# command/message line colors
+set -g message-fg white
+set -g message-bg black
 
 ## Just click it
 #set-option -g mouse-select-pane on
@@ -46,4 +57,6 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
+
+bind Tab last-window
 

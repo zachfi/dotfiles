@@ -1,18 +1,13 @@
 " ----------------------------------------------------------------------------
 "  General
 " ----------------------------------------------------------------------------
-set enc=utf-8
-set fenc=utf-8
 set nocompatible
-set history=1000          " keep 50 lines of command line history
-set noexrc
+set history=50           " keep 50 lines of command line history
 set paste
-set tabpagemax=50
-set viminfo='20,\"50      " .viminfo, no more than 50 lines of registers
 set autoread              " reload files (no local changes only)
 
-call pathogen#infect()    " Use Pathogen for plugins
 filetype plugin indent on
+call pathogen#infect()    " Use Pathogen for plugins
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -23,7 +18,7 @@ set wrap                   " wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
 set shiftround             " round > and < to nearest shiftwitdh
-set tabstop=2
+" set tabstop=2
 set expandtab              " expand tabs to spaces
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
@@ -46,7 +41,7 @@ set directory=~/.vim/swp               " keep swp files under ~/.vim/swap
 " ----------------------------------------------------------------------------
 set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
-set nolazyredraw           " turn off lazy redraw
+"set redraw
 set number                 " line numbers
 set rnu                    " use relative numbering
 set wildmenu               " turn on wild menu
@@ -57,24 +52,17 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
-
 set showmode
 set statusline=%F%m%r%h%w\ %#LineNr#%{fugitive#statusline()}%#StatusLine#\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set scrolloff=3
 "set ttyfast
 "set showcmd                " Show (partial) command in status line.
 set nofoldenable
-
-set report=0               " report when > 0 lines changed by command
-
-""---- join lines that end with a sentance, put in two spaces
-set joinspaces
-
-""---- Completion improvements
+"set report=0               " report when > 0 lines changed by command
+set joinspaces              " join lines with a space
 set completeopt=longest,menuone
 
 setlocal comments-=:#
-set lazyredraw          " Don't redraw the screen during macro execution.
 set hidden              " Enable 'hidden' buffers
 
 let g:git_branch_status_head_current = 1
@@ -94,7 +82,6 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 set guifont=FreeMono\ Bold\ 10
 set gfn=FreeMono\ Bold\ 10
 set background=dark
-set t_Co=256         " use 256 colors
 
 syntax enable
 colorscheme molokai
@@ -104,7 +91,7 @@ if has("gui")
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
 else
-  set mousehide
+"  set mousehide
   "set mouse=a
   "set ttymouse=xterm2
 endif
@@ -180,24 +167,25 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Better Command line Editing
+cnoremap <C-j> <t_kd>
+cnoremap <C-k> <t_ku>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
 "---------------------------------------------------
 "----- various encryption and decryption stuff -----
 "---------------------------------------------------
 "
-"---- perform rot13 encrpytion using the tr script
-map :rot :%!tr A-Za-z N-ZA-Mn-za-m
 "----- gnupg encryption and decryption
 "---- encrypt and sign the message then armor it too
-map ;e :%!/bin/sh -c 'gpg -se -a 2>/dev/tty'
+map <leader>e :%!/bin/sh -c 'gpg -se -a 2>/dev/tty'
 "---- just encrypt and armor the message
-map ;E :%!/bin/sh -c 'gpg -e -a 2>/dev/tty'
+map <leader>E :%!/bin/sh -c 'gpg -e -a 2>/dev/tty'
 "---- decrypt
-map ;d :/^-----BEG/,/^-----END/!/bin/sh -c 'gpg -d 2>/dev/tty'
+map <leader>d :/^-----BEG/,/^-----END/!/bin/sh -c 'gpg -d 2>/dev/tty'
 "----- sign
-map ;s :,$! /bin/sh -c 'gpg --clearsign 2>/dev/tty'
-
-"----- NERD Tree
-map ;n :NERDTreeToggle <CR><Esc>
+map <leader>s :,$! /bin/sh -c 'gpg --clearsign 2>/dev/tty'
 
 "----- gundo
 nnoremap <F5> :GundoToggle<CR>
@@ -220,7 +208,7 @@ let g:viewoutput_newbuffer="bot 5new"
 map <C-c> <Plug>Traditionalj
 
 "----- Make JSON readable.
-map ;j :%!perl -MJSON -e 'local $/; my $j =JSON->new(); print $j->pretty()->encode($j->decode(<>));'<CR>
+map <leader>j :%!perl -MJSON -e 'local $/; my $j =JSON->new(); print $j->pretty()->encode($j->decode(<>));'<CR>
 
 " ----------------------------------------------------------------------------
 " Searching
@@ -250,7 +238,6 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
-
 
 " ---------------------------------------------------------------------------
 "  Type specific things

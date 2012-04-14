@@ -18,8 +18,5 @@ alias vi="vim"
 alias dots="puppet apply -v ~/dotfiles/initialize.rb" 
 
 alias vh="mvim -c 'au VimLeave * maca hide:'"
-# sup
-for x in sup sup-add sup-config sup-dump sup-recover-sources sup-sync sup-sync-back sup-tweak-labels; do
-  alias ${x}="rvm system exec ${x}"
-done
+alias dots="puppet apply -v ~/dotfiles/initialize.rb" 
 

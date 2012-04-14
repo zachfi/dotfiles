@@ -2,9 +2,9 @@
 "  General
 " ----------------------------------------------------------------------------
 set nocompatible
-set history=50           " keep 50 lines of command line history
-set paste
-set autoread              " reload files (no local changes only)
+"set history=50           " keep 50 lines of command line history
+"set paste
+"set autoread              " reload files (no local changes only)
 
 filetype plugin indent on
 call pathogen#infect()    " Use Pathogen for plugins

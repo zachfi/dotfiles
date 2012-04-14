@@ -41,10 +41,8 @@ function lprompt {
 
 function rprompt {
   local git='$vcs_info_msg_0_'
-  local rvm=$(rvm_prompt_info)
   RPROMPT=
   RPROMPT+="${git}"
-  RPROMPT+="${rvm}"
 }
 
 set_prompt () {

@@ -14,9 +14,8 @@ alias df="df -h"
 alias diff="colordiff"
 alias sudo="sudo HOME=${HOME}"
 alias newpass="LANG=C tr -cd '[:alnum:]' < /dev/random | head -c 20"
-alias vi="vim"
-alias dots="puppet apply -v ~/dotfiles/initialize.rb" 
-
+alias vi="~/Applications/MacVim.app/Contents/MacOS/Vim"
+alias vim="~/Applications/MacVim.app/Contents/MacOS/Vim"
 alias vh="mvim -c 'au VimLeave * maca hide:'"
 alias dots="puppet apply -v ~/dotfiles/initialize.rb" 
 

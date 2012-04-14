@@ -70,6 +70,12 @@ let g:git_branch_status_ignore_remotes = 1
 let g:git_branch_status_text = ''
 let g:git_branch_status_nogit = ''
 
+"let g:syntastic_enable_signs=1
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_puppet_lint_disable=1
+"let g:syntastic_auto_jump=1
+"let g:syntastic_loc_list_height=5
+
 autocmd FileType gitcommit DiffGitCached | wincmd p
 
 " Suffixes that get lower priority when doing tab completion for filenames.

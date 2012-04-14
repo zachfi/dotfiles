@@ -1,2 +1,2 @@
 #skip_global_compinit=1
-PATH=/opt/local/bin:$PATH
+PATH=/opt/local/bin:/opt/local/sbin:$PATH

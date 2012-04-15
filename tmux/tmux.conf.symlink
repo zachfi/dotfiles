@@ -20,7 +20,7 @@ set-window-option -g window-status-bg black
 set-window-option -g window-status-fg default
 
 # active window title colors
-set-window-option -g window-status-current-bg black
+set-window-option -g window-status-current-bg default
 set-window-option -g window-status-current-fg green
 #set-window-option -g window-status-current-attr bold
 
@@ -28,7 +28,9 @@ set-window-option -g window-status-current-fg green
 set-window-option -g window-status-current-format "<#I:#W#F>"
 set-window-option -g window-status-format "#I:#W#F"
 set-option -g status-left '[#S]'
-set-option -g status-right '#22T %H:%M:%S %D'
+set-option -g status-right '<#h>'
+set-option -g status-right-fg blue
+#set-option -g status-right '#22T %H:%M:%S %D'
 set-option -g status-interval 3
 
 set-window-option -g aggressive-resize off
@@ -40,7 +42,7 @@ bind | split-window -h
 bind - split-window -v
 
 # command/message line colors
-set -g message-fg white
+set -g message-fg yellow
 set -g message-bg black
 
 ## Just click it

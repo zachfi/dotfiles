@@ -116,7 +116,7 @@ highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
 set list
 "set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set listchars=tab:»·,trail:·
-set showbreak=↪
+"set showbreak=↪
 
 " ----------------------------------------------------------------------------
 "  Mappings
@@ -250,5 +250,20 @@ map ,s :call StripWhitespace ()<CR>
 " ---------------------------------------------------------------------------
 au BufRead,BufNewFile *.md       set wrap linebreak spell filetype=markdown
 au BufRead,BufNewFile *.markdown set wrap linebreak spell filetype=markdown
+
+
+" ---------------------------------------------------------------------------
+"  Type specific things
+" ---------------------------------------------------------------------------
+" quickfix things like '-' {{{2
+"nmap <Leader>cwc :cclose<CR>
+"nmap <Leader>cwo :botright copen 5<CR><C-w>p
+"nmap <Leader>cn  :cnext<CR>
+"nmap <Leader>cp  :cprevious<CR>
+nmap -  :cnext<CR>
+nmap _  :cprev<CR>
+nmap <C--> :colder<CR>
+nmap <C-_> :cnewer<CR>
+
 
 

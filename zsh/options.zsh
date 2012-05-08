@@ -48,6 +48,7 @@ setopt inc_append_history      # write history as soon as its entered
 setopt extended_history        # write timestamp to the file
 setopt hist_ignore_space       # commands beginning with spaces are ommitted from history
 unsetopt histverify            # when using ! cmds, confirm first
+setopt hist_ignore_dups        # do not write duplicate history
 
 # Scripts and Functions
 setopt local_options           # allow functions to have local options

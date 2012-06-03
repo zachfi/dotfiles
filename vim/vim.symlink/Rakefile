@@ -29,6 +29,8 @@ git_bundles = [
   "git://github.com/rodjek/vim-puppet.git",
 # Utility:
   "git://github.com/vim-scripts/gnupg.vim.git",
+# Color
+  "git://github.com/tomasr/molokai.git",
 ]
 
 vim_org_scripts = [

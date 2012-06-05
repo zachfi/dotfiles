@@ -31,6 +31,7 @@ git_bundles = [
   "git://github.com/vim-scripts/gnupg.vim.git",
 # Color
   "git://github.com/tomasr/molokai.git",
+  "git://github.com/wgibbs/vim-irblack.git",
 ]
 
 vim_org_scripts = [

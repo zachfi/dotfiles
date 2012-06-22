@@ -7,8 +7,8 @@ git_bundles = [
   "git://github.com/scrooloose/nerdtree.git",
   #"git://github.com/mileszs/ack.vim.git",
   #"git://git.wincent.com/command-t.git",
-  # "git://github.com/clones/vim-fuzzyfinder.git",
-  # "git://github.com/vim-scripts/L9.git",
+   "git://github.com/clones/vim-fuzzyfinder.git",
+   "git://github.com/vim-scripts/L9.git",
 # Enhanced Editing:
   #"git://github.com/tsaleh/vim-tcomment.git",
   #"git://github.com/tpope/vim-repeat.git",
@@ -29,6 +29,9 @@ git_bundles = [
   "git://github.com/rodjek/vim-puppet.git",
 # Utility:
   "git://github.com/vim-scripts/gnupg.vim.git",
+# Color
+  "git://github.com/tomasr/molokai.git",
+  "git://github.com/wgibbs/vim-irblack.git",
 ]
 
 vim_org_scripts = [

@@ -1,61 +1,74 @@
 # tmux.conf
 
 start-server
-set -g default-terminal "screen-256color"
-set -g prefix `
 
 # General tmux settings
-set-window-option -g utf8 on
-set-option -g status-keys vi
-
-set-window-option -g mode-keys vi
-set-window-option -g automatic-rename on
-
-# default statusbar colors
-set-option -g status-bg black
-set-option -g status-fg cyan
-
-# default window title colors
-set-window-option -g window-status-bg black
-set-window-option -g window-status-fg default
+set -g default-terminal "screen-256color"
+set -g prefix `
+set -s escape-time 100
+set -g status-keys vi
 
 # active window title colors
-set-window-option -g window-status-current-bg default
-set-window-option -g window-status-current-fg green
-#set-window-option -g window-status-current-attr bold
+set -g pane-active-border-fg blue
+set -g pane-active-border-bg default
 
-# Status bar layout
-set-window-option -g window-status-current-format "<#I:#W#F>"
-set-window-option -g window-status-format "#I:#W#F"
-set-option -g status-left '[#S]'
-#set-option -g status-right '<#h>'
-#set-option -g status-right '#22T %H:%M:%S %D'
-set-option -g status-right '%H:%M:%S %D'
-set-option -g status-right-fg blue
-set-option -g status-interval 3
+# Status bar
+set -g status-utf8 on
+set -g status-fg colour247
+set -g status-bg colour236
+set -g status-left '[#H-#S]'
+set -g status-right '#[fg=green][ #[fg=blue]%H:%M:%S %D #[fg=green]]'
+set -g status-left-length 20
+set -g status-justify centre
+set -g status-interval 1
+set -g status-attr default
 
-set-window-option -g aggressive-resize off
-# Hunner++
+# command/message line colors
+set -g message-fg yellow
+set -g message-bg black
+set -g message-attr bold
+
+## Just click it
+#set -g mouse-select-pane on
+#set -g mouse-select-window on
+#set -g mouse-resize-pane on
+
+# --- Window options
+setw -g utf8 on
+setw -g mode-keys vi
+setw -g automatic-rename on
+setw -g window-status-current-attr underscore
+
+# default window title colors
+setw -g window-status-bg black
+setw -g window-status-fg default
+setw -g window-status-attr default
+
+# active window title colors
+setw -g window-status-current-bg default
+setw -g window-status-current-fg green
+setw -g window-status-current-attr bold
+
+setw -g aggressive-resize off
+
+## Scroll your way into copy mode (scrollback buffer)
+## and select text for copying with the mouse
+#setw -g mode-mouse on
+
+
+
+# --- Key Bindings
+
+# Reload tmux configuration
 bind r source-file ~/.tmux.conf
 
 # window splitting
 bind | split-window -h
 bind - split-window -v
 
-# command/message line colors
-set -g message-fg yellow
-set -g message-bg black
 
-## Just click it
-#set-option -g mouse-select-pane on
-#set-option -g mouse-select-window on
-#set-option -g mouse-resize-pane on
-#
-## Scroll your way into copy mode (scrollback buffer)
-## and select text for copying with the mouse
-#setw -g mode-mouse on
-
-set-window-option -g mode-keys vi
+# Panes
+setw -g mode-keys vi
 bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
@@ -65,5 +78,7 @@ bind \ last-window
 
 bind-key -t vi-copy 'v' begin-selection
 bind-key -t vi-copy 'y' copy-selection
+# toggle statusbar
+bind b set-option status
 
 

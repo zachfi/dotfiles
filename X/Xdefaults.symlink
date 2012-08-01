@@ -21,6 +21,5 @@ URxvt*background: #1B1D1E
 URxvt*foreground: #F8F8F2
 URxvt*scrollBar: false
 !URxvt*font: xft:Terminus:pixelsize=10
-
 URxvt.font: xft:Bitstream Vera Sans Mono:pixelsize=12
 

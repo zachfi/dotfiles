@@ -16,10 +16,17 @@
 *color7: #CCCCC6
 *color15: #F8F8F2
 
+! General
 URxvt*loginShell: true
+URxvt*scrollBar: false
+URxvt*secondaryScroll:    true
+URxvt*saveLines:         65535
+URxvt*cursorBlink:       false
+URxvt*urgentOnBell:       true
+
+
 URxvt*background: #1B1D1E
 URxvt*foreground: #F8F8F2
-URxvt*scrollBar: false
 !URxvt*font: xft:Terminus:pixelsize=10
 URxvt.font: xft:Bitstream Vera Sans Mono:pixelsize=12
 

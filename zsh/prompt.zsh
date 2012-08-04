@@ -32,7 +32,7 @@ function lprompt {
   PROMPT=
   PROMPT+="${user_host}"
   PROMPT+='$vcs_info_msg_1_'
-  PROMPT+="%F{red}%(?.. exited %?)%f"
+  PROMPT+="%F{red}%(?.. exit %?)%f"
   PROMPT+="
 "
   PROMPT+="%F{014}%#%f "

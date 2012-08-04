@@ -1,32 +1,80 @@
+! Xcursor --------------------------------------------------------------------
+
+Xcursor.theme: Vanilla-DMZ-AA
+Xcursor.size:  22
+
 !thayer colors
 !
-*color0: #1B1D1E
-*color1: #F92672
-*color9: #FF669D
-*color2: #A6E22E
-*color10: #BEED5F
-*color3: #FD971F
-*color11: #E6DB74
-*color4: #66D9EF
-*color12: #66D9EF
-*color5: #9E6FFE
-*color13: #9E6FFE
-*color6: #5E7175
-*color14: #A3BABF
-*color7: #CCCCC6
-*color15: #F8F8F2
+*color0:    #1B1D1E
+*color1:    #F92672
+*color9:    #FF669D
+*color2:    #A6E22E
+*color10:   #BEED5F
+*color3:    #FD971F
+*color11:   #E6DB74
+*color4:    #66D9EF
+*color12:   #66D9EF
+*color5:    #9E6FFE
+*color13:   #9E6FFE
+*color6:    #5E7175
+*color14:   #A3BABF
+*color7:    #CCCCC6
+*color15:   #F8F8F2
 
 ! General
-URxvt*loginShell: true
-URxvt*scrollBar: false
-URxvt*secondaryScroll:    true
-URxvt*saveLines:         65535
-URxvt*cursorBlink:       false
-URxvt*urgentOnBell:       true
+URxvt.geometry: 100x30
+URxvt.transparent: true
+URxvt.shading: 13
 
+URxvt.loginShell:       true
 
+URxvt*scrollBar:        true
+URxvt*secondaryScroll:  true
+URxvt*scrollBar_right: true
+URxvt.scrollBar_floating: true
+URxvt.scollstyle: plain
+URxvt.scrollColor: #252525
+URxvt.cursorColor: #404040
+
+URxvt*saveLines:        65535
+URxvt*cursorBlink:      false
+URxvt*urgentOnBell:      true
+
+!*background: #151515
+!*foreground: white
 URxvt*background: #1B1D1E
 URxvt*foreground: #F8F8F2
-!URxvt*font: xft:Terminus:pixelsize=10
+!URxvt*font: xft:Terminus:pixelsize=10:antialias=false
 URxvt.font: xft:Bitstream Vera Sans Mono:pixelsize=12
+
+
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-dina-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-12-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #ffffff
+xscreensaver.Dialog.background:         #111111
+xscreensaver.Dialog.topShadowColor:     #111111
+xscreensaver.Dialog.bottomShadowColor:  #111111
+xscreensaver.Dialog.Button.foreground:  #666666
+xscreensaver.Dialog.Button.background:  #ffffff
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #666666
+xscreensaver.Dialog.text.background:    #ffffff
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        20
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #ff0000
+xscreensaver.passwd.thermometer.background:  #000000
+xscreensaver.passwd.thermometer.width:       8
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
 

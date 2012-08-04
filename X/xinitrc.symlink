@@ -4,5 +4,7 @@ xscreensaver -nosplash &
 nitrogen --restore &
 thunar --daemon &
 unclutter -idle 8 -root &
+xmodmap ~/.Xmodmap &
+xsetroot -cursor_name Vanilla-DMZ-AA &
 exec /usr/bin/awesome
 

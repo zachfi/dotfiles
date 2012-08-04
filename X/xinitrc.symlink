@@ -1,1 +1,8 @@
-exec awesome
+#
+volumeicon &
+xscreensaver -nosplash &
+nitrogen --restore &
+thunar --daemon &
+unclutter -idle 8 -root &
+exec /usr/bin/awesome
+

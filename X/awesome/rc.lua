@@ -44,7 +44,7 @@ awful.util.spawn_with_shell("xcompmgr -cF &")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -82,8 +82,8 @@ layouts =
 -- Define a tag table which hold all screen tags.
 tags = {
   names  = { "main", "web", "comm", "media", 5, 6, 7, 8, 9 },
-  layout = { layouts[1], layouts[2], layouts[1], layouts[5], layouts[6],
-             layouts[12], layouts[9], layouts[3], layouts[7]
+  layout = { layouts[1], layouts[1], layouts[1], layouts[5], layouts[6],
+             layouts[9], layouts[9], layouts[3], layouts[7]
 }}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -131,11 +131,12 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 netwidget = widget({ type = "textbox" })
  -- Register widget
 vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${eth0 down_kb}</span> <span color="#7F9F7F">${eth0 up_kb}</span>', 3)
+
 -- Initialize widget
 memwidget = awful.widget.progressbar()
 -- Progressbar properties
 memwidget:set_width(8)
-memwidget:set_height(10)
+memwidget:set_height(18)
 memwidget:set_vertical(true)
 memwidget:set_background_color("#494B4F")
 memwidget:set_border_color(nil)
@@ -143,6 +144,29 @@ memwidget:set_color("#AECF96")
 memwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
 -- Register widget
 vicious.register(memwidget, vicious.widgets.mem, "$1", 13)
+
+-- Initialize widget
+cpuwidget = awful.widget.graph()
+-- Graph properties
+cpuwidget:set_width(50)
+cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_color("#FF5656")
+cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
+-- Register widget
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
+
+
+-- Initialize widget
+mpdwidget = widget({ type = "textbox" })
+-- Register widget
+vicious.register(mpdwidget, vicious.widgets.mpd,
+    function (widget, args)
+        if args["{state}"] == "Stop" then 
+            return " - "
+        else 
+            return args["{Artist}"]..' - '.. args["{Title}"]
+        end
+    end, 10)
 
 
 mytextclock = awful.widget.textclock({ align = "right" })
@@ -228,7 +252,9 @@ for s = 1, screen.count() do
         mytextclock,
         netwidget,
         memwidget,
+        cpuwidget,
         s == 1 and mysystray or nil,
+        mpdwidget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }

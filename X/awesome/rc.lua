@@ -48,9 +48,6 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
-browser = "chromium"
-filemanager = "thunar"
-musicmanager = "clementine"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -81,9 +78,9 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-  names  = { "main", "web", "comm", "media", "hack", 6, 7, 8, "music" },
-  layout = { layouts[1], layouts[1], layouts[1], layouts[6], layouts[7],
-             layouts[9], layouts[9], layouts[3], layouts[7]
+  names  = { "main", "web", "comm", "media", "hack", "irc", 7, 8, "music" },
+  layout = { layouts[1], layouts[1], layouts[1], layouts[6], layouts[5],
+             layouts[7], layouts[9], layouts[3], layouts[7]
 }}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -101,11 +98,18 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
+mediamenu = {
+  { "ncmpcpp", terminal .. " -e ncmpcpp" },
+  { "vlc", "vlc" },
+  { "picard", "picard" },
+  { "clementine", "clementine" },
+}
+
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "internet", browser },
-                                    { "files", filemanager },
-                                    { "music", musicmanager },
+                                    --{ "Debian", debian.menu.Debian_menu.Debian },
+                                    { "internet", "chromium" },
+                                    { "files", "thunar" },
+                                    { "media", mediamenu },
                                     { "terminal", terminal }
                                   }
                         })
@@ -407,6 +411,7 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = true,
                      keys = clientkeys,
+                     size_hints = false,
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },

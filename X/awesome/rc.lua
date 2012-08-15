@@ -71,15 +71,16 @@ layouts =
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
+    awful.layout.suit.floating
 }
 -- }}}
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-  names  = { "main", "web", "comm", "media", "hack", "irc", 7, 8, "music" },
-  layout = { layouts[1], layouts[1], layouts[1], layouts[6], layouts[5],
+  names  = { "main", "web", "3", "4", "hack", "irc", 7, 8, "music" },
+  layout = { layouts[1], layouts[1], layouts[12], layouts[6], layouts[5],
              layouts[7], layouts[9], layouts[3], layouts[7]
 }}
 for s = 1, screen.count() do

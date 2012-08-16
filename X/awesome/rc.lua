@@ -44,7 +44,10 @@ awful.util.spawn_with_shell("xcompmgr -cF &")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+-- beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/current_theme/theme.lua")
+
+theme.wallpaper_cmd = { "awsetbg /home/zach/dotfiles/X/awesome/themes/dust/background.jpg" }
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -91,14 +94,6 @@ end
 -- }}}
 
 -- {{{ Menu
--- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
-}
-
 mediamenu = {
   { "ncmpcpp", terminal .. " -e ncmpcpp" },
   { "vlc", "vlc" },
@@ -106,6 +101,42 @@ mediamenu = {
   { "clementine", "clementine" },
   { "ario", "ario" },
   { "sonata", "sonata" },
+}
+
+mythememenu = {}
+
+function theme_load(theme)
+   local cfg_path = awful.util.getdir("config")
+
+   -- Create a symlink from the given theme to /home/user/.config/awesome/current_theme
+   awful.util.spawn("ln -sfn " .. cfg_path .. "/themes/" .. theme .. " " .. cfg_path .. "/current_theme")
+   awesome.restart()
+end
+
+function theme_menu()
+   -- List your theme files and feed the menu table
+   local cmd = "ls -1 " .. awful.util.getdir("config") .. "/themes/"
+   local f = io.popen(cmd)
+
+   for l in f:lines() do
+    local item = { l, function () theme_load(l) end }
+    table.insert(mythememenu, item)
+   end
+
+   f:close()
+end
+
+-- Generate your table at startup or restart
+theme_menu()
+
+
+-- Modify your awesome menu to add your theme sub-menu
+myawesomemenu = {
+   { "manual", terminal .. " -e man awesome" },
+   { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
+   { "themes", mythememenu },
+   { "restart", awesome.restart },
+   { "quit", awesome.quit }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -342,6 +373,13 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
+    -- Zach's additions
+    awful.key({ modkey, "Shift" }, "t", function (c)
+      if   c.titlebar then awful.titlebar.remove(c)
+      else awful.titlebar.add(c, { modkey = modkey }) end
+    end),
+ 
+    -- Standard
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
@@ -427,6 +465,12 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    --{ rule = { class = "Thunar" },
+    --  properties = { floating = true },
+    --  callback = awful.titlebar.add },
+    --{ rule = { class = "Sonata" },
+    --  properties = { floating = true },
+    --  callback = awful.titlebar.add },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },

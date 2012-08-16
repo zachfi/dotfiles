@@ -79,7 +79,7 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-  names  = { "main", "web", "3", "4", "hack", "irc", 7, 8, "music" },
+  names  = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
   layout = { layouts[1], layouts[1], layouts[12], layouts[6], layouts[5],
              layouts[7], layouts[9], layouts[3], layouts[7]
 }}
@@ -104,6 +104,8 @@ mediamenu = {
   { "vlc", "vlc" },
   { "picard", "picard" },
   { "clementine", "clementine" },
+  { "ario", "ario" },
+  { "sonata", "sonata" },
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -276,6 +278,11 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    -- Zach's additions
+    awful.key({ modkey }, "b", function ()
+      mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+    end),
+    -- Focus and movement
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),

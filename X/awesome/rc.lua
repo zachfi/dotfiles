@@ -84,7 +84,7 @@ layouts =
 tags = {
   names  = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
   layout = { layouts[1], layouts[1], layouts[12], layouts[6], layouts[5],
-             layouts[7], layouts[9], layouts[3], layouts[7]
+             layouts[7], layouts[12], layouts[3], layouts[7]
 }}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -341,8 +341,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
+    awful.key({ modkey, "Shift"   }, "h", function () awful.client.swap.bydirection("left")    end),
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.bydirection("down")    end),
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.bydirection("up")      end),
+    awful.key({ modkey, "Shift"   }, "l", function () awful.client.swap.bydirection("right")   end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),

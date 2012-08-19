@@ -16,6 +16,10 @@ require("vicious")
 -- Awesompd
 require("awesompd/awesompd")
 
+-- Menubar
+require("menubar")
+
+
 
 
 -- {{{ Error handling
@@ -98,6 +102,13 @@ end
 -- }}}
 
 -- {{{ Menu
+
+-- Menubar
+menubar.cache_entries = true
+menubar.app_folders = { "/usr/share/applications/" }
+menubar.show_categories = true   -- Change to false if you want only programs to appear in the menu
+menubar.set_icon_theme("theme name")
+
 mediamenu = {
   { "ncmpcpp", terminal .. " -e ncmpcpp" },
   { "vlc", "vlc" },
@@ -364,6 +375,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "b", function ()
       mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
     end),
+    awful.key({ modkey }, "s", function () menubar.show() end),
     -- Focus and movement
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),

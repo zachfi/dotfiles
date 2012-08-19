@@ -40,6 +40,7 @@ do
 end
 -- }}}
 
+-- Transparency
 awful.util.spawn_with_shell("xcompmgr -cF &")
 
 -- {{{ Variable definitions
@@ -74,7 +75,6 @@ layouts =
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
     awful.layout.suit.floating
 }
 -- }}}
@@ -82,9 +82,10 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-  names  = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-  layout = { layouts[5], layouts[5], layouts[12], layouts[6], layouts[5],
-             layouts[7], layouts[12], layouts[5], layouts[5]
+  -- names  = { "1", "2", "3", "4", "5", "6", "7", "8", "Code" },
+  names = { "☭", "⌥", "✇", "⌤", "☼", "⌘", "7", "8", "9" },
+  layout = { layouts[5], layouts[5], layouts[11], layouts[6], layouts[5],
+             layouts[7], layouts[11], layouts[5], layouts[5]
 }}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -471,12 +472,22 @@ awful.rules.rules = {
                      keys = clientkeys,
                      size_hints = false,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
+    -- Classes to float
+    { rule = { class = "Xmessage"           }, properties = { floating = true } },
+    { rule = { class = "Xmessage"           }, properties = { floating = true } },
+    { rule = { class = "Qmessage"           }, properties = { floating = true } },
+    { rule = { class = "MPlayer"            }, properties = { floating = true } },
+    { rule = { class = "pinentry"           }, properties = { floating = true } },
+    { rule = { class = "gimp"               }, properties = { floating = true } },
+    { rule = { class = "vlc"                }, properties = { floating = true } },
+
+    -- Classes to sink
+    { rule = { class = "OpenOffice.org 3.2" }, properties = { floating = false } },
+
+    -- Default tag for classses
+    { rule = { class = "VirtualBox"                          }, properties = { tag = tags[1][6] } },
+
+
     --{ rule = { class = "Thunar" },
     --  properties = { floating = true },
     --  callback = awful.titlebar.add },

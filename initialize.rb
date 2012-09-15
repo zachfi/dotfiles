@@ -15,5 +15,9 @@ node :default do
     file target,
       :ensure => source
   end
+
+  file home,
+    :mode => '0700'
+
 end
 

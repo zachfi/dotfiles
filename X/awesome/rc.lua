@@ -78,10 +78,10 @@ layouts =
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.max,
+    -- awful.layout.suit.max.fullscreen,
     awful.layout.suit.floating
 }
 -- }}}
@@ -91,8 +91,8 @@ layouts =
 tags = {
   -- names  = { "1", "2", "3", "4", "5", "6", "7", "8", "Code" },
   names = { "☭", "⌥", "✇", "⌤", "☼", "⌘" },
-  layout = { layouts[5], layouts[5], layouts[11], layouts[6], layouts[5],
-             layouts[7]
+  layout = { layouts[2], layouts[5], layouts[5], layouts[5], layouts[5],
+             layouts[5]
 }}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -349,12 +349,12 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        netwidget,
         memwidget,
+        netwidget,
         cpuwidget,
-        s == 1 and mysystray or nil,
 --        mpdwidget,
         musicwidget.widget,
+        s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }

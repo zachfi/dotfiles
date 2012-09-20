@@ -154,13 +154,19 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    --{ "Debian", debian.menu.Debian_menu.Debian },
+systemmenu = {
+  { "run_xrandr", "xrandr --output DVI-I-1 --mode 1920x1080 --pos 0x0 --output DVI-I-2 --pos 1920x0 --mode 1440x900" },
+  { "lock", "xscreensaver-command -lock" }
+}
+
+mymainmenu = awful.menu({ items = { 
+                                    { "system", systemmenu },
+                                    { "awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "Debian", debian.menu.Debian_menu.Debian },
                                     { "terminal", terminal },
                                     { "internet", "chromium" },
                                     { "files", "thunar" },
-                                    { "media", mediamenu },
-                                    { "lock", "xscreensaver-command -lock" },
+                                    { "media", mediamenu }
                                   }
                         })
 
@@ -424,12 +430,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-    --awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    --awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
+    -- awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
+    -- awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
+    -- awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
+    -- awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
+    -- awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
+    -- awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 

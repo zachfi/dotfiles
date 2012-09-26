@@ -86,14 +86,14 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 " ---------------------------------------------------------------------------
 " Colors / Theme
 " ---------------------------------------------------------------------------
-set guifont=FreeMono\ Bold\ 10
-set gfn=FreeMono\ Bold\ 10
 set background=dark
 
 syntax enable
 colorscheme molokai
 
 if has("gui")
+  set guifont=Source\ Code\ Pro:h14
+  set gfn=Source\ Code\ Pro:h14
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar

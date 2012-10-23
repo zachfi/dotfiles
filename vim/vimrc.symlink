@@ -1,44 +1,58 @@
-" ----------------------------------------------------------------------------
-"  General
-" ----------------------------------------------------------------------------
-set nocompatible
-"set history=50           " keep 50 lines of command line history
-"set paste
-"set autoread              " reload files (no local changes only)
+" .vimrc
 
-filetype plugin indent on
 call pathogen#infect()    " Use Pathogen for plugins
 
-" ----------------------------------------------------------------------------
-"  Text Formatting
-" ----------------------------------------------------------------------------
-set autoindent             " automatic indent new lines
-set smartindent            " be smart about it
-set wrap                   " wrap lines
-set softtabstop=2          " yep, two
-set shiftwidth=2           " ..
+" Enable filetype plugin
+filetype indent on
+filetype plugin on
+syntax on
+
+"
+" Colors
+colorscheme molokai
+set background=dark
+
+"
+" Gui Options
+if has("gui")
+  set guifont=Source\ Code\ Pro:h14
+  set gfn=Source\ Code\ Pro:h14
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=l  "remove left-hand scroll bar
+else
+  " set mousehide
+  " set mouse=a
+  " set ttymouse=xterm2
+endif
+
+"
+" General
+set encoding=utf8
+set nocompatible
+set t_Co=256
+
+"
+" Text Format
+set ai
+set si
+set wrap
+set autoread
+set softtabstop=2
+set shiftwidth=2
 set shiftround             " round > and < to nearest shiftwitdh
-" set tabstop=2
 set expandtab              " expand tabs to spaces
-set nosmarttab             " fuck tabs
-set formatoptions+=n       " support for numbered/bullet lists
-"set textwidth=80           " wrap at 80 chars by default
-set virtualedit=block      " allow virtual edit in visual block ..
+"set nosmarttab                  " fuck tabs
+ set smarttab
+" set formatoptions+=n       " support for numbered/bullet lists
+" set textwidth=80              " wrap at 80 chars by default
+set virtualedit=block           " allow virtual edit in visual block ..
+set tabstop=2
 
-" ----------------------------------------------------------------------------
-"  Backups
-" ----------------------------------------------------------------------------
-"set nobackup                           " do not keep backups after close
-"set nowritebackup                      " do not keep a backup while working
-"set noswapfile                         " don't keep swp files either
-"set backupdir=$HOME/.vim/backup        " store backups under ~/.vim/backup
-"et backupcopy=yes                     " keep attributes of original file
-"set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
-set directory=~/.vim/swp               " keep swp files under ~/.vim/swap
-
-" ----------------------------------------------------------------------------
-"  UI
-" ----------------------------------------------------------------------------
+"
+" UI
+set backspace=eol,start,indent
 set cursorline
 set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
@@ -47,8 +61,7 @@ set number                 " line numbers
 set rnu                    " use relative numbering
 set wildmenu               " turn on wild menu
 set wildmode=list:longest,full
-set ch=2                   " command line height
-set backspace=2            " allow backspacing over everything in insert mode
+" set ch=2                   " command line height
 set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
@@ -60,16 +73,48 @@ set scrolloff=3
 "set showcmd                " Show (partial) command in status line.
 set nofoldenable
 "set report=0               " report when > 0 lines changed by command
-set joinspaces              " join lines with a space
 set completeopt=longest,menuone
 
 setlocal comments-=:#
 set hidden              " Enable 'hidden' buffers
 
-let g:git_branch_status_head_current = 1
-let g:git_branch_status_ignore_remotes = 1
-let g:git_branch_status_text = ''
-let g:git_branch_status_nogit = ''
+"
+" Backups
+set directory=~/.vim/swp        " keep swp files under ~/.vim/swap
+
+"
+" Searching
+set hlsearch               " highlight searches
+set incsearch              " do incremental searching
+set ignorecase             " ignore case when searching
+set smartcase              " ... unless ther's a cApItOl"
+
+"
+"  Highlight
+highlight Comment         ctermfg=DarkGrey guifg=#444444
+highlight StatusLineNC    ctermfg=Black    ctermbg=DarkGrey cterm=bold
+highlight StatusLine      ctermbg=Black    ctermfg=LightGrey
+highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
+
+"
+" Highlight Trailing Whitespace
+set list
+set listchars=tab:»·,trail:·
+"set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+"set showbreak=↪
+
+"
+" Visual Cues
+set mat=2
+set showmatch
+set laststatus=2
+set visualbell
+
+
+" let g:git_branch_status_head_current = 1
+" let g:git_branch_status_ignore_remotes = 1
+" let g:git_branch_status_text = ''
+" let g:git_branch_status_nogit = ''
 
 "let g:syntastic_enable_signs=1
 "let g:syntastic_auto_loc_list=1
@@ -83,51 +128,11 @@ autocmd FileType gitcommit DiffGitCached | wincmd p
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
-" ---------------------------------------------------------------------------
-" Colors / Theme
-" ---------------------------------------------------------------------------
-set background=dark
-
-syntax enable
-colorscheme molokai
-
-if has("gui")
-  set guifont=Source\ Code\ Pro:h14
-  set gfn=Source\ Code\ Pro:h14
-  set guioptions-=m  "remove menu bar
-  set guioptions-=T  "remove toolbar
-  set guioptions-=r  "remove right-hand scroll bar
-else
-"  set mousehide
-  "set mouse=a
-  "set ttymouse=xterm2
-endif
-
-" ---------------------------------------------------------------------------
-"  Highlight
-" ---------------------------------------------------------------------------
-highlight Comment         ctermfg=DarkGrey guifg=#444444
-highlight StatusLineNC    ctermfg=Black    ctermbg=DarkGrey cterm=bold
-highlight StatusLine      ctermbg=Black    ctermfg=LightGrey
-highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
-
-" ----------------------------------------------------------------------------
-"   Highlight Trailing Whitespace
-" ----------------------------------------------------------------------------
-set list
-"set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set listchars=tab:»·,trail:·
-"set showbreak=↪
-
-" ----------------------------------------------------------------------------
-"  Mappings
-" ----------------------------------------------------------------------------
+"
+" Mappings
 
 " Set the leader
 let mapleader = ';'
-
-" Toggle NERD Tree
-map <leader>n :NERDTreeToggle <CR><Esc>
 
 " Date/Time Stamp
 map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
@@ -194,7 +199,8 @@ map <leader>d :/^-----BEG/,/^-----END/!/bin/sh -c 'gpg -d 2>/dev/tty'
 "----- sign
 map <leader>s :,$! /bin/sh -c 'gpg --clearsign 2>/dev/tty'
 
-"----- gundo
+"
+" gundo
 nnoremap <F5> :GundoToggle<CR>
 let g:gundo_width = 60
 let g:gundo_preview_height = 40
@@ -206,7 +212,8 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-"Disable autocompletion popup.
+"
+" Disable autocompletion popup.
 let g:AutoComplPop_NotEnableAtStartup = 1
 
 "----- viewoutput configuration
@@ -214,28 +221,13 @@ let g:viewoutput_newbuffer="bot 5new"
 
 map <C-c> <Plug>Traditionalj
 
-"----- Make JSON readable.
+"
+" Make JSON readable.
 map <leader>j :%!perl -MJSON -e 'local $/; my $j =JSON->new(); print $j->pretty()->encode($j->decode(<>));'<CR>
 
-" ----------------------------------------------------------------------------
-" Searching
-" ----------------------------------------------------------------------------
-set hlsearch               " highlight searches
-set incsearch              " do incremental searching
-set ignorecase             " ignore case when searching
-set smartcase              " ... unless ther's a cApItOl"
 
-" ----------------------------------------------------------------------------
-" Visual Cues
-" ----------------------------------------------------------------------------
-set showmatch              " brackets/braces that is
-set mat=5                  " duration to show matching brace (1/10 sec)
-set laststatus=2           " always show the status line
-set visualbell             " shut the fuck up
-
-" ---------------------------------------------------------------------------
-"  Printing Options
-" ---------------------------------------------------------------------------
+"
+" Printing Options
 set printoptions=header:2,syntax:a,number:y,wrap:y,duplex:long,collate:y,jobsplit:y,paper:letter
 
 " ---------------------------------------------------------------------------
@@ -251,25 +243,10 @@ map ,s :call StripWhitespace ()<CR>
 " ---------------------------------------------------------------------------
 au BufRead,BufNewFile *.md       set wrap linebreak spell filetype=markdown
 au BufRead,BufNewFile *.markdown set wrap linebreak spell filetype=markdown
+au BufRead,BufNewFile *pf.conf*  set filetype=pf
 
-
-" ---------------------------------------------------------------------------
-"  Type specific things
-" ---------------------------------------------------------------------------
-" quickfix things like '-' {{{2
-"nmap <Leader>cwc :cclose<CR>
-"nmap <Leader>cwo :botright copen 5<CR><C-w>p
-"nmap <Leader>cn  :cnext<CR>
-"nmap <Leader>cp  :cprevious<CR>
-nmap -  :cnext<CR>
-nmap _  :cprev<CR>
-nmap <C--> :colder<CR>
-nmap <C-_> :cnewer<CR>
-
-
-" ---------------------------------------------------------------------------
-"  FuzzyFinder
-" ---------------------------------------------------------------------------
+"
+" Tabs
 "nnoremap <silent><CSI>] :tabnext<CR>
 "nnoremap <silent><CSI>[ :tabprevious<CR>
 nnoremap <silent><S-n> :tabnext<CR>
@@ -283,7 +260,7 @@ nnoremap <C-k> :tabclose<CR>
 " ---------------------------------------------------------------------------
 "
 "let g:fuf_modesDisable = []
-let g:fuf_modesDisable = ['mrucmd']
+"let g:fuf_modesDisable = ['mrucmd']
 "let g:fuf_abbrevMap = {
 "      \   '^vr:' : map(filter(split(&runtimepath, ','), 'v:val !~ "after$"'), 'v:val . ''/**/'''),
 "      \   '^m0:' : [ '/mnt/d/0/', '/mnt/j/0/' ],
@@ -291,12 +268,12 @@ let g:fuf_modesDisable = ['mrucmd']
 "let g:fuf_mrufile_maxItem = 300
 "let g:fuf_mrucmd_maxItem = 400
 "nnoremap <silent> <C-n>      :FufBuffer<CR>
-nnoremap <silent> <C-p>      :FufFileWithCurrentBufferDir<CR>
-nnoremap <silent> <C-f><C-p> :FufFileWithFullCwd<CR>
-nnoremap <silent> <C-f>p     :FufFile<CR>
-nnoremap <silent> <C-f><C-d> :FufDirWithCurrentBufferDir<CR>
-nnoremap <silent> <C-f>d     :FufDirWithFullCwd<CR>
-nnoremap <silent> <C-f>D     :FufDir<CR>
+"nnoremap <silent> <C-p>      :FufFileWithCurrentBufferDir<CR>
+"nnoremap <silent> <C-f><C-p> :FufFileWithFullCwd<CR>
+"nnoremap <silent> <C-f>p     :FufFile<CR>
+"nnoremap <silent> <C-f><C-d> :FufDirWithCurrentBufferDir<CR>
+"nnoremap <silent> <C-f>d     :FufDirWithFullCwd<CR>
+"nnoremap <silent> <C-f>D     :FufDir<CR>
 "nnoremap <silent> <C-j>      :FufMruFile<CR>
 "nnoremap <silent> <C-k>      :FufMruCmd<CR>
 "nnoremap <silent> <C-b>      :FufBookmark<CR>

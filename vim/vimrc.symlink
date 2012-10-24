@@ -8,9 +8,15 @@ filetype plugin on
 syntax on
 
 "
+" General
+set encoding=utf8
+set nocompatible
+set t_Co=256
+
+"
 " Colors
-colorscheme molokai
 set background=dark
+colorscheme molokai
 
 "
 " Gui Options
@@ -26,12 +32,6 @@ else
   " set mouse=a
   " set ttymouse=xterm2
 endif
-
-"
-" General
-set encoding=utf8
-set nocompatible
-set t_Co=256
 
 "
 " Text Format
@@ -134,6 +134,15 @@ set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.i
 " Set the leader
 let mapleader = ';'
 
+
+noremap <Leader>s :update<CR>
+noremap <Leader>v :vsplit<CR>
+noremap <Leader>c :close<CR>
+noremap <Leader>e :Explore<CR>
+noremap <Leader>p :CtrlP<CR>
+noremap <Leader>b :CtrlPBuffer<CR>
+noremap <Leader>t :CtrlPBufTag<CR>
+
 " Date/Time Stamp
 map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
 
@@ -185,19 +194,29 @@ cnoremap <C-k> <t_ku>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
+" Ctrl-P
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+let g:ctrlp_working_path_mode = 'c'
+
+
+
 "---------------------------------------------------
 "----- various encryption and decryption stuff -----
+"
+"
 "---------------------------------------------------
 "
 "----- gnupg encryption and decryption
 "---- encrypt and sign the message then armor it too
-map <leader>e :%!/bin/sh -c 'gpg -se -a 2>/dev/tty'
+" map <leader>e :%!/bin/sh -c 'gpg -se -a 2>/dev/tty'
 "---- just encrypt and armor the message
-map <leader>E :%!/bin/sh -c 'gpg -e -a 2>/dev/tty'
+" map <leader>E :%!/bin/sh -c 'gpg -e -a 2>/dev/tty'
 "---- decrypt
-map <leader>d :/^-----BEG/,/^-----END/!/bin/sh -c 'gpg -d 2>/dev/tty'
+" map <leader>d :/^-----BEG/,/^-----END/!/bin/sh -c 'gpg -d 2>/dev/tty'
 "----- sign
-map <leader>s :,$! /bin/sh -c 'gpg --clearsign 2>/dev/tty'
+" map <leader>s :,$! /bin/sh -c 'gpg --clearsign 2>/dev/tty'
 
 "
 " gundo

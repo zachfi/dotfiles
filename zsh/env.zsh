@@ -19,7 +19,7 @@ WORDCHARS="${WORDCHARS:s#/#}"
 [[ -f /usr/local/Cellar/coreutils/8.12/aliases ]] && source /usr/local/Cellar/coreutils/8.12/aliases
 
 # All the pretty colors
-[[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
+$(which dircolors > /dev/null) && [[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
 
 # Keychain
 # keychain -k mine

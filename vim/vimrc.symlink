@@ -27,6 +27,8 @@ if has("gui")
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=l  "remove left-hand scroll bar
+  set guioptions-=R  "remove right-hand scroll bar if there is a vertical split
+  set guioptions-=L  "remove left-hand scroll bar if there is a vertical split
 else
   " set mousehide
   " set mouse=a
@@ -267,8 +269,10 @@ au BufRead,BufNewFile *pf.conf*  set filetype=pf
 " Tabs
 "nnoremap <silent><CSI>] :tabnext<CR>
 "nnoremap <silent><CSI>[ :tabprevious<CR>
-nnoremap <silent><S-n> :tabnext<CR>
-nnoremap <silent><S-p> :tabprevious<CR>
+"nnoremap <silent><S-n> :tabnext<CR>
+"nnoremap <silent><S-p> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+nnoremap <C-H> :tabprevious<CR>
 nnoremap <C-t> :tabnew<CR>
 nnoremap <C-k> :tabclose<CR>
 

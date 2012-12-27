@@ -202,6 +202,15 @@ let g:ctrlp_cmd = 'CtrlP'
 
 let g:ctrlp_working_path_mode = 'ra'
 
+" Tabular
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap \= :Tabularize /=<CR>
+  vmap \= :Tabularize /=<CR>
+  "nmap <Leader>a: :Tabularize /:\zs<CR>
+  "vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 
 "---------------------------------------------------
 "----- various encryption and decryption stuff -----

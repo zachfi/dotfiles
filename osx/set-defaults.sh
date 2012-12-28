@@ -79,6 +79,11 @@ defaults write com.apple.dock launchanim -bool false
 defaults write NSGlobalDomain KeyRepeat -int 0
 defaults write NSGlobalDomain InitialKeyRepeat -int 25
 
+# Disable mouse acceleration
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+defaults write .GlobalPreferences com.apple.trackpad.scaling -1
+
+
 # Disable auto-correct
 #defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 

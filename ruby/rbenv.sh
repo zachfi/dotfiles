@@ -14,7 +14,7 @@ git clone $rbenv_url ~/.rbenv
 
 # Create prepare the build plugin
 mkdir -p ~/.rbenv/plugins
-git clone $rbenv_build_url ~/.rbenv/plugins
+git clone $rbenv_build_url ~/.rbenv/plugins/ruby-build
 
 # install the default version
 rbenv install $default_ver

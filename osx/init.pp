@@ -9,6 +9,7 @@ class osx {
     "htop",
     "gpg-agent",
     "keychain",
+    "gnupg",
   ]
   package { $packages: }
 

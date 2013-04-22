@@ -16,6 +16,9 @@ node :default do
       :ensure => source
   end
 
+  file "#{home}/.config",
+    :ensure => "directory"
+
   file "#{home}/.config/awesome",
     :ensure => "#{cwd}/X/awesome"
 

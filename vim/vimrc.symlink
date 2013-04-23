@@ -22,8 +22,8 @@ colorscheme molokai
 "
 " Gui Options
 if has("gui")
-  set guifont=Source\ Code\ Pro:h14
-  set gfn=Source\ Code\ Pro:h14
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+  set gfn=Source\ Code\ Pro\ for\ Powerline:h14
   set guioptions-=m  "remove menu bar
   set guioptions-=T  "remove toolbar
   set guioptions-=r  "remove right-hand scroll bar
@@ -215,6 +215,9 @@ let g:ctrlp_working_path_mode = 'ra'
 
 vnoremap <Leader>> :Align =><CR>
 vnoremap <Leader>= :Align =<CR>
+
+" Vim Powerline
+let g:Powerline_symbols = 'unicode'
 
 "---------------------------------------------------
 "----- various encryption and decryption stuff -----

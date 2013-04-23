@@ -18,10 +18,10 @@ set -g status-utf8 on
 set -g status-fg colour247
 set -g status-bg colour236
 set -g status-left '#[fg=green][ #[fg=blue]#P:#H #S #[fg=green]]'
-set -g status-right '#[fg=green][ #[fg=blue]%H:%M:%S %D #[fg=green]]'
+set -g status-right '#(battery -o tmux) #[fg=green][ #[fg=blue]%H:%M:%S %D #[fg=green]]'
 set -g status-left-length 50
 set -g status-justify centre
-set -g status-interval 1
+set -g status-interval 3
 set -g status-attr default
 
 # command/message line colors

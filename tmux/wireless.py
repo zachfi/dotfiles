@@ -18,7 +18,7 @@ def is_wifi_connected(info):
         return(False)
 
 def signal_percent(rate, maxRate):
-    return((int(rate) / int(maxRate) * 100))
+    return((float( int(rate) ) / float( int(maxRate))  * 100.0))
 
 def get_signal_percent(info):
     lastRate = info["lastTxRate"]
@@ -26,7 +26,7 @@ def get_signal_percent(info):
     return(signal_percent(lastRate,maxRate))
 
 def tmux_output(info):
-    output = "#[fg=green][" + info["SSID"].strip() + ":" + str(int(get_signal_percent(info))) + "%]#[default]"
+    output = "#[fg=green][" + info["SSID"].strip() + ":" + str(int(get_signal_percent(info))) + "%:" + info["maxRate"] + "]#[default]"
     print(output)
 
 # Return a dict of the output from airport --getinfo
@@ -39,7 +39,7 @@ def get_info():
     for l in lines:
         fields = l.strip().split(':')
         if fields[0] != '':
-            airinfo[fields[0]] = fields[-1]
+            airinfo[fields[0]] = str(fields[-1]).strip()
     return(airinfo)
 
 def main():

@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
-import os, fnmatch
+import os
+import fnmatch
 
 def link(source, dest):
     print("LINK ", source, " to ", dest)

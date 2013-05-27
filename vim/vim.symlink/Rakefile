@@ -20,6 +20,7 @@ git_bundles = [
   "git://github.com/msanders/snipmate.vim.git",
   #"git://github.com/godlygeek/tabular.git", # <-- needed for => alignment in puppet
   "git://github.com/tsaleh/vim-align.git",
+  "git://github.com/tpope/vim-abolish.git",
 # Syntax and languages:
   #"git://github.com/scrooloose/syntastic.git",
   "git://github.com/vim-ruby/vim-ruby.git",

@@ -17,6 +17,7 @@ set t_Co=256
 " Colors
 set background=dark
 colorscheme molokai
+"colorscheme ir_black
 
 "
 " Gui Options

@@ -1,0 +1,2 @@
+#compdef o
+_files -W $ORGS -/

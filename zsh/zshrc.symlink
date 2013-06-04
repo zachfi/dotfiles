@@ -5,15 +5,17 @@
 zsh_cache=${HOME}/.zsh_cache
 [[ ! -d $zsh_cache ]] && mkdir -p $zsh_cache
 
-
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/dotfiles
 
-# your project folder that we can `c [tab]` to
+# where my project code lives
 export PROJECTS=~/Code
 
-# where my work things are at
+# where my work things are
 export WORK=~/PuppetLabs
+
+# organizations I work on
+export ORGS=~/Org
 
 # source every .zsh file in this repo
 for config_file ($ZSH/**/*.zsh) source $config_file

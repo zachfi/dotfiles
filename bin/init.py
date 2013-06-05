@@ -4,8 +4,14 @@ import os
 import fnmatch
 
 def link(source, dest):
-    print("LINK ", source, " to ", dest)
-    os.symlink(source,dest)
+    try:
+        if os.path.exists(dest):
+            print("skipping " +  dest + " already exists, not replacing.")
+        else:
+            print("linking " + source + " to " + dest)
+            os.symlink(source,dest)
+    except:
+        print("fail")
 
 def dotlink(source):
     dest = os.environ['HOME'] + "/." + os.path.basename(source.split('.symlink')[0])
@@ -14,7 +20,7 @@ def dotlink(source):
         if current_target != source:
             link(source,dest)
         else:
-            print("SKIP", dest, " already points to ", source)
+            print("skipping " + source + " already links to " + dest)
     else:
         link(source,dest)
 
@@ -31,8 +37,9 @@ def find(pattern, path):
 
 def main():
     dotfiles_root = os.environ['HOME'] + '/dotfiles'
-    print("finding linkables")
+    print("Finding linkables...")
     linkables = find('*.symlink', dotfiles_root)
+    print("Done.")
     for x in linkables:
         dotlink(x)
 

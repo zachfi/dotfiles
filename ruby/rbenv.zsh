@@ -6,12 +6,9 @@ if [ -d $HOME/.rbenv ]; then
   if [ -d $HOME/.rbenv/bin ]; then
     PATH="$HOME/.rbenv/bin:$PATH"
   fi
-
-  # Load the completions from home
-  /usr/bin/which -s rbenv
-  if [ $? = 0 ]; then
-    eval "$(rbenv init -)"
-    source ~/.rbenv/completions/rbenv.zsh
-  fi
+elif [ -d /usr/local/var/rbenv ]; then
+  export RBENV_ROOT=/usr/local/var/rbenv
 fi
 
+# Load the completions from home
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

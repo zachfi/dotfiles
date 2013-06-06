@@ -1,4 +1,18 @@
 
+# Gems
+$gems = [
+  'weigh',
+  'rumember',
+]
+
+package { $gems:
+  ensure   => installed,
+  provider => gem,
+}
+
+
+# Apps
+
 package { "iTerm2":
   ensure   => present,
   provider => compressed_app,

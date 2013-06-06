@@ -8,6 +8,7 @@ $gems = [
   'weigh',
   'rumember',
   'backup',
+  'bundler',
 ]
 
 package { $gems:

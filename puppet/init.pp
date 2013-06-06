@@ -7,6 +7,7 @@ $gems = [
   'r10k',
   'weigh',
   'rumember',
+  'backup',
 ]
 
 package { $gems:
@@ -19,10 +20,25 @@ package { $gems:
 # Brews
 $brews = [
   'mutt',
-  'offlineimap',
+  'offline-imap',
   'notmuch',
   'msmtp',
+  'keychain',
+  'gnupg2',
+  'mobile-shell',
+  'pinentry',
+  'rbenv',
+  'ruby-build',
+  'ack',
+  'htop-osx',
+  'aspell',
+  'corkscrew',
 ]
+
+package { $brews:
+  ensure   => installed,
+  provider => brew,
+}
 
 
 # ----------

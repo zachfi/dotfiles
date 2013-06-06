@@ -1,6 +1,10 @@
 
-# Gems
+# ----------
+# RubyGems
 $gems = [
+  'puppet',
+  'facter',
+  'r10k',
   'weigh',
   'rumember',
 ]
@@ -11,7 +15,18 @@ package { $gems:
 }
 
 
-# Apps
+# ----------
+# Brews
+$brews = [
+  'mutt',
+  'offlineimap',
+  'notmuch',
+  'msmtp',
+]
+
+
+# ----------
+# ~/Applications
 
 package { "iTerm2":
   ensure   => present,

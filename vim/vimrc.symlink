@@ -1,6 +1,7 @@
 " .vimrc
 
-call pathogen#infect()    " Use Pathogen for plugins
+" Use Pathogen for plugins
+execute pathogen#infect()
 
 " Enable filetype plugin
 filetype indent on

@@ -20,12 +20,14 @@ package { $gems:
 # ----------
 # Brews
 $brews = [
+  'tmux',
   'mutt',
   'offline-imap',
   'notmuch',
   'msmtp',
   'keychain',
   'gnupg2',
+  'gnupg',
   'mobile-shell',
   'pinentry',
   'rbenv',
@@ -34,6 +36,9 @@ $brews = [
   'htop-osx',
   'aspell',
   'corkscrew',
+  'gpg-agent',
+  'vim',
+  'macvim',
 ]
 
 package { $brews:
@@ -75,11 +80,11 @@ package { "Alfred":
 #  source   => 'http://www.tildesoft.com/files/BonjourBrowser.dmg',
 #}
 
-package { "Caffeine":
-  ensure   => present,
-  provider => compressed_app,
-  source   => 'http://lightheadsw.com/files/releases/com.lightheadsw.Caffeine/Caffeine1.1.1.zip',
-}
+#package { "Caffeine":
+#  ensure   => present,
+#  provider => compressed_app,
+#  source   => 'http://lightheadsw.com/files/releases/com.lightheadsw.Caffeine/Caffeine1.1.1.zip',
+#}
 
 package { "Cyberduck":
   ensure   => present,
@@ -111,9 +116,9 @@ package { "Cyberduck":
 #  source   => 'http://get.videolan.org/vlc/2.0.6/macosx/vlc-2.0.6.dmg',
 #}
 
-package { "YoruFukurou":
-  ensure   => present,
-  provider => compressed_app,
-  source   => 'http://aki-null.net/yf/YoruFukurou_SL.zip',
-}
+#package { "YoruFukurou":
+#  ensure   => present,
+#  provider => compressed_app,
+#  source   => 'http://aki-null.net/yf/YoruFukurou_SL.zip',
+#}
 

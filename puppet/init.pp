@@ -20,12 +20,14 @@ package { $gems:
 # ----------
 # Brews
 $brews = [
+  'tmux',
   'mutt',
   'offline-imap',
   'notmuch',
   'msmtp',
   'keychain',
   'gnupg2',
+  'gnupg',
   'mobile-shell',
   'pinentry',
   'rbenv',
@@ -34,6 +36,9 @@ $brews = [
   'htop-osx',
   'aspell',
   'corkscrew',
+  'gpg-agent',
+  'vim',
+  'macvim',
 ]
 
 package { $brews:

@@ -45,17 +45,17 @@ package { $brews:
 # ----------
 # ~/Applications
 
-package { "iTerm2":
-  ensure   => present,
-  provider => compressed_app,
-  source   => 'http://www.iterm2.com/downloads/stable/iTerm2_v1_0_0.zip',
-}
+#package { "iTerm2":
+#  ensure   => present,
+#  provider => compressed_app,
+#  source   => 'http://www.iterm2.com/downloads/stable/iTerm2_v1_0_0.zip',
+#}
 
-package { "Alfred":
-  ensure   => present,
-  provider => compressed_app,
-  source   => 'http://cachefly.alfredapp.com/Alfred_2.0.4_199.zip',
-}
+#package { "Alfred":
+#  ensure   => present,
+#  provider => compressed_app,
+#  source   => 'http://cachefly.alfredapp.com/Alfred_2.0.4_199.zip',
+#}
 
 #package { "ApacheDirectoryStudio":
 #  ensure   => present,
@@ -75,17 +75,17 @@ package { "Alfred":
 #  source   => 'http://www.tildesoft.com/files/BonjourBrowser.dmg',
 #}
 
-package { "Caffeine":
-  ensure   => present,
-  provider => compressed_app,
-  source   => 'http://lightheadsw.com/files/releases/com.lightheadsw.Caffeine/Caffeine1.1.1.zip',
-}
+#package { "Caffeine":
+#  ensure   => present,
+#  provider => compressed_app,
+#  source   => 'http://lightheadsw.com/files/releases/com.lightheadsw.Caffeine/Caffeine1.1.1.zip',
+#}
 
-package { "Cyberduck":
-  ensure   => present,
-  provider => compressed_app,
-  source   => 'http://cyberduck.ch/Cyberduck-4.3.1.zip',
-}
+#package { "Cyberduck":
+#  ensure   => present,
+#  provider => compressed_app,
+#  source   => 'http://cyberduck.ch/Cyberduck-4.3.1.zip',
+#}
 
 #package { "GoogleChrome":
 #  ensure   => present,
@@ -111,9 +111,9 @@ package { "Cyberduck":
 #  source   => 'http://get.videolan.org/vlc/2.0.6/macosx/vlc-2.0.6.dmg',
 #}
 
-package { "YoruFukurou":
-  ensure   => present,
-  provider => compressed_app,
-  source   => 'http://aki-null.net/yf/YoruFukurou_SL.zip',
-}
+#package { "YoruFukurou":
+#  ensure   => present,
+#  provider => compressed_app,
+#  source   => 'http://aki-null.net/yf/YoruFukurou_SL.zip',
+#}
 

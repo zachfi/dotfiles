@@ -26,6 +26,7 @@ git_bundles = [
   #"git://github.com/tpope/vim-rails.git",
   #"git://github.com/puppetlabs/puppet-syntax-vim.git",
   "git://github.com/rodjek/vim-puppet.git",
+  "git://github.com/jnwhiteh/vim-golang.git",
 # Utility:
   "git://github.com/vim-scripts/gnupg.vim.git",
   "git://github.com/Lokaltog/vim-powerline.git",

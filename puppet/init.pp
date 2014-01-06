@@ -21,6 +21,7 @@ package { $gems:
 # Brews
 $brews = [
   'tmux',
+  'reattach-to-user-namespace',
   'mutt',
   'offline-imap',
   'notmuch',

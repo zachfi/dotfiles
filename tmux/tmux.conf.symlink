@@ -2,7 +2,9 @@
 
 start-server
 
+
 # General tmux settings
+set -g default-command "reattach-to-user-namespace -l zsh"
 set -g default-terminal "screen-256color"
 set -g prefix `
 set -s escape-time 100

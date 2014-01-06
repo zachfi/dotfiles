@@ -13,3 +13,5 @@ def setup():
         if not os.path.exists(dest):
             subprocess.call(['git', 'clone', sources[k], dest])
 
+if __name__ == "__main__":
+    setup()

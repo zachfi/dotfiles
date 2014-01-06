@@ -41,4 +41,5 @@ def setup():
     for x in linkables:
         dotlink(x)
 
-
+if __name__ == "__main__":
+    setup()

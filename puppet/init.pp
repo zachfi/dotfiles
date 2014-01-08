@@ -2,8 +2,6 @@
 # ----------
 # RubyGems
 $gems = [
-  'puppet',
-  'facter',
   'r10k',
   'weigh',
   'rumember',
@@ -40,6 +38,7 @@ $brews = [
   'gpg-agent',
   'vim',
   'macvim',
+  'git',
 ]
 
 package { $brews:

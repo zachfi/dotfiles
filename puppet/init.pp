@@ -7,6 +7,7 @@ $gems = [
   'rumember',
   'backup',
   'bundler',
+  'pushover',
 ]
 
 package { $gems:

@@ -72,6 +72,8 @@ bind r source-file ~/.tmux.conf
 bind | split-window -h
 bind - split-window -v
 
+# Create new session
+bind S new-session
 
 # Panes
 setw -g mode-keys vi

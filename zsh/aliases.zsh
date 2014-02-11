@@ -17,5 +17,6 @@ alias newpass="LANG=C tr -cd '[:alnum:]' < /dev/random | head -c 20"
 alias vi="vim"
 [[ -x /opt/local/bin/vim ]] && alias vim="/opt/local/bin/vim"
 alias v="mvim -c 'au VimLeave * maca hide:'"
-alias dots="puppet apply -v ~/dotfiles/initialize.rb" 
+
+alias we="weigh"
 

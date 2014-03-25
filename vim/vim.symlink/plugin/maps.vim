@@ -10,6 +10,9 @@ noremap <Leader>e :Explore<CR>
 " Date/Time Stamp
 map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
 
+" Replace DNS ZONE SOA
+nnoremap <F8> /\<\d\{10}\><CR>ce<C-r>=strftime("%Y%m%d00")<CR><Esc>:echo @"<CR>
+
 " Clear search highlights
 noremap <silent><leader>/ :nohls<CR>
 

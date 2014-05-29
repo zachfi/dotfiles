@@ -57,6 +57,8 @@ zstyle ':completion:*:rm:*' ignore-line yes
 # Git
 #--------------------------------------------------------------
 
+zstyle ":completion::complete:git-checkout:argument-rest:headrefs" command "git for-each-ref --format='%(refname)' refs/heads 2>/dev/null"
+
 zstyle ':completion:*:*:git:*:aliases'  list-colors "=(#b)(*)  #-- alias for *=$color[none]=$color[green]"
 zstyle ':completion:*:*:git:*:commands' list-colors "=(#b)(*)  #-- *=$color[none]=$color[blue]"
 zstyle ':completion:*:*:git-branch:*:branch-names' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"

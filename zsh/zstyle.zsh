@@ -3,16 +3,18 @@
 #--------------------------------------------------------------
 zstyle :compinstall filename "${HOME}/.zshrc"
 
+# Already default
+#zstyle ':completion:*' add-space true
+#zstyle ':completion:*' glob 1
+
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' add-space true
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _ignored _match _correct _approximate _prefix
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' expand prefix suffix
 zstyle ':completion:*' file-sort name
 zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' glob 1
 zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*' insert-unambiguous false
 zstyle ':completion:*' group-name ''

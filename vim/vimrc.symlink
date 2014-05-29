@@ -18,11 +18,11 @@ set t_Co=256
 " Colors
 set background=dark
 "colorscheme ir_black
+colorscheme molokai
 
 "
 " Gui Options
 if has("gui")
-  colorscheme solarized
   set guifont=Source\ Code\ Pro:h14
   set gfn=Source\ Code\ Pro:h14
   set guioptions+=i  " show Vim icon in Taskbar
@@ -35,7 +35,6 @@ if has("gui")
   set guioptions-=R  "remove right-hand scroll bar if there is a vertical split
   set guioptions-=L  "remove left-hand scroll bar if there is a vertical split
 else
-  colorscheme molokai
   " set mousehide
   " set mouse=a
   " set ttymouse=xterm2

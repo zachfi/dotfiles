@@ -1,6 +1,14 @@
 alias reload!='. ~/.zshrc'
 
-[[ `uname` == "Linux" ]] && alias ls="ls -sh --color=auto" || alias ls="ls -GF"
+uname="$(uname)"
+
+if [[ $uname == "Linux" ]]; then
+  alias ls="ls -sh --color=auto"
+elif [[ $uname == "OpenBSD" ]]; then
+  alias ls="ls -F"
+else # FreeBSD, OSX, etc
+  alias ls="ls -GF"
+fi
 
 alias ll="ls -lFhp"
 alias lla='ll -A'

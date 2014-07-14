@@ -50,7 +50,7 @@ URxvt.shading: 13
 
 URxvt.loginShell:       true
 
-URxvt*scrollBar:        true
+URxvt*scrollBar:        false
 URxvt*secondaryScroll:  true
 URxvt*scrollBar_right: true
 URxvt.scrollBar_floating: true

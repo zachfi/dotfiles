@@ -27,7 +27,6 @@ dstop() {for d in $@; sudo /etc/rc.d/$d stop || return 1}
 drestart() {for d in $@; sudo /etc/rc.d/$d restart || return 1}
 dedit() {sudo vim /etc/rc.d/$^@}
 dshow() {ls /var/run/daemons}
-pubip() {curl http://whatismyip.org/ 2>/dev/null; echo}
 ipc() {pubip | pbcopy}
 
 # do we have ack? I'd like to say so.

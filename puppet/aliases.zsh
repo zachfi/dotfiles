@@ -3,3 +3,4 @@
 #[[ -x ~/src/puppet/ext/envpuppet ]] && alias mco="~/src/puppet/ext/envpuppet /Users/zach/src/marionette-collective/mco"
 [[ -x ~/src/puppet/ext/envpuppet ]] &&alias puppet-module="~/src/puppet/ext/envpuppet ~/src/puppet-module-tool/bin/puppet-module"
 
+alias mco="RUBYLIB=~/src/mcollective/lib ~/src/mcollective/bin/mco"

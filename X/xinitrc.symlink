@@ -1,6 +1,6 @@
 #
 volumeicon &
-wicd-gtk -t &
+nm-applet &
 xscreensaver -nosplash &
 nitrogen --restore &
 thunar --daemon &

@@ -153,6 +153,7 @@ au BufRead,BufNewFile *.md       set wrap linebreak spell filetype=markdown
 au BufRead,BufNewFile *.markdown set wrap linebreak spell filetype=markdown
 au BufRead,BufNewFile *pf.conf*  set filetype=pf
 au BufRead,BufNewFile *.py       set softtabstop=4 shiftwidth=4 tabstop=4
+au BufRead,BufNewFile *.rb       set softtabstop=2 shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.ddl      set filetype=mcollective_ddl
 "au FileType gitcommit DiffGitCached | wincmd v
 au BufRead $HOME/.mutt/temp*     set syntax=mail

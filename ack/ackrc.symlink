@@ -3,4 +3,4 @@
 --color-match=black on_green
 --color-lineno=blue
 --ignore-case
-
+--type-set=puppet=.pp

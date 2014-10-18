@@ -3,7 +3,7 @@
 EDITOR="vim"
 PAGER="less"
 HISTFILE=$HOME/.histfile
-HISTSIZE=5000
+HISTSIZE=50000
 SAVEHIST=$HISTSIZE
 GREP_COLOR="4;36"
 # remove / from wordchars, so ^W will go back to the last / for example

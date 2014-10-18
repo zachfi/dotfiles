@@ -28,6 +28,7 @@ git_bundles = [
   "git://github.com/rodjek/vim-puppet.git",
   "git://github.com/jnwhiteh/vim-golang.git",
   "git://github.com/hdima/python-syntax.git",
+  "git://github.com/elzr/vim-json.git",
 # Utility:
   "git://github.com/vim-scripts/gnupg.vim.git",
   "git://github.com/Lokaltog/vim-powerline.git",
@@ -42,6 +43,8 @@ vim_org_scripts = [
 #  ["gist",          "12732", "plugin"],
 #  ["jquery",        "12107", "syntax"],
 ]
+
+task :default => :sync
 
 desc "Clone those that don't exist, update those that do."
 task :sync do

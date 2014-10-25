@@ -17,6 +17,6 @@ mkdir -p ~/.rbenv/plugins
 git clone $rbenv_build_url ~/.rbenv/plugins/ruby-build
 
 # install the default version
-rbenv install $default_ver
-rbenv global $default_ver
+~/.rbenv/bin/rbenv install $default_ver
+~/.rbenv/bin/rbenv global $default_ver
 

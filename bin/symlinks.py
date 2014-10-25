@@ -17,8 +17,6 @@ def dotlink(source):
         current_target = os.path.realpath(dest)
         if current_target != source:
             link(source,dest)
-        else:
-            print("skipping " + source + " already links to " + dest)
     else:
         link(source,dest)
 

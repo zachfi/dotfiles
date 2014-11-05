@@ -2,47 +2,26 @@
 
 require 'rake'
 
-git_bundles = [
-# File Browsing:
-  "git://github.com/clones/vim-fuzzyfinder.git",
-  "git://github.com/vim-scripts/L9.git",
-  "git://github.com/mileszs/ack.vim.git",
+def Plugin(github)
+  user, dir = github.split('/',2)
+  url = ['git://github.com/',github,'.git'].join('')
+
+  dest = "bundle/#{dir}"
+  if File.exists?(dest)
+    puts "Updating #{github} ..."
+    `(cd #{dest}; git pull)`
+  end
+  unless File.exist?(dest)
+    puts "Cloning #{github} ..."
+    `git clone #{url} #{dest}`
+  end
+end
+
+abandon_git_bundles = [
 # Enhanced Editing:
   #"git://github.com/tsaleh/vim-tcomment.git",
-  #"git://github.com/tpope/vim-repeat.git",
-  "git://github.com/tpope/vim-fugitive.git",
-  "git://github.com/tpope/vim-endwise.git",
-  "git://github.com/tpope/vim-surround.git",
   #"git://github.com/Raimondi/delimitMate.git",
-  "git://github.com/msanders/snipmate.vim.git",
-  #"git://github.com/godlygeek/tabular.git", # <-- needed for => alignment in puppet
-  "git://github.com/tsaleh/vim-align.git",
-  "git://github.com/tpope/vim-abolish.git",
-# Syntax and languages:
-  "git://github.com/scrooloose/syntastic.git",
-  "git://github.com/vim-ruby/vim-ruby.git",
-  #"git://github.com/vim-scripts/Rainbow-Parenthesis.git",
-  "git://github.com/tpope/vim-markdown.git",
-  "git://github.com/tpope/vim-git.git",
-  #"git://github.com/tpope/vim-rails.git",
-  #"git://github.com/puppetlabs/puppet-syntax-vim.git",
-  "git://github.com/rodjek/vim-puppet.git",
-  "git://github.com/jnwhiteh/vim-golang.git",
-  "git://github.com/hdima/python-syntax.git",
-  "git://github.com/elzr/vim-json.git",
-# Utility:
-  "git://github.com/vim-scripts/gnupg.vim.git",
-  "git://github.com/Lokaltog/vim-powerline.git",
-# Color
-  "git://github.com/tomasr/molokai.git",
-  "git://github.com/wgibbs/vim-irblack.git",
-  "git://github.com/cschlueter/vim-wombat.git",
-]
-
-vim_org_scripts = [
-#  ["IndexedSearch", "7062",  "plugin"],
-#  ["gist",          "12732", "plugin"],
-#  ["jquery",        "12107", "syntax"],
+  #"git://github.com/tsaleh/vim-align.git",
 ]
 
 task :default => :sync
@@ -50,18 +29,39 @@ task :default => :sync
 desc "Clone those that don't exist, update those that do."
 task :sync do
 
-  git_bundles.each do |url|
-    dir = url.split('/').last.split('.git').first.chomp
-    dest = "bundle/#{dir}"
-    if File.exists?(dest)
-      puts "Updating #{dest} from #{url} ..."
-      `(cd #{dest}; git pull)`
-    end
-    unless File.exist?(dest)
-      puts "Cloning #{url} into #{dest} ..."
-      `git clone #{url} #{dest}`
-    end
-  end
+  # Editing
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'mileszs/ack.vim'
+  Plugin 'tpope/vim-endwise'
+  Plugin 'tpope/vim-surround'
+  Plugin 'tpope/vim-abolish'
+  Plugin 'godlygeek/tabular'
+  Plugin 'kien/rainbow_parentheses.vim'
+  Plugin 'tomtom/tcomment_vim'
+  Plugin 'Lokaltog/vim-easymotion'
+  Plugin 'honza/vim-snippets'
+
+  # Lang
+  Plugin 'klen/python-mode'
+  Plugin 'vim-ruby/vim-ruby'
+  Plugin 'jnwhiteh/vim-golang'
+
+  # Syntax
+  Plugin 'scrooloose/syntastic'
+  Plugin 'rodjek/vim-puppet'
+  Plugin 'hdima/python-syntax'
+  Plugin 'elzr/vim-json'
+  Plugin 'tpope/vim-markdown'
+  Plugin 'tpope/vim-git'
+
+  Plugin 'jamessan/vim-gnupg'
+  Plugin 'Lokaltog/vim-powerline'
+  Plugin 'clones/vim-fuzzyfinder'
+  Plugin 'vim-scripts/L9'
+
+  # Some color
+  Plugin 'tomasr/molokai'
+  Plugin 'noahfrederick/vim-noctu'
 
 end
 

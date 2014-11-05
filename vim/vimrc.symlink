@@ -159,4 +159,12 @@ au BufRead,BufNewFile *.ddl      set filetype=mcollective_ddl
 au BufRead $HOME/.mutt/temp*     set syntax=mail
 au FileType gitcommit            set spell
 au FileType make                 set noexpandtab shiftwidth=8 tabstop=8 cindent softtabstop=0
+au FileType sh                   set noexpandtab shiftwidth=4 tabstop=4 cindent softtabstop=4
+
+" ---------------------------------------------------------------------------
+"  Plugin specifics
+" ---------------------------------------------------------------------------
+let g:syntastic_puppet_checkers = ['puppetlint', 'puppet']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_puppet_puppetlint_args = '--no-80chars-check --no-documentation-check --no-class_parameter_defaults-check --no-class_inherits_from_params_class-check'
 

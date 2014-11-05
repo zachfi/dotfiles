@@ -17,13 +17,6 @@ def Plugin(github)
   end
 end
 
-abandon_git_bundles = [
-# Enhanced Editing:
-  #"git://github.com/tsaleh/vim-tcomment.git",
-  #"git://github.com/Raimondi/delimitMate.git",
-  #"git://github.com/tsaleh/vim-align.git",
-]
-
 task :default => :sync
 
 desc "Clone those that don't exist, update those that do."

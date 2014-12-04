@@ -44,6 +44,7 @@ Xcursor.size:  22
 *color15:#ffffff
 
 ! General
+URxvt.bg: ff65665
 URxvt.geometry: 100x30
 URxvt.transparent: true
 URxvt.shading: 13

@@ -41,12 +41,12 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("/usr/local/share/awesome/themes/zenburn/theme.lua")
 
-theme.wallpaper = "/home/zach/.config/awesome/themes/dust.jpg"
+-- theme.wallpaper = "/home/zach/.config/awesome/themes/dust.jpg"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -102,9 +102,9 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "browser", "chromium" },
-                                    { "open terminal", terminal }
+                                    { "browser", "firefox-esr" },
+                                    { "open terminal", terminal },
+                                    { "dolphin", "dolphin" }
                                   }
                         })
 

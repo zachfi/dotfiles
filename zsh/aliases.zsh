@@ -4,10 +4,12 @@ uname="$(uname)"
 
 if [[ $uname == "Linux" ]]; then
   alias ls="ls -sh --color=auto"
+  alias grep='grep --color=auto'
 elif [[ $uname == "OpenBSD" ]]; then
   alias ls="ls -F"
 else # FreeBSD, OSX, etc
   alias ls="ls -GF"
+  alias grep='grep --color=auto'
 fi
 
 alias ll="ls -lFhp"
@@ -16,7 +18,6 @@ alias lls='ll -Sr'
 alias llt='ll -Tt'
 alias lld='ll -d'
 alias llf='ll -f'
-alias grep='grep --color=auto'
 alias ping='ping -c 2'
 alias df="df -h"
 alias diff="colordiff"

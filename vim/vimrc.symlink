@@ -258,12 +258,15 @@ if v:version >= 703
   noremap <F1> :FufHelp<CR>
 endif
 
+"
+"  Tabularize
 if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=><CR>
-  vmap <Leader>a= :Tabularize /=><CR>
-  " nmap <Leader>a= :Tabularize /=<CR>
-  " vmap <Leader>a= :Tabularize /=<CR>
-  " nmap <Leader>a: :Tabularize /:\zs<CR>
-  " vmap <Leader>a: :Tabularize /:\zs<CR>
+  AddTabularPattern block /=>
+  nnoremap <Leader>aa :Tabularize block<CR>
+  vnoremap <Leader>aa :Tabularize block<CR>
+  nnoremap <Leader>a= :Tabularize /=<CR>
+  vnoremap <Leader>a= :Tabularize /=<CR>
+  nnoremap <Leader>a: :Tabularize /:\zs<CR>
+  vnoremap <Leader>a: :Tabularize /:\zs<CR>
 endif
 

@@ -17,7 +17,6 @@ set t_Co=256
 "
 " Colors
 set background=dark
-"colorscheme ir_black
 colorscheme molokai
 
 "
@@ -113,8 +112,6 @@ set mat=2
 set showmatch
 set laststatus=2
 set visualbell
-
-
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
@@ -234,35 +231,8 @@ nnoremap <C-l> <C-w>l
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-" Align characters
-" vnoremap <Leader>> :Align =><CR>
-" vnoremap <Leader>= :Align =<CR>
-
 " Toggle listing invisible characters
 nmap <leader>l :set list!<CR>
-
-"---------------------------------------------------
-"----- various encryption and decryption stuff -----
-"
-"
-"---------------------------------------------------
-"
-"----- gnupg encryption and decryption
-"---- encrypt and sign the message then armor it too
-" map <leader>e :%!/bin/sh -c 'gpg -se -a 2>/dev/tty'
-"---- just encrypt and armor the message
-" map <leader>E :%!/bin/sh -c 'gpg -e -a 2>/dev/tty'
-"---- decrypt
-" map <leader>d :/^-----BEG/,/^-----END/!/bin/sh -c 'gpg -d 2>/dev/tty'
-"----- sign
-" map <leader>s :,$! /bin/sh -c 'gpg --clearsign 2>/dev/tty'
-
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
 
 "
 " Tabs
@@ -275,10 +245,8 @@ nnoremap <C-p> :tabprevious<CR>
 nnoremap <C-t> :tabnew<CR>
 nnoremap <C-k> :tabclose<CR>
 
-" ----------
+"
 "  FuzzyFinder
-" ----------
-
 if v:version >= 703
   noremap <Leader>f :FufFileWithCurrentBufferDir<CR>
   noremap <Leader>F :FufFile<CR>

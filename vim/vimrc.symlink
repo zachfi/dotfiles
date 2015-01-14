@@ -180,6 +180,9 @@ noremap <Leader>e :Explore<CR>
 " Date/Time Stamp
 map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
 
+" Disable Ruler
+nnoremap <F7> :set nonumber!<CR>
+
 " Replace DNS ZONE SOA
 nnoremap <F8> /\<\d\{10}\><CR>ce<C-r>=strftime("%Y%m%d00")<CR><Esc>:echo @"<CR>
 
@@ -188,9 +191,6 @@ noremap <silent><leader>/ :nohls<CR>
 
 " select all
 "map <leader>a ggVG
-
-" Disable Ruler
-nnoremap <F7> :set nonumber!<CR>
 
 " reflow paragraph with Q in normal and visual mode
 nnoremap Q gqap

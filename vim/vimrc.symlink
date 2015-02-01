@@ -261,9 +261,8 @@ endif
 "
 "  Tabularize
 if exists(":Tabularize")
-  AddTabularPattern block /=>
-  nnoremap <Leader>aa :Tabularize block<CR>
-  vnoremap <Leader>aa :Tabularize block<CR>
+  nnoremap <Leader>aa :Tabularize /=><CR>
+  vnoremap <Leader>aa :Tabularize /=><CR>
   nnoremap <Leader>a= :Tabularize /=<CR>
   vnoremap <Leader>a= :Tabularize /=<CR>
   nnoremap <Leader>a: :Tabularize /:\zs<CR>

@@ -46,7 +46,7 @@ Xcursor.size:  22
 ! General
 URxvt.bg: ff65665
 URxvt.geometry: 100x30
-URxvt.transparent: true
+URxvt.transparent: false
 URxvt.shading: 13
 
 URxvt.loginShell:       true

@@ -1,6 +1,6 @@
 FMT_BRANCH='%F{green}%b%F{yellow}(%F{010}%7.7i%F{yellow})%F{red}%c%u%f'
-FMT_ACTION="(%F{cyan}%a%f%)"   # e.g. (rebase-i)
-FMT_PATH="%F{244}%R%F{cyan}/%S%f"              # e.g. ~/repo/subdir
+FMT_ACTION="(%F{cyan}%a%f%)"       # e.g. (rebase-i)
+FMT_PATH="%F{244}%R%F{cyan}/%S%f"  # e.g. ~/repo/subdir
 FMT_NVCSPATH="%F{244}%~%f"
 
 # set formats

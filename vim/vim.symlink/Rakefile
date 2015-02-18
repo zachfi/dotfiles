@@ -3,7 +3,6 @@
 require 'rake'
 
 def Plugin(github)
-  user, dir = github.split('/',2)
   url = ['git://github.com/',github,'.git'].join('')
 
   dest = "bundle/#{dir}"

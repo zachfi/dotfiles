@@ -125,13 +125,6 @@ let g:AutoComplPop_NotEnableAtStartup = 1
 "----- viewoutput configuration
 let g:viewoutput_newbuffer="bot 5new"
 
-map <C-c> <Plug>Traditionalj
-
-"
-" Make JSON readable.
-map <leader>j :%!perl -MJSON -e 'local $/; my $j =JSON->new(); print $j->pretty()->encode($j->decode(<>));'<CR>
-
-
 "
 " Printing Options
 set printoptions=header:2,syntax:a,number:y,wrap:y,duplex:long,collate:y,jobsplit:y,paper:letter

@@ -17,7 +17,8 @@ set t_Co=256
 "
 " Colors
 set background=dark
-colorscheme molokai
+"colorscheme molokai
+colorscheme focuspoint
 
 "
 " Gui Options

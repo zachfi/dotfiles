@@ -55,6 +55,8 @@ task :sync do
   # Some color
   Plugin 'tomasr/molokai'
   Plugin 'noahfrederick/vim-noctu'
+  Plugin 'jnurmine/Zenburn'
+  Plugin 'chase/focuspoint-vim'
 
 end
 

@@ -48,7 +48,7 @@ task :sync do
   Plugin 'tpope/vim-git'
 
   Plugin 'jamessan/vim-gnupg'
-  Plugin 'Lokaltog/vim-powerline'
+  Plugin 'bling/vim-airline'
   Plugin 'clones/vim-fuzzyfinder'
   Plugin 'vim-scripts/L9'
 

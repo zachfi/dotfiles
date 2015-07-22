@@ -129,13 +129,14 @@ let g:viewoutput_newbuffer="bot 5new"
 " Printing Options
 set printoptions=header:2,syntax:a,number:y,wrap:y,duplex:long,collate:y,jobsplit:y,paper:letter
 
-" ---------------------------------------------------------------------------
+" ----------
 "  Strip all trailing whitespace in file
-" ---------------------------------------------------------------------------
+" ----------
 function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
 
 " --------------------
 "  Type specific things
@@ -148,6 +149,7 @@ au BufRead,BufNewFile *.rb       set softtabstop=2 shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.ddl      set filetype=mcollective_ddl
 "au FileType gitcommit DiffGitCached | wincmd v
 au BufRead $HOME/.mutt/temp*     set syntax=mail
+au Filetype mail                 setl textwidth=72 wrap nocp spell
 au FileType gitcommit            set spell
 au FileType make                 set noexpandtab shiftwidth=8 tabstop=8 cindent softtabstop=0
 au FileType sh                   set noexpandtab shiftwidth=4 tabstop=4 cindent softtabstop=4

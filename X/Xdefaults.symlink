@@ -1,47 +1,47 @@
 ! Xcursor --------------------------------------------------------------------
 
-Xcursor.theme: Vanilla-DMZ-AA
+Xcursor.theme: DMZ-Black
 Xcursor.size:  22
 
 !thayer colors
 !
-!*background: #1B1D1E
-!*foreground: #F8F8F2
-!*color0:    #1B1D1E
-!*color1:    #F92672
-!*color9:    #FF669D
-!*color2:    #A6E22E
-!*color10:   #BEED5F
-!*color3:    #FD971F
-!*color11:   #E6DB74
-!*color4:    #66D9EF
-!*color12:   #66D9EF
-!*color5:    #9E6FFE
-!*color13:   #9E6FFE
-!*color6:    #5E7175
-!*color14:   #A3BABF
-!*color7:    #CCCCC6
-!*color15:   #F8F8F2
+*background: #1B1D1E
+*foreground: #F8F8F2
+*color0:    #1B1D1E
+*color1:    #F92672
+*color9:    #FF669D
+*color2:    #A6E22E
+*color10:   #BEED5F
+*color3:    #FD971F
+*color11:   #E6DB74
+*color4:    #66D9EF
+*color12:   #66D9EF
+*color5:    #9E6FFE
+*color13:   #9E6FFE
+*color6:    #5E7175
+*color14:   #A3BABF
+*color7:    #CCCCC6
+*color15:   #F8F8F2
 
 !mustang Colors
-*background:#1a1a1a
-*foreground:#fff
-*color0:#000000
-*color1:#ff6565
-*color2:#93d44f
-*color3:#eab93d
-*color4:#204a87
-*color5:#ce5c00
-*color6:#89b6e2
-*color7:#cccccc
-*color8:#555753
-*color9:#ff8d8d
-*color10:#c8e7a8
-*color11:#ffc123
-*color12:#3465a4
-*color13:#f57900
-*color14:#46a4ff
-*color15:#ffffff
+!*background:#1a1a1a
+!*foreground:#fff
+!*color0:#000000
+!*color1:#ff6565
+!*color2:#93d44f
+!*color3:#eab93d
+!*color4:#204a87
+!*color5:#ce5c00
+!*color6:#89b6e2
+!*color7:#cccccc
+!*color8:#555753
+!*color9:#ff8d8d
+!*color10:#c8e7a8
+!*color11:#ffc123
+!*color12:#3465a4
+!*color13:#f57900
+!*color14:#46a4ff
+!*color15:#ffffff
 
 ! General
 URxvt.bg: ff65665

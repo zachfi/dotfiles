@@ -12,11 +12,17 @@ class Dotfiles():
         self.ensureRuby()
         self.ensureHomebrew()
         self.ensurePuppet()
+        self.ensurePython()
 
     def ensureRuby(self):
         if not os.path.isdir('{0}/.rbenv'.format(self.homeDir)):
             self.logger.info('Setting up Ruby...')
             call(['{}/ruby/install.sh'.format(self.dotfilesRoot)])
+
+    def ensurePython(self):
+        if not os.path.isdir('{0}/.pyenv'.format(self.homeDir)):
+            self.logger.info('Setting up Python...')
+            call(['{}/python/install.sh'.format(self.dotfilesRoot)])
 
     def ensureHomebrew(self):
         if not os.uname()[0] is 'Darwin':

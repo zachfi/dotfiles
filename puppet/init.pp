@@ -1,4 +1,3 @@
-
 # ----------
 # RubyGems
 $gems = [
@@ -8,6 +7,8 @@ $gems = [
   'backup',
   'bundler',
   'pushover',
+  'colorize',
+  'terminal-table',
 ]
 
 package { $gems:
@@ -16,35 +17,39 @@ package { $gems:
 }
 
 
+if $::kernel == 'Darwin' {
+  include me::darwin
 # ----------
 # Brews
-$brews = [
-  'tmux',
-  'reattach-to-user-namespace',
-  'mutt',
-  'offline-imap',
-  'notmuch',
-  'msmtp',
-  'keychain',
-  'gnupg2',
-  'gnupg',
-  'mobile-shell',
-  'pinentry',
-  'rbenv',
-  'ruby-build',
-  'ack',
-  'htop-osx',
-  'aspell',
-  'corkscrew',
-  'gpg-agent',
-  'vim',
-  'macvim',
-  'git',
-]
+  $brews = [
+    'tmux',
+    'reattach-to-user-namespace',
+    'mutt',
+    'offline-imap',
+    'notmuch',
+    'msmtp',
+    'keychain',
+    'gnupg2',
+    'gnupg',
+    'mobile-shell',
+    'pinentry',
+    'rbenv',
+    'ruby-build',
+    'ack',
+    'htop-osx',
+    'aspell',
+    'corkscrew',
+    'gpg-agent',
+    'vim',
+    'macvim',
+    'git',
+  ]
 
-package { $brews:
-  ensure   => installed,
-  provider => brew,
+
+  package { $brews:
+    ensure   => installed,
+    provider => brew,
+  }
 }
 
 

@@ -63,9 +63,11 @@ URxvt*saveLines:        65535
 URxvt*cursorBlink:      false
 URxvt*urgentOnBell:      true
 
+
+! fc-list
 !URxvt*font: xft:Terminus:pixelsize=10:antialias=false
 !URxvt.font: xft:Bitstream Vera Sans Mono:pixelsize=12
-URxvt*font:xft:Hack:regular:size=10
+URxvt*font: xft:Hack:style=Regular:size=10
 
 
 ! xscreensaver ---------------------------------------------------------------

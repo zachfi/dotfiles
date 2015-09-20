@@ -36,7 +36,7 @@ class Dotfiles():
         dest = '{}/bin/envpuppet'.format(self.homeDir)
         if not os.path.isfile(dest):
             self.logger.info('copying %s' % source + 'to %s' % dest)
-            copyfile(source,dest)
+            #copyfile(source,dest)
             os.chmod(dest, 0o700)
             call(['{}/.rbenv/shims/gem'.format(self.homeDir), 'install','CFPropertyList'])
         call(['{}/puppet/go.sh'.format(self.dotfilesRoot)])

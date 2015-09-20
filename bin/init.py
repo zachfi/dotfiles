@@ -6,7 +6,7 @@ import os
 from subprocess import call
 from shutil import copyfile
 
-from bin.dotfiles import Dotfiles
+from dotfiles import Dotfiles
 
 
 def applyPuppet(manifest):

@@ -21,3 +21,9 @@ if $::kernel == 'Darwin' {
   include me::darwin
 }
 
+file { "${home}/.tmux.conf":
+  owner   => $::id,
+  mode    => '0600',
+  content => template('me/tmux.conf.erb'),
+}
+

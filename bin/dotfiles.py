@@ -25,10 +25,12 @@ class Dotfiles():
             call(['{}/python/install.sh'.format(self.dotfilesRoot)])
 
     def ensureHomebrew(self):
-        if not os.uname()[0] is 'Darwin':
-            self.logger.info('Skipping homebrew on non-Darwin system')
+        if os.uname()[0] == 'Darwin':
             if not os.path.isdir('/usr/local'):
+                self.logger.info('Installing homebrew...')
                 call(['{}/osx/homebrew/init.sh'.format(self.dotfilesRoot)])
+        else:
+            self.logger.info('Skipping homebrew on non-Darwin system {}'.format(os.uname()[0]))
 
     def ensurePuppet(self):
         self.logger.info('begin shadow Puppet')

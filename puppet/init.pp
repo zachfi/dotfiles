@@ -3,8 +3,6 @@
 $gems = [
   'r10k',
   'weigh',
-  'rumember',
-  'backup',
   'bundler',
   'pushover',
   'colorize',

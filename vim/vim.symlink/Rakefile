@@ -33,6 +33,7 @@ task :sync do
   Plugin 'tomtom/tcomment_vim'
   Plugin 'Lokaltog/vim-easymotion'
   Plugin 'honza/vim-snippets'
+  Plugin 'nathanaelkane/vim-indent-guides'
 
   # Lang
   Plugin 'klen/python-mode'

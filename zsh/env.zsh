@@ -14,6 +14,7 @@ WORDCHARS="${WORDCHARS:s#/#}"
 [[ -d /opt/local/bin ]] && PATH+=":/opt/local/bin"
 [[ -d /usr/local/sbin ]] && PATH+=":/usr/local/sbin"
 [[ -d /opt/local/sbin ]] && PATH+=":/opt/local/sbin"
+[[ -d ~/local/bin ]] && PATH+=":~/local/bin"
 
 # use coreutils from macports if available
 [[ -d /opt/local/libexec/gnubin ]] && PATH+=":/opt/local/libexec/gnubin"

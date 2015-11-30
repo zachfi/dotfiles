@@ -9,3 +9,4 @@ vim/syntasticthing.txt
 X/awesome/current_theme
 X/awesome/themes
 *.pyc
+puppet/modules

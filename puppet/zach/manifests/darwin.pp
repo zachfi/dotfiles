@@ -4,13 +4,15 @@ class zach::darwin {
   $brews = [
     'tmux',
     'reattach-to-user-namespace',
+    'gpgme',
+    'gnupg2',
+    'gnupg',
+    'gpg-agent',
+    'keychain',
     'mutt',
     'offline-imap',
     'notmuch',
     'msmtp',
-    'keychain',
-    'gnupg2',
-    'gnupg',
     'mobile-shell',
     'pinentry',
     'rbenv',
@@ -19,12 +21,10 @@ class zach::darwin {
     'htop-osx',
     'aspell',
     'corkscrew',
-    'gpg-agent',
     'vim',
     'macvim',
     'git',
   ]
-
 
   package { $brews:
     ensure   => installed,

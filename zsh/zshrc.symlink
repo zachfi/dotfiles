@@ -12,7 +12,7 @@ export ZSH=$HOME/dotfiles
 export PROJECTS=~/Code
 
 # where my work things are
-export WORK=~/PuppetLabs
+export WORK=~/Womply
 
 # organizations I work on
 export ORGS=~/Org

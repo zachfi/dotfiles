@@ -12,5 +12,8 @@ if [ -x ~/src/puppet/ext/envpuppet ]; then
     alias mco="~/src/puppet/ext/envpuppet /Users/zach/src/marionette-collective/mco"
     alias mco="RUBYLIB=~/src/mcollective/lib ~/src/mcollective/bin/mco"
   fi
+
+  export FACTER_HOMEDIR=$HOME
 fi
+
 

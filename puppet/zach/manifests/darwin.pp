@@ -1,4 +1,4 @@
-class me::darwin {
+class zach::darwin {
   # ----------
   # Brews
   $brews = [

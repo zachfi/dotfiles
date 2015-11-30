@@ -16,9 +16,8 @@ fi
 ~/.rbenv/shims/r10k puppetfile install -v
 
 if [ -x $ENVPUPPET ]; then
-
 	#$ENVPUPPET puppet config set modulepath $MODULEPATH
-	$ENVPUPPET puppet apply --modulepath $MODULEPATH -v $SITEPP $@
+	$ENVPUPPET puppet apply --modulepath $MODULEPATH -v -e 'include zach' $@
 fi
 
 

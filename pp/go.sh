@@ -1,7 +1,7 @@
 #! /bin/bash
 
-SITEPP=${HOME}/dotfiles/puppet/site.pp
-MODULEPATH=~/dotfiles/puppet:~/dotfiles/puppet/modules:~/dotfiles:~/Code/modules/other
+SITEPP=${HOME}/dotfiles/pp/site.pp
+MODULEPATH=~/dotfiles/pp:~/dotfiles/pp/modules:~/dotfiles:~/Code/modules/other
 ENVPUPPET=~/src/puppet/ext/envpuppet
 
 # Ensure r10k is installed
@@ -12,7 +12,7 @@ if [ ! -f ~/.rbenv/shims/r10k ]; then
 fi
 
 # Execute the r10k deployment
-. ~/dotfiles/puppet/r10k.zsh
+. ~/dotfiles/pp/r10k.zsh
 ~/.rbenv/shims/r10k puppetfile install -v
 
 if [ -x $ENVPUPPET ]; then

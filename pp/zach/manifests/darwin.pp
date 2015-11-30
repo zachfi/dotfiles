@@ -30,31 +30,32 @@ class zach::darwin {
     ensure   => installed,
     provider => brew,
   }
-# ----------
-# ~/Applications
 
-#package { "iTerm2":
-#  ensure   => present,
-#  provider => compressed_app,
-#  source   => 'http://www.iterm2.com/downloads/stable/iTerm2_v1_0_0.zip',
-#}
+  # ----------
+  # /Applications
 
-#package { "Alfred":
-#  ensure   => present,
-#  provider => compressed_app,
-#  source   => 'http://cachefly.alfredapp.com/Alfred_2.0.4_199.zip',
-#}
+  package { "iTerm":
+    ensure   => present,
+    provider => compressed_app,
+    source   => 'https://iterm2.com/downloads/stable/iTerm2-2_1_4.zip',
+  }
+
+  package { "Alfred 2":
+    ensure   => present,
+    provider => compressed_app,
+    source   => 'https://cachefly.alfredapp.com/Alfred_2.8.1_425.zip',
+  }
+
+  package { "Slack":
+    ensure   => present,
+    provider => compressed_app,
+    source   => 'https://slack-ssb-updates.global.ssl.fastly.net/mac_public_releases/slack-1.1.8.zip',
+  }
 
 #package { "ApacheDirectoryStudio":
 #  ensure   => present,
 #  provider => compressed_app,
 #  source   => 'http://apache.mirrors.pair.com//directory/studio/dist/2.0.0.v20130517/ApacheDirectoryStudio-macosx-x86_64-2.0.0.v20130517.dmg',
-#}
-
-#package { "BittorrentSync":
-#  ensure   => present,
-#  provider => compressed_app,
-#  source   => 'http://btsync.s3-website-us-east-1.amazonaws.com/BTSync.dmg',
 #}
 
 #package { "BonjourBrowser":
@@ -63,11 +64,6 @@ class zach::darwin {
 #  source   => 'http://www.tildesoft.com/files/BonjourBrowser.dmg',
 #}
 
-#package { "Caffeine":
-#  ensure   => present,
-#  provider => compressed_app,
-#  source   => 'http://lightheadsw.com/files/releases/com.lightheadsw.Caffeine/Caffeine1.1.1.zip',
-#}
 
 #package { "Cyberduck":
 #  ensure   => present,
@@ -76,10 +72,10 @@ class zach::darwin {
 #}
 
 #package { "GoogleChrome":
-#  ensure   => present,
-#  provider => appdmg,
-#  source   => 'https://dl.google.com/chrome/mac/stable/GoogleChrome.dmg',
-#}
+#    ensure   => present,
+#    provider => appdmg,
+#    source   => 'https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg',
+#  }
 
 #package { "SublimeText2":
 #  ensure   => present,
@@ -97,12 +93,6 @@ class zach::darwin {
 #  ensure   => present,
 #  provider => appdmg,
 #  source   => 'http://get.videolan.org/vlc/2.0.6/macosx/vlc-2.0.6.dmg',
-#}
-
-#package { "YoruFukurou":
-#  ensure   => present,
-#  provider => compressed_app,
-#  source   => 'http://aki-null.net/yf/YoruFukurou_SL.zip',
 #}
 
 }

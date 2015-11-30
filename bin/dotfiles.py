@@ -45,5 +45,5 @@ class Dotfiles():
             if not os.path.exists(dest):
                 call(['git', 'clone', sources[k], dest])
 
-        call(['{}/puppet/go.sh'.format(self.dotfilesRoot)])
+        call(['{}/pp/go.sh'.format(self.dotfilesRoot)])
 

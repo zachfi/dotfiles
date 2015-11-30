@@ -1,6 +1,7 @@
 import os
 from subprocess import call
 import logging
+from shutil import copyfile
 
 
 class Dotfiles():
@@ -26,7 +27,7 @@ class Dotfiles():
 
     def ensureHomebrew(self):
         if os.uname()[0] == 'Darwin':
-            if not os.path.isdir('/usr/local'):
+            if not os.path.isfile('/usr/local/bin/brew'):
                 self.logger.info('Installing homebrew...')
                 call(['{}/osx/homebrew/init.sh'.format(self.dotfilesRoot)])
         else:
@@ -34,12 +35,15 @@ class Dotfiles():
 
     def ensurePuppet(self):
         self.logger.info('begin shadow Puppet')
-        source = '{}/src/puppet/ext/envpuppet'.format(self.homeDir)
-        dest = '{}/bin/envpuppet'.format(self.homeDir)
-        if not os.path.isfile(dest):
-            self.logger.info('copying %s' % source + 'to %s' % dest)
-            #copyfile(source,dest)
-            os.chmod(dest, 0o700)
-            call(['{}/.rbenv/shims/gem'.format(self.homeDir), 'install','CFPropertyList'])
+
+        sources = {}
+        sources['puppet'] = 'git://github.com/puppetlabs/puppet.git'
+        sources['facter'] = 'git://github.com/puppetlabs/facter.git'
+
+        for k in sources:
+            dest = os.environ['HOME'] + "/src/" + k
+            if not os.path.exists(dest):
+                call(['git', 'clone', sources[k], dest])
+
         call(['{}/puppet/go.sh'.format(self.dotfilesRoot)])
 

@@ -36,3 +36,9 @@ compinit
 
 # load every completion after autocomplete loads
 #for config_file ($ZSH/**/completion.sh) source $config_file
+
+if [[ -f ~/Code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]
+then
+  # https://github.com/zsh-users/zsh-syntax-highlighting
+  source ~/Code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi

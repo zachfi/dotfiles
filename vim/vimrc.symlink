@@ -23,8 +23,8 @@ colorscheme focuspoint
 "
 " Gui Options
 if has("gui")
-  set guifont=Source\ Code\ Pro:h14
-  set gfn=Source\ Code\ Pro:h14
+  "set guifont=Source\ Code\ Pro:h14
+  set guifont=Hack:h14
   set guioptions+=i  " show Vim icon in Taskbar
   set guioptions-=a  "remove autoselect
   set guioptions-=A  "remove autoselect

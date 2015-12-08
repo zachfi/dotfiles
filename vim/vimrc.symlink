@@ -154,7 +154,7 @@ au BufRead $HOME/.mutt/temp*     set syntax=mail
 au Filetype mail                 setl textwidth=72 wrap nocp spell
 au FileType gitcommit            set spell
 au FileType make                 set noexpandtab shiftwidth=8 tabstop=8 cindent softtabstop=0
-au FileType sh                   set noexpandtab shiftwidth=4 tabstop=4 cindent softtabstop=4
+au FileType sh                   set expandtab shiftwidth=4 tabstop=4 cindent softtabstop=4
 
 " --------------------
 "  Plugin specifics

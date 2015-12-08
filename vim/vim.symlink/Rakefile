@@ -48,6 +48,7 @@ task :sync do
   Plugin 'tpope/vim-markdown'
   Plugin 'tpope/vim-git'
   Plugin 'chase/vim-ansible-yaml'
+  Plugin 'markcornick/vim-terraform'
 
   Plugin 'jamessan/vim-gnupg'
   Plugin 'bling/vim-airline'

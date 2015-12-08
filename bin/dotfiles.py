@@ -8,7 +8,7 @@ class Dotfiles():
     def __init__(self, dotfilesRoot):
         self.dotfilesRoot = dotfilesRoot
         self.homeDir = os.environ['HOME']
-        self.logger = logging.getLogger('[dotfiles]')
+        self.logger = logging.getLogger('dotfiles')
 
         self.ensureRuby()
         self.ensureHomebrew()
@@ -34,7 +34,7 @@ class Dotfiles():
             self.logger.info('Skipping homebrew on non-Darwin system {}'.format(os.uname()[0]))
 
     def ensurePuppet(self):
-        self.logger.info('begin shadow Puppet')
+        self.logger.debug('Checking puppet...')
 
         sources = {}
         sources['puppet'] = 'git://github.com/puppetlabs/puppet.git'
@@ -43,7 +43,9 @@ class Dotfiles():
         for k in sources:
             dest = os.environ['HOME'] + "/src/" + k
             if not os.path.exists(dest):
+                self.logger.info('Cloning %s into %s' % (sources[k], dest))
                 call(['git', 'clone', sources[k], dest])
 
+        self.logger.info('Running Puppet...')
         call(['{}/pp/go.sh'.format(self.dotfilesRoot)])
 

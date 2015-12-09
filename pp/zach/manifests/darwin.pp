@@ -24,11 +24,25 @@ class zach::darwin {
     'vim',
     'macvim',
     'git',
+    'syncthing',
   ]
 
   package { $brews:
-    ensure   => installed,
+    ensure   => latest,
     provider => brew,
+  }
+
+  file { "${::homedir}/Library/LaunchAgents/homebrew.mxcl.syncthing.plist":
+    ensure  => link,
+    target  => '/usr/local/opt/syncthing/homebrew.mxcl.syncthing.plist',
+    require => Package['syncthing'],
+    notify  => Exec['launchctl syncthing'],
+  }
+
+  # I'm sure there is a better way
+  exec { 'launchctl syncthing':
+    command     => '/bin/launchctl load ~/Library/LaunchAgents/homebrew.mxcl.syncthing.plist',
+    refreshonly => true,
   }
 
   # ----------

@@ -25,6 +25,7 @@ class zach::darwin {
     'macvim',
     'git',
     'syncthing',
+    'rumember',
   ]
 
   package { $brews:

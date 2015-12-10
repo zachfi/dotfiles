@@ -1,6 +1,7 @@
 #--------------------------------------------------------------
 # Globals
 #--------------------------------------------------------------
+
 zstyle :compinstall filename "${HOME}/.zshrc"
 
 # Already default
@@ -18,7 +19,7 @@ zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' ignore-parents parent pwd ..
 zstyle ':completion:*' insert-unambiguous false
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %l \(%p\): Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+r:|[._-]=** r:|=**' '+l:|=* r:|=*'
 zstyle ':completion:*' match-original both
@@ -45,8 +46,7 @@ zstyle ':completion:*:parameters'  list-colors '=*=32'
 #--------------------------------------------------------------
 # Misc
 #--------------------------------------------------------------
-#zstyle ':completion:*:*:kill:*:processes' list-colors "=(#b) #([0-9]#)*=$color[cyan]=$color[red]"
-zstyle ':completion:*:*:kill:*' list-colors '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
+zstyle ':completion:*:*:kill:*' list-colors "=(#b) #([0-9]#) ([0-9a-z-]#)*=$color[cyan]=$color[red]=$color[yellow]"
 
 zstyle ':completion:*:*:*:*:processes' menu yes select
 zstyle ':completion:*:*:*:*:processes' menu search
@@ -61,28 +61,37 @@ zstyle ':completion:*:rm:*' ignore-line yes
 # Git
 #--------------------------------------------------------------
 
-zstyle ":completion::complete:git-checkout:argument-rest:headrefs" command "git for-each-ref --format='%(refname)' refs/heads 2>/dev/null"
 
 zstyle ':completion:*:*:git:*:aliases'  list-colors "=(#b)(*)  #-- alias for *=$color[none]=$color[green]"
-zstyle ':completion:*:*:git:*:commands' list-colors "=(#b)(*)  #-- *=$color[none]=$color[blue]"
+zstyle ':completion:*:*:git:*:main-porcelain-commands' list-colors "=(#b)(*)  #-- *=$color[none]=$color[blue]"
+
 zstyle ':completion:*:*:git-branch:*:branch-names' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-branch:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-checkout:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-cherry:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-cherry-pick:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-push:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-rebase:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
-zstyle ':completion:*:*:git-reset:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-branch:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-checkout:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-cherry-pick:*:tags' list-colors "=*=$color[yellow]"
+
+#zstyle ":completion:*:*:git-checkout:argument-rest:headrefs" command "git for-each-ref --format='%(refname)' refs/heads 2>/dev/null"
+zstyle ':completion:*:*:git-checkout:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
+zstyle ':completion:*:*:git-checkout:*:commit-tags' list-colors "=*=$color[yellow]"
+
+zstyle ':completion:*:*:git-cherry:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-cherry:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-push:*:tags' list-colors "=*=$color[yellow]"
+
+zstyle ':completion:*:*:git-cherry-pick:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
+zstyle ':completion:*:*:git-cherry-pick:*:tags' list-colors "=*=$color[yellow]"
+
+zstyle ':completion:*:*:git-rebase:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-rebase:*:tags' list-colors "=*=$color[yellow]"
+
+zstyle ':completion:*:*:git-reset:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
 zstyle ':completion:*:*:git-reset:*:tags' list-colors "=*=$color[yellow]"
-zstyle ':completion:*:*:git-fetch:*:remotes' list-colors "=*=$color[green]"
+
+zstyle ':completion:*:*:git-push:*:heads' list-colors "=(#b)((master)#|(origin)(/)(master)#(*)|(*))=$color[blue]=$color[none]=$color[cyan]=$color[green]=$color[none]=$color[cyan]=$color[blue]=$color[blue]"
+zstyle ':completion:*:*:git-push:*:tags' list-colors "=*=$color[yellow]"
 zstyle ':completion:*:*:git-push:*:remotes' list-colors "=*=$color[green]"
-zstyle ':completion:*:*:git-add:*:modified-files' list-colors "=*=$color[red]"
+
+zstyle ':completion:*:*:git-fetch:*:remotes' list-colors "=*=$color[green]"
+
+zstyle ':completion:*:*:git-add:*:modified-files' list-colors "=*=$color[yellow]"
 zstyle ':completion:*:*:git-add:*:other-files' list-colors "=*=$color[magenta]"
 
 

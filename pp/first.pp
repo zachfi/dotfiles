@@ -2,6 +2,7 @@
 
 $gems = [
   'r10k',
+  'hiera',
 ]
 
 package { $gems:

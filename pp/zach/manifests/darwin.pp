@@ -18,7 +18,7 @@ class zach::darwin {
     'rbenv',
     'ruby-build',
     'ack',
-    'htop-osx',
+    'htop',
     'aspell',
     'corkscrew',
     'vim',

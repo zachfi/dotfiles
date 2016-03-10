@@ -29,11 +29,11 @@ task :sync do
   Plugin 'tpope/vim-surround'
   Plugin 'tpope/vim-abolish'
   Plugin 'godlygeek/tabular'
-  Plugin 'kien/rainbow_parentheses.vim'
+  #Plugin 'kien/rainbow_parentheses.vim'
   Plugin 'tomtom/tcomment_vim'
-  Plugin 'Lokaltog/vim-easymotion'
+  #Plugin 'Lokaltog/vim-easymotion'
   Plugin 'honza/vim-snippets'
-  Plugin 'nathanaelkane/vim-indent-guides'
+  #Plugin 'nathanaelkane/vim-indent-guides'
 
   # Lang
   Plugin 'klen/python-mode'
@@ -60,6 +60,7 @@ task :sync do
   Plugin 'noahfrederick/vim-noctu'
   Plugin 'jnurmine/Zenburn'
   Plugin 'chase/focuspoint-vim'
+  Plugin 'sickill/vim-monokai'
 
 end
 

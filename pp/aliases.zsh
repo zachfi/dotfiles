@@ -13,10 +13,6 @@ if [ -x ~/src/puppet/ext/envpuppet ]; then
     alias mco="RUBYLIB=~/src/mcollective/lib ~/src/mcollective/bin/mco"
   fi
 
-  if [ -f ~/.rbenv/shims/hiera ]; then
-    export HIERA_LOCATION=~/.rbenv/shims/hiera
-  fi
-
   export FACTER_HOMEDIR=$HOME
 fi
 

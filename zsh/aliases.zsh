@@ -21,7 +21,6 @@ alias llf='ll -f'
 alias ping='ping -c 2'
 alias df="df -h"
 alias diff="colordiff"
-alias sudo="sudo HOME=${HOME}"
 alias newpass="LANG=C tr -cd '[:alnum:]' < /dev/random | head -c 30"
 alias vi="vim"
 [[ -x /opt/local/bin/vim ]] && alias vim="/opt/local/bin/vim"

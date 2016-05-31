@@ -5,7 +5,7 @@
 
 # The following script will setup rbenv on a new system.
 
-default_ver="2.1.2"
+default_ver="2.2.5"
 rbenv_url="git://github.com/sstephenson/rbenv.git"
 rbenv_build_url="git://github.com/sstephenson/ruby-build.git"
 

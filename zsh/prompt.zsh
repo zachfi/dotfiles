@@ -1,6 +1,7 @@
 #! /bin/zsh
 
 
+
 function lprompt {
   [[ -n $SSH_TTY ]] && local at="%F{magenta}@%f" || local at="%F{250}@%f"
   local user_host="%F{240}%n${at}%F{244}%m%F{cyan}:%f"

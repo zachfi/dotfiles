@@ -1,0 +1,68 @@
+
+function prompt_zleslie_precmd {
+  vcs_info 'prompt'
+}
+
+function prompt_zleslie_setup {
+  setopt LOCAL_OPTIONS
+  prompt_opts=(cr percent subst)
+
+  autoload -Uz add-zsh-hook
+  autoload -Uz vcs_info
+
+  add-zsh-hook precmd prompt_zleslie_precmd
+
+  local accent_color='%F{012}' #cyan
+  local muted_color='%F{244}' #grey
+  local info_color='%F{070}' #green
+  local info_accent_color='%F{074}' #blueish
+
+  local fmt_branch="${info_color}%b%F{yellow}(${info_accent_color}%7.7i%F{yellow})%F{red}%c%u%f"
+  local fmt_action="(${accent_color}%a%f%)"       # e.g. (rebase-i)
+  local fmt_path="${muted_color}%R${accent_color}/%S%f"  # e.g. ~/repo/subdir
+  local fmt_nvcspath="${muted_color}%~%f"
+
+  # set formats
+  # %b - branchname
+  # %u - unstagedstr (see below)
+  # %c - stagedstr (see below)
+  # %a - action (e.g. rebase-i)
+  # %R - repository path
+  # %r - repository shortname
+  # %S - path in the repository
+
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:*:prompt:*' get-revision true
+  zstyle ':vcs_info:*:prompt:*' check-for-changes true
+  zstyle ':vcs_info:*:prompt:*' unstagedstr '±'  # display ¹ if there are unstaged changes
+  zstyle ':vcs_info:*:prompt:*' stagedstr '⁺'    # display ² if there are staged changes
+  zstyle ':vcs_info:*:prompt:*' actionformats "${fmt_branch}${fmt_action}//" "${fmt_path}"
+  zstyle ':vcs_info:*:prompt:*' formats       "${fmt_branch}//"              "${fmt_path}"
+  zstyle ':vcs_info:*:prompt:*' nvcsformats   " "                            "${fmt_nvcspath}"
+  #zstyle ':vcs_info:*:prompt:*' branchformat  "%b|%r"
+
+  if [ -n $SSH_TTY ]; then
+    local at="%F{magenta}@%f"
+  else
+    local at="%F{muted_color}@%f"
+  fi
+
+  local user_host="${muted_color}%n${at}${muted_color}%m${accent_color}:%f"
+  local max_path_chars=30
+  local user_char='❯'
+  local root_char='❯❯❯'
+  local success_color='%F{071}'
+  local failure_color='%F{124}'
+  local vcs_info_color='%F{242}'
+
+  PROMPT="${SSH_TTY:+${user_host}}"
+  PROMPT+='${vcs_info_msg_1_}'
+  PROMPT+="%F{red}%(?.. exit %?)%f"
+  PROMPT+=$'\n'
+  PROMPT+="${accent_color}%(!.${root_char}.${user_char}) "
+
+  #PROMPT="%(?.${success_color}.${failure_color})${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'${vcs_info_msg_1_%%.}'"%<<%(!.${root_char}.${user_char})%b%f "
+  RPROMPT='${vcs_info_msg_0_}'
+}
+
+prompt_zleslie_setup "$@"

@@ -30,3 +30,4 @@ source ~/dotfiles/zsh/bindkey.zsh
 source ~/dotfiles/zsh/config.zsh
 source ~/dotfiles/zsh/env.zsh
 source ~/dotfiles/git/aliases.zsh
+source ~/dotfiles/ruby/rbenv.zsh

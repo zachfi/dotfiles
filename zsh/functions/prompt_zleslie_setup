@@ -59,7 +59,7 @@ function prompt_zleslie_setup {
   PROMPT+='${vcs_info_msg_1_}'
   PROMPT+="%F{red}%(?.. exit %?)%f"
   PROMPT+=$'\n'
-  PROMPT+="${accent_color}%(!.${root_char}.${user_char}) "
+  PROMPT+="${accent_color}%(!.${root_char}.${user_char})%f "
 
   #PROMPT="%(?.${success_color}.${failure_color})${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'${vcs_info_msg_1_%%.}'"%<<%(!.${root_char}.${user_char})%b%f "
   RPROMPT='${vcs_info_msg_0_}'

@@ -1,6 +1,6 @@
 alias reload!='. ~/.zshrc'
 
-uname="$(uname)"
+local uname=$(uname)
 
 if [[ $uname == "Linux" ]]; then
   alias ls="ls -sh --color=auto"
@@ -23,6 +23,8 @@ alias df="df -h"
 alias diff="colordiff"
 alias newpass="LANG=C tr -cd '[:alnum:]' < /dev/random | head -c 30"
 alias vi="vim"
-[[ -x /opt/local/bin/vim ]] && alias vim="/opt/local/bin/vim"
+if [[ -x /opt/local/bin/vim ]]; then
+  alias vim="/opt/local/bin/vim"
+fi
 alias v="mvim -c 'au VimLeave * maca hide:'"
 

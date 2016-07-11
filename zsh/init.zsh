@@ -25,3 +25,8 @@ if [ -s ~/.localrc ]; then
   source ~/.localrc
 fi
 
+source ~/dotfiles/zsh/aliases.zsh
+source ~/dotfiles/zsh/bindkey.zsh
+source ~/dotfiles/zsh/config.zsh
+source ~/dotfiles/zsh/env.zsh
+source ~/dotfiles/git/aliases.zsh

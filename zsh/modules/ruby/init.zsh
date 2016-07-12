@@ -1,5 +1,3 @@
-#
-
 # Detect if rbenv has been installed to the homedir
 if [ -d $HOME/.rbenv ]; then
   # Append to the path
@@ -12,3 +10,4 @@ fi
 
 # Load the completions from home
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+

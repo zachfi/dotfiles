@@ -1,5 +1,6 @@
 
 # site local variables
+export ZSH=~/dotfiles/zsh
 export PROJECTS=~/Code
 export WORK=~/Womply
 export ORGS=~/Org
@@ -11,11 +12,11 @@ autoload -U edit-command-line
 zle -N edit-command-line
 
 # set the function path
-fpath=($HOME/dotfiles/zsh/functions $fpath)
+fpath=($ZSH/functions $fpath)
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit; compinit
-autoload -U $HOME/dotfiles/zsh/functions/*(:t)
+autoload -U $ZSH/functions/*(:t)
 
 # Setup the prompt
 autoload -U promptinit; promptinit
@@ -29,5 +30,27 @@ source ~/dotfiles/zsh/aliases.zsh
 source ~/dotfiles/zsh/bindkey.zsh
 source ~/dotfiles/zsh/config.zsh
 source ~/dotfiles/zsh/env.zsh
-source ~/dotfiles/git/aliases.zsh
-source ~/dotfiles/ruby/rbenv.zsh
+source ~/dotfiles/zsh/functions.zsh
+source ~/dotfiles/zsh/options.zsh
+
+
+function dotmodload {
+  local -a dotmodules
+  local dotmodule
+
+  dotmodules=("$argv[@]")
+
+  for dotmodule in "$dotmodules[@]"; do
+    if [[ -d $ZSH/modules/$dotmodule/functions ]]; then
+      fpath=($ZSH/modules/$dotmodule/functions $fpath)
+    fi
+
+    if [[ -s $ZSH/modules/$dotmodule/init.zsh ]]; then
+      source "${ZSH}/modules/${dotmodule}/init.zsh"
+    fi
+  done
+}
+
+zstyle -a ':zdotfiles:load' dotmods 'dotfilemodules'
+dotmodload "$dotfilemodules[@]"
+unset dotfilemodules

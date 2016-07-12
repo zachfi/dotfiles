@@ -1,17 +1,10 @@
 # ZSH Options, like a warm blanket
 # Section names taken from the zshoptions(1) manpage
 
-# Changing Directories
-setopt AUTO_PUSHD             # automatically append dirs to the push/pop list
-setopt PUSHD_IGNORE_DUPS      # and don't duplicate them
-unsetopt CDABLE_VARS          # stop guessing ~ is at the start of a directory
-setopt CHASE_LINKS
-
 #setopt correct                # spelling correction
 setopt interactivecomments    # escape commands so i can use them later
 setopt printexitvalue         # alert me if something's failed
 setopt short_loops            # allow short forms of loops
-unsetopt clobber              # Safer pipes
 unsetopt ignoreeof            # ^D logs out
 
 # Shell State
@@ -28,9 +21,6 @@ setopt nohup                  # and don't kill them, either
 setopt nocheckjobs            # don't warn me about bg processes when exiting
 unsetopt notify               # wait until I am paying attention to tell me job status
 
-# Globbing
-setopt extendedglob           # weird & wacky pattern matching - yay zsh!
-unsetopt nomatch              # don't print an error when no patch is found
 
 # Completion
 #setopt completeinword         # not just at the end
@@ -53,5 +43,4 @@ setopt hist_ignore_dups        # do not write duplicate history
 # Scripts and Functions
 setopt local_options           # allow functions to have local options
 setopt local_traps             # allow functions to have local traps
-setopt multios
 

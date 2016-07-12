@@ -1,5 +1,13 @@
 #!/bin/zsh
 
+zstyle ':zdotfiles:load' dotmods \
+  'git' \
+  'ruby' \
+  'python' \
+  'puppet' \
+  'directory' \
+  'utility'
+
 if [ -s "${ZDOTDIR:-$HOME}/dotfiles/zsh/init.zsh" ]; then
   source "${ZDOTDIR:-$HOME}/dotfiles/zsh/init.zsh"
 fi

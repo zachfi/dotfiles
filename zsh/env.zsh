@@ -14,7 +14,9 @@ WORDCHARS="${WORDCHARS:s#/#}"
 [[ -d /opt/local/bin ]] && PATH+=":/opt/local/bin"
 [[ -d /usr/local/sbin ]] && PATH+=":/usr/local/sbin"
 [[ -d /opt/local/sbin ]] && PATH+=":/opt/local/sbin"
-[[ -d ~/local/bin ]] && PATH+=":~/local/bin"
+[[ -d ~/bin ]] && PATH+=":$HOME/bin"
+[[ -d ~/local/bin ]] && PATH+=":$HOME/local/bin"
+[[ -d ~/shadow/bin ]] && PATH+=":$HOME/shadow/bin"
 
 # use coreutils from macports if available
 [[ -d /opt/local/libexec/gnubin ]] && PATH+=":/opt/local/libexec/gnubin"
@@ -23,6 +25,7 @@ WORDCHARS="${WORDCHARS:s#/#}"
 
 # All the pretty colors
 $(which dircolors > /dev/null) && [[ -f ~/.dircolors ]] && eval `dircolors ~/.dircolors`
+
 
 # Keychain
 # keychain -k mine

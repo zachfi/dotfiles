@@ -8,8 +8,8 @@ zstyle ':zdotfiles:load' dotmods \
   'directory' \
   'utility'
 
-if [ -s "${ZDOTDIR:-$HOME}/dotfiles/zsh/init.zsh" ]; then
-  source "${ZDOTDIR:-$HOME}/dotfiles/zsh/init.zsh"
+if [ -s "$HOME/dotfiles/zsh/init.zsh" ]; then
+  source "$HOME/dotfiles/zsh/init.zsh"
 fi
 
 #for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done

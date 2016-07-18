@@ -1,8 +1,9 @@
-if [ -d $HOME/.pyenv ]; then
-  # Append to the path
-  if [ -d $HOME/.pyenv/bin ]; then
-    PATH="$HOME/.pyenv/bin:$PATH"
-  fi
+if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
+  path=("$HOME/.pyenv/bin" $path)
+  eval "$(pyenv init -)"
+
+# Load package manager installed pyenv into the shell session.
+elif (( $+commands[pyenv] )); then
+  eval "$(pyenv init -)"
 fi
 
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi

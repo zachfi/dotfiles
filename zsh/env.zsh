@@ -1,13 +1,13 @@
 ## Setup environment
 #TMOUT=3600
-EDITOR="vim"
-PAGER="less"
-HISTFILE=$HOME/.histfile
-HISTSIZE=50000
-SAVEHIST=$HISTSIZE
-GREP_COLOR="4;36"
+export EDITOR="vim"
+export PAGER="less"
+export HISTFILE=$HOME/.histfile
+export HISTSIZE=50000
+export SAVEHIST=$HISTSIZE
+export GREP_COLOR="4;36"
 # remove / from wordchars, so ^W will go back to the last / for example
-WORDCHARS="${WORDCHARS:s#/#}"
+export WORDCHARS="${WORDCHARS:s#/#}"
 #FONT="terminus"
 
 [[ -d /usr/local/bin ]] && PATH+=":/usr/local/bin"
@@ -31,14 +31,4 @@ $(which dircolors > /dev/null) && [[ -f ~/.dircolors ]] && eval `dircolors ~/.di
 # keychain -k mine
 [[ $UID -ne 0 ]] && eval `keychain --ignore-missing -q --eval --agents ssh,gpg --timeout 720 id_rsa id_ed25519`
 
-
-# Less Colors for Man Pages
-export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
-export LESS_TERMCAP_md=$'\E[0;36m'        # begin bold -- cyan
-export LESS_TERMCAP_me=$'\E[0m'           # end mode
-export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
-export LESS_TERMCAP_so=$'\E[0;34m'        # begin standout-mode - info box
-export LESS_TERMCAP_ue=$'\E[0m'           # end underline
-export LESS_TERMCAP_us=$'\E[0;35m'        # begin underline -- purple
-export LESS_TERMCAP_zz=$'\E[0m'           # make 'export' output not now all be colourised.
 

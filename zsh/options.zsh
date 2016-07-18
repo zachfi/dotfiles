@@ -7,19 +7,10 @@ setopt printexitvalue         # alert me if something's failed
 setopt short_loops            # allow short forms of loops
 unsetopt ignoreeof            # ^D logs out
 
-# Shell State
-setopt nobeep                 # stop beeping
-
 # Prompt
 setopt transient_rprompt      # rprompt can go away when needed
 setopt prompt_subst           # expansion within prompts
 setopt nopromptcr             # don't add \r which overwrites cmd output with no \n
-
-# Job Control
-setopt long_list_jobs         # list jobs in long format
-setopt nohup                  # and don't kill them, either
-setopt nocheckjobs            # don't warn me about bg processes when exiting
-unsetopt notify               # wait until I am paying attention to tell me job status
 
 
 # Completion

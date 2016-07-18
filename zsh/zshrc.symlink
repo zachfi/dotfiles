@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 zstyle ':zdotfiles:load' dotmods \
+  'environment' \
   'git' \
   'ruby' \
   'python' \

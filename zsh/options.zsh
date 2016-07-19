@@ -1,37 +1,42 @@
 # ZSH Options, like a warm blanket
 # Section names taken from the zshoptions(1) manpage
 
-#setopt correct                # spelling correction
-setopt interactivecomments    # escape commands so i can use them later
-setopt printexitvalue         # alert me if something's failed
-setopt short_loops            # allow short forms of loops
-unsetopt ignoreeof            # ^D logs out
+#
+# Input/Output
+#
+unsetopt CLOBBER            # Safer pipes, preserve existing files with > and >>.
+                            # Use >! and >>! to bypass.
+unsetopt IGNORE_EOF         # ^D logs out
+setopt INTERACTIVE_COMMENTS # Allow comments in shell
+setopt PRINT_EXIT_VALUE     # alert me if something's failed
+setopt SHORT_LOOPS          # allow short forms of loops
 
+#
 # Prompt
-setopt transient_rprompt      # rprompt can go away when needed
-setopt prompt_subst           # expansion within prompts
-setopt nopromptcr             # don't add \r which overwrites cmd output with no \n
+#
+setopt PROMPT_SUBST           # expansion within prompts
+setopt TRANSIENT_RPROMPT      # rprompt can go away when needed
+unsetopt PROMPT_CR            # don't add \r which overwrites cmd output with no \n
 
-
+#
 # Completion
-#setopt completeinword         # not just at the end
-##setopt alwaystoend            # move the cursor to the end on completion
-setopt complete_aliases       # when doing completion, also complete aliases
-#setopt listpacked             # compact completion lists
-#setopt listtypes              # show types in completion
-#setopt listambiguous          # Show stuff
-#setopt recexact               # recognise exact, ambiguous matches
-#unsetopt menucomplete         # give the tab completion menu
-#unsetopt autoremoveslash      # stop auto removing the slash that the completion did
+#
+setopt COMPLETE_IN_WORD        # not just at the end
+setopt COMPLETE_ALIASES        # when doing completion, also complete aliases
+unsetopt AUTO_REMOVE_SLASH     # stop auto removing the slash that the completion did
 
+#
 # History
-setopt inc_append_history      # write history as soon as its entered
-setopt extended_history        # write timestamp to the file
-setopt hist_ignore_space       # commands beginning with spaces are ommitted from history
-unsetopt histverify            # when using ! cmds, confirm first
-setopt hist_ignore_dups        # do not write duplicate history
+#
+setopt INC_APPEND_HISTORY      # write history as soon as its entered
+setopt EXTENDED_HISTORY        # write timestamp to the file
+setopt HIST_IGNORE_SPACE       # commands beginning with spaces are ommitted from history
+setopt HIST_IGNORE_DUPS        # do not write duplicate history
+setopt HIST_VERIFY             # when using ! cmds, confirm first
 
+#
 # Scripts and Functions
-setopt local_options           # allow functions to have local options
-setopt local_traps             # allow functions to have local traps
+#
+setopt LOCAL_OPTIONS           # allow functions to have local options
+setopt LOCAL_TRAPS             # allow functions to have local traps
 

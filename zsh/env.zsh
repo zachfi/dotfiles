@@ -9,6 +9,8 @@ export GREP_COLOR="4;36"
 # remove / from wordchars, so ^W will go back to the last / for example
 export WORDCHARS="${WORDCHARS:s#/#}"
 #FONT="terminus"
+#
+export LANG=en_US.UTF-8
 
 export LANG=en_US.UTF-8
 

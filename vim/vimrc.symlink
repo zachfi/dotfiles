@@ -131,6 +131,8 @@ function! StripWhitespace ()
 endfunction
 map ,s :call StripWhitespace ()<CR>
 
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
 
 " --------------------
 "  Type specific things

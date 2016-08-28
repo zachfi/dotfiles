@@ -21,24 +21,17 @@ set background=dark
 colorscheme focuspoint
 
 "
-" Gui Options
-if has("gui")
-  "set guifont=Source\ Code\ Pro:h14
-  set guifont=Hack:h12
-  set guioptions+=i  " show Vim icon in Taskbar
-  set guioptions-=a  "remove autoselect
-  set guioptions-=A  "remove autoselect
-  set guioptions-=m  "remove menu bar
-  set guioptions-=T  "remove toolbar
-  set guioptions-=r  "remove right-hand scroll bar
-  set guioptions-=l  "remove left-hand scroll bar
-  set guioptions-=R  "remove right-hand scroll bar if there is a vertical split
-  set guioptions-=L  "remove left-hand scroll bar if there is a vertical split
-else
-  " set mousehide
-  " set mouse=a
-  " set ttymouse=xterm2
-endif
+"set guifont=Source\ Code\ Pro:h14
+set guifont=Hack
+set guioptions+=i  " show Vim icon in Taskbar
+set guioptions-=a  "remove autoselect
+set guioptions-=A  "remove autoselect
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=l  "remove left-hand scroll bar
+set guioptions-=R  "remove right-hand scroll bar if there is a vertical split
+set guioptions-=L  "remove left-hand scroll bar if there is a vertical split
 
 "
 " Text Format
@@ -56,6 +49,7 @@ set virtualedit=block      " allow virtual edit in visual block ..
 
 "
 " UI
+set noerrorbells visualbell t_vb=
 set backspace=eol,start,indent
 set cursorline
 set ruler                  " show the cursor position all the time
@@ -112,7 +106,7 @@ set listchars=tab:»·,trail:·
 set mat=2
 set showmatch
 set laststatus=2
-set visualbell
+"set visualbell
 
 " Suffixes that get lower priority when doing tab completion for filenames.
 " These are files we are not likely to want to edit or read.
@@ -246,16 +240,14 @@ nnoremap <C-k> :tabclose<CR>
 
 "
 "  FuzzyFinder
-if v:version >= 703
-  noremap <Leader>f :FufFileWithCurrentBufferDir<CR>
-  noremap <Leader>F :FufFile<CR>
-  noremap <Leader>v :FufCoverageFile<CR>
-  noremap <Leader>b :FufBuffer<CR>
-  noremap <Leader>c :FufDirWithFullCwd<CR>
-  noremap <Leader>u :FufRenewCache<CR>
-  noremap <Leader>w :bdelete<CR>
-  noremap <F1> :FufHelp<CR>
-endif
+noremap <Leader>f :FufFileWithCurrentBufferDir<CR>
+noremap <Leader>F :FufFile<CR>
+noremap <Leader>v :FufCoverageFile<CR>
+noremap <Leader>b :FufBuffer<CR>
+noremap <Leader>c :FufDirWithFullCwd<CR>
+noremap <Leader>u :FufRenewCache<CR>
+noremap <Leader>w :bdelete<CR>
+noremap <F1> :FufHelp<CR>
 
 "
 "  Tabularize

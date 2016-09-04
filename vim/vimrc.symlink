@@ -49,7 +49,7 @@ set virtualedit=block      " allow virtual edit in visual block ..
 
 "
 " UI
-set noerrorbells visualbell t_vb=
+set noerrorbells novisualbell t_vb=
 set backspace=eol,start,indent
 set cursorline
 set ruler                  " show the cursor position all the time

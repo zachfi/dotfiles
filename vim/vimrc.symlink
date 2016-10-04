@@ -156,9 +156,15 @@ au FileType sh                   set expandtab shiftwidth=4 tabstop=4 cindent so
 "  Plugin specifics
 " --------------------
 let g:syntastic_puppet_checkers = ['puppetlint', 'puppet']
-let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_puppet_puppetlint_args = '--no-80chars-check --no-documentation-check --no-class_parameter_defaults-check --no-class_inherits_from_params_class-check'
+
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_exe = 'python3'
+let g:syntastic_python_flake8_args = ['-m', 'flake8']
+
 let g:indent_guides_guide_size = 1
+
+let g:pymode_python = 'python3'
 
 " --------------------
 "  Maps
@@ -260,6 +266,5 @@ vnoremap <Leader>a= :Tabularize /=<CR>
 nnoremap <Leader>a: :Tabularize /:\zs<CR>
 vnoremap <Leader>a: :Tabularize /:\zs<CR>
 
-"
 "  Intent Guides
 map <F6> :IndentGuidesToggle<CR>

@@ -32,7 +32,6 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=l  "remove left-hand scroll bar
 set guioptions-=R  "remove right-hand scroll bar if there is a vertical split
 set guioptions-=L  "remove left-hand scroll bar if there is a vertical split
-
 "
 " Text Format
 set ai

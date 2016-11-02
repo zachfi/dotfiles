@@ -42,7 +42,7 @@ task :sync do
 
   # Syntax
   Plugin 'scrooloose/syntastic'
-  Plugin 'rodjek/vim-puppet'
+  Plugin 'voxpupuli/vim-puppet'
   Plugin 'hdima/python-syntax'
   Plugin 'elzr/vim-json'
   Plugin 'tpope/vim-markdown'

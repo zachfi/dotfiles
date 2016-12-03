@@ -34,6 +34,8 @@ task :sync do
   #Plugin 'Lokaltog/vim-easymotion'
   Plugin 'honza/vim-snippets'
   Plugin 'nathanaelkane/vim-indent-guides'
+  Plugin 'raimondi/delimitmate'
+
 
   # Lang
   Plugin 'klen/python-mode'
@@ -51,8 +53,10 @@ task :sync do
   Plugin 'markcornick/vim-terraform'
 
   Plugin 'jamessan/vim-gnupg'
-  Plugin 'bling/vim-airline'
-  Plugin 'clones/vim-fuzzyfinder'
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  #Plugin 'clones/vim-fuzzyfinder'
+  Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'vim-scripts/L9'
 
   # Some color

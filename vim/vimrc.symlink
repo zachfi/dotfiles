@@ -118,6 +118,9 @@ let g:AutoComplPop_NotEnableAtStartup = 1
 "----- viewoutput configuration
 let g:viewoutput_newbuffer="bot 5new"
 
+"  Airline
+let g:airline_theme='powerlineish'
+
 "
 " Printing Options
 set printoptions=header:2,syntax:a,number:y,wrap:y,duplex:long,collate:y,jobsplit:y,paper:letter
@@ -132,6 +135,7 @@ map ,s :call StripWhitespace ()<CR>
 
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
+set spelllang=en_us
 
 " --------------------
 "  Type specific things
@@ -247,23 +251,35 @@ nnoremap <C-k> :tabclose<CR>
 
 "
 "  FuzzyFinder
-noremap <Leader>f :FufFileWithCurrentBufferDir<CR>
-noremap <Leader>F :FufFile<CR>
-noremap <Leader>v :FufCoverageFile<CR>
-noremap <Leader>b :FufBuffer<CR>
-noremap <Leader>c :FufDirWithFullCwd<CR>
-noremap <Leader>u :FufRenewCache<CR>
-noremap <Leader>w :bdelete<CR>
-noremap <F1> :FufHelp<CR>
+"noremap <Leader>f :FufFileWithCurrentBufferDir<CR>
+"noremap <Leader>F :FufFile<CR>
+"noremap <Leader>v :FufCoverageFile<CR>
+"noremap <Leader>b :FufBuffer<CR>
+"noremap <Leader>c :FufDirWithFullCwd<CR>
+"noremap <Leader>u :FufRenewCache<CR>
+"noremap <Leader>w :bdelete<CR>
+"noremap <F1> :FufHelp<CR>
 
 "
 "  Tabularize
 nnoremap <Leader>aa :Tabularize /=><CR>
 vnoremap <Leader>aa :Tabularize /=><CR>
-nnoremap <Leader>a= :Tabularize /=<CR>
-vnoremap <Leader>a= :Tabularize /=<CR>
+"nnoremap <Leader>a= :Tabularize /=<CR>
+"vnoremap <Leader>a= :Tabularize /=<CR>
 nnoremap <Leader>a: :Tabularize /:\zs<CR>
 vnoremap <Leader>a: :Tabularize /:\zs<CR>
 
+"
+"  CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_working_path_mode = '0'
+noremap <Leader>f :CtrlPCurFile<CR>
+noremap <Leader>d :CtrlP<CR>
+noremap <Leader>s :CtrlP 
+
+"
 "  Intent Guides
 map <F6> :IndentGuidesToggle<CR>

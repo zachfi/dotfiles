@@ -12,8 +12,6 @@ export WORDCHARS="${WORDCHARS:s#/#}"
 #
 export LANG=en_US.UTF-8
 
-export LANG=en_US.UTF-8
-
 [[ -d /usr/local/bin ]] && PATH+=":/usr/local/bin"
 [[ -d /opt/local/bin ]] && PATH+=":/opt/local/bin"
 [[ -d /usr/local/sbin ]] && PATH+=":/usr/local/sbin"

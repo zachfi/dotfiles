@@ -22,7 +22,7 @@ colorscheme focuspoint
 
 "
 "set guifont=Source\ Code\ Pro:h14
-set guifont=Hack\ 14
+set guifont=Hack\ 12
 set guioptions+=i  " show Vim icon in Taskbar
 set guioptions-=a  "remove autoselect
 set guioptions-=A  "remove autoselect

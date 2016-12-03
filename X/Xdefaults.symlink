@@ -3,15 +3,14 @@
 Xcursor.theme: DMZ-Black
 Xcursor.size:  32
 
-Xft.dpi:                96
+Xft.dpi:                120
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-!Xft.hintstyle:          hintfull
+!Xft.hintstyle: hintslight
+Xft.hintstyle: hintfull
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
-
 
 
 !thayer colors
@@ -58,7 +57,7 @@ Xft.rgba: rgb
 URxvt.bg: ff65665
 URxvt.geometry: 80x24
 URxvt.transparent: false
-URxvt.shading: 13
+URxvt.shading: 3
 
 URxvt.loginShell:       true
 

@@ -7,7 +7,8 @@ zstyle ':zdotfiles:load' dotmods \
   'python' \
   'puppet' \
   'directory' \
-  'utility'
+  'utility' \
+  'window'
 
 if [ -s "$HOME/dotfiles/zsh/init.zsh" ]; then
   source "$HOME/dotfiles/zsh/init.zsh"

@@ -1,2 +1,4 @@
-export GOPATH=~/go
-export PATH=$PATH:/usr/local/go/bin:${GOPATH}/bin
+if [ -d ~/go ]; then
+  export GOPATH=~/go
+  export PATH=$PATH:${GOPATH}/bin
+fi

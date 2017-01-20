@@ -35,10 +35,9 @@ task :sync do
   Plugin 'honza/vim-snippets'
   Plugin 'nathanaelkane/vim-indent-guides'
   Plugin 'raimondi/delimitmate'
-
+  Plugin 'valloric/youcompleteme'
 
   # Lang
-  Plugin 'klen/python-mode'
   Plugin 'vim-ruby/vim-ruby'
   Plugin 'jnwhiteh/vim-golang'
 
@@ -51,6 +50,8 @@ task :sync do
   Plugin 'tpope/vim-git'
   Plugin 'chase/vim-ansible-yaml'
   Plugin 'markcornick/vim-terraform'
+  Plugin 'evanmiller/nginx-vim-syntax'
+  #Plugin 'python-rope/ropevim' # youcompleteme uses jedi under the hood
 
   Plugin 'jamessan/vim-gnupg'
   Plugin 'vim-airline/vim-airline'

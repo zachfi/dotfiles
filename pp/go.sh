@@ -3,6 +3,7 @@
 SITEPP=${HOME}/dotfiles/pp/site.pp
 MODULEPATH=~/dotfiles/pp:~/dotfiles/pp/modules:~/dotfiles:~/Code/modules/other
 ENVPUPPET=~/src/puppet/ext/envpuppet
+export FACT_homedir=~/
 
 # Ensure r10k is installed
 if [ ! -f ~/.rbenv/shims/r10k ]; then
@@ -19,6 +20,4 @@ if [ -x $ENVPUPPET ]; then
     #$ENVPUPPET puppet config set modulepath $MODULEPATH
     $ENVPUPPET puppet apply --modulepath $MODULEPATH -v -e 'include zach' $@
 fi
-
-
 

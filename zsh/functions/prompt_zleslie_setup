@@ -12,15 +12,27 @@ function prompt_zleslie_setup {
 
   add-zsh-hook precmd prompt_zleslie_precmd
 
+  # 001 # red
+  # 012 # cyan
+  # 068 # blueish
+  # 074 # blueish/green
+  # 234 # darker grey
+  # 237 # lighter grey
+  # 244 # base grey
+
+  # Define the color variables
   local accent_color='%F{012}' #cyan
   local muted_color='%F{244}' #grey
-  local info_color='%F{070}' #green
-  local info_accent_color='%F{074}' #blueish
+  local info_color='%F{074}'
+  local info_accent_color='%K{270}%F{068}' #blueish
+  local attention_color='%K{234}%F{165}'
+  local error_color='%F{001}'
+  local reset_color='%f%k'
 
-  local fmt_branch="${info_color}%b%F{yellow}(${info_accent_color}%7.7i%F{yellow})%F{red}%c%u%f"
+  local fmt_branch="${info_color} %b${info_accent_color} %7.7i ${attention_color}%c%u${reset_color}"
   local fmt_action="(${accent_color}%a%f%)"       # e.g. (rebase-i)
-  local fmt_path="${muted_color}%R${accent_color}/%S%f"  # e.g. ~/repo/subdir
-  local fmt_nvcspath="${muted_color}%~%f"
+  local fmt_path="${muted_color}%R${accent_color}/%S${reset_color}"  # e.g. ~/repo/subdir
+  local fmt_nvcspath="${muted_color}%~${reset_color}"
 
   # set formats
   # %b - branchname
@@ -34,34 +46,29 @@ function prompt_zleslie_setup {
   zstyle ':vcs_info:*' enable git
   zstyle ':vcs_info:*:prompt:*' get-revision true
   zstyle ':vcs_info:*:prompt:*' check-for-changes true
-  zstyle ':vcs_info:*:prompt:*' unstagedstr '±'  # display ¹ if there are unstaged changes
-  zstyle ':vcs_info:*:prompt:*' stagedstr '⁺'    # display ² if there are staged changes
-  zstyle ':vcs_info:*:prompt:*' actionformats "${fmt_branch}${fmt_action}//" "${fmt_path}"
-  zstyle ':vcs_info:*:prompt:*' formats       "${fmt_branch}//"              "${fmt_path}"
+  zstyle ':vcs_info:*:prompt:*' unstagedstr '⚏'  # display ¹ if there are unstaged changes
+  zstyle ':vcs_info:*:prompt:*' stagedstr '⚌'    # display ² if there are staged changes
+  zstyle ':vcs_info:*:prompt:*' actionformats "${fmt_branch}${fmt_action}" "${fmt_path}"
+  zstyle ':vcs_info:*:prompt:*' formats       "${fmt_branch}"              "${fmt_path}"
   zstyle ':vcs_info:*:prompt:*' nvcsformats   " "                            "${fmt_nvcspath}"
-  #zstyle ':vcs_info:*:prompt:*' branchformat  "%b|%r"
 
   if [ -n $SSH_TTY ]; then
-    local at="%F{magenta}@%f"
+    local at="${attention_color}@${reset_color}"
   else
-    local at="%F{muted_color}@%f"
+    local at="${muted_color}@${reset_color}"
   fi
 
   local user_host="${muted_color}%n${at}${muted_color}%m${accent_color}:%f"
   local max_path_chars=30
   local user_char='❯'
   local root_char='❯❯❯'
-  local success_color='%F{071}'
-  local failure_color='%F{124}'
-  local vcs_info_color='%F{242}'
 
   PROMPT="${SSH_TTY:+${user_host}}"
   PROMPT+='${vcs_info_msg_1_}'
-  PROMPT+="%F{red}%(?.. exit %?)%f"
+  PROMPT+=" ${error_color}%(?..exit %?)${reset_color}"
   PROMPT+=$'\n'
   PROMPT+="${accent_color}%(!.${root_char}.${user_char})%f "
 
-  #PROMPT="%(?.${success_color}.${failure_color})${SSH_TTY:+[%n@%m]}%B%${max_path_chars}<...<"'${vcs_info_msg_1_%%.}'"%<<%(!.${root_char}.${user_char})%b%f "
   RPROMPT='${vcs_info_msg_0_}'
 }
 

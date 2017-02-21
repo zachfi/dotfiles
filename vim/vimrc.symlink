@@ -1,7 +1,60 @@
-" .vimrc
-
 " Use Pathogen for plugins
 execute pathogen#infect()
+
+" Use vim-plug for plugins
+call plug#begin('~/.vim/plugged')
+
+" Editing
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'sbdchd/neoformat'
+Plug 'Shougo/denite.nvim'
+
+Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
+Plug 'godlygeek/tabular'
+"Plug 'kien/rainbow_parentheses.vim'
+Plug 'tomtom/tcomment_vim'
+"Plug 'Lokaltog/vim-easymotion'
+Plug 'honza/vim-snippets'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'raimondi/delimitmate'
+"Plug 'valloric/youcompleteme'
+
+" Syntax
+Plug 'scrooloose/syntastic'
+Plug 'voxpupuli/vim-puppet'
+Plug 'hdima/python-syntax'
+Plug 'elzr/vim-json'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-git'
+"Plug 'chase/vim-ansible-yaml'
+Plug 'markcornick/vim-terraform'
+Plug 'evanmiller/nginx-vim-syntax'
+
+" Lang
+Plug 'vim-ruby/vim-ruby'
+Plug 'jnwhiteh/vim-golang'
+
+" Colors
+Plug 'chase/focuspoint-vim'
+Plug 'noahfrederick/vim-noctu'
+Plug 'tomasr/molokai'
+Plug 'jnurmine/Zenburn'
+Plug 'sickill/vim-monokai'
+Plug 'chriskempson/base16-vim'
+Plug 'w0ng/vim-hybrid'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'jamessan/vim-gnupg'
+
+call plug#end()
+
 
 " Enable filetype plugin
 filetype indent on
@@ -22,8 +75,11 @@ set background=dark
 if has("gui_running")
   colorscheme solarized
 else
-  colorscheme focuspoint
+  "colorscheme focuspoint
+  colorscheme hybrid
 endif
+
+set clipboard=unnamed
 
 "
 "set guifont=Source\ Code\ Pro:h14
@@ -172,13 +228,15 @@ let g:syntastic_python_flake8_exe = 'python3'
 let g:syntastic_python_flake8_args = ['-m', 'flake8']
 
 let g:indent_guides_guide_size = 1
-
 let g:pymode_python = 'python3'
-
 let python_highlight_all = 1
+let g:python3_host_prog = '/home/zach/local/vim/bin/python'
 
-let g:ycm_python_binary_path = '~/local/vim/bin/python'
-let g:ycm_server_python_interpreter = '~/local/vim/bin/python'
+"let g:ycm_python_binary_path = '~/local/vim/bin/python'
+"let g:ycm_server_python_interpreter = '~/local/vim/bin/python'
+
+let g:deoplete#enable_at_startup = 1
+
 
 " --------------------
 "  Maps
@@ -282,7 +340,7 @@ vnoremap <Leader>a: :Tabularize /:\zs<CR>
 
 "
 "  CtrlP
-let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 "let g:ctrlp_working_path_mode = 'c'

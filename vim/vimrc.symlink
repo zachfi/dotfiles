@@ -10,6 +10,9 @@ Plug 'zchee/deoplete-jedi'
 Plug 'sbdchd/neoformat'
 Plug 'Shougo/denite.nvim'
 
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-scripts/L9'
+
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-endwise'
@@ -237,6 +240,13 @@ let g:python3_host_prog = '/home/zach/local/vim/bin/python'
 
 let g:deoplete#enable_at_startup = 1
 
+"let g:ycm_python_binary_path = '/home/zach/local/vim/bin/python'
+"let g:ycm_server_python_interpreter = '/home/zach/local/vim/bin/python'
+"let g:ycm_path_to_python_interpreter = '/home/zach/local/vim/bin/python'
+
+let g:deoplete#enable_at_startup = 1
+"let g:python_host_prog = '/full/path/to/neovim2/bin/python'
+"let g:python3_host_prog = '/full/path/to/neovim3/bin/python'
 
 " --------------------
 "  Maps
@@ -342,9 +352,10 @@ vnoremap <Leader>a: :Tabularize /:\zs<CR>
 "  CtrlP
 "let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_working_path_mode = 'ra'
 "let g:ctrlp_working_path_mode = 'c'
 let g:ctrlp_working_path_mode = '0'
+let g:ctrlp_show_hidden = 1
 noremap <Leader>f :CtrlPCurFile<CR>
 noremap <Leader>d :CtrlP<CR>
 noremap <Leader>s :CtrlP 

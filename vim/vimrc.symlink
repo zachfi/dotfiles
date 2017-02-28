@@ -229,22 +229,20 @@ let g:syntastic_python_flake8_exe = 'python3'
 let g:syntastic_python_flake8_args = ['-m', 'flake8']
 
 let g:indent_guides_guide_size = 1
+
 let g:pymode_python = 'python3'
 let python_highlight_all = 1
-let g:python3_host_prog = '/home/zach/local/vim/bin/python'
-
-"let g:ycm_python_binary_path = '~/local/vim/bin/python'
-"let g:ycm_server_python_interpreter = '~/local/vim/bin/python'
+let g:python3_host_prog = '/home/zach/local/vim-py3/bin/python'
+let g:python_host_prog = '/home/zach/local/vim-py2.7/bin/python'
 
 let g:deoplete#enable_at_startup = 1
 
-"let g:ycm_python_binary_path = '/home/zach/local/vim/bin/python'
-"let g:ycm_server_python_interpreter = '/home/zach/local/vim/bin/python'
-"let g:ycm_path_to_python_interpreter = '/home/zach/local/vim/bin/python'
+let g:GPGPreferArmor = 1
+let g:GPGPreferDefaultRecipients = 0x7E546894A12BF8B0
+let g:GPGUsePipes = 1
 
-let g:deoplete#enable_at_startup = 1
-"let g:python_host_prog = '/full/path/to/neovim2/bin/python'
-"let g:python3_host_prog = '/full/path/to/neovim3/bin/python'
+"
+"
 
 " --------------------
 "  Maps

@@ -21,7 +21,6 @@ alias llf='ll -f'
 alias ping='ping -c 2'
 alias df="df -h"
 alias diff="colordiff"
-alias newpass="LANG=C tr -cd '[:alnum:]' < /dev/random | head -c 30"
 alias vi="nvim"
 if [[ -x /opt/local/bin/vim ]]; then
   alias vim="/opt/local/bin/vim"

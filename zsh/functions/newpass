@@ -1,0 +1,9 @@
+system=$(uname)
+size=${1:-30}
+
+if [ $system = 'Linux' ]; then
+  LANG=C tr -cd '[:alnum:]' < /dev/urandom | head -c $size
+else
+  LANG=C tr -cd '[:alnum:]' < /dev/random | head -c $size
+fi
+echo

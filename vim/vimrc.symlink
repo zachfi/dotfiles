@@ -82,8 +82,6 @@ else
   colorscheme hybrid
 endif
 
-set clipboard=unnamed
-
 "
 "set guifont=Source\ Code\ Pro:h14
 set guifont=Hack\ 12
@@ -260,8 +258,24 @@ noremap <Leader>v :vsplit<CR>
 noremap <Leader>c :close<CR>
 noremap <Leader>e :Explore<CR>
 
+" Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+set clipboard+=unnamedplus
+
+
 " Date/Time Stamp
 map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
+
 
 " Disable Ruler
 nnoremap <F7> :set nonumber!<CR>

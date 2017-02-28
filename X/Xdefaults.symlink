@@ -1,7 +1,7 @@
 ! Xcursor --------------------------------------------------------------------
 
-Xcursor.theme: DMZ-Black
-Xcursor.size:  32
+#Xcursor.theme: Pulse-Glass
+#Xcursor.size:  64
 
 Xft.dpi:                120
 Xft.autohint: 0

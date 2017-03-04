@@ -50,6 +50,11 @@ Plug 'jnurmine/Zenburn'
 Plug 'sickill/vim-monokai'
 Plug 'chriskempson/base16-vim'
 Plug 'w0ng/vim-hybrid'
+Plug 'guns/jellyx.vim'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'Reewr/vim-monokai-phoenix'
+Plug 'colepeters/spacemacs-theme.vim'
+Plug 'robertmeta/nofrils'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -79,7 +84,9 @@ if has("gui_running")
   colorscheme solarized
 else
   "colorscheme focuspoint
-  colorscheme hybrid
+  "colorscheme hybrid
+  "colorscheme jellyx
+  colorscheme afterglow
 endif
 
 "
@@ -211,9 +218,11 @@ au BufRead,BufNewFile *.yml      set softtabstop=2 shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.ddl      set filetype=mcollective_ddl
 au BufRead,BufNewFile *.aug      set filetype=augeas
 "au FileType gitcommit DiffGitCached | wincmd v
-au BufRead $HOME/.mutt/temp*     set syntax=mail colorscheme molokai
-au Filetype mail                 setl textwidth=72 wrap nocp spell
-au FileType gitcommit            set spell
+au BufRead $HOME/.mutt/temp*     set syntax=mail
+au Filetype mail                 set textwidth=72 wrap spell 
+au Filetype mail                 set fo+=aw
+au Filetype mail                 color molokai
+au Filetype gitcommit            set textwidth=80 wrap spell
 au FileType make                 set noexpandtab shiftwidth=8 tabstop=8 cindent softtabstop=0
 au FileType sh                   set expandtab shiftwidth=4 tabstop=4 cindent softtabstop=4
 au FileType yaml                 set expandtab shiftwidth=2 tabstop=2 cindent softtabstop=2
@@ -375,3 +384,4 @@ noremap <Leader>s :CtrlP
 "
 "  Intent Guides
 map <F6> :IndentGuidesToggle<CR>
+

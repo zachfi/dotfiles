@@ -380,6 +380,9 @@ let g:ctrlp_show_hidden = 1
 noremap <Leader>f :CtrlPCurFile<CR>
 noremap <Leader>d :CtrlP<CR>
 noremap <Leader>s :CtrlP 
+noremap <Leader>b :CtrlPBuffer<CR>
+noremap <Leader>v :CtrlPMixed<CR>
+noremap <Leader>m :CtrlPMRU<CR>
 
 "
 "  Intent Guides

@@ -38,7 +38,7 @@ conky.config = {
     draw_outline = false,
     draw_shades = false,
     use_xft = true,
-    font = 'DejaVu Sans Mono:size=12',
+    font = 'Hack',
     gap_x = 5,
     gap_y = 60,
     minimum_height = 5,
@@ -62,13 +62,23 @@ conky.config = {
 
 conky.text =[[
   [
-   { "full_text" : ${if_up wlp3s0}"${wireless_link_qual_perc wlp3s0}% ${wireless_essid wlp3s0} ${addr wlp3s0} ⇑ ${upspeed wlp3s0} ⇓ ${downspeed wlp3s0}", "color": "\#33CC99"${else}"WAN DOWN", "color":"\#808000"${endif} },
+	${if_mpd_playing}
+		{ "full_text" : "${mpd_artist} - ${mpd_title}", "color" : "\#d466138"},
+	${endif}
+	{ "full_text" : "/ ${fs_free /}" , "color" : "\#dce7ed" },
+	{ "full_text" : "up: ${uptime_short}", "color":"\#808000" },
+	${if_up wlp3s0}
+		{ "full_text" : "${wireless_link_qual_perc wlp3s0}% ${wireless_essid wlp3s0} ${addr wlp3s0} ⇑${upspeed wlp3s0} ⇓${downspeed wlp3s0}", "color": "\#33CC99" },
+	${endif}
+	${if_up wlp4s0}
+   { "full_text" : "${wireless_link_qual_perc wlp4s0}% ${wireless_essid wlp4s0} ${addr wlp4s0} ⇑${upspeed wlp4s0} ⇓${downspeed wlp4s0}", "color": "\#33CC99" },
+	${endif}
    { "full_text" : "RAM [${membar}]" , "color" : ${if_match ${memperc}<90}"\#268BD2"${else}"\#ff0000"${endif} },
    { "full_text" : "SWAP [${swapbar}]", "color" : ${if_match ${swapperc}<30}"\#268BD2"${else}"\#ff0000"${endif} },
    { "full_text" : "CPU ${cpubar} ${loadavg 2}", "color": ${if_match ${loadavg 2}<90}"\#268BD2"${else}"\#ff0000"${endif} },
    { "full_text" : "FREQ ${freq_g}" , "color":"\#268BD2"},
    { "full_text" : "T${acpitemp} °C", "color": ${if_match ${acpitemp}<70}"\#268BD2"${else}"\#ff0000"${endif}  },
-   { "full_text" : "BAT ${battery_percent BAT0}%", "color": ${if_match ${battery_percent BAT0}<30}"\#ff0000"${else}"\#00ff00"${endif} },
+   { "full_text" : "BAT: ${battery_percent BAT0}%", "color": ${if_match ${battery_percent BAT0}<30}"\#ff0000"${else}"\#00ff00"${endif} },
    { "full_text" : "${time %Y/%m/%d}", "color": "\#00FFFF" },
    { "full_text" : "${time %H:%M}", "color": "\#d7ff00" } ],
 ]]

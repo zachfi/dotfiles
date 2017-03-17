@@ -70,7 +70,7 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollWithBuffer: true
 URxvt.secondaryScroll:  true
 URxvt.shading: 3
-URxvt.termName: rxvt-unicode
+!URxvt.termName: xterm-256color
 URxvt.transparent: false
 URxvt.urgentOnBell:      true
 URxvt.url-launcher: /usr/bin/xdg-open

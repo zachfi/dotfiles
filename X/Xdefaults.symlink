@@ -74,8 +74,6 @@ URxvt*scrollTtyKeypress: true
 URxvt*saveLines:        65535
 URxvt*cursorBlink:      false
 URxvt*urgentOnBell:      true
-URxvt.termName:         xterm-256color
-
 !URxvt.inheritPixmap:    true
 URxvt.cutchars:             `"()'*<>[]{|}"
 URxvt.termName: rxvt-unicode

@@ -67,6 +67,9 @@ URxvt.scrollBar_floating: true
 URxvt.scollstyle: plain
 URxvt.scrollColor: #252525
 URxvt.cursorColor: #404040
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
 
 URxvt*saveLines:        65535
 URxvt*cursorBlink:      false
@@ -78,7 +81,8 @@ URxvt.cutchars:             `"()'*<>[]{|}"
 URxvt.termName: rxvt-unicode
 
 URxvt.perl-ext: default,matcher
-URxvt.url-launcher: chromium
+URxvt.perl-ext-common:  resize-font
+URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.Button: 1
 
 

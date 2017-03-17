@@ -1,19 +1,15 @@
-! Xcursor --------------------------------------------------------------------
 
-#Xcursor.theme: Pulse-Glass
-#Xcursor.size:  64
-
-Xft.dpi:                120
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintfull
-Xft.hinting: 1
+! xft
 Xft.antialias: 1
+Xft.autohint: 0
+Xft.dpi: 96
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
 
 
 !thayer colors
-!
 *background: #1B1D1E
 *foreground: #F8F8F2
 *color0:    #1B1D1E
@@ -54,42 +50,30 @@ Xft.rgba: rgb
 
 ! General
 URxvt.bg: ff65665
-URxvt.geometry: 80x24
-URxvt.transparent: false
-URxvt.shading: 3
-
-URxvt.loginShell:       true
-
-URxvt*scrollBar:        false
-URxvt*secondaryScroll:  true
-URxvt*scrollBar_right: true
-URxvt.scrollBar_floating: true
-URxvt.scollstyle: plain
-URxvt.scrollColor: #252525
+URxvt.cursorBlink:      false
 URxvt.cursorColor: #404040
-URxvt*scrollTtyOutput: false
-URxvt*scrollWithBuffer: true
-URxvt*scrollTtyKeypress: true
-
-URxvt*saveLines:        65535
-URxvt*cursorBlink:      false
-URxvt*urgentOnBell:      true
-!URxvt.inheritPixmap:    true
 URxvt.cutchars:             `"()'*<>[]{|}"
-URxvt.termName: rxvt-unicode
-
-URxvt.perl-ext: default,matcher
-URxvt.perl-ext-common:  resize-font
-URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.font: xft:Hack:style=Regular:size=13
+URxvt.geometry: 80x24
+URxvt.loginShell:       true
 URxvt.matcher.Button: 1
-
-
-
-! fc-list
-!URxvt*font: xft:Terminus:pixelsize=10:antialias=false
-!URxvt.font: xft:Bitstream Vera Sans Mono:pixelsize=12
-URxvt*font: xft:Hack:style=Regular:size=12
-
+URxvt.perl-ext-common:  resize-font
+URxvt.perl-ext: default,matcher
+URxvt.saveLines:        65535
+URxvt.scollstyle: plain
+URxvt.scrollBar:        false
+URxvt.scrollBar_floating: true
+URxvt.scrollBar_right: true
+URxvt.scrollColor: #252525
+URxvt.scrollTtyKeypress: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.secondaryScroll:  true
+URxvt.shading: 3
+URxvt.termName: rxvt-unicode
+URxvt.transparent: false
+URxvt.urgentOnBell:      true
+URxvt.url-launcher: /usr/bin/xdg-open
 
 ! xscreensaver ---------------------------------------------------------------
 

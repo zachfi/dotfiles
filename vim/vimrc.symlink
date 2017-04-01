@@ -250,6 +250,8 @@ let g:GPGPreferArmor = 1
 let g:GPGPreferDefaultRecipients = 0x7E546894A12BF8B0
 let g:GPGUsePipes = 1
 
+let g:neoformat_enabled_python = ['autopep8', 'yapf']
+
 "
 "
 
@@ -388,3 +390,6 @@ noremap <Leader>m :CtrlPMRU<CR>
 "  Intent Guides
 map <F6> :IndentGuidesToggle<CR>
 
+"
+" Neoformat
+noremap <Leader>l :Neoformat<CR>

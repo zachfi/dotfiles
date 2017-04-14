@@ -47,9 +47,17 @@ then
             # have one, assume that whole thing is the string to search for.
             # Also make vim go to the first line, then search for it
             # (otherwise wrapscan can get in the way).
-            ack --no-color -l "$@" | xargs -o vi +1 +/"$@"
+            if [ "$(uname)" = "Linux" ]; then
+              ack --no-color -l "$@" | xargs nvim +1 +/"$@"
+            else
+              ack --no-color -l "$@" | xargs -o vi +1 +/"$@"
+            fi
         else
-            ack --no-color -l $@ | xargs -o vi
+            if [ "$(uname)" = "Linux" ]; then
+              ack --no-color -l "$@" | xargs nvim
+            else
+              ack --no-color -l $@ | xargs -o vi
+            fi
         fi
     }
 fi

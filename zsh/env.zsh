@@ -1,6 +1,6 @@
 ## Setup environment
 #TMOUT=3600
-export EDITOR="vim"
+export EDITOR="nvim"
 export PAGER="less"
 export HISTFILE=$HOME/.histfile
 export HISTSIZE=50000

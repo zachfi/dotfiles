@@ -1,14 +1,19 @@
 " Use Pathogen for plugins
-execute pathogen#infect()
+"execute pathogen#infect()
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 " Use vim-plug for plugins
 call plug#begin('~/.vim/plugged')
 
 " Editing
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'sbdchd/neoformat'
-Plug 'Shougo/denite.nvim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-jedi'
+  Plug 'sbdchd/neoformat'
+  Plug 'Shougo/denite.nvim'
+endif
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-scripts/L9'
@@ -19,13 +24,15 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'godlygeek/tabular'
-"Plug 'kien/rainbow_parentheses.vim'
+" Plug 'kien/rainbow_parentheses.vim'
 Plug 'tomtom/tcomment_vim'
 "Plug 'Lokaltog/vim-easymotion'
 Plug 'honza/vim-snippets'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'raimondi/delimitmate'
 "Plug 'valloric/youcompleteme'
+Plug 'tomtom/tcomment_vim'
+Plug 'osyo-manga/vim-over'
 
 " Syntax
 Plug 'scrooloose/syntastic'
@@ -42,27 +49,31 @@ Plug 'evanmiller/nginx-vim-syntax'
 Plug 'vim-ruby/vim-ruby'
 Plug 'jnwhiteh/vim-golang'
 
-" Colors
-Plug 'chase/focuspoint-vim'
-Plug 'noahfrederick/vim-noctu'
-Plug 'tomasr/molokai'
-Plug 'jnurmine/Zenburn'
-Plug 'sickill/vim-monokai'
-Plug 'chriskempson/base16-vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'guns/jellyx.vim'
-Plug 'danilo-augusto/vim-afterglow'
-Plug 'Reewr/vim-monokai-phoenix'
-Plug 'colepeters/spacemacs-theme.vim'
-Plug 'robertmeta/nofrils'
 
+" Colors
+"
+Plug 'chase/focuspoint-vim'
+Plug 'chriskempson/base16-vim'
+Plug 'colepeters/spacemacs-theme.vim'
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'freeo/vim-kalisi'
+Plug 'guns/jellyx.vim'
+Plug 'jnurmine/Zenburn'
+Plug 'noahfrederick/vim-noctu'
+Plug 'Reewr/vim-monokai-phoenix'
+Plug 'robertmeta/nofrils'
+Plug 'sickill/vim-monokai'
+Plug 'tomasr/molokai'
+Plug 'w0ng/vim-hybrid'
+Plug 'morhetz/gruvbox'
+
+" Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'jamessan/vim-gnupg'
 
 call plug#end()
-
 
 " Enable filetype plugin
 filetype indent on
@@ -72,22 +83,26 @@ syntax on
 "
 " General
 set encoding=utf8
-set nocompatible
-set t_Co=256
+set t_Co=256 " Ignored by nvim
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
+
 
 "
 " Colors
-set background=dark
-"colorscheme molokai
 
 if has("gui_running")
   colorscheme solarized
 else
-  "colorscheme focuspoint
-  "colorscheme hybrid
-  "colorscheme jellyx
-  colorscheme afterglow
+  " colorscheme focuspoint
+  " colorscheme hybrid
+  " colorscheme jellyx
+  " colorscheme molokai
+  " colorscheme afterglow
+  colorscheme kalisi
+  colorscheme gruvbox
 endif
+set background=dark
 
 "
 "set guifont=Source\ Code\ Pro:h14
@@ -101,6 +116,12 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=l  "remove left-hand scroll bar
 set guioptions-=R  "remove right-hand scroll bar if there is a vertical split
 set guioptions-=L  "remove left-hand scroll bar if there is a vertical split
+
+
+if !has('nvim')
+  set term=xterm-256color
+endif
+
 "
 " Text Format
 set ai
@@ -188,7 +209,8 @@ let g:AutoComplPop_NotEnableAtStartup = 1
 let g:viewoutput_newbuffer="bot 5new"
 
 "  Airline
-let g:airline_theme='powerlineish'
+" let g:airline_theme='powerlineish'
+let g:airline_theme='gruvbox'
 
 "
 " Printing Options

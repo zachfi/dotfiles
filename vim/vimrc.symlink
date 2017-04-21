@@ -92,16 +92,20 @@ let &t_AF="\e[38;5;%dm"
 " Colors
 
 if has("gui_running")
-  colorscheme solarized
+  " colorscheme solarized
+  colorscheme gruvbox
 else
   " colorscheme focuspoint
   " colorscheme hybrid
   " colorscheme jellyx
   " colorscheme molokai
   " colorscheme afterglow
-  colorscheme kalisi
+  " colorscheme kalisi
   colorscheme gruvbox
 endif
+
+" Color configurations
+let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 
 "
@@ -274,8 +278,6 @@ let g:GPGUsePipes = 1
 
 let g:neoformat_enabled_python = ['autopep8', 'yapf']
 
-"
-"
 
 " --------------------
 "  Maps

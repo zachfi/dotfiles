@@ -86,6 +86,7 @@ set encoding=utf8
 set t_Co=256 " Ignored by nvim
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
+let &colorcolumn="80,".join(range(120,999),",")
 
 
 "
@@ -106,6 +107,7 @@ endif
 
 " Color configurations
 let g:gruvbox_contrast_dark = 'hard'
+
 set background=dark
 
 "

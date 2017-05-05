@@ -28,10 +28,9 @@ font pango:Hack 16px
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier Mod1
+floating_modifier $alt
 
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
-
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id xmodmap ~/.Xmodmap
@@ -41,7 +40,7 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id redshift
-exec --no-startup-id krunner
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 
 
 # start a terminal
@@ -50,7 +49,6 @@ bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
 
 # list open windows to switch to
 bindsym $alt+Tab exec rofi -show window

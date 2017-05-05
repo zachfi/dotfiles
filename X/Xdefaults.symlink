@@ -75,16 +75,26 @@ URxvt.transparent: false
 URxvt.urgentOnBell:      true
 URxvt.url-launcher: /usr/bin/xdg-open
 
+! ! Enable the extended coloring options
+! rofi.color-enabled: true
+!
+! !                  bg       border   separator
+! rofi.color-window: #1d2021, #a89984, #a89984
+!
+! !                  bg       fg       bg-alt   hl-bg    hl-fg
+! rofi.color-normal: #1d2021, #ebdbb2, #282828, #504945, #fbf1c7
+! rofi.color-active: #d79921, #1d2021, #d79921, #fabd2f, #1d2021
+! rofi.color-urgent: #cc241d, #1d2021, #cc241d, #fb4934, #1d2021
+
 ! Enable the extended coloring options
 rofi.color-enabled: true
-
 !                  bg       border   separator
-rofi.color-window: #1d2021, #a89984, #a89984
-
+rofi.color-window: #1c1c22, #3e646f, #3e646f
 !                  bg       fg       bg-alt   hl-bg    hl-fg
-rofi.color-normal: #1d2021, #ebdbb2, #282828, #504945, #fbf1c7
-rofi.color-active: #d79921, #1d2021, #d79921, #fabd2f, #1d2021
-rofi.color-urgent: #cc241d, #1d2021, #cc241d, #fb4934, #1d2021
+rofi.color-normal: #1c1c22, #bcbcbc, #1c1c22, #3e646f, #bcbcbc
+rofi.color-active: #1c1c22, #bcbcbc, #1c1c22, #3e646f, #bcbcbc
+rofi.color-urgent: #1c1c22, #bcbcbc, #1c1c22, #3e646f, #bcbcbc
+
 
 
 ! xscreensaver ---------------------------------------------------------------

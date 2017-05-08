@@ -1,5 +1,6 @@
 vim/vim.symlink/bundle/
 vim/vim.symlink/swp/
+vim/vim.symlink/plugged/
 git/gitconfig.symlink
 todo.txt/todo.symlink
 /local/

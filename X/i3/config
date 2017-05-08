@@ -42,9 +42,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id redshift
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 
-
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec urxvt
 
 # kill focused window
@@ -189,79 +187,62 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#
 
-#set $back               #1d1F21
-#set $black              #282A2E
-#set $grey               #373B41
-#set $lightgrey          #707880
-#set $white              #C5C8C6
-#set $yellow             #F0C674
-#set $red                #CC6666
-#set $darkred            #A54242
-#set $green              #B5BD56
-#
 
-# From vimbrant
-set $fg #a0a0a0
-set $bg #1b1d1e
+# Colors set from ~/.Xresources
+set_from_resource $background background
+set_from_resource $foreground foreground
+set_from_resource $color0  color0
+set_from_resource $color1  color1
+set_from_resource $color2  color2
+set_from_resource $color3  color3
+set_from_resource $color4  color4
+set_from_resource $color5  color5
+set_from_resource $color6  color6
+set_from_resource $color7  color7
+set_from_resource $color8  color8
+set_from_resource $color9  color9
+set_from_resource $color10 color10
+set_from_resource $color11 color11
+set_from_resource $color12 color12
+set_from_resource $color13 color13
+set_from_resource $color14 color14
+set_from_resource $color15 color15
 
-# !black
-set $black #1b1d1e
-set $black2 #505354
-set $grey #839496
-# !red
-set $red #f92672
-set $red2 #ff5995
-# !green
-set $green #82b414
-set $green2 #b6e354
-# !yellow
-set $yellow #fd971f
-set $yellow2 #feed6c
-# !blue
-set $blue #56c2d6
-set $blue2 #8cedff
-# !magenta
-set $magenta #8c54fe
-set $magenta2 #9e6ffe
-# !cyan
-set $cyan #465457
-set $cyan2 #899ca1
-set $cyan3 #56676b
-set $cyan4 #899ca1
-# !white
-set $white #ccccc6
-set $white2 #f8f8f2
-set $white3 #bfbfba
-set $white4 #ebebe5
-set $white5 #aaaaaa
-set $white6 #ffffff
+# hide/unhide i3status bar
+bindsym $mod+m bar mode toggle
 
 bar {
   #status_command i3status
   status_command $HOME/bin/conky-i3bar
   #status_command conky -c ~/.conkyrc
   colors {
-    background $bg
-    statusline $grey
-    separator #b58900
+    background $background
+    statusline $background
+    # separator #b58900
+    separator $foreground
     # class border backgrd text
     # focused_background
     # focused_statusline
     # focused_separator
-    focused_workspace  #4c7899 #285577 #ffffff
-    active_workspace   #073642 #002b36 #839496
-    inactive_workspace #002b36 #021215 #586e75
-    urgent_workspace   #2f343a #900000 #fdf6e3
+    # focused_workspace  #4c7899 #285577 #ffffff
+    # active_workspace   #073642 #002b36 #839496
+    # inactive_workspace #002b36 #021215 #586e75
+    # urgent_workspace   #2f343a #900000 #fdf6e3
+    focused_workspace    $background $color4     $background
+    active_workspace     $background $foreground $background
+    urgent_workspace     $color1     $color1     $background
   }
 }
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       $bg
+# Theme colors
+# class                 border      backgr      text        indic       child_border
+# My colors
+client.background $background
+
+client.focused          $foreground $color4     $foreground $background $color4
+client.unfocused        $foreground $background $foreground $background $background
+client.focused_inactive $foreground $background $foreground $background $background
+client.urgent           $foreground $color1     $foreground $background $color1
+client.placeholder      $foreground $background $foreground $background $background
 

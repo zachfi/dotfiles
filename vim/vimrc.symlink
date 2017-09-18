@@ -10,7 +10,11 @@ call plug#begin('~/.vim/plugged')
 " Editing
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/vimshell.vim'
   Plug 'zchee/deoplete-jedi'
+  Plug 'zchee/deoplete-go'
+  Plug 'zchee/deoplete-zsh'
+  Plug 'fishbullet/deoplete-ruby'
   Plug 'sbdchd/neoformat'
   Plug 'Shougo/denite.nvim'
 endif
@@ -23,6 +27,7 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-eunuch'
 Plug 'godlygeek/tabular'
 " Plug 'kien/rainbow_parentheses.vim'
 Plug 'tomtom/tcomment_vim'
@@ -44,14 +49,19 @@ Plug 'tpope/vim-git'
 "Plug 'chase/vim-ansible-yaml'
 Plug 'markcornick/vim-terraform'
 Plug 'evanmiller/nginx-vim-syntax'
+Plug 'ap/vim-css-color'
 
 " Lang
 Plug 'vim-ruby/vim-ruby'
 Plug 'jnwhiteh/vim-golang'
 
+" Frameworks
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-bundler'
 
 " Colors
-"
 Plug 'chase/focuspoint-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'colepeters/spacemacs-theme.vim'
@@ -263,7 +273,7 @@ let g:syntastic_puppet_puppetlint_args = '--no-80chars-check --no-documentation-
 
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_exe = 'python3'
-let g:syntastic_python_flake8_args = ['-m', 'flake8']
+let g:syntastic_python_flake8_args = ['-m', 'flake8', '--ignore=E501']
 
 let g:indent_guides_guide_size = 1
 
@@ -305,7 +315,11 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-set clipboard+=unnamedplus
+if has('nvim')
+  set clipboard+=unnamedplus
+else
+  set clipboard=unnamed
+endif
 
 
 " Date/Time Stamp
@@ -419,3 +433,4 @@ map <F6> :IndentGuidesToggle<CR>
 "
 " Neoformat
 noremap <Leader>l :Neoformat<CR>
+

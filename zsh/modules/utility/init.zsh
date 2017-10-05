@@ -21,7 +21,7 @@ alias llf='ll -f'
 alias ping='ping -c 2'
 alias df="df -h"
 alias diff="colordiff"
-alias vi="nvim"
+which nvim >/dev/null && alias vi="nvim"
 if [[ -x /opt/local/bin/vim ]]; then
   alias vim="/opt/local/bin/vim"
 fi

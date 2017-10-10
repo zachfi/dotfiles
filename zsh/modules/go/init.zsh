@@ -1,4 +1,4 @@
-if [ -d ~/go ]; then
+if [[ -d "${HOME}/go" ]]; then
   export GOPATH=~/go
   export PATH=$PATH:${GOPATH}/bin
 fi

@@ -1,12 +1,13 @@
 #!/bin/zsh
 
 zstyle ':zdotfiles:load' dotmods \
+  'directory' \
   'environment' \
   'git' \
-  'ruby' \
-  'python' \
+  'go' \
   'puppet' \
-  'directory' \
+  'python' \
+  'ruby' \
   'utility' \
   'window'
 

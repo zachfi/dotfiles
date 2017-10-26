@@ -29,13 +29,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
 Plug 'godlygeek/tabular'
-" Plug 'kien/rainbow_parentheses.vim'
 Plug 'tomtom/tcomment_vim'
-"Plug 'Lokaltog/vim-easymotion'
 Plug 'honza/vim-snippets'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'raimondi/delimitmate'
-"Plug 'valloric/youcompleteme'
 Plug 'tomtom/tcomment_vim'
 Plug 'osyo-manga/vim-over'
 
@@ -53,7 +50,7 @@ Plug 'ap/vim-css-color'
 
 " Lang
 Plug 'vim-ruby/vim-ruby'
-Plug 'jnwhiteh/vim-golang'
+Plug 'fatih/vim-go'
 
 " Frameworks
 Plug 'tpope/vim-rails'

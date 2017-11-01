@@ -156,7 +156,7 @@ set backspace=eol,start,indent
 set cursorline
 set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
-"set redraw
+" set redraw
 set number                 " line numbers
 set rnu                    " use relative numbering
 set wildmenu               " turn on wild menu
@@ -313,6 +313,7 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 if has('nvim')
+  set mouse=a
   set clipboard+=unnamedplus
 else
   set clipboard=unnamed

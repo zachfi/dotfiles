@@ -5,6 +5,7 @@ zstyle ':zdotfiles:load' dotmods \
   'environment' \
   'git' \
   'go' \
+  'mutt' \
   'puppet' \
   'python' \
   'ruby' \

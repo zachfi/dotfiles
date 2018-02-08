@@ -22,19 +22,22 @@ endif
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-scripts/L9'
 
-Plug 'tpope/vim-fugitive'
-Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-eunuch'
 Plug 'godlygeek/tabular'
-Plug 'tomtom/tcomment_vim'
-Plug 'honza/vim-snippets'
+"Plug 'honza/vim-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+"Plug 'msanders/snipmate.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'raimondi/delimitmate'
-Plug 'tomtom/tcomment_vim'
 Plug 'osyo-manga/vim-over'
+"Plug 'raimondi/delimitmate' " Replaced with vim-autoclose
+"Plug 'spf13/snipmate-snippets' "conflicts with vim-snippets
+Plug 'spf13/vim-autoclose'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 " Syntax
 Plug 'scrooloose/syntastic'
@@ -45,7 +48,6 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-git'
 "Plug 'chase/vim-ansible-yaml'
 Plug 'markcornick/vim-terraform'
-Plug 'evanmiller/nginx-vim-syntax'
 Plug 'ap/vim-css-color'
 
 " Lang
@@ -98,21 +100,6 @@ let &t_AF="\e[38;5;%dm"
 let &colorcolumn="80,".join(range(120,999),",")
 
 
-"
-" Colors
-
-if has("gui_running")
-  " colorscheme solarized
-  colorscheme gruvbox
-else
-  " colorscheme focuspoint
-  " colorscheme hybrid
-  " colorscheme jellyx
-  " colorscheme molokai
-  " colorscheme afterglow
-  " colorscheme kalisi
-  colorscheme gruvbox
-endif
 
 " Color configurations
 let g:gruvbox_contrast_dark = 'hard'
@@ -290,6 +277,22 @@ let g:GPGUsePipes = 1
 let g:neoformat_enabled_python = ['autopep8', 'yapf']
 
 
+"
+" Colors
+if has("gui_running")
+  " colorscheme solarized
+  colorscheme onedark
+else
+  " colorscheme focuspoint
+  " colorscheme hybrid
+  " colorscheme jellyx
+  " colorscheme molokai
+  " colorscheme afterglow
+  " colorscheme kalisi
+  " colorscheme gruvbox
+  colorscheme onedark
+endif
+
 " --------------------
 "  Maps
 " --------------------
@@ -324,6 +327,9 @@ endif
 
 " Date/Time Stamp
 map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
+
+" Toggle Tagbar
+map <leader>T :TagbarToggle<CR>
 
 
 " Disable Ruler

@@ -73,6 +73,8 @@ Plug 'sickill/vim-monokai'
 Plug 'tomasr/molokai'
 Plug 'w0ng/vim-hybrid'
 Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
+
 
 " Appearance
 Plug 'vim-airline/vim-airline'

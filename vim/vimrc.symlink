@@ -99,16 +99,22 @@ let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 let &colorcolumn="80,".join(range(120,999),",")
 
+set mouse=a
 
 
 " Color configurations
 let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_hls_cursor = 'green'
 
 set background=dark
 
 "
 "set guifont=Source\ Code\ Pro:h14
-set guifont=Hack\ 12
+if has('nvim')
+  set guifont=Hack\ 12
+else
+  set guifont=Hack:h12
+endif
 set guioptions+=i  " show Vim icon in Taskbar
 set guioptions-=a  "remove autoselect
 set guioptions-=A  "remove autoselect
@@ -147,7 +153,7 @@ set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
 " set redraw
 set number                 " line numbers
-set rnu                    " use relative numbering
+" set rnu                    " use relative numbering
 set wildmenu               " turn on wild menu
 set wildmode=list:longest,full
 " set ch=2                   " command line height
@@ -212,7 +218,9 @@ let g:viewoutput_newbuffer="bot 5new"
 
 "  Airline
 " let g:airline_theme='powerlineish'
-let g:airline_theme='gruvbox'
+" let g:airline_theme='gruvbox'
+let g:airline_theme='onedark'
+
 
 "
 " Printing Options

@@ -7,3 +7,4 @@ elif (( $+commands[pyenv] )); then
   eval "$(pyenv init -)"
 fi
 
+export PYENV_ROOT="${HOME}/.pyenv"

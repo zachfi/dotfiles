@@ -6,7 +6,7 @@ if [[ "$OSTYPE" == linux* ]]; then
   alias ls="ls -sh --color=auto"
   alias grep='grep --color=auto'
 elif [[ "$OSTYPE" == openbsd* ]]; then
-  alias ls="ls -F"
+  which gls >/dev/null && alias ls="gls --color" || alias ls="ls -F"
 else # FreeBSD, OSX, etc
   alias ls="ls -GF"
   alias grep='grep --color=auto'

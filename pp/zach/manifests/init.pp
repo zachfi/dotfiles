@@ -1,7 +1,4 @@
 class zach {
-  if $::kernel == 'Darwin' {
-    include zach::darwin
-  }
 
   file { "${::homedir}/.tmux.conf":
     owner   => $::id,

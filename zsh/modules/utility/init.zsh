@@ -20,13 +20,8 @@ alias lld='ll -d'
 alias llf='ll -f'
 alias ping='ping -c 2'
 alias df="df -h"
-alias diff="colordiff"
+which colordiff > /dev/null && alias diff="colordiff"
 which nvim >/dev/null && alias vi="nvim"
-if [[ -x /opt/local/bin/vim ]]; then
-  alias vim="/opt/local/bin/vim"
-fi
-alias v="mvim -c 'au VimLeave * maca hide:'"
-
 
 alias df='df -kh'
 alias du='du -kh'

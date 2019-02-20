@@ -27,6 +27,9 @@ set-window-option -g window-status-current-fg colour237
 set-window-option -g window-status-current-bg colour166
 set-window-option -g window-status-current-attr bright
 
+# Enable meta key on iterm?
+set-window-option -g xterm-keys on
+
 # pane border
 set-option -g pane-border-fg colour240
 set-option -g pane-border-bg default
@@ -97,10 +100,31 @@ set -g prefix `
 
 # reload config
 bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+bind-key -n M-r source-file ~/.tmux.conf \; display-message "Config reloaded..."
 
-# window splitting
+# Vim detection
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+
+# pass split navigation to vim when present
+bind-key -n M-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
+bind-key -n M-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
+bind-key -n M-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
+bind-key -n M-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
+bind-key -n M-\ if-shell "$is_vim" "send-keys C-\\" "last-window"
+
+
+# window management
 bind | split-window -h
 bind - split-window -v
+bind-key -n M-| split-window -h
+bind-key -n M-- split-window -v
+bind-key -n M-c new-window
+bind \ last-window
+
+# window navigation with meta
+bind-key -n M-n next-window
+bind-key -n M-p previous-window
 
 # Create new session
 bind S new-session
@@ -110,8 +134,7 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
-
-bind \ last-window
+bind-key -n M-z resize-pane -Z
 
 # toggle statusbar
 bind b set-option status

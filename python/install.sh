@@ -16,6 +16,13 @@ else
     git clone $pyenv_url $pyenv_d
 fi
 
+# if OSX
+# CFLAGS="-I$(brew --prefix readline)/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include" \
+# LDFLAGS="-L$(brew --prefix readline)/lib -L$(brew --prefix openssl)/lib" \
+# PYTHON_CONFIGURE_OPTS=--enable-unicode=ucs2 \
+# pyenv install -v 3.6.0
+
+
 
 # install the default version
 $pyenv_d/bin/pyenv install $default_ver

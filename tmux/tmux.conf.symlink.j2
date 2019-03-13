@@ -1,0 +1,159 @@
+# tmux.conf
+
+#start-server
+
+# General tmux settings
+{% if data.osfamily == 'Darwin' -%}
+set -g default-command "reattach-to-user-namespace -l zsh"
+{% endif -%}
+set -g default-terminal "screen-256color"
+#set -g default-terminal "xterm-256color"
+set-option -ga terminal-overrides ",xterm-256color:Tc"
+
+set-option -g status-bg colour234
+set-option -g status-fg colour136 #yellow
+
+# default window title colors
+set-window-option -g window-status-fg colour244 #base0
+set-window-option -g window-status-bg default
+
+#setw -g window-status-bg black
+#setw -g window-status-fg default
+#setw -g window-status-attr default
+#setw -g window-status-format "#I:#W"
+
+# active window title colors
+set-window-option -g window-status-current-fg colour237
+set-window-option -g window-status-current-bg colour166
+set-window-option -g window-status-current-attr bright
+
+# Enable meta key on iterm?
+set-window-option -g xterm-keys on
+
+# pane border
+set-option -g pane-border-fg colour240
+set-option -g pane-border-bg default
+set-option -g pane-active-border-fg colour190
+set-option -g pane-active-border-bg colour0
+
+# pane number display
+set-option -g display-panes-active-colour colour33 #blue
+set-option -g display-panes-colour colour166 #orange
+
+# clock
+set-window-option -g clock-mode-colour green #green
+
+# message text
+set-option -g message-bg colour236
+set-option -g message-fg colour166
+
+set -g status-interval 1
+set -g status-justify left
+set -g status-left-length 20
+set -g status-right-length 200
+
+#set -g status-left '#[fg=green][ #[fg=blue]#P:#H #S #[fg=green]]'
+set -g status-left ' '
+#set -g status-right '#(battery -o tmux) #[fg=green][#[fg=blue]%H:%M:%S %C%y-%m-%d #[fg=green]]'
+set -g status-right ' #[fg=colour190, bg=colour236] %a %d %b #[fg=colour234, bg=colour190] %H:%M:%S #[default]'
+#set -g status-left-length 50
+#set -g status-right-length 50
+#set -g status-justify centre
+#set -g status-interval 3
+set-window-option -g window-status-current-format "#[fg=colour234, bg=colour165] #I #[fg=colour165, bg=colour236] #W #[bg=colour235] #F "
+set-window-option -g window-status-format "#[fg=colour234, bg=colour240] #I #[fg=colour242, bg=colour236] #W #[fg=colour242, bg=colour234] #F "
+
+## Just click it
+#set -g mouse-select-pane on
+#set -g mouse-select-window on
+#set -g mouse-resize-pane on
+
+# --- Window options
+setw -g mode-keys vi
+setw -g automatic-rename on
+setw -g window-status-current-attr underscore
+
+## default window title colors
+
+# active window title colors
+#setw -g window-status-current-bg default
+#setw -g window-status-current-fg green
+#setw -g window-status-current-attr bold
+#setw -g window-status-current-format "<#I:#W>"
+
+# Rather than constraining window size to the maximum size of any client
+# connected to the *session*, constrain window size to the maximum size of any
+# client connected to *that window*. Much more reasonable.
+setw -g aggressive-resize on
+
+## Scroll your way into copy mode (scrollback buffer)
+## and select text for copying with the mouse
+#setw -g mode-mouse on
+
+# Allows for faster key repetition
+set -s escape-time 0
+
+set -g status-keys vi
+
+# --- Key Bindings
+set -g prefix `
+
+# reload config
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+bind-key -n M-r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+
+# Vim detection
+is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+
+# pass split navigation to vim when present
+bind-key -n M-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
+bind-key -n M-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
+bind-key -n M-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
+bind-key -n M-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
+bind-key -n M-\ if-shell "$is_vim" "send-keys C-\\" "select-window -l"
+
+
+# window management
+bind | split-window -h
+bind - split-window -v
+bind-key -n M-| split-window -h
+bind-key -n M-- split-window -v
+bind-key -n M-c new-window
+bind-key -n M-\ last-window
+bind \ last-window
+
+# window navigation with meta
+bind-key -n M-n next-window
+bind-key -n M-p previous-window
+
+# Create new session
+bind S new-session
+
+# Panes
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+bind-key -n M-z resize-pane -Z
+
+# toggle statusbar
+bind b set-option status
+
+# Mouse mode
+set-option -g mouse off
+bind m set-option -g mouse on\; display 'Mouse: ON'
+bind M set-option -g mouse off\; display 'Mouse: OFF'
+
+## Vim keys
+setw -g mode-keys vi
+set -g @shell_mode 'vi'
+#bind ` copy-mode
+bind C-y copy-mode
+unbind [
+unbind p
+bind p paste-buffer
+#bind -t vi-copy v begin-selection
+#bind -t vi-copy y copy-selection
+#bind -t vi-copy Escape cancel
+

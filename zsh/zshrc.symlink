@@ -7,7 +7,6 @@ zstyle ':zdotfiles:load' dotmods \
   'go' \
   'java' \
   'mutt' \
-  'puppet' \
   'python' \
   'ruby' \
   'utility' \

@@ -1,6 +1,6 @@
 UNAME=$(uname)
 
-if [ $UNAME == "Darwin" ]; then
+if [ "${UNAME}" = "Darwin" ]; then
   BINDINGS=/usr/local/opt/fzf/shell/key-bindings.zsh
   COMPLETION=/usr/local/opt/fzf/shell/completion.zsh
 else # Assume Archlinux

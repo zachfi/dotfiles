@@ -1,8 +1,10 @@
 #!/bin/zsh
 
 zstyle ':zdotfiles:load' dotmods \
+  'autosuggestions' \
   'directory' \
   'environment' \
+  'fzf' \
   'git' \
   'go' \
   'java' \

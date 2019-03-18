@@ -103,7 +103,7 @@ set mouse=a
 
 
 " Color configurations
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_hls_cursor = 'green'
 
 set background=dark
@@ -172,6 +172,9 @@ set completeopt=longest,menuone
 
 setlocal comments-=:#
 set hidden              " Enable 'hidden' buffers
+
+set splitright " on vertical split move focus to the right window
+set splitbelow " on horizontal split move focus to the bottom window
 
 "
 " Backups

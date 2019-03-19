@@ -24,3 +24,5 @@ bindkey "^T" transpose-chars
 bindkey "^U" kill-whole-line
 bindkey "^V" quoted-insert
 bindkey "^W" backward-kill-word
+
+bindkey '^ ' autosuggest-accept

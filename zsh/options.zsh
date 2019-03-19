@@ -32,6 +32,7 @@ setopt INC_APPEND_HISTORY      # write history as soon as its entered
 setopt EXTENDED_HISTORY        # write timestamp to the file
 setopt HIST_IGNORE_SPACE       # commands beginning with spaces are ommitted from history
 setopt HIST_IGNORE_DUPS        # do not write duplicate history
+setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_VERIFY             # when using ! cmds, confirm first
 
 #

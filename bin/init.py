@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 
-import symlinks
 import os
 
 from dotfiles import Dotfiles

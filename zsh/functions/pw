@@ -1,0 +1,4 @@
+function pw {
+  gopass $(gopass list -f  | fzf)
+}
+

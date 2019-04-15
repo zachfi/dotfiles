@@ -4,6 +4,7 @@ zstyle ':zdotfiles:load' dotmods \
   'autosuggestions' \
   'directory' \
   'environment' \
+  'highlighting' \
   'fzf' \
   'git' \
   'go' \

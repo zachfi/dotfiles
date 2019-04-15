@@ -52,7 +52,8 @@ Plug 'ap/vim-css-color'
 
 " Lang
 Plug 'vim-ruby/vim-ruby'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 
 " Frameworks
 Plug 'tpope/vim-rails'

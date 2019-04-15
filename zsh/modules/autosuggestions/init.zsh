@@ -8,5 +8,6 @@ fi
 
 if [ -s "${SUGGFILE}" ]; then
   source $SUGGFILE
+  export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=074"
 fi
 

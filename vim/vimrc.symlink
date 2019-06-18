@@ -190,13 +190,6 @@ set ignorecase             " ignore case when searching
 set smartcase              " ... unless ther's a cApItOl"
 
 "
-"  Highlight
-highlight Comment         ctermfg=DarkGrey guifg=#444444
-highlight StatusLineNC    ctermfg=Black    ctermbg=DarkGrey cterm=bold
-highlight StatusLine      ctermbg=Black    ctermfg=LightGrey
-highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
-
-"
 " Highlight Trailing Whitespace
 set list
 set listchars=tab:»·,trail:·
@@ -221,10 +214,6 @@ let g:AutoComplPop_NotEnableAtStartup = 1
 "----- viewoutput configuration
 let g:viewoutput_newbuffer="bot 5new"
 
-"  Airline
-" let g:airline_theme='powerlineish'
-" let g:airline_theme='gruvbox'
-let g:airline_theme='onedark'
 
 
 "
@@ -265,32 +254,72 @@ au FileType sh                   set expandtab shiftwidth=4 tabstop=4 cindent so
 au FileType yaml                 set expandtab shiftwidth=2 tabstop=2 cindent softtabstop=2
 
 " --------------------
+"  Lang: GO
+" --------------------
+au FileType go nmap <F8> :GoMetaLinter<cr>
+au FileType go nmap <F9> :GoCoverageToggle -short<cr>
+au FileType go nmap <F10> :GoTest -short<cr>
+au FileType go nmap <F12> <Plug>(go-def)
+au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
+au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
+au FileType go nmap <leader>gt :GoDeclsDir<cr>
+au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
+au FileType go nmap <leader>gd <Plug>(go-def)
+au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
+au FileType go nmap <leader>gdh <Plug>(go-def-split)
+au FileType go nmap <leader>gD <Plug>(go-doc)
+au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
+au FileType go highlight goField ctermfg=cyan
+
+" vim-go
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+" let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+"let g:go_auto_type_info = 1
+let g:go_snippet_engine = "neosnippet"
+let g:go_gocode_propose_source = 1
+
+
+" --------------------
 "  Plugin specifics
 " --------------------
-let g:syntastic_puppet_checkers = ['puppetlint', 'puppet']
-let g:syntastic_puppet_puppetlint_args = '--no-80chars-check --no-documentation-check --no-class_parameter_defaults-check --no-class_inherits_from_params_class-check'
-
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_exe = 'python3'
-let g:syntastic_python_flake8_args = ['-m', 'flake8', '--ignore=E501']
+if has('nvim')
+    " Enable deoplete on startup
+    let g:deoplete#enable_at_startup = 1
+endif
 
 let g:indent_guides_guide_size = 1
 
-let g:pymode_python = 'python3'
 let python_highlight_all = 1
-let g:python3_host_prog = '/home/zach/local/vim-py3/bin/python'
-let g:python_host_prog = '/home/zach/local/vim-py2.7/bin/python'
+let g:python3_host_prog = '/Users/zleslie/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/Users/zleslie/.pyenv/versions/neovim2/bin/python'
 
-let g:deoplete#enable_at_startup = 1
 
+" GnuPG
 let g:GPGPreferArmor = 1
 let g:GPGPreferDefaultRecipients = 0x7E546894A12BF8B0
 let g:GPGUsePipes = 1
 
+" Neoformat
 let g:neoformat_enabled_python = ['autopep8', 'yapf']
 
+" Ale"
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
 
-"
+"  Airline
+let g:airline_theme='onedark'
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+
 " Colors
 if has("gui_running")
   " colorscheme solarized
@@ -305,6 +334,14 @@ else
   " colorscheme gruvbox
   colorscheme onedark
 endif
+
+"  Highlight
+highlight Comment         ctermfg=DarkGrey guifg=#444444
+highlight StatusLineNC    ctermfg=Black    ctermbg=DarkGrey cterm=bold
+highlight StatusLine      ctermbg=Black    ctermfg=LightGrey
+highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
+highlight Search          ctermfg=Black    ctermbg=LightBlue
+
 
 " --------------------
 "  Maps
@@ -344,12 +381,11 @@ map <leader>t a<c-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><Esc>
 " Toggle Tagbar
 map <leader>T :TagbarToggle<CR>
 
-
 " Disable Ruler
 nnoremap <F7> :set nonumber!<CR>
 
 " Replace DNS ZONE SOA
-nnoremap <F8> /\<\d\{10}\><CR>ce<C-r>=strftime("%Y%m%d00")<CR><Esc>:echo @"<CR>
+" nnoremap <F8> /\<\d\{10}\><CR>ce<C-r>=strftime("%Y%m%d00")<CR><Esc>:echo @"<CR>
 
 " Clear search highlights
 noremap <silent><leader>/ :nohls<CR>
@@ -408,7 +444,7 @@ nmap <leader>l :set list!<CR>
 nnoremap <C-n> :tabnext<CR>
 nnoremap <C-p> :tabprevious<CR>
 nnoremap <C-t> :tabnew<CR>
-nnoremap <C-k> :tabclose<CR>
+" nnoremap <C-k> :tabclose<CR>
 
 "
 "  FuzzyFinder
@@ -442,14 +478,28 @@ noremap <Leader>f :CtrlPCurFile<CR>
 noremap <Leader>d :CtrlP<CR>
 noremap <Leader>s :CtrlP 
 noremap <Leader>b :CtrlPBuffer<CR>
-noremap <Leader>v :CtrlPMixed<CR>
+""noremap <Leader>v :CtrlPMixed<CR>
 noremap <Leader>m :CtrlPMRU<CR>
 
-"
+" Vimux
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+
+" Zoom the tmux runner pane
+map <Leader>vz :VimuxZoomRunner<CR>
+
+" Close the tmux runner pane
+map <Leader>vc :VimuxCloseRunner<CR>
+
 "  Intent Guides
 map <F6> :IndentGuidesToggle<CR>
 
-"
 " Neoformat
 noremap <Leader>l :Neoformat<CR>
 

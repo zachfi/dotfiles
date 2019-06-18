@@ -17,20 +17,19 @@ if has('nvim')
   Plug 'fishbullet/deoplete-ruby'
   Plug 'sbdchd/neoformat'
   Plug 'Shougo/denite.nvim'
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
 endif
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-scripts/L9'
 
 Plug 'godlygeek/tabular'
-"Plug 'honza/vim-snippets'
+Plug 'jamessan/vim-gnupg'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
-"Plug 'msanders/snipmate.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'osyo-manga/vim-over'
-"Plug 'raimondi/delimitmate' " Replaced with vim-autoclose
-"Plug 'spf13/snipmate-snippets' "conflicts with vim-snippets
 Plug 'spf13/vim-autoclose'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
@@ -40,20 +39,19 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
 " Syntax
-Plug 'scrooloose/syntastic'
-Plug 'voxpupuli/vim-puppet'
-Plug 'hdima/python-syntax'
-Plug 'elzr/vim-json'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-git'
-"Plug 'chase/vim-ansible-yaml'
-Plug 'markcornick/vim-terraform'
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'ap/vim-css-color'
+Plug 'elzr/vim-json'
+Plug 'hdima/python-syntax'
+Plug 'markcornick/vim-terraform'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-markdown'
+Plug 'voxpupuli/vim-puppet'
+Plug 'w0rp/ale'
 
 " Lang
 Plug 'vim-ruby/vim-ruby'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 
 " Frameworks
 Plug 'tpope/vim-rails'
@@ -62,28 +60,31 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-bundler'
 
 " Colors
+Plug 'Reewr/vim-monokai-phoenix'
 Plug 'chase/focuspoint-vim'
 Plug 'chriskempson/base16-vim'
 Plug 'colepeters/spacemacs-theme.vim'
 Plug 'danilo-augusto/vim-afterglow'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'fatih/molokai'
 Plug 'freeo/vim-kalisi'
 Plug 'guns/jellyx.vim'
 Plug 'jnurmine/Zenburn'
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 Plug 'noahfrederick/vim-noctu'
-Plug 'Reewr/vim-monokai-phoenix'
 Plug 'robertmeta/nofrils'
 Plug 'sickill/vim-monokai'
-Plug 'tomasr/molokai'
 Plug 'w0ng/vim-hybrid'
-Plug 'morhetz/gruvbox'
-Plug 'joshdick/onedark.vim'
 
+" Tmux
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'jamessan/vim-gnupg'
 
 call plug#end()
 

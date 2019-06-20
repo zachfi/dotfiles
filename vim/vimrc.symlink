@@ -73,6 +73,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 Plug 'noahfrederick/vim-noctu'
+Plug 'rakr/vim-one'
 Plug 'robertmeta/nofrils'
 Plug 'sickill/vim-monokai'
 Plug 'w0ng/vim-hybrid'
@@ -103,12 +104,11 @@ let &colorcolumn="80,".join(range(120,999),",")
 
 set mouse=a
 
+set termguicolors
 
 " Color configurations
 let g:gruvbox_contrast_dark = 'medium'
 let g:gruvbox_hls_cursor = 'green'
-
-set background=dark
 
 "
 "set guifont=Source\ Code\ Pro:h14
@@ -270,7 +270,7 @@ au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
 au FileType go nmap <leader>gdh <Plug>(go-def-split)
 au FileType go nmap <leader>gD <Plug>(go-doc)
 au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
-au FileType go highlight goField ctermfg=cyan
+au FileType go highlight goField ctermfg=cyan guifg=#56b6c2
 
 " vim-go
 " let g:go_highlight_build_constraints = 1
@@ -316,14 +316,14 @@ let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 
 "  Airline
-let g:airline_theme='onedark'
+let g:airline_theme='one'
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 
 " Colors
 if has("gui_running")
   " colorscheme solarized
-  colorscheme onedark
+  colorscheme one
 else
   " colorscheme focuspoint
   " colorscheme hybrid
@@ -332,15 +332,17 @@ else
   " colorscheme afterglow
   " colorscheme kalisi
   " colorscheme gruvbox
-  colorscheme onedark
+  colorscheme one
 endif
+
+set background=dark
 
 "  Highlight
 highlight Comment         ctermfg=DarkGrey guifg=#444444
 highlight StatusLineNC    ctermfg=Black    ctermbg=DarkGrey cterm=bold
 highlight StatusLine      ctermbg=Black    ctermfg=LightGrey
 highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
-highlight Search          ctermfg=Black    ctermbg=LightBlue
+highlight Search          ctermfg=Black    ctermbg=LightBlue guibg=LightBlue
 
 
 " --------------------

@@ -1,7 +1,7 @@
 " Use Pathogen for plugins
 "execute pathogen#infect()
 
-set nocompatible              " be iMproved, required
+" set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " Use vim-plug for plugins
@@ -52,6 +52,8 @@ Plug 'w0rp/ale'
 " Lang
 Plug 'vim-ruby/vim-ruby'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+
 
 " Frameworks
 Plug 'tpope/vim-rails'
@@ -164,7 +166,8 @@ set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
 set showmode
-set statusline=%F%m%r%h%w\ %#LineNr#%{fugitive#statusline()}%#StatusLine#\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%F%m%r%h%w\ %{coc#status()}\ %#LineNr#%{fugitive#statusline()}%#StatusLine#\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+
 set scrolloff=3
 "set ttyfast
 "set showcmd                " Show (partial) command in status line.
@@ -174,6 +177,9 @@ set completeopt=longest,menuone
 
 setlocal comments-=:#
 set hidden              " Enable 'hidden' buffers
+set cmdheight=2         " Better display for messages
+set updatetime=300
+set signcolumn=yes
 
 set splitright " on vertical split move focus to the right window
 set splitbelow " on horizontal split move focus to the bottom window
@@ -231,118 +237,6 @@ map ,s :call StripWhitespace ()<CR>
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 set spelllang=en_us
-
-" --------------------
-"  Type specific things
-" --------------------
-au BufRead,BufNewFile *.md       set wrap linebreak spell filetype=markdown
-au BufRead,BufNewFile *.markdown set wrap linebreak spell filetype=markdown
-au BufRead,BufNewFile *pf.conf*  set filetype=pf
-au BufRead,BufNewFile *.py       set softtabstop=4 shiftwidth=4 tabstop=4
-au BufRead,BufNewFile *.rb       set softtabstop=2 shiftwidth=2 tabstop=2
-au BufRead,BufNewFile *.yml      set softtabstop=2 shiftwidth=2 tabstop=2
-au BufRead,BufNewFile *.ddl      set filetype=mcollective_ddl
-au BufRead,BufNewFile *.aug      set filetype=augeas
-"au FileType gitcommit DiffGitCached | wincmd v
-au BufRead $HOME/.mutt/temp*     set syntax=mail
-au Filetype mail                 set textwidth=72 wrap spell 
-au Filetype mail                 set fo+=aw
-au Filetype mail                 color molokai
-au Filetype gitcommit            set textwidth=80 wrap spell
-au FileType make                 set noexpandtab shiftwidth=8 tabstop=8 cindent softtabstop=0
-au FileType sh                   set expandtab shiftwidth=4 tabstop=4 cindent softtabstop=4
-au FileType yaml                 set expandtab shiftwidth=2 tabstop=2 cindent softtabstop=2
-
-" --------------------
-"  Lang: GO
-" --------------------
-au FileType go nmap <F8> :GoMetaLinter<cr>
-au FileType go nmap <F9> :GoCoverageToggle -short<cr>
-au FileType go nmap <F10> :GoTest -short<cr>
-au FileType go nmap <F12> <Plug>(go-def)
-au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
-au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
-au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
-au FileType go nmap <leader>gt :GoDeclsDir<cr>
-au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
-au FileType go nmap <leader>gd <Plug>(go-def)
-au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
-au FileType go nmap <leader>gdh <Plug>(go-def-split)
-au FileType go nmap <leader>gD <Plug>(go-doc)
-au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
-au FileType go highlight goField ctermfg=cyan guifg=#56b6c2
-
-" vim-go
-" let g:go_highlight_build_constraints = 1
-" let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-" let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-" let g:go_auto_sameids = 1
-let g:go_fmt_command = "goimports"
-"let g:go_auto_type_info = 1
-let g:go_snippet_engine = "neosnippet"
-let g:go_gocode_propose_source = 1
-
-
-" --------------------
-"  Plugin specifics
-" --------------------
-if has('nvim')
-    " Enable deoplete on startup
-    let g:deoplete#enable_at_startup = 1
-endif
-
-let g:indent_guides_guide_size = 1
-
-let python_highlight_all = 1
-let g:python3_host_prog = '/Users/zleslie/.pyenv/versions/neovim3/bin/python'
-let g:python_host_prog = '/Users/zleslie/.pyenv/versions/neovim2/bin/python'
-
-
-" GnuPG
-let g:GPGPreferArmor = 1
-let g:GPGPreferDefaultRecipients = 0x7E546894A12BF8B0
-let g:GPGUsePipes = 1
-
-" Neoformat
-let g:neoformat_enabled_python = ['autopep8', 'yapf']
-
-" Ale"
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-
-"  Airline
-let g:airline_theme='one'
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
-
-" Colors
-if has("gui_running")
-  " colorscheme solarized
-  colorscheme one
-else
-  " colorscheme focuspoint
-  " colorscheme hybrid
-  " colorscheme jellyx
-  " colorscheme molokai
-  " colorscheme afterglow
-  " colorscheme kalisi
-  " colorscheme gruvbox
-  colorscheme one
-endif
-
-set background=dark
-
-"  Highlight
-highlight Comment         ctermfg=DarkGrey guifg=#444444
-highlight StatusLineNC    ctermfg=Black    ctermbg=DarkGrey cterm=bold
-highlight StatusLine      ctermbg=Black    ctermfg=LightGrey
-highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
-highlight Search          ctermfg=Black    ctermbg=LightBlue guibg=LightBlue
 
 
 " --------------------
@@ -504,4 +398,171 @@ map <F6> :IndentGuidesToggle<CR>
 
 " Neoformat
 noremap <Leader>l :Neoformat<CR>
+
+" CoC
+
+" Use <Tab> and <S-Tab> to navigate the completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+" vmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+" --------------------
+"  Type specific things
+" --------------------
+au BufRead,BufNewFile *.md       set wrap linebreak spell filetype=markdown
+au BufRead,BufNewFile *.markdown set wrap linebreak spell filetype=markdown
+au BufRead,BufNewFile *pf.conf*  set filetype=pf
+au BufRead,BufNewFile *.py       set softtabstop=4 shiftwidth=4 tabstop=4
+au BufRead,BufNewFile *.rb       set softtabstop=2 shiftwidth=2 tabstop=2
+au BufRead,BufNewFile *.yml      set softtabstop=2 shiftwidth=2 tabstop=2
+au BufRead,BufNewFile *.ddl      set filetype=mcollective_ddl
+au BufRead,BufNewFile *.aug      set filetype=augeas
+"au FileType gitcommit DiffGitCached | wincmd v
+au BufRead $HOME/.mutt/temp*     set syntax=mail
+au Filetype mail                 set textwidth=72 wrap spell 
+au Filetype mail                 set fo+=aw
+au Filetype mail                 color molokai
+au Filetype gitcommit            set textwidth=80 wrap spell
+au FileType make                 set noexpandtab shiftwidth=8 tabstop=8 cindent softtabstop=0
+au FileType sh                   set expandtab shiftwidth=4 tabstop=4 cindent softtabstop=4
+au FileType yaml                 set expandtab shiftwidth=2 tabstop=2 cindent softtabstop=2
+
+" --------------------
+"  Lang: GO
+" --------------------
+au FileType go nmap <F8> :GoMetaLinter<cr>
+au FileType go nmap <F9> :GoCoverageToggle -short<cr>
+au FileType go nmap <F10> :GoTest -short<cr>
+au FileType go nmap <F12> <Plug>(go-def)
+au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
+au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
+au FileType go nmap <leader>gt :GoDeclsDir<cr>
+au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
+au FileType go nmap <leader>gd <Plug>(go-def)
+au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
+au FileType go nmap <leader>gdh <Plug>(go-def-split)
+au FileType go nmap <leader>gD <Plug>(go-doc)
+au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
+au FileType go highlight goField ctermfg=cyan guifg=#56b6c2
+
+
+" vim-go
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+" let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+" let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+"let g:go_auto_type_info = 1
+let g:go_snippet_engine = "neosnippet"
+let g:go_gocode_propose_source = 1
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
+let g:go_def_mapping_enabled = 0 " disable vim-go :GoDef short cut (gd)
+
+
+
+
+" --------------------
+"  Plugin specifics
+" --------------------
+if has('nvim')
+    " Enable deoplete on startup
+    let g:deoplete#enable_at_startup = 1
+endif
+
+let g:indent_guides_guide_size = 1
+
+let python_highlight_all = 1
+let g:python3_host_prog = '/Users/zleslie/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/Users/zleslie/.pyenv/versions/neovim2/bin/python'
+
+
+" GnuPG
+let g:GPGPreferArmor = 1
+let g:GPGPreferDefaultRecipients = 0x7E546894A12BF8B0
+let g:GPGUsePipes = 1
+
+" Neoformat
+let g:neoformat_enabled_python = ['autopep8', 'yapf']
+
+" Ale"
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
+"  Airline
+let g:airline_theme='one'
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+
+" Colors
+if has("gui_running")
+  " colorscheme solarized
+  colorscheme one
+else
+  " colorscheme focuspoint
+  " colorscheme hybrid
+  " colorscheme jellyx
+  " colorscheme molokai
+  " colorscheme afterglow
+  " colorscheme kalisi
+  " colorscheme gruvbox
+  colorscheme one
+endif
+
+
+set background=dark
+
+"  Highlight
+"highlight Comment         ctermfg=DarkGrey guifg=#444444
+highlight StatusLineNC    ctermfg=Black    ctermbg=DarkGrey cterm=bold
+highlight StatusLine      ctermbg=Black    ctermfg=LightGrey
+highlight SpecialKey      ctermfg=DarkGray ctermbg=Black
+highlight Search          ctermfg=Black    ctermbg=LightBlue guibg=LightBlue
 

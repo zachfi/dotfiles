@@ -3,6 +3,9 @@ UNAME=$(uname)
 if [ "${UNAME}" = "Darwin" ]; then
   BINDINGS=/usr/local/opt/fzf/shell/key-bindings.zsh
   COMPLETION=/usr/local/opt/fzf/shell/completion.zsh
+elif [ "${UNAME}" = "FreeBSD" ]; then
+  BINDINGS=/usr/local/share/examples/fzf/shell/key-bindings.zsh
+  COMPLETION=/usr/local/share/examples/fzf/shell/completion.zsh
 else # Assume Archlinux
   BINDINGS=/usr/share/fzf/key-bindings.zsh
   COMPLETION=/usr/share/fzf/completion.zsh

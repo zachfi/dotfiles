@@ -7,18 +7,10 @@ filetype off                  " required
 " Use vim-plug for plugins
 call plug#begin('~/.vim/plugged')
 
+
 " Editing
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/vimshell.vim'
-  Plug 'zchee/deoplete-jedi'
-  Plug 'zchee/deoplete-go'
-  Plug 'zchee/deoplete-zsh'
-  Plug 'fishbullet/deoplete-ruby'
   Plug 'sbdchd/neoformat'
-  Plug 'Shougo/denite.nvim'
-  Plug 'Shougo/neosnippet.vim'
-  Plug 'Shougo/neosnippet-snippets'
 endif
 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -333,10 +325,6 @@ nmap <leader>l :set list!<CR>
 
 "
 " Tabs
-"nnoremap <silent><CSI>] :tabnext<CR>
-"nnoremap <silent><CSI>[ :tabprevious<CR>
-"nnoremap <silent><S-n> :tabnext<CR>
-"nnoremap <silent><S-p> :tabprevious<CR>
 nnoremap <C-n> :tabnext<CR>
 nnoremap <C-p> :tabprevious<CR>
 nnoremap <C-t> :tabnew<CR>
@@ -533,20 +521,12 @@ let g:go_gocode_propose_source = 1
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-
 let g:go_def_mapping_enabled = 0 " disable vim-go :GoDef short cut (gd)
-
-
 
 
 " --------------------
 "  Plugin specifics
 " --------------------
-if has('nvim')
-    " Enable deoplete on startup
-    let g:deoplete#enable_at_startup = 1
-endif
-
 let g:indent_guides_guide_size = 1
 
 let python_highlight_all = 1
@@ -562,7 +542,7 @@ let g:GPGUsePipes = 1
 " Neoformat
 let g:neoformat_enabled_python = ['autopep8', 'yapf']
 
-" Ale"
+" Ale
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 
@@ -570,6 +550,7 @@ let g:ale_sign_warning = '⚠'
 let g:airline_theme='one'
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
+
 
 " Colors
 if has("gui_running")

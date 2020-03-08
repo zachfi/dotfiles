@@ -4,7 +4,7 @@
 
 set -e
 
-default_ver="3.7.6"
+default_ver="3.8.2"
 pyenv_url="https://github.com/yyuu/pyenv.git"
 pyenv_d="${HOME}/.pyenv"
 

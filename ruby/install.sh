@@ -4,7 +4,7 @@
 
 set -e
 
-default_ver="2.5.3"
+default_ver="2.7.0"
 rbenv_url="https://github.com/sstephenson/rbenv.git"
 rbenv_build_url="https://github.com/sstephenson/ruby-build.git"
 rbenv_d="${HOME}/.rbenv"

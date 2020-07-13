@@ -524,6 +524,7 @@ let g:go_gocode_propose_source = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_def_mapping_enabled = 0 " disable vim-go :GoDef short cut (gd)
+let g:go_code_completion_enabled = 0
 
 
 " --------------------

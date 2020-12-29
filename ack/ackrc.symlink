@@ -4,3 +4,5 @@
 --ignore-case
 --type-set=puppet=.pp
 --type-set=ldif=.ldif
+--ignore-dir=vendor
+--ignore-dir=coverage

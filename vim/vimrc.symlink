@@ -13,8 +13,10 @@ if has('nvim')
   Plug 'sbdchd/neoformat'
 endif
 
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'vim-scripts/L9'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'vim-scripts/L9'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'godlygeek/tabular'
 Plug 'jamessan/vim-gnupg'
@@ -332,14 +334,26 @@ nnoremap <C-t> :tabnew<CR>
 
 "
 "  FuzzyFinder
-"noremap <Leader>f :FufFileWithCurrentBufferDir<CR>
-"noremap <Leader>F :FufFile<CR>
-"noremap <Leader>v :FufCoverageFile<CR>
-"noremap <Leader>b :FufBuffer<CR>
-"noremap <Leader>c :FufDirWithFullCwd<CR>
-"noremap <Leader>u :FufRenewCache<CR>
-"noremap <Leader>w :bdelete<CR>
-"noremap <F1> :FufHelp<CR>
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R'
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+
+let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
+
+
+" noremap <Leader>v :FufCoverageFile<CR>
+" noremap <Leader>w :bdelete<CR>
+" noremap <F1> :FufHelp<CR>
+noremap <Leader>d :Files<CR>
+noremap <Leader>b :Buffers<CR>
+noremap <Leader>f :Files <C-R>=expand('%:h')<CR><CR>
+
+
 
 "
 "  Tabularize
@@ -353,17 +367,18 @@ vnoremap <Leader>a: :Tabularize /:\zs<CR>
 "
 "  CtrlP
 "let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_cmd = 'CtrlP'
 "let g:ctrlp_working_path_mode = 'ra'
 "let g:ctrlp_working_path_mode = 'c'
-let g:ctrlp_working_path_mode = '0'
-let g:ctrlp_show_hidden = 1
-noremap <Leader>f :CtrlPCurFile<CR>
-noremap <Leader>d :CtrlP<CR>
-noremap <Leader>s :CtrlP 
-noremap <Leader>b :CtrlPBuffer<CR>
+" let g:ctrlp_working_path_mode = '0'
+" let g:ctrlp_show_hidden = 1
+" noremap <Leader>f :CtrlPCurFile<CR>
+" noremap <Leader>d :CtrlP<CR>
+" noremap <Leader>s :CtrlP 
+" noremap <Leader>b :CtrlPBuffer<CR>
 ""noremap <Leader>v :CtrlPMixed<CR>
-noremap <Leader>m :CtrlPMRU<CR>
+" noremap <Leader>m :CtrlPMRU<CR>
+
 
 " Vimux
 " Prompt for a command to run

@@ -74,6 +74,7 @@ Plug 'rakr/vim-one'
 Plug 'robertmeta/nofrils'
 Plug 'sickill/vim-monokai'
 Plug 'w0ng/vim-hybrid'
+Plug 'arcticicestudio/nord-vim'
 
 " Tmux
 Plug 'benmills/vimux'

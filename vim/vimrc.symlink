@@ -42,7 +42,7 @@ Plug 'markcornick/vim-terraform'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-markdown'
 Plug 'voxpupuli/vim-puppet'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Lang
 Plug 'vim-ruby/vim-ruby'

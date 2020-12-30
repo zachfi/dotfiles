@@ -209,10 +209,6 @@ set laststatus=2
 " These are files we are not likely to want to edit or read.
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
-"
-" Disable autocompletion popup.
-let g:AutoComplPop_NotEnableAtStartup = 1
-
 "----- viewoutput configuration
 let g:viewoutput_newbuffer="bot 5new"
 

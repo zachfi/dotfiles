@@ -3,6 +3,7 @@ cask_args appdir: '/Applications'
 tap 'caskroom/homebrew-cask' || true
 
 # CLI
+
 brew 'ack'
 brew 'aspell'
 brew 'certigo'
@@ -34,12 +35,12 @@ brew 'rbenv'
 brew 'rbenv-gemset'
 brew 'readline'
 brew 'reattach-to-user-namespace'
+brew 'ripgrep'
 brew 'ruby-build'
 brew 'syncthing'
 brew 'terraform'
 brew 'tmux'
 brew 'zsh'
-
 # Apps
 cask 'alfred'
 cask 'apache-directory-studio'

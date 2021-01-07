@@ -34,7 +34,8 @@ if which ack-grep >/dev/null 2>&1
 then
     alias ack=ack-grep
 fi
-# Catch if we don't have it. Alias returns 0 too.
+
+# Catch if we don't have ack. Alias returns 0 too.
 if which ack >/dev/null 2>&1
 then
     # add a function to wrap around ack.
@@ -62,4 +63,29 @@ then
     }
 fi
 
-
+# Catch if we don't have rg. Alias returns 0 too.
+if which rg >/dev/null 2>&1
+then
+    # add a function to wrap around rg.
+    vrg()
+    {
+        if [ $#[@] -eq 1 ]
+        then
+            # We could have more args (like a dir, whatever..), so if we just
+            # have one, assume that whole thing is the string to search for.
+            # Also make vim go to the first line, then search for it
+            # (otherwise wrapscan can get in the way).
+            if [ "$(uname)" = "Linux" ]; then
+              rg --color never -l "$@" | xargs nvim +1 +/"$@"
+            else
+              rg --color never -l "$@" | xargs -o vi +1 +/"$@"
+            fi
+        else
+            if [ "$(uname)" = "Linux" ]; then
+              rg --color never -l "$@" | xargs nvim
+            else
+              rg --color never -l $@ | xargs -o vi
+            fi
+        fi
+    }
+fi

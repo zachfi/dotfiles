@@ -1,0 +1,3 @@
+supervim() {
+  ps -l | grep vim | grep -v grep | awk '$7 == 0 { print $2 }' | xargs -I {} sudo renice -5 {}
+}

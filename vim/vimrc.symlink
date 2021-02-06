@@ -342,6 +342,7 @@ let g:fzf_tags_command = 'ctags -R'
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
+let g:fzf_file_exclude = 'vendor'
 
 
 " noremap <Leader>v :FufCoverageFile<CR>
@@ -487,7 +488,7 @@ au BufRead,BufNewFile *.rb       set softtabstop=2 shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.yml      set softtabstop=2 shiftwidth=2 tabstop=2
 au BufRead,BufNewFile *.ddl      set filetype=mcollective_ddl
 au BufRead,BufNewFile *.aug      set filetype=augeas
-au BufRead,BufNewFile *.tmpl      set filetype=gotexttmpl
+au BufRead,BufNewFile *.tmpl     set filetype=gotexttmpl
 
 "au FileType gitcommit DiffGitCached | wincmd v
 au BufRead $HOME/.mutt/temp*     set syntax=mail
@@ -540,6 +541,8 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_def_mapping_enabled = 0 " disable vim-go :GoDef short cut (gd)
 let g:go_code_completion_enabled = 0
+
+let g:go_build_tags = 'unit,integration'
 
 
 " --------------------

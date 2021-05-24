@@ -42,6 +42,7 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-markdown'
 Plug 'voxpupuli/vim-puppet'
 Plug 'dense-analysis/ale'
+Plug 'jjo/vim-cue'
 
 " Lang
 Plug 'vim-ruby/vim-ruby'

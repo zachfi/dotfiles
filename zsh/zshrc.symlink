@@ -1,4 +1,5 @@
 #!/bin/zsh
+# zmodload zsh/zprof
 
 zstyle ':zdotfiles:load' dotmods \
   'autosuggestions' \
@@ -23,3 +24,5 @@ fi
 
 # source every .zsh file in this repo
 #for config_file ($ZSH/**/*.zsh) source $config_file
+
+# zprof

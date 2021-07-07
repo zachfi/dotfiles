@@ -13,6 +13,7 @@ zle -N edit-command-line
 
 # set the function path
 fpath=($ZSH/functions $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit; compinit

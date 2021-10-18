@@ -33,16 +33,18 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 
 " Syntax
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'ap/vim-css-color'
+Plug 'dense-analysis/ale'
 Plug 'elzr/vim-json'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'google/vim-jsonnet'
 Plug 'hdima/python-syntax'
+Plug 'jjo/vim-cue'
 Plug 'markcornick/vim-terraform'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-markdown'
 Plug 'voxpupuli/vim-puppet'
-Plug 'dense-analysis/ale'
-Plug 'jjo/vim-cue'
+
 
 " Lang
 Plug 'vim-ruby/vim-ruby'

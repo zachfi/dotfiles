@@ -131,7 +131,7 @@ local sumneko_root_path = '/home/zach/src/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
 
 require'lspconfig'.sumneko_lua.setup {
-  cmd = {"home/zach/bin/lua-", "-E", sumneko_root_path .. "/main.lua"};
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
 }
 
 -- set a formatter if you want to override the default lsp one (if it exists)

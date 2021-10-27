@@ -1,14 +1,40 @@
 -- functions
-function find_files_relative(opts)
+function FindFilesRelative(opts)
   opts = opts or {}
-  local utils = require "telescope.themes"
   local themes = require "telescope.themes"
   local theme_opts = themes.get_dropdown {
     sorting_strategy = "ascending",
-    layout_strategy = "bottom_pane",
+    layout_strategy = "center",
     prompt_prefix = ">> ",
-    prompt_title = "~ relative files ~",
+    prompt_title = "~ find relative files ~",
     cwd = require("telescope.utils").buffer_dir(),
+    layout_config = {
+        center = {
+          preview_cutoff = 1200,
+          height = 0.7,
+          width = 0.8
+        },
+    }
+  }
+  opts = vim.tbl_deep_extend("force", theme_opts, opts)
+  require("telescope.builtin").find_files(opts)
+end
+
+function FindFiles(opts)
+  opts = opts or {}
+  local themes = require "telescope.themes"
+  local theme_opts = themes.get_dropdown {
+    sorting_strategy = "ascending",
+    layout_strategy = "center",
+    prompt_prefix = ">> ",
+    prompt_title = "~ find files ~",
+    layout_config = {
+        center = {
+          preview_cutoff = 1200,
+          height = 0.7,
+          width = 0.8
+        },
+    }
   }
   opts = vim.tbl_deep_extend("force", theme_opts, opts)
   require("telescope.builtin").find_files(opts)
@@ -41,6 +67,8 @@ lvim.keys.normal_mode["<C-t>"] = ":tabnew<cr>"
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- lvim.builtin.telescope.on_config_done = function()
 
+lvim.builtin.cmp.preselect = true
+
 local actions = require("telescope.actions")
 lvim.builtin.telescope.defaults.mappings = {
   i = {
@@ -61,8 +89,8 @@ lvim.builtin.terminal.open_mapping = [[<C-\>]]
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["/"] = { ":nohls<CR>", "Clear Search" }
-lvim.builtin.which_key.mappings["d"] = { "<cmd>Telescope find_files<CR>", "Find File" }
-lvim.builtin.which_key.mappings["f"] = { "<cmd>lua find_files_relative()<CR>", "Find Relative File" }
+lvim.builtin.which_key.mappings["d"] = { "<cmd>lua FindFiles({path_display=truncate})<CR>", "Find files from working directory" }
+lvim.builtin.which_key.mappings["f"] = { "<cmd>lua FindFilesRelative({path_display=truncate})<CR>", "Find files relative to the current buffer" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
 --   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -135,6 +163,11 @@ require'lspconfig'.sumneko_lua.setup {
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
 }
 
+lvim.lang.go.formatters = {{ exe = "goimports" }}
+-- local dap_install = require "dap-install"
+-- dap_install.config("go_delve", {})
+
+
 -- set a formatter if you want to override the default lsp one (if it exists)
 -- lvim.lang.python.formatters = {
 --   {
@@ -151,11 +184,8 @@ require'lspconfig'.sumneko_lua.setup {
 -- Additional Plugins
 lvim.plugins = {
   {"google/vim-jsonnet"},
---     {"folke/tokyonight.nvim"},
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
+  {"folke/tokyonight.nvim"},
+  {"folke/trouble.nvim", cmd = "TroubleToggle"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

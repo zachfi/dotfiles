@@ -186,6 +186,7 @@ lvim.plugins = {
   {"google/vim-jsonnet"},
   {"folke/tokyonight.nvim"},
   {"folke/trouble.nvim", cmd = "TroubleToggle"},
+  {"rodjek/vim-puppet"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

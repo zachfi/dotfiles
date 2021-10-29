@@ -89,8 +89,8 @@ lvim.builtin.terminal.open_mapping = [[<C-\>]]
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["/"] = { ":nohls<CR>", "Clear Search" }
-lvim.builtin.which_key.mappings["d"] = { "<cmd>lua FindFiles({path_display=truncate})<CR>", "Find files from working directory" }
-lvim.builtin.which_key.mappings["f"] = { "<cmd>lua FindFilesRelative({path_display=truncate})<CR>", "Find files relative to the current buffer" }
+lvim.builtin.which_key.mappings["d"] = { "<cmd>lua FindFiles({path_display={shorten}})<CR>", "Find files from working directory" }
+lvim.builtin.which_key.mappings["f"] = { "<cmd>lua FindFilesRelative({path_display={shorten}})<CR>", "Find files relative to the current buffer" }
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
 --   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -166,6 +166,8 @@ require'lspconfig'.sumneko_lua.setup {
 lvim.lang.go.formatters = {{ exe = "goimports" }}
 -- local dap_install = require "dap-install"
 -- dap_install.config("go_delve", {})
+lvim.lang.markdown.formatters = {{ exe = "prettier" }}
+lvim.lang.markdown.linters = {{ exe = "proselint" }}
 
 
 -- set a formatter if you want to override the default lsp one (if it exists)

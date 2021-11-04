@@ -10,6 +10,7 @@ zstyle ':zdotfiles:load' dotmods \
   'git' \
   'go' \
   'java' \
+  'kubernetes' \
   'mutt' \
   'python' \
   'ruby' \

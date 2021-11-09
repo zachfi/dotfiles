@@ -185,19 +185,22 @@ lvim.lang.markdown.linters = {{ exe = "proselint" }}
 
 -- Additional Plugins
 lvim.plugins = {
-  {"google/vim-jsonnet"},
-  {"folke/tokyonight.nvim"},
-  {"folke/trouble.nvim", cmd = "TroubleToggle"},
-  {"rodjek/vim-puppet"},
+	{ "google/vim-jsonnet" },
+	{ "folke/tokyonight.nvim" },
+	{ "folke/trouble.nvim", cmd = "TroubleToggle" },
+	{ "rodjek/vim-puppet" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
-  { "BufWinEnter", "*.md", "setlocal wrap linebreak spell filetype=markdown" },
-  { "BufWinEnter", "*.markdown", "setlocal wrap linebreak spell filetype=markdown" },
-  { "BufWinEnter", "*.tmpl", "setlocal filetype=gotexttmpl" },
-  { "BufRead", "$HOME/.mutt/temp*", "setlocal filetype=mail" },
-  { "Filetype", "mail", "setlocal textwidth=72 wrap spell" },
-  { "Filetype", "mail", "setlocal fo+=aw" },
+	{ "BufWinEnter", "*.md", "setlocal wrap linebreak spell filetype=markdown" },
+	{
+		"BufWinEnter",
+		"*.markdown",
+		"setlocal wrap linebreak spell filetype=markdown",
+	},
+	{ "BufWinEnter", "*.tmpl", "setlocal filetype=gotexttmpl" },
+	{ "BufRead", "$HOME/.mutt/temp*", "setlocal filetype=mail" },
+	{ "Filetype", "mail", "setlocal textwidth=72 wrap spell" },
+	{ "Filetype", "mail", "setlocal fo+=aw" },
 }
-

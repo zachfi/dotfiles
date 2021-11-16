@@ -174,6 +174,9 @@ linters.setup({
 	-- { exe = "proselint", filetypes = { "markdown" }, },
 })
 
+local null_ls = require("null-ls")
+null_ls.register(null_ls.builtins.diagnostics.golangci_lint)
+
 -- local dap_install = require "dap-install"
 -- dap_install.config("go_delve", {})
 

@@ -49,13 +49,13 @@ then
             # Also make vim go to the first line, then search for it
             # (otherwise wrapscan can get in the way).
             if [ "$(uname)" = "Linux" ]; then
-              ack --no-color -l "$@" | xargs nvim +1 +/"$@"
+              ack --no-color -l "$@" | xargs $EDITOR +1 +/"$@"
             else
               ack --no-color -l "$@" | xargs -o vi +1 +/"$@"
             fi
         else
             if [ "$(uname)" = "Linux" ]; then
-              ack --no-color -l "$@" | xargs nvim
+              ack --no-color -l "$@" | xargs $EDITOR
             else
               ack --no-color -l $@ | xargs -o vi
             fi
@@ -76,13 +76,13 @@ then
             # Also make vim go to the first line, then search for it
             # (otherwise wrapscan can get in the way).
             if [ "$(uname)" = "Linux" ]; then
-              rg --color never -l "$@" | xargs nvim +1 +/"$@"
+              rg --color never -l "$@" | xargs $EDITOR +1 +/"$@"
             else
               rg --color never -l "$@" | xargs -o vi +1 +/"$@"
             fi
         else
             if [ "$(uname)" = "Linux" ]; then
-              rg --color never -l "$@" | xargs nvim
+              rg --color never -l "$@" | xargs $EDITOR
             else
               rg --color never -l $@ | xargs -o vi
             fi

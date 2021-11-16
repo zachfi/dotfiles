@@ -1,11 +1,11 @@
 ## Setup environment
 #TMOUT=3600
-export EDITOR="nvim"
-export PAGER="less"
+export EDITOR="lvim"
+export PAGER="less -R"
 export HISTFILE=$HOME/.histfile
 export HISTSIZE=50000
 export SAVEHIST=$HISTSIZE
-export GREP_COLOR="4;36"
+export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 # remove / from wordchars, so ^W will go back to the last / for example
 export WORDCHARS="${WORDCHARS:s#/#}"
 #FONT="terminus"

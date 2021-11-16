@@ -2,7 +2,7 @@
 # site local variables
 export ZSH=~/dotfiles/zsh
 export PROJECTS=~/Code
-export WORK=~/NewRelic
+export WORK=~/GrafanaLabs
 export ORGS=~/Org
 
 # load requirements

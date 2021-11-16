@@ -4,12 +4,10 @@ local uname=$(uname)
 
 if [[ "$OSTYPE" == linux* ]]; then
   alias ls="ls -sh --color=auto"
-  alias grep='grep --color=auto'
 elif [[ "$OSTYPE" == openbsd* ]]; then
   which gls >/dev/null && alias ls="gls --color" || alias ls="ls -F"
 else # FreeBSD, OSX, etc
   alias ls="ls -GF"
-  alias grep='grep --color=auto'
 fi
 
 alias ll="ls -lFhp"
@@ -22,6 +20,7 @@ alias ping='ping -c 2'
 alias df="df -h"
 which colordiff > /dev/null && alias diff="colordiff"
 which nvim >/dev/null && alias vi="nvim"
+which lvim >/dev/null && alias vi="lvim"
 
 alias df='df -kh'
 alias du='du -kh'
@@ -45,7 +44,7 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 alias ack='nocorrect ack'
 alias cd='nocorrect cd'
 alias cp='nocorrect cp'
-alias grep='nocorrect grep'
+alias grep='nocorrect grep --color=always'
 alias ln='nocorrect ln'
 alias man='nocorrect man'
 alias mkdir='nocorrect mkdir'

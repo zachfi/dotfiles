@@ -1,43 +1,35 @@
 -- functions
 function FindFilesRelative(opts)
-  opts = opts or {}
-  local themes = require "telescope.themes"
-  local theme_opts = themes.get_dropdown {
-    sorting_strategy = "ascending",
-    layout_strategy = "center",
-    prompt_prefix = ">> ",
-    prompt_title = "~ find relative files ~",
-    cwd = require("telescope.utils").buffer_dir(),
-    layout_config = {
-        center = {
-          preview_cutoff = 1200,
-          height = 0.7,
-          width = 0.8
-        },
-    }
-  }
-  opts = vim.tbl_deep_extend("force", theme_opts, opts)
-  require("telescope.builtin").find_files(opts)
+	opts = opts or {}
+	local themes = require("telescope.themes")
+	local theme_opts = themes.get_dropdown({
+		sorting_strategy = "ascending",
+		layout_strategy = "center",
+		prompt_prefix = ">> ",
+		prompt_title = "~ find relative files ~",
+		cwd = require("telescope.utils").buffer_dir(),
+		layout_config = {
+			center = { preview_cutoff = 1200, height = 0.7, width = 0.8 },
+		},
+	})
+	opts = vim.tbl_deep_extend("force", theme_opts, opts)
+	require("telescope.builtin").find_files(opts)
 end
 
 function FindFiles(opts)
-  opts = opts or {}
-  local themes = require "telescope.themes"
-  local theme_opts = themes.get_dropdown {
-    sorting_strategy = "ascending",
-    layout_strategy = "center",
-    prompt_prefix = ">> ",
-    prompt_title = "~ find files ~",
-    layout_config = {
-        center = {
-          preview_cutoff = 1200,
-          height = 0.7,
-          width = 0.8
-        },
-    }
-  }
-  opts = vim.tbl_deep_extend("force", theme_opts, opts)
-  require("telescope.builtin").find_files(opts)
+	opts = opts or {}
+	local themes = require("telescope.themes")
+	local theme_opts = themes.get_dropdown({
+		sorting_strategy = "ascending",
+		layout_strategy = "center",
+		prompt_prefix = ">> ",
+		prompt_title = "~ find files ~",
+		layout_config = {
+			center = { preview_cutoff = 1200, height = 0.7, width = 0.8 },
+		},
+	})
+	opts = vim.tbl_deep_extend("force", theme_opts, opts)
+	require("telescope.builtin").find_files(opts)
 end
 
 -- general
@@ -59,6 +51,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-n>"] = ":tabnext<cr>"
 lvim.keys.normal_mode["<C-p>"] = ":tabprev<cr>"
 lvim.keys.normal_mode["<C-t>"] = ":tabnew<cr>"
+
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
@@ -71,26 +64,32 @@ lvim.builtin.cmp.preselect = true
 
 local actions = require("telescope.actions")
 lvim.builtin.telescope.defaults.mappings = {
-  i = {
-      ["<esc>"] = actions.close,
-      ["<C-u>"] = false,
-      ["<C-j>"] = actions.move_selection_next,
-      ["<C-k>"] = actions.move_selection_previous,
-      ["<C-n>"] = actions.cycle_history_next,
-      ["<C-p>"] = actions.cycle_history_prev,
-  },
-  n = {
-      ["<C-j>"] = actions.move_selection_next,
-      ["<C-p>"] = actions.move_selection_previous,
-  }
+	i = {
+		["<esc>"] = actions.close,
+		["<C-u>"] = false,
+		["<C-j>"] = actions.move_selection_next,
+		["<C-k>"] = actions.move_selection_previous,
+		["<C-n>"] = actions.cycle_history_next,
+		["<C-p>"] = actions.cycle_history_prev,
+	},
+	n = {
+		["<C-j>"] = actions.move_selection_next,
+		["<C-p>"] = actions.move_selection_previous,
+	},
 }
 
 lvim.builtin.terminal.open_mapping = [[<C-\>]]
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["/"] = { ":nohls<CR>", "Clear Search" }
-lvim.builtin.which_key.mappings["d"] = { "<cmd>lua FindFiles({path_display={shorten}})<CR>", "Find files from working directory" }
-lvim.builtin.which_key.mappings["f"] = { "<cmd>lua FindFilesRelative({path_display={shorten}})<CR>", "Find files relative to the current buffer" }
+lvim.builtin.which_key.mappings["d"] = {
+	"<cmd>lua FindFiles({path_display={shorten}})<CR>",
+	"Find files from working directory",
+}
+lvim.builtin.which_key.mappings["f"] = {
+	"<cmd>lua FindFilesRelative({path_display={shorten}})<CR>",
+	"Find files relative to the current buffer",
+}
 -- lvim.builtin.which_key.mappings["t"] = {
 --   name = "+Trouble",
 --   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -111,18 +110,17 @@ lvim.builtin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  -- "c",
-  -- "javascript",
-  "json",
-  "lua",
-  "go",
-  "python",
-  -- "typescript",
-  -- "css",
-  -- "rust",
-  -- "java",
-  "yaml",
+	"bash", -- "c",
+	-- "javascript",
+	"json",
+	"lua",
+	"go",
+	-- "python",
+	-- "typescript",
+	-- "css",
+	-- "rust",
+	-- "java",
+	"yaml",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -156,19 +154,28 @@ lvim.lsp.automatic_servers_installation = true
 -- end
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
-local sumneko_root_path = '/home/zach/src/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/Linux/lua-language-server"
+local sumneko_root_path = "/home/zach/src/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
 
-require'lspconfig'.sumneko_lua.setup {
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-}
+require("lspconfig").sumneko_lua.setup({
+	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+})
 
-lvim.lang.go.formatters = {{ exe = "goimports" }}
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+	{ exe = "goimports", filetypes = { "go" } },
+	{ exe = "stylua", filetypes = { "lua" } },
+	{ exe = "prettier", filetypes = { "markdown" } },
+})
+
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({
+	-- { exe = "golangci_lint", filetypes = { "go" }, },
+	-- { exe = "proselint", filetypes = { "markdown" }, },
+})
+
 -- local dap_install = require "dap-install"
 -- dap_install.config("go_delve", {})
-lvim.lang.markdown.formatters = {{ exe = "prettier" }}
-lvim.lang.markdown.linters = {{ exe = "proselint" }}
-
 
 -- set a formatter if you want to override the default lsp one (if it exists)
 -- lvim.lang.python.formatters = {

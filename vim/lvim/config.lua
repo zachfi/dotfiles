@@ -52,6 +52,8 @@ lvim.keys.normal_mode["<C-n>"] = ":tabnext<cr>"
 lvim.keys.normal_mode["<C-p>"] = ":tabprev<cr>"
 lvim.keys.normal_mode["<C-t>"] = ":tabnew<cr>"
 lvim.keys.normal_mode["<leader>t"] = 'a<c-r>=strftime("%FT%T%z")<CR><Esc>'
+lvim.keys.normal_mode["<S-q>"] = 'gqap'
+
 
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""

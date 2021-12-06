@@ -198,10 +198,17 @@ null_ls.register(null_ls.builtins.diagnostics.golangci_lint)
 
 -- Additional Plugins
 lvim.plugins = {
-	{ "google/vim-jsonnet" },
-	{ "folke/tokyonight.nvim" },
 	{ "folke/trouble.nvim", cmd = "TroubleToggle" },
-	{ "rodjek/vim-puppet" },
+
+  -- syntax
+	{ "google/vim-jsonnet" },
+	{ "voxpupuli/vim-puppet" },
+	{ "ap/vim-css-color" },
+	{ "jjo/vim-cue" },
+
+  -- colors
+	{ "folke/tokyonight.nvim" },
+	{ "rakr/vim-one" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

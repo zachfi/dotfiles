@@ -327,9 +327,6 @@ nnoremap <C-l> <C-w>l
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-" Toggle listing invisible characters
-nmap <leader>l :set list!<CR>
-
 "
 " Tabs
 nnoremap <C-n> :tabnext<CR>

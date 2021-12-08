@@ -199,6 +199,12 @@ null_ls.register(null_ls.builtins.diagnostics.golangci_lint)
 -- Additional Plugins
 lvim.plugins = {
 	{ "folke/trouble.nvim", cmd = "TroubleToggle" },
+	{
+		"blackCauldron7/surround.nvim",
+		config = function()
+			require("surround").setup({ mappings_style = "surround" })
+		end,
+	},
 
   -- syntax
 	{ "google/vim-jsonnet" },

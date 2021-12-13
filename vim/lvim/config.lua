@@ -206,13 +206,13 @@ lvim.plugins = {
 		end,
 	},
 
-  -- syntax
+	-- syntax
 	{ "google/vim-jsonnet" },
 	{ "voxpupuli/vim-puppet" },
 	{ "ap/vim-css-color" },
 	{ "jjo/vim-cue" },
 
-  -- colors
+	-- colors
 	{ "folke/tokyonight.nvim" },
 	{ "rakr/vim-one" },
 }
@@ -226,6 +226,7 @@ lvim.autocommands.custom_groups = {
 		"setlocal wrap linebreak spell filetype=markdown",
 	},
 	{ "BufWinEnter", "*.tmpl", "setlocal filetype=gotexttmpl" },
+	{ "BufWinEnter", "*.tpl", "setlocal filetype=gotexttmpl" },
 	{ "BufRead", "$HOME/.mutt/temp*", "setlocal filetype=mail" },
 	{ "Filetype", "mail", "setlocal textwidth=72 wrap spell" },
 	{ "Filetype", "mail", "setlocal fo+=aw" },

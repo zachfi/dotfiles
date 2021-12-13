@@ -4,7 +4,7 @@
 
 set -e
 
-default_ver="3.9.6"
+default_ver="3.9.9"
 pyenv_url="https://github.com/yyuu/pyenv.git"
 pyenv_d="${HOME}/.pyenv"
 
@@ -27,4 +27,3 @@ fi
 # install the default version
 $pyenv_d/bin/pyenv install $default_ver
 $pyenv_d/bin/pyenv global $default_ver
-

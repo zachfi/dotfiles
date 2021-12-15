@@ -1,10 +1,5 @@
-if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
-  path=("$HOME/.pyenv/bin" $path)
-  eval "$(pyenv init -)"
-
-# Load package manager installed pyenv into the shell session.
-elif (( $+commands[pyenv] )); then
-  eval "$(pyenv init -)"
+if [ -x "$HOME/.pyenv/bin/pyenv" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$($HOME/.pyenv/bin/pyenv init -)"
 fi
-
-export PYENV_ROOT="${HOME}/.pyenv"

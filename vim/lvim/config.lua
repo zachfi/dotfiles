@@ -52,8 +52,7 @@ lvim.keys.normal_mode["<C-n>"] = ":tabnext<cr>"
 lvim.keys.normal_mode["<C-p>"] = ":tabprev<cr>"
 lvim.keys.normal_mode["<C-t>"] = ":tabnew<cr>"
 lvim.keys.normal_mode["<leader>t"] = 'a<c-r>=strftime("%FT%T%z")<CR><Esc>'
-lvim.keys.normal_mode["<S-q>"] = 'gqap'
-
+lvim.keys.normal_mode["<S-q>"] = "gqap"
 
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
@@ -155,14 +154,6 @@ lvim.lsp.automatic_servers_installation = true
 --     return require("lspconfig/util").root_pattern("Makefile", ".git")(fname) or require("lspconfig/util").path.dirname(fname)
 --   end
 -- end
-
--- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
-local sumneko_root_path = "/home/zach/src/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
-
-require("lspconfig").sumneko_lua.setup({
-	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-})
 
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({

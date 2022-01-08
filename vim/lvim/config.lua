@@ -54,6 +54,28 @@ lvim.keys.normal_mode["<C-t>"] = ":tabnew<cr>"
 lvim.keys.normal_mode["<leader>t"] = 'a<c-r>=strftime("%FT%T%z")<CR><Esc>'
 lvim.keys.normal_mode["<S-q>"] = "gqap"
 
+-- Zettelkasten
+lvim.keys.normal_mode["<leader>zf"] = ":lua require('telekasten').find_notes()<CR>"
+lvim.keys.normal_mode["<leader>zd"] = ":lua require('telekasten').find_daily_notes()<CR>"
+lvim.keys.normal_mode["<leader>zg"] = ":lua require('telekasten').search_notes()<CR>"
+lvim.keys.normal_mode["<leader>zz"] = ":lua require('telekasten').follow_link()<CR>"
+lvim.keys.normal_mode["<leader>zT"] = ":lua require('telekasten').goto_today()<CR>"
+lvim.keys.normal_mode["<leader>zW"] = ":lua require('telekasten').goto_thisweek()<CR>"
+lvim.keys.normal_mode["<leader>zw"] = ":lua require('telekasten').find_weekly_notes()<CR>"
+lvim.keys.normal_mode["<leader>zn"] = ":lua require('telekasten').new_note()<CR>"
+lvim.keys.normal_mode["<leader>zN"] = ":lua require('telekasten').new_templated_note()<CR>"
+lvim.keys.normal_mode["<leader>zy"] = ":lua require('telekasten').yank_notelink()<CR>"
+lvim.keys.normal_mode["<leader>zc"] = ":lua require('telekasten').show_calendar()<CR>"
+lvim.keys.normal_mode["<leader>zC"] = ":CalendarT<CR>"
+lvim.keys.normal_mode["<leader>zi"] = ":lua require('telekasten').paste_img_and_link()<CR>"
+lvim.keys.normal_mode["<leader>zt"] = ":lua require('telekasten').toggle_todo()<CR>"
+lvim.keys.normal_mode["<leader>zb"] = ":lua require('telekasten').show_backlinks()<CR>"
+lvim.keys.normal_mode["<leader>zF"] = ":lua require('telekasten').find_friends()<CR>"
+lvim.keys.normal_mode["<leader>za"] = ":lua require('telekasten').show_tags()<CR>"
+
+-- on hesitation, bring up the panel
+lvim.keys.normal_mode["<leader>z"] = ":lua require('telekasten').panel()<CR>"
+
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
@@ -206,7 +228,116 @@ lvim.plugins = {
 	-- colors
 	{ "folke/tokyonight.nvim" },
 	{ "rakr/vim-one" },
+
+	-- Zettelkasten for notes
+	{ "renerocksai/telekasten.nvim" },
+	{ "renerocksai/calendar-vim" },
 }
+
+local notes = vim.fn.expand("~/notes")
+require("telekasten").setup({
+	home = notes,
+	-- if true, telekasten will be enabled when opening a note within the configured home
+	take_over_my_home = true,
+
+	-- auto-set telekasten filetype: if false, the telekasten filetype will not be used
+	--                               and thus the telekasten syntax will not be loaded either
+	auto_set_filetype = true,
+
+	dailies = notes .. "/" .. "daily",
+	weeklies = notes .. "/" .. "weekly",
+	templates = notes .. "/" .. "templates",
+
+	-- image subdir for pasting
+	-- subdir name
+	-- or nil if pasted images shouldn't go into a special subdir
+	image_subdir = "img",
+
+	-- markdown file extension
+	extension = ".md",
+
+	-- following a link to a non-existing note will create it
+	follow_creates_nonexisting = true,
+	dailies_create_nonexisting = true,
+	weeklies_create_nonexisting = true,
+
+	-- template for new notes (new_note, follow_link)
+	-- set to `nil` or do not specify if you do not want a template
+	template_new_note = notes .. "/" .. "templates/new_note.md",
+
+	-- template for newly created daily notes (goto_today)
+	-- set to `nil` or do not specify if you do not want a template
+	template_new_daily = notes .. "/" .. "templates/daily.md",
+
+	-- template for newly created weekly notes (goto_thisweek)
+	-- set to `nil` or do not specify if you do not want a template
+	template_new_weekly = notes .. "/" .. "templates/weekly.md",
+
+	-- image link style
+	-- wiki:     ![[image name]]
+	-- markdown: ![](image_subdir/xxxxx.png)
+	image_link_style = "markdown",
+
+	-- integrate with calendar-vim
+	plug_into_calendar = true,
+	calendar_opts = {
+		-- calendar week display mode: 1 .. 'WK01', 2 .. 'WK 1', 3 .. 'KW01', 4 .. 'KW 1', 5 .. '1'
+		weeknm = 4,
+		-- use monday as first day of week: 1 .. true, 0 .. false
+		calendar_monday = 1,
+		-- calendar mark: where to put mark for marked days: 'left', 'right', 'left-fit'
+		calendar_mark = "left-fit",
+	},
+
+	-- telescope actions behavior
+	close_after_yanking = false,
+	insert_after_inserting = true,
+
+	-- tag notation: '#tag', ':tag:', 'yaml-bare'
+	tag_notation = "yaml-bare",
+
+	-- command palette theme: dropdown (window) or ivy (bottom panel)
+	command_palette_theme = "ivy",
+
+	-- tag list theme:
+	-- get_cursor: small tag list at cursor; ivy and dropdown like above
+	show_tags_theme = "ivy",
+
+	-- when linking to a note in subdir/, create a [[subdir/title]] link
+	-- instead of a [[title only]] link
+	subdirs_in_links = true,
+
+	-- template_handling
+	-- What to do when creating a new note via `new_note()` or `follow_link()`
+	-- to a non-existing note
+	-- - prefer_new_note: use `new_note` template
+	-- - smart: if day or week is detected in title, use daily / weekly templates (default)
+	-- - always_ask: always ask before creating a note
+	template_handling = "smart",
+
+	-- path handling:
+	--   this applies to:
+	--     - new_note()
+	--     - new_templated_note()
+	--     - follow_link() to non-existing note
+	--
+	--   it does NOT apply to:
+	--     - goto_today()
+	--     - goto_thisweek()
+	--
+	--   Valid options:
+	--     - smart: put daily-looking notes in daily, weekly-looking ones in weekly,
+	--              all other ones in home, except for notes/with/subdirs/in/title.
+	--              (default)
+	--
+	--     - prefer_home: put all notes in home except for goto_today(), goto_thisweek()
+	--                    except for notes with subdirs/in/title.
+	--
+	--     - same_as_current: put all new notes in the dir of the current note if
+	--                        present or else in home
+	--                        except for notes/with/subdirs/in/title.
+	new_note_location = "smart",
+})
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {

@@ -221,4 +221,5 @@ lvim.autocommands.custom_groups = {
 	{ "BufRead", "$HOME/.mutt/temp*", "setlocal filetype=mail" },
 	{ "Filetype", "mail", "setlocal textwidth=72 wrap spell" },
 	{ "Filetype", "mail", "setlocal fo+=aw" },
+	{ "BufWritePre", "$HOME/notes/**/*.md", "%s/^modified: .*/\\=strftime('modified: %FT%T%z')/" },
 }

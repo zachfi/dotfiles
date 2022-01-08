@@ -12,6 +12,7 @@ zstyle ':zdotfiles:load' dotmods \
   'java' \
   'kubernetes' \
   'mutt' \
+  'npm' \
   'python' \
   'ruby' \
   'utility' \

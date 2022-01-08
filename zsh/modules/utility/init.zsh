@@ -19,7 +19,6 @@ alias llf='ll -f'
 alias ping='ping -c 2'
 alias df="df -h"
 which colordiff > /dev/null && alias diff="colordiff"
-which nvim >/dev/null && alias vi="nvim"
 which lvim >/dev/null && alias vi="lvim"
 
 alias df='df -kh'
@@ -50,4 +49,5 @@ alias man='nocorrect man'
 alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
+alias ssh='TERM=xterm-256color ssh'
 

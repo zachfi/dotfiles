@@ -53,6 +53,15 @@ lvim.keys.normal_mode["<C-p>"] = ":tabprev<cr>"
 lvim.keys.normal_mode["<C-t>"] = ":tabnew<cr>"
 lvim.keys.normal_mode["<leader>t"] = 'a<c-r>=strftime("%FT%T%z")<CR><Esc>'
 lvim.keys.normal_mode["<S-q>"] = "gqap"
+-- disable the quick j/k line swap
+lvim.keys.insert_mode["<A-j>"] = false
+lvim.keys.insert_mode["<A-k>"] = false
+lvim.keys.normal_mode["<A-j>"] = false
+lvim.keys.visual_block_mode["<A-j>"] = false
+lvim.keys.normal_mode["<A-k>"] = false
+lvim.keys.visual_block_mode["<A-k>"] = false
+lvim.keys.visual_block_mode["J"] = false
+lvim.keys.visual_block_mode["K"] = false
 
 -- Zettelkasten
 lvim.keys.normal_mode["<leader>zf"] = ":lua require('telekasten').find_notes()<CR>"

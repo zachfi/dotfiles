@@ -227,6 +227,12 @@ lvim.plugins = {
 			require("surround").setup({ mappings_style = "surround" })
 		end,
 	},
+	{
+		"pwntester/octo.nvim",
+		config = function()
+			require("octo").setup()
+		end,
+	},
 
 	-- syntax
 	{ "google/vim-jsonnet" },

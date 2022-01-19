@@ -66,9 +66,9 @@ lvim.keys.visual_block_mode["K"] = false
 -- Zettelkasten
 lvim.keys.normal_mode["<leader>zf"] = ":lua require('telekasten').find_notes()<CR>"
 lvim.keys.normal_mode["<leader>zd"] = ":lua require('telekasten').find_daily_notes()<CR>"
+lvim.keys.normal_mode["<leader>zD"] = ":lua require('telekasten').goto_today()<CR>"
 lvim.keys.normal_mode["<leader>zg"] = ":lua require('telekasten').search_notes()<CR>"
 lvim.keys.normal_mode["<leader>zz"] = ":lua require('telekasten').follow_link()<CR>"
-lvim.keys.normal_mode["<leader>zT"] = ":lua require('telekasten').goto_today()<CR>"
 lvim.keys.normal_mode["<leader>zW"] = ":lua require('telekasten').goto_thisweek()<CR>"
 lvim.keys.normal_mode["<leader>zw"] = ":lua require('telekasten').find_weekly_notes()<CR>"
 lvim.keys.normal_mode["<leader>zn"] = ":lua require('telekasten').new_note()<CR>"

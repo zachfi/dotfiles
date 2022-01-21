@@ -370,6 +370,6 @@ lvim.autocommands.custom_groups = {
 	{
 		"BufWritePre",
 		"$HOME/notes/**/*.md",
-		"silent! 1,10s/^modified: [\\d]{4}.*/\\=strftime('modified: %FT%T%z')/|norm!``",
+		"mark a|silent! 1,10s/^modified: [\\d]{4}.*/\\=strftime('modified: %FT%T%z')/|norm!`a",
 	},
 }

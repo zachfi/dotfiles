@@ -190,7 +190,7 @@ local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
 	{ exe = "goimports", filetypes = { "go" } },
 	{ exe = "stylua", filetypes = { "lua" } },
-	{ exe = "prettier", filetypes = { "markdown" } },
+	{ exe = "black", filetypes = { "python" } },
 })
 
 local linters = require("lvim.lsp.null-ls.linters")

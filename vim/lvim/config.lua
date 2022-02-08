@@ -148,7 +148,7 @@ lvim.builtin.treesitter.ensure_installed = {
 	"json",
 	"lua",
 	"go",
-	-- "python",
+	"python",
 	-- "typescript",
 	-- "css",
 	-- "rust",
@@ -185,6 +185,20 @@ lvim.lsp.automatic_servers_installation = true
 --     return require("lspconfig/util").root_pattern("Makefile", ".git")(fname) or require("lspconfig/util").path.dirname(fname)
 --   end
 -- end
+
+local lspconfig = require("lspconfig")
+lspconfig.gopls.setup({
+	cmd = { "gopls", "serve" },
+	settings = {
+		gopls = {
+			-- analyses = {
+			--   unusedparams = true,
+			-- },
+			-- staticcheck = true,
+			buildFlags = { "-tags=requires_docker" },
+		},
+	},
+})
 
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({

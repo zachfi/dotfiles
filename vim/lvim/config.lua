@@ -111,6 +111,8 @@ lvim.builtin.telescope.defaults.mappings = {
 	},
 }
 
+require("telescope").setup({ defaults = { file_ignore_patterns = { "vendor" } } })
+
 lvim.builtin.terminal.open_mapping = [[<C-\>]]
 
 -- Use which-key to add extra bindings with the leader-key prefix

@@ -384,6 +384,11 @@ lvim.autocommands.custom_groups = {
 	{ "Filetype", "mail", "setlocal textwidth=72 wrap spell" },
 	{ "Filetype", "mail", "setlocal fo+=aw" },
 	{
+		"Filetype",
+		"telekasten",
+		"hi tklink guifg=#00dfff|hi tkBrackets guifg=#264F78 |hi tkHighlight guibg=#ff007c guifg=#9d0006 gui=bold",
+	},
+	{
 		"BufWritePre",
 		"$HOME/notes/**/*.md",
 		"mark a|silent! 1,10s/^modified: [\\d]{4}.*/\\=strftime('modified: %FT%T%z')/|norm!`a",

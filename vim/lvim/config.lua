@@ -5,7 +5,7 @@ function FindFilesRelative(opts)
 	local theme_opts = themes.get_dropdown({
 		sorting_strategy = "ascending",
 		layout_strategy = "center",
-		prompt_prefix = ">> ",
+		prompt_prefix = ">>> ",
 		prompt_title = "~ find relative files ~",
 		cwd = require("telescope.utils").buffer_dir(),
 		layout_config = {
@@ -17,12 +17,21 @@ function FindFilesRelative(opts)
 end
 
 function FindFiles(opts)
-	opts = opts or {}
+	opts = opts
+		or {
+			path_display = {
+				-- "shorten",
+				"truncate",
+			},
+			file_ignore_patterns = {
+				"vendor/.*",
+			},
+		}
 	local themes = require("telescope.themes")
 	local theme_opts = themes.get_dropdown({
 		sorting_strategy = "ascending",
 		layout_strategy = "center",
-		prompt_prefix = ">> ",
+		prompt_prefix = ">>> ",
 		prompt_title = "~ find files ~",
 		layout_config = {
 			center = { preview_cutoff = 1200, height = 0.7, width = 0.8 },
@@ -111,18 +120,22 @@ lvim.builtin.telescope.defaults.mappings = {
 	},
 }
 
-require("telescope").setup({ defaults = { file_ignore_patterns = { "vendor" } } })
+require("telescope").setup({
+	defaults = {
+		file_ignore_patterns = { "vendor/.*" },
+	},
+})
 
 lvim.builtin.terminal.open_mapping = [[<C-\>]]
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["/"] = { ":nohls<CR>", "Clear Search" }
 lvim.builtin.which_key.mappings["d"] = {
-	"<cmd>lua FindFiles({path_display={shorten}})<CR>",
+	"<cmd>lua FindFiles()<CR>",
 	"Find files from working directory",
 }
 lvim.builtin.which_key.mappings["f"] = {
-	"<cmd>lua FindFilesRelative({path_display={shorten}})<CR>",
+	"<cmd>lua FindFilesRelative()<CR>",
 	"Find files relative to the current buffer",
 }
 -- lvim.builtin.which_key.mappings["t"] = {

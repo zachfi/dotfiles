@@ -20,8 +20,9 @@ function FindFiles(opts)
 	opts = opts
 		or {
 			path_display = {
-				-- "shorten",
-				"truncate",
+				-- "smart",
+				-- shorten = 3,
+				truncate = 3,
 			},
 			file_ignore_patterns = {
 				"vendor/.*",

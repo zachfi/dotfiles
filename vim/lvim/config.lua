@@ -91,9 +91,12 @@ lvim.keys.normal_mode["<leader>zt"] = ":lua require('telekasten').toggle_todo()<
 lvim.keys.normal_mode["<leader>zb"] = ":lua require('telekasten').show_backlinks()<CR>"
 lvim.keys.normal_mode["<leader>zF"] = ":lua require('telekasten').find_friends()<CR>"
 lvim.keys.normal_mode["<leader>za"] = ":lua require('telekasten').show_tags()<CR>"
-
 -- on hesitation, bring up the panel
 lvim.keys.normal_mode["<leader>z"] = ":lua require('telekasten').panel()<CR>"
+
+-- Octo
+lvim.keys.normal_mode["<leader>hi"] = ":Octo search is:open is:issue assignee:zalegrala archived:false<CR>"
+lvim.keys.normal_mode["<leader>hp"] = ":Octo search is:open is:pr author:zalegrala archived:false<CR>"
 
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
@@ -202,30 +205,19 @@ lvim.lsp.automatic_servers_installation = true
 --   end
 -- end
 
-local lspconfig = require("lspconfig")
-lspconfig.gopls.setup({
-	cmd = { "gopls", "serve" },
-	settings = {
-		gopls = {
-			-- analyses = {
-			--   unusedparams = true,
-			-- },
-			-- staticcheck = true,
-			buildFlags = { "-tags=requires_docker" },
-		},
-	},
-})
+vim.list_extend(lvim.lsp.override, { "gopls" })
 
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
 	{ exe = "goimports", filetypes = { "go" } },
 	{ exe = "stylua", filetypes = { "lua" } },
 	{ exe = "black", filetypes = { "python" } },
+	-- { exe = "prettier", filetypes = { "markdown" } },
 })
 
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
-	-- { exe = "golangci_lint", filetypes = { "go" }, },
+	-- { exe = "golangci_lint", filetypes = { "go" } },
 	-- { exe = "proselint", filetypes = { "markdown" }, },
 })
 

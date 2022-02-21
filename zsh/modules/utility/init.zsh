@@ -50,4 +50,7 @@ alias mkdir='nocorrect mkdir'
 alias mv='nocorrect mv'
 alias rm='nocorrect rm'
 alias ssh='TERM=xterm-256color ssh'
+alias notes='h notes'
+
+
 

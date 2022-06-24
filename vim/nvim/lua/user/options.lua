@@ -10,13 +10,13 @@ local options = {
 	mouse = "a", -- allow the mouse to be used in neovim
 	pumheight = 10, -- pop up menu height
 	showmode = false, -- we don't need to see things like -- INSERT -- anymore
-	showtabline = 2, -- always show tabs
+	showtabline = 1, -- always show tabs
 	smartcase = true, -- smart case
 	smartindent = true, -- make indenting smarter again
 	splitbelow = true, -- force all horizontal splits to go below current window
 	splitright = true, -- force all vertical splits to go to the right of current window
 	swapfile = false, -- creates a swapfile
-	-- termguicolors = true,                    -- set term gui colors (most terminals support this)
+	termguicolors = true, -- set term gui colors (most terminals support this)
 	timeoutlen = 100, -- time to wait for a mapped sequence to complete (in milliseconds)
 	undofile = true, -- enable persistent undo
 	updatetime = 300, -- faster completion (4000ms default)
@@ -33,7 +33,7 @@ local options = {
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
 	guifont = "Hack:h12", -- the font used in graphical neovim applications
-
+	background = "light",
 	list = true,
 }
 
@@ -43,7 +43,8 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.opt.listchars = { tab = "»·", trail = "·" }
+vim.opt.listchars:append("tab:»·")
+vim.opt.listchars:append("trail:·")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

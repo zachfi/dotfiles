@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
@@ -17,6 +17,20 @@ vim.cmd [[
     autocmd!
     autocmd FileType markdown setlocal wrap
     autocmd FileType markdown setlocal spell
+    autocmd FileType markdown setlocal linebreak
+    autocmd BufWritePre $HOME/notes/**/*.md mark a|silent! 1,10s/^modified: \\d\\d\\d\\d.*/\\=strftime('modified: %FT%T%z')/|norm!`a
+  augroup end
+
+  augroup _go
+    autocmd!
+    autocmd BufWinEnter *.tmpl setlocal filetype=gotexttmpl
+    autocmd BufWinEnter *.tpl setlocal filetype=gotexttmpl
+    autocmd FileType gitcommit setlocal spell
+  augroup end
+
+  augroup _notes
+    autocmd!
+    autocmd FileType telekasten hi tklink guifg=#00dfff|hi tkBrackets guifg=#264F78 |hi tkHighlight guibg=#ff007c guifg=#9d0006 gui=bold
   augroup end
 
   augroup _auto_resize
@@ -28,10 +42,9 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
-]]
 
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end
+  augroup _lsp
+    autocmd!
+    autocmd BufWritePre * lua vim.lsp.buf.formatting()
+  augroup end
+]])

@@ -5,7 +5,7 @@ function FindFilesRelative(opts)
 	local theme_opts = themes.get_dropdown({
 		sorting_strategy = "ascending",
 		layout_strategy = "center",
-		prompt_prefix = ">> ",
+		prompt_prefix = ">>> ",
 		prompt_title = "~ find relative files ~",
 		cwd = require("telescope.utils").buffer_dir(),
 		layout_config = {
@@ -17,12 +17,22 @@ function FindFilesRelative(opts)
 end
 
 function FindFiles(opts)
-	opts = opts or {}
+	opts = opts
+		or {
+			path_display = {
+				-- "smart",
+				-- shorten = 3,
+				truncate = 3,
+			},
+			-- file_ignore_patterns = {
+			-- 	"vendor/.*",
+			-- },
+		}
 	local themes = require("telescope.themes")
 	local theme_opts = themes.get_dropdown({
 		sorting_strategy = "ascending",
 		layout_strategy = "center",
-		prompt_prefix = ">> ",
+		prompt_prefix = ">>> ",
 		prompt_title = "~ find files ~",
 		layout_config = {
 			center = { preview_cutoff = 1200, height = 0.7, width = 0.8 },
@@ -54,7 +64,7 @@ telescope.setup({
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
 
-				["<C-c>"] = actions.close,
+				["<esc>"] = actions.close,
 
 				["<Down>"] = actions.move_selection_next,
 				["<Up>"] = actions.move_selection_previous,
@@ -90,8 +100,8 @@ telescope.setup({
 				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
-				["j"] = actions.move_selection_next,
-				["k"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-p>"] = actions.move_selection_previous,
 				["H"] = actions.move_to_top,
 				["M"] = actions.move_to_middle,
 				["L"] = actions.move_to_bottom,

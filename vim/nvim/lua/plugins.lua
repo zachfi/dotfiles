@@ -40,7 +40,7 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- Plugins
+	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
@@ -50,7 +50,7 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
-	use("nvim-My plugins herelualine/lualine.nvim")
+	use("nvim-lualine/lualine.nvim")
 	use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
 	use("lewis6991/impatient.nvim")
@@ -58,20 +58,16 @@ return packer.startup(function(use)
 	use("goolord/alpha-nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("folke/which-key.nvim")
-	use({
-		"blackCauldron7/surround.nvim",
-		config = function()
-			require("surround").setup({ mappings_style = "sandwich" })
-		end,
-	})
-	use("pwntester/octo.nvim")
+	use("rcarriga/nvim-notify")
 
-	-- Colorschemes
-	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-	use("lunarvim/darkplus.nvim")
-	use("lunarvim/onedarker.nvim")
-	use("rakr/vim-one")
+
+
+	-- colorschemes
 	use("folke/tokyonight.nvim")
+	use("rakr/vim-one")
+	use("LunarVim/onedarker")
+	use("ellisonleao/gruvbox.nvim")
+	use("sainnhe/everforest")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -104,12 +100,31 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
+	use("tpope/vim-fugitive")
+	use("tpope/vim-rhubarb")
 
-	-- Syntax
-	use("google/vim-jsonnet")
-	use("voxpupuli/vim-puppet")
-	use("ap/vim-css-color")
-	use("jjo/vim-cue")
+  -- Github
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function ()
+      require"octo".setup()
+    end
+  }
+
+  -- Syntax
+	 use("google/vim-jsonnet")
+	 use("ap/vim-css-color")
+	 use("jjo/vim-cue")
+
+	-- Zettelkasten for notes
+	use("renerocksai/telekasten.nvim")
+	use("renerocksai/calendar-vim")
+
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

@@ -6,7 +6,7 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+--keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = ";"
 vim.g.maplocalleader = ";"
 
@@ -38,6 +38,12 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+
+-- Octo
+keymap("n", "hi", ":Octo search is:open is:issue assignee:zalegrala archived:false<CR>", opts)
+keymap("n", "hI", ":Octo issue browser<CR>", opts)
+keymap("n", "hp", ":Octo search is:open is:pr author:zalegrala archived:false<CR>", opts)
+keymap("n", "hP", ":Octo pr browser<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter

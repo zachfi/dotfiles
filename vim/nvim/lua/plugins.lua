@@ -60,7 +60,16 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 	use("rcarriga/nvim-notify")
 
-
+	-- Lua
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				use_diagnostic_signs = true,
+			})
+		end,
+	})
 
 	-- colorschemes
 	use("folke/tokyonight.nvim")
@@ -83,10 +92,12 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
+	use("neovim/nvim-lspconfig")
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use("folke/lua-dev.nvim")
+	use("RRethy/vim-illuminate")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -103,28 +114,27 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
 
-  -- Github
-  use {
-    'pwntester/octo.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons',
-    },
-    config = function ()
-      require"octo".setup()
-    end
-  }
+	-- Github
+	use({
+		"pwntester/octo.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+			"kyazdani42/nvim-web-devicons",
+		},
+		config = function()
+			require("octo").setup()
+		end,
+	})
 
-  -- Syntax
-	 use("google/vim-jsonnet")
-	 use("ap/vim-css-color")
-	 use("jjo/vim-cue")
+	-- Syntax
+	use("google/vim-jsonnet")
+	use("ap/vim-css-color")
+	use("jjo/vim-cue")
 
 	-- Zettelkasten for notes
 	use("renerocksai/telekasten.nvim")
 	use("renerocksai/calendar-vim")
-
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

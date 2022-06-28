@@ -19,7 +19,6 @@ null_ls.setup({
 		diagnostics.flake8,
 		diagnostics.gitlint,
 		diagnostics.golangci_lint,
-		diagnostics.markdownlint,
 		diagnostics.shellcheck,
 		diagnostics.zsh,
 		formatting.black.with({ extra_args = { "--fast" } }),

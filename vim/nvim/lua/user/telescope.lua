@@ -74,7 +74,7 @@ telescope.setup({
 				["<C-v>"] = actions.select_vertical,
 				["<C-t>"] = actions.select_tab,
 
-				["<C-u>"] = actions.preview_scrolling_up,
+				["<C-u>"] = false,
 				["<C-d>"] = actions.preview_scrolling_down,
 
 				["<PageUp>"] = actions.results_scrolling_up,
@@ -100,8 +100,8 @@ telescope.setup({
 				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 				["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-p>"] = actions.move_selection_previous,
+				["<C-j>"] = actions.move_selection_next,
+				["<C-p>"] = actions.move_selection_previous,
 				["H"] = actions.move_to_top,
 				["M"] = actions.move_to_middle,
 				["L"] = actions.move_to_bottom,

@@ -45,12 +45,6 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
--- Octo
-keymap("n", "hi", ":Octo search is:open is:issue assignee:zalegrala archived:false<CR>", opts)
-keymap("n", "hI", ":Octo issue browser<CR>", opts)
-keymap("n", "hp", ":Octo search is:open is:pr author:zalegrala archived:false<CR>", opts)
-keymap("n", "hP", ":Octo pr browser<CR>", opts)
-
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)

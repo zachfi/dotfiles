@@ -72,11 +72,21 @@ return packer.startup(function(use)
 	})
 
 	-- colorschemes
-	use("folke/tokyonight.nvim")
-	use("rakr/vim-one")
-	use("LunarVim/onedarker")
 	use("ellisonleao/gruvbox.nvim")
+	use("folke/tokyonight.nvim")
+	use("LunarVim/onedarker")
+	use("rakr/vim-one")
 	use("sainnhe/everforest")
+	use({
+		"sonph/onehalf",
+		rtp = "vim",
+		config = function()
+			vim.cmd([[colorscheme onehalfdark]])
+		end,
+		event = "VimEnter",
+	})
+
+	use("tomasr/molokai")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -101,6 +111,13 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
+	use({
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+		requires = { "tami5/sqlite.lua" },
+	})
 
 	-- Treesitter
 	use({
@@ -123,7 +140,13 @@ return packer.startup(function(use)
 			"kyazdani42/nvim-web-devicons",
 		},
 		config = function()
-			require("octo").setup()
+			require("octo").setup({
+				reaction_viewer_hint_icon = "", -- marker for user reactions
+				user_icon = "👤", -- user icon
+				timeline_marker = "🗨", -- timeline marker
+				right_bubble_delimiter = "", -- Bubble delimiter
+				left_bubble_delimiter = "", -- Bubble delimiter
+			})
 		end,
 	})
 

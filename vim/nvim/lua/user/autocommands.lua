@@ -1,4 +1,6 @@
 vim.cmd([[
+  autocmd BufWritePre $HOME/notes/**/*.md mark a|silent! 1,10s/^modified: \d\d\d\d.*/\=strftime('modified: %FT%T%z')/|norm!`a
+
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
@@ -18,7 +20,7 @@ vim.cmd([[
     autocmd FileType markdown setlocal wrap
     autocmd FileType markdown setlocal spell
     autocmd FileType markdown setlocal linebreak
-    autocmd BufWritePre $HOME/notes/**/*.md mark a|silent! 1,10s/^modified: \\d\\d\\d\\d.*/\\=strftime('modified: %FT%T%z')/|norm!`a
+    autocmd BufWritePre $HOME/notes/**/*.md mark a|silent! 1,10s/^modified: \d\d\d\d.*/\=strftime('modified: %FT%T%z')/|norm!`a
   augroup end
 
   augroup _go
@@ -31,6 +33,7 @@ vim.cmd([[
   augroup _notes
     autocmd!
     autocmd FileType telekasten hi tklink guifg=#00dfff|hi tkBrackets guifg=#264F78 |hi tkHighlight guibg=#ff007c guifg=#9d0006 gui=bold
+    autocmd BufWritePre telekasten mark a| 1,10s/^modified: \d\d\d\d.*/\=strftime('modified: %FT%T%z')/|norm!`a
   augroup end
 
   augroup _auto_resize

@@ -80,10 +80,10 @@ return packer.startup(function(use)
 	use({
 		"sonph/onehalf",
 		rtp = "vim",
-		config = function()
-			vim.cmd([[colorscheme onehalfdark]])
-		end,
-		event = "VimEnter",
+		-- config = function()
+		-- 	vim.cmd([[colorscheme onehalfdark]])
+		-- end,
+		-- event = "VimEnter",
 	})
 
 	use("tomasr/molokai")
@@ -112,11 +112,8 @@ return packer.startup(function(use)
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		config = function()
-			require("telescope").load_extension("frecency")
-		end,
-		requires = { "tami5/sqlite.lua" },
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
 
 	-- Treesitter

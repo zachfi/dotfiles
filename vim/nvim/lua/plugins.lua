@@ -151,6 +151,8 @@ return packer.startup(function(use)
 	use("google/vim-jsonnet")
 	use("ap/vim-css-color")
 	use("jjo/vim-cue")
+	use("bazelbuild/starlark")
+	use("mustache/vim-mustache-handlebars")
 
 	-- Zettelkasten for notes
 	use("renerocksai/telekasten.nvim")

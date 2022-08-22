@@ -1,21 +1,46 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+local status_ok, mason = pcall(require, "mason")
 if not status_ok then
 	return
 end
 
-local lspconfig = require("lspconfig")
+local status_ok_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not status_ok_mason_lspconfig then
+	return
+end
+
+local status_ok_lspconfig, lspconfig = pcall(require, "lspconfig")
+if not status_ok_lspconfig then
+	return
+end
 
 local servers = {
+	"arduino_language_server",
+	"bashls",
+	"dagger", -- cuelang
+	"dockerls",
+	"golangci_lint_ls",
 	"gopls",
 	"jsonls",
 	"jsonnet_ls",
-	"marksman",
+	"marksman", -- markdown
 	"sumneko_lua",
+	"terraformls",
+	"tflint",
 	"tilt_ls",
+	"yamlls",
 }
 
-lsp_installer.setup({
+mason.setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+		},
+	},
+})
+
+mason_lspconfig.setup({
 	ensure_installed = servers,
+	automatic_installation = true,
 })
 
 for _, server in pairs(servers) do

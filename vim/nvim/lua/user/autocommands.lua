@@ -45,4 +45,9 @@ vim.cmd([[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+
+  augroup _tilt
+    autocmd!
+    autocmd BufWinEnter Tiltfile setlocal filetype=tiltfile syntax=python
+  augroup end
 ]])

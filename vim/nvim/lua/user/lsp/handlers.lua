@@ -84,6 +84,10 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end
 
+	if client.name == "terraformls" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
 	if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "helm" then
 		vim.diagnostic.disable()
 	end

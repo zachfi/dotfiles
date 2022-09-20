@@ -34,6 +34,7 @@ function FindFiles(opts)
 		layout_strategy = "center",
 		prompt_prefix = ">>> ",
 		prompt_title = "~ find files ~",
+		cwd = vim.fn.getcwd(),
 		layout_config = {
 			center = { preview_cutoff = 1200, height = 0.7, width = 0.8 },
 		},

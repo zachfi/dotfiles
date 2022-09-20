@@ -25,16 +25,16 @@ vim.cmd([[
 
   augroup _go
     autocmd!
-    autocmd BufWinEnter *.tmpl setlocal filetype=gotexttmpl
-    autocmd BufWinEnter *.tpl setlocal filetype=gotexttmpl
+    autocmd BufWinEnter *.tmpl setlocal filetype=mustache
+    autocmd BufWinEnter *.tpl setlocal filetype=mustache
     autocmd FileType gitcommit setlocal spell
   augroup end
 
-  augroup _notes
-    autocmd!
-    autocmd FileType telekasten hi tklink guifg=#00dfff|hi tkBrackets guifg=#264F78 |hi tkHighlight guibg=#ff007c guifg=#9d0006 gui=bold
-    autocmd BufWritePre telekasten mark a| 1,10s/^modified: \d\d\d\d.*/\=strftime('modified: %FT%T%z')/|norm!`a
-  augroup end
+  " augroup _notes
+  "   autocmd!
+  "   autocmd FileType markdown hi tklink guifg=#00dfff|hi tkBrackets guifg=#264F78 |hi tkHighlight guibg=#ff007c guifg=#9d0006 gui=bold
+  "   autocmd BufWritePre markdown mark a| 1,10s/^modified: \d\d\d\d.*/\=strftime('modified: %FT%T%z')/|norm!`a
+  " augroup end
 
   augroup _auto_resize
     autocmd!

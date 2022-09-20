@@ -21,7 +21,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 nvim_tree.setup({
-
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_setup = false,
@@ -33,6 +32,7 @@ nvim_tree.setup({
 	open_on_tab = false,
 	hijack_cursor = false,
 	update_cwd = false,
+	respect_buf_cwd = true,
 	diagnostics = {
 		enable = true,
 		icons = {

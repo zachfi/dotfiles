@@ -157,9 +157,8 @@ return packer.startup(function(use)
 	use("mustache/vim-mustache-handlebars")
 	use("towolf/vim-helm")
 
-	-- Zettelkasten for notes
-	use("renerocksai/telekasten.nvim")
-	use("renerocksai/calendar-vim")
+	-- ZK for notes
+	use("mickael-menu/zk-nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

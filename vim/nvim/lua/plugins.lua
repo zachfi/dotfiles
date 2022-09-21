@@ -132,6 +132,7 @@ return packer.startup(function(use)
 	use("tpope/vim-rhubarb")
 
 	-- Github
+	use("github/copilot.vim")
 	use({
 		"pwntester/octo.nvim",
 		requires = {

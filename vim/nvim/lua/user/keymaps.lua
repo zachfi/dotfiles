@@ -73,6 +73,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+keymap("n", "<leader>T", ":TroubleToggle<CR>", opts)
+keymap("n", "<leader>B", ":TagbarToggle<CR>", opts)
+
 -- ZK
 keymap("n", "<leader>zd", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/daily" })<CR>', opts)
 keymap("n", "<leader>zw", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/weekly" })<CR>', opts)

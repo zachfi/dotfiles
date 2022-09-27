@@ -21,8 +21,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 nvim_tree.setup({
-	disable_netrw = true,
-	hijack_netrw = true,
+	disable_netrw = false,
+	hijack_netrw = false,
 	open_on_setup = false,
 	ignore_ft_on_setup = {
 		"startify",
@@ -62,7 +62,6 @@ nvim_tree.setup({
 	},
 	view = {
 		width = 30,
-		height = 30,
 		hide_root_folder = false,
 		side = "left",
 		mappings = {

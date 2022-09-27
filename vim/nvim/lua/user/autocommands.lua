@@ -48,7 +48,7 @@ vim.cmd([[
 
   augroup _tilt
     autocmd!
-    autocmd BufWinEnter Tiltfile setlocal filetype=tiltfile syntax=python
+    autocmd BufWinEnter Tiltfile setlocal filetype=starlark
   augroup end
 ]])
 

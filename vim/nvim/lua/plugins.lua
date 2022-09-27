@@ -155,7 +155,7 @@ return packer.startup(function(use)
 	use("google/vim-jsonnet")
 	use("ap/vim-css-color")
 	use("jjo/vim-cue")
-	use("bazelbuild/starlark")
+	use("cappyzawa/starlark.vim")
 	use("mustache/vim-mustache-handlebars")
 	use("towolf/vim-helm")
 

@@ -12,6 +12,7 @@ zk.setup({
 			name = "zk",
 			-- on_attach = ...
 			-- etc, see `:h vim.lsp.start_client()`
+			root_dir = "/home/zach/notes",
 		},
 
 		-- automatically attach buffers in a zk notebook that match the given filetypes

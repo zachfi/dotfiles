@@ -1,6 +1,7 @@
 local opts = {
 	settings = {
 		gopls = {
+			buildFlags = { "-tags=requires_docker" }, -- custom build flags
 			experimentalPostfixCompletions = true,
 			analyses = {
 				unusedparams = true,

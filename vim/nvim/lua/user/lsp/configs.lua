@@ -22,7 +22,7 @@ local servers = {
 	"gopls",
 	"jsonls",
 	"jsonnet_ls",
-	"marksman", -- markdown
+	-- "marksman", -- markdown
 	"sumneko_lua",
 	"terraformls",
 	"tflint",

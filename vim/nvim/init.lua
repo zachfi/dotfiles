@@ -1,3 +1,5 @@
+vim.opt.runtimepath:append(',~/.config/nvim')
+
 require("plugins")
 
 require("user.options")

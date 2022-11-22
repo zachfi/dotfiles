@@ -26,7 +26,7 @@ local servers = {
 	"sumneko_lua",
 	"terraformls",
 	"tflint",
-	"tilt_ls",
+	-- "tilt_ls",
 	"yamlls",
 }
 

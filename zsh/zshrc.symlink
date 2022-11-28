@@ -16,7 +16,8 @@ zstyle ':zdotfiles:load' dotmods \
   'python' \
   'ruby' \
   'utility' \
-  'window'
+  'window' \
+  'zk'
 
 if [ -s "$HOME/dotfiles/zsh/init.zsh" ]; then
   source "$HOME/dotfiles/zsh/init.zsh"

@@ -104,8 +104,8 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lua")
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	--[[ use("L3MON4D3/LuaSnip") --snippet engine ]]
+	--[[ use("rafamadriz/friendly-snippets") -- a bunch of snippets to use ]]
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
@@ -163,6 +163,12 @@ return packer.startup(function(use)
 	use("cappyzawa/starlark.vim")
 	use("mustache/vim-mustache-handlebars")
 	use("towolf/vim-helm")
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 
 	-- ZK for notes
 	use("mickael-menu/zk-nvim")

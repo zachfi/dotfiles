@@ -13,6 +13,8 @@ if not status_ok_lspconfig then
 	return
 end
 
+--[[ require("lspconfig").tilt_ls.setup({}) ]]
+
 local servers = {
 	"arduino_language_server",
 	"bashls",
@@ -28,6 +30,7 @@ local servers = {
 	"tflint",
 	-- "tilt_ls",
 	"yamlls",
+	-- "zk" -- zettelkasten is handled in zk.lua
 }
 
 mason.setup({

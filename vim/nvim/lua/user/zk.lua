@@ -11,6 +11,7 @@ zk.setup({
 			cmd = { "zk", "lsp" },
 			name = "zk",
 			-- on_attach = ...
+			on_attach = require("user.lsp.handlers").on_attach,
 			-- etc, see `:h vim.lsp.start_client()`
 			root_dir = "/home/zach/notes",
 		},

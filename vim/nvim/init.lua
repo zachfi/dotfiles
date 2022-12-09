@@ -1,4 +1,4 @@
-vim.opt.runtimepath:append(',~/.config/nvim')
+vim.opt.runtimepath:append(",~/.config/nvim")
 
 require("plugins")
 

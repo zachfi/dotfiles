@@ -23,11 +23,10 @@ vim.cmd([[
     autocmd BufWritePre $HOME/notes/**/*.md mark a|silent! 1,10s/^modified: \d\d\d\d.*/\=strftime('modified: %FT%T%z')/|norm!`a
   augroup end
 
-  augroup _go
+  augroup _tmpl
     autocmd!
     autocmd BufWinEnter *.tmpl setlocal filetype=mustache
     autocmd BufWinEnter *.tpl setlocal filetype=mustache
-    autocmd FileType gitcommit setlocal spell
   augroup end
 
   " augroup _notes

@@ -17,7 +17,7 @@ null_ls.setup({
 	sources = {
 		completion.spell,
 		diagnostics.flake8,
-		diagnostics.gitlint,
+		--[[ diagnostics.gitlint, ]]
 		diagnostics.golangci_lint,
 		diagnostics.shellcheck,
 		diagnostics.zsh,

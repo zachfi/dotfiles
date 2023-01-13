@@ -83,6 +83,7 @@ return packer.startup(function(use)
 	use({ "bluz71/vim-moonfly-colors", branch = "cterm-compat" })
 	use("rakr/vim-one")
 	use("sainnhe/everforest")
+	use("EdenEast/nightfox.nvim")
 	use({
 		"sonph/onehalf",
 		rtp = "vim",

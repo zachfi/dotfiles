@@ -105,6 +105,8 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
 	use({ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" })
+	use("ray-x/go.nvim")
+	use("ray-x/guihua.lua") -- recommended if need floating window support
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -123,17 +125,17 @@ return packer.startup(function(use)
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use(
-  -- {
---		"nvim-telescope/telescope-fzf-native.nvim",
---		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
---	}
+		-- {
+		--		"nvim-telescope/telescope-fzf-native.nvim",
+		--		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		--	}
 
-   { 
-   "nvim-telescope/telescope-fzf-native.nvim", 
-   run = "make", 
- --  disable = not lvim.builtin.telescope.active, 
- }
-  )
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			run = "make",
+			--  disable = not lvim.builtin.telescope.active,
+		}
+	)
 
 	-- Treesitter
 	use({

@@ -1,6 +1,8 @@
 vim.cmd([[
   autocmd BufWritePre $HOME/notes/**/*.md mark a|silent! 1,10s/^modified: \d\d\d\d.*/\=strftime('modified: %FT%T%z')/|norm!`a
 
+  autocmd BufWritePre (InsertLeave?) <buffer> lua vim.lsp.buf.formatting_sync(nil,500)
+
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 

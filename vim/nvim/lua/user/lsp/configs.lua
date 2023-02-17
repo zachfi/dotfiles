@@ -25,7 +25,7 @@ local servers = {
 	"jsonls",
 	"jsonnet_ls",
 	-- "marksman", -- markdown
-	"sumneko_lua",
+	"lua_ls",
 	"terraformls",
 	"tflint",
 	-- "tilt_ls",

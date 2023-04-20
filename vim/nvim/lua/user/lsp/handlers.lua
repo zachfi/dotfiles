@@ -71,6 +71,8 @@ local function lsp_keymaps(bufnr)
 	keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	-- go
 	keymap(bufnr, "n", "<leader>gt", "<cmd>GoTest -n<CR>", opts)
+	keymap(bufnr, "n", "<leader>gc", "<cmd>GoCoverage -p<CR>", opts)
+	keymap(bufnr, "n", "<leader>go", "<cmd>GoPkgOutline<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)

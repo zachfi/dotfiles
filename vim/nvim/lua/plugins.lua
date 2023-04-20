@@ -17,16 +17,16 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 require("lazy").setup({
 	"folke/which-key.nvim",
 
-	"wbthomason/packer.nvim", -- Have packer manage itself
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"numToStr/Comment.nvim", -- Easily comment stuff
-	"kyazdani42/nvim-web-devicons",
+	"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+	"MunifTanjim/nui.nvim",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
@@ -43,22 +43,41 @@ require("lazy").setup({
 	"antoinemadec/FixCursorHold.nvim", -- This is needed to fix lsp doc highlight
 	"folke/which-key.nvim",
 	"rcarriga/nvim-notify",
-	{ "majutsushi/tagbar" },
+	"preservim/tagbar",
 
-	-- Lua
 	{
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
+		"folke/todo-comments.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 		config = function()
-			require("trouble").setup({
-				use_diagnostic_signs = true,
+			require("todo-comments").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
 			})
 		end,
 	},
 
+	{
+		"folke/trouble.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+		},
+		opts = { use_diagnostic_signs = true },
+	},
+
 	-- colorschemes
 	"ellisonleao/gruvbox.nvim",
-	"folke/tokyonight.nvim",
+	{
+		"folke/tokyonight.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			vim.cmd([[colorscheme tokyonight-moon]])
+		end,
+	},
 	"LunarVim/onedarker",
 	"cocopon/iceberg.vim",
 	"jacoborus/tender.vim",
@@ -84,15 +103,83 @@ require("lazy").setup({
 	"ray-x/starry.nvim",
 
 	-- cmp plugins
-	"hrsh7th/nvim-cmp", -- The completion plugin
-	"hrsh7th/cmp-buffer", -- buffer completions
-	"hrsh7th/cmp-path", -- path completions
-	"hrsh7th/cmp-cmdline", -- cmdline completions
-	"saadparwaiz1/cmp_luasnip", -- snippet completions
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-nvim-lua",
-	"hrsh7th/cmp-nvim-lsp-signature-help",
-	{ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+	{
+		"hrsh7th/nvim-cmp",
+		version = false, -- last release is way too old
+		event = "InsertEnter",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+		},
+		opts = function()
+			local cmp = require("cmp")
+			return {
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+				snippet = {
+					expand = function(args)
+						require("luasnip").lsp_expand(args.body)
+					end,
+				},
+				mapping = cmp.mapping.preset.insert({
+					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), -- Or Insert instead of Select
+					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+					["<C-b>"] = cmp.mapping.scroll_docs(-3),
+					["<C-f>"] = cmp.mapping.scroll_docs(3),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					["<S-CR>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				}),
+				sources = cmp.config.sources({
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "buffer" },
+					{ name = "path" },
+					{ name = "git" },
+					{ name = "nvim_lsp_signature_help" },
+				}),
+				formatting = {
+					format = function(entry, item)
+						local icons = require("user.config").icons.kinds
+						if icons[item.kind] then
+							item.kind = icons[item.kind] .. item.kind
+						end
+						item.menu = ({
+							nvim_lsp = "[LSP]",
+							nvim_lua = "[NvimLua]",
+							luasnip = "[Snippet]",
+							buffer = "[Buffer]",
+							path = "[Path]",
+							git = "[Git]",
+							nvim_lsp_signature_help = "[LSP Signature]",
+						})[entry.source.name]
+						return item
+					end,
+				},
+				experimental = {
+					ghost_text = {
+						hl_group = "LspCodeLens",
+					},
+				},
+			}
+		end,
+	},
+	{
+		"petertriho/cmp-git",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
 	"ray-x/go.nvim",
 	"ray-x/guihua.lua", -- recommended if need floating window support
 
@@ -109,6 +196,8 @@ require("lazy").setup({
 	"folke/lua-dev.nvim",
 	"RRethy/vim-illuminate",
 	"mfussenegger/nvim-dap",
+	"theHamsta/nvim-dap-virtual-text",
+	"rcarriga/nvim-dap-ui",
 
 	-- Telescope
 	"nvim-telescope/telescope.nvim",
@@ -129,20 +218,18 @@ require("lazy").setup({
 	"github/copilot.vim",
 	{
 		"pwntester/octo.nvim",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
-			"kyazdani42/nvim-web-devicons",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		},
-		config = function()
-			require("octo").setup({
-				reaction_viewer_hint_icon = "", -- marker for user reactions
-				user_icon = "👤", -- user icon
-				timeline_marker = "🗨", -- timeline marker
-				right_bubble_delimiter = "", -- Bubble delimiter
-				left_bubble_delimiter = "", -- Bubble delimiter
-			})
-		end,
+		opts = {
+			reaction_viewer_hint_icon = "", -- marker for user reactions
+			user_icon = "👤", -- user icon
+			timeline_marker = "🗨", -- timeline marker
+			right_bubble_delimiter = "", -- Bubble delimiter
+			left_bubble_delimiter = "", -- Bubble delimiter
+		},
 	},
 
 	-- Syntax
@@ -160,4 +247,14 @@ require("lazy").setup({
 
 	-- ZK for notes
 	"mickael-menu/zk-nvim",
+
+	{
+		"dstein64/vim-startuptime",
+		-- lazy-load on a command
+		cmd = "StartupTime",
+		-- init is called during startup. Configuration for vim plugins typically should be set in an init function
+		init = function()
+			vim.g.startuptime_tries = 10
+		end,
+	},
 })

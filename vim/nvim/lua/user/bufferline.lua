@@ -3,6 +3,7 @@ if not status_ok then
 	return
 end
 
+-- TODO a thing
 bufferline.setup({
 	options = {
 		numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
@@ -13,6 +14,7 @@ bufferline.setup({
 		-- NOTE: this plugin is designed with this icon in mind,
 		-- and so changing this is NOT recommended, this is intended
 		-- as an escape hatch for people who cannot bear it for whatever reason
+
 		indicator = {
 			icon = "▎",
 			style = "icon",

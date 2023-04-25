@@ -1,26 +1,29 @@
 vim.opt.runtimepath:append(",~/.config/nvim")
 
-require("plugins")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
 
-require("user.options")
-require("user.keymaps")
--- require("user.colorscheme")
--- require("user.cmp")
+vim.opt.rtp:prepend(lazypath)
+
+-- Unless you are still migrating, remove the deprecated commands from v1.x
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+
+require("config")
+
+require("lazy").setup("plugins")
+
+-- require("user.options")
+-- require("user.keymaps")
 require("user.lsp")
 require("user.telescope")
-require("user.treesitter")
-require("user.autopairs")
-require("user.comment")
-require("user.gitsigns")
-require("user.bufferline")
-require("user.lualine")
-require("user.toggleterm")
-require("user.project")
-require("user.impatient")
-require("user.indentline")
-require("user.alpha")
-require("user.whichkey")
 require("user.autocommands")
-require("user.functions")
-require("user.notify")
 require("user.zk")

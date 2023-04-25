@@ -323,6 +323,11 @@ return {
 		},
 	},
 
+	-- buffer remove
+	{
+		"moll/vim-bbye",
+	},
+
 	-- better diagnostics list and others
 	{
 		"folke/trouble.nvim",

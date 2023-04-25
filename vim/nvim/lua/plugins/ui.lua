@@ -79,8 +79,14 @@ return {
 					},
 					lualine_b = {
 						"branch",
+						"diff",
 					},
 					lualine_c = {
+						{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+						{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+					},
+					lualine_x = {
+						components.treesitter,
 						{
 							"diagnostics",
 							symbols = {
@@ -90,12 +96,6 @@ return {
 								hint = icons.diagnostics.Hint,
 							},
 						},
-						{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-						{ "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-					},
-					lualine_x = {
-						components.treesitter,
-						components.diagnostics,
 						components.lsp,
 					},
 					lualine_y = {

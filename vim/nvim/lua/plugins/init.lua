@@ -55,8 +55,7 @@ return {
 
 	-- colorschemes
 	"ellisonleao/gruvbox.nvim",
-	"rebelot/kanagawa.nvim
-",
+	"rebelot/kanagawa.nvim",
 	{
 		"folke/tokyonight.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -68,7 +67,7 @@ return {
 		opts = { style = "moon" },
 	},
 	"LunarVim/onedarker",
-  "olimorris/onedarkpro.nvim"
+  "olimorris/onedarkpro.nvim",
 	"cocopon/iceberg.vim",
 	"jacoborus/tender.vim",
 	"sainnhe/sonokai",

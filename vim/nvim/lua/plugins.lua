@@ -1,22 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Unless you are still migrating, remove the deprecated commands from v1.x
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-
-require("lazy").setup({
-	"folke/which-key.nvim",
-
+return {
 	"nvim-lua/popup.nvim", -- An implementation of the Popup API from vim in Neovim
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
@@ -41,7 +23,6 @@ require("lazy").setup({
 	"lukas-reineke/indent-blankline.nvim",
 	--[[ "goolord/alpha-nvim") ]]
 	"antoinemadec/FixCursorHold.nvim", -- This is needed to fix lsp doc highlight
-	"folke/which-key.nvim",
 	"rcarriga/nvim-notify",
 	"preservim/tagbar",
 
@@ -205,7 +186,6 @@ require("lazy").setup({
 	"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 	"folke/lua-dev.nvim",
-	"RRethy/vim-illuminate",
 	"mfussenegger/nvim-dap",
 	"theHamsta/nvim-dap-virtual-text",
 	"rcarriga/nvim-dap-ui",
@@ -221,7 +201,6 @@ require("lazy").setup({
 	"JoosepAlviste/nvim-ts-context-commentstring",
 
 	-- Git
-	"lewis6991/gitsigns.nvim",
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
 
@@ -268,4 +247,4 @@ require("lazy").setup({
 			vim.g.startuptime_tries = 10
 		end,
 	},
-})
+}

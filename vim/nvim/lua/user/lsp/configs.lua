@@ -19,6 +19,7 @@ local servers = {
 	"arduino_language_server",
 	"bashls",
 	--[[ "dagger", -- cuelang ]]
+	"bufls",
 	"dockerls",
 	"golangci_lint_ls",
 	"gopls",

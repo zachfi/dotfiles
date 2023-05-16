@@ -27,6 +27,7 @@ null_ls.setup({
 		diagnostics.zsh,
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.buf,
+		formatting.goimports,
 		formatting.gofumpt,
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
 		formatting.stylua,

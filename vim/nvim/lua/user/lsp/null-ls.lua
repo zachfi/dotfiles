@@ -15,14 +15,19 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
 	debug = false,
 	sources = {
-		completion.spell,
-		diagnostics.flake8,
 		--[[ diagnostics.gitlint, ]]
+
+		completion.spell,
+		diagnostics.buf,
+		diagnostics.flake8,
 		diagnostics.golangci_lint,
+		diagnostics.protoc_gen_lint,
+		diagnostics.protolint,
 		diagnostics.shellcheck,
 		diagnostics.zsh,
 		formatting.black.with({ extra_args = { "--fast" } }),
-		formatting.goimports,
+		formatting.buf,
+		formatting.gofumpt,
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
 		formatting.stylua,
 		formatting.terraform_fmt,

@@ -151,6 +151,7 @@ return {
 
 				h = {
 					name = "GitHub",
+					g = { "<cmd>Octo gist list<cr>", "My open issues" },
 					i = { "<cmd>Octo search is:open is:issue assignee:zalegrala archived:false<cr>", "My open issues" },
 					I = { "<cmd>Octo issue browser<cr>", "Open issue in browser" },
 					p = { "<cmd>Octo search is:open is:pr author:zalegrala archived:false<cr>", "My open PRs" },

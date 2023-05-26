@@ -27,6 +27,8 @@ local opts = {
 				parameterNames = true,
 				rangeVariableTypes = true,
 			},
+
+			gofumpt = true,
 		},
 	},
 	init_options = {

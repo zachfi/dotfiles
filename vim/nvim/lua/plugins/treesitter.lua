@@ -36,6 +36,7 @@ return {
 				"gomod",
 				"hcl",
 				"json",
+				"jsonnet",
 				"latex",
 				"lua",
 				"make",

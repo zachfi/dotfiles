@@ -27,11 +27,7 @@ return {
 	"rafamadriz/friendly-snippets", -- a bunch of snippets to use
 
 	-- LSP
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"tamago324/nlsp-settings.nvim", -- language server settings defined in json for
-	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+	"neovim/nvim-lspconfig", -- TODO: migrate to lsp.lua
 	"folke/lua-dev.nvim",
 	"mfussenegger/nvim-dap",
 	"theHamsta/nvim-dap-virtual-text",

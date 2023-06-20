@@ -60,24 +60,35 @@ return {
 	-- ZK for notes
 	{
 		"mickael-menu/zk-nvim",
-		opts = {
-			config = {
-				cmd = { "zk", "lsp" },
-				name = "zk",
-				-- on_attach = ...
-				--[[ on_attach = require("user.lsp.handlers").on_attach, ]]
-				-- etc, see `:h vim.lsp.start_client()`
-				root_dir = "/home/zach/notes",
-			},
-
-			-- automatically attach buffers in a zk notebook that match the given filetypes
-			auto_attach = {
-				enabled = true,
-				filetypes = { "markdown" },
-			},
+		keys = {
+			{ "<leader>zd", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/daily" })<CR>' },
+			{ "<leader>zw", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/weekly" })<CR>' },
+			{ "<leader>zt", ":ZkTags<CR>" },
+			{ "<leader>zo", ":ZkOrphans<CR>" },
+			{ "<leader>zr", ":ZkRecents<CR>" },
+			{ "<leader>za", ":ZkNotes<CR>" },
+			{ "<leader>zn", ":ZkNew<CR>" },
+			{ "<leader>zi", ":ZkIndex<CR>" },
+			{ "<leader>zl", ":ZkLinks<CR>" },
+			{ "<leader>zc", ":ZkCd<CR>" },
+			{ "<leader>zq", ":lua ToggleTodo()<CR>" },
+			{ "<leader>zs", ":!make -C ~/notes update<CR>" },
 		},
-		config = function(_, opts)
+
+		config = function()
 			local zk = require("zk")
+			zk.setup({
+				{
+					picker = "telescope",
+
+					lsp = {
+						config = {
+							root_dir = "/home/zach/notes",
+						},
+					},
+				},
+			})
+
 			local commands = require("zk.commands")
 
 			local function make_edit_fn(defaults, picker_options)
@@ -95,7 +106,6 @@ return {
 			commands.add("ZkRecents", make_edit_fn({ createdAfter = "2 weeks ago" }, { title = "Zk Recents" }))
 		end,
 	},
-
 	{
 		"dstein64/vim-startuptime",
 		-- lazy-load on a command

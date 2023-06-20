@@ -79,17 +79,3 @@ keymap("n", "<leader>ge", ":GoPkgOutline<CR>", opts)
 
 keymap("n", "<leader>T", ":TroubleToggle<CR>", opts)
 keymap("n", "<leader>B", ":TagbarToggle<CR>", opts)
-
--- ZK
-keymap("n", "<leader>zd", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/daily" })<CR>', opts)
-keymap("n", "<leader>zw", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/weekly" })<CR>', opts)
-keymap("n", "<leader>zt", ":ZkTags<CR>", opts)
-keymap("n", "<leader>zo", ":ZkOrphans<CR>", opts)
-keymap("n", "<leader>zr", ":ZkRecents<CR>", opts)
-keymap("n", "<leader>za", ":ZkNotes<CR>", opts)
-keymap("n", "<leader>zn", ":ZkNew<CR>", opts)
-keymap("n", "<leader>zi", ":ZkIndex<CR>", opts)
-keymap("n", "<leader>zl", ":ZkLinks<CR>", opts)
-keymap("n", "<leader>zc", ":ZkCd<CR>", opts)
-keymap("n", "<leader>zq", ":lua ToggleTodo()<CR>", opts)
-keymap("n", "<leader>zs", ":!make -C ~/notes update<CR>", opts)

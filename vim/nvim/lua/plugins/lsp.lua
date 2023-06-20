@@ -4,9 +4,6 @@ return {
     branch = "v2.x",
     lazy = true,
     config = function()
-      -- This is where you modify the settings for lsp-zero
-      -- Note: autocompletion settings will not take effect
-
       require("lsp-zero.settings").preset({})
     end,
   },
@@ -86,7 +83,7 @@ return {
         "jsonlint",
         "json-lsp",
         "jsonnet-language-server",
-        "ltex-ls",
+        --[[ "ltex-ls", ]]
         --[[ "luaformatter", ]]
         "lua-language-server",
         "markdownlint",
@@ -101,7 +98,7 @@ return {
         "tflint",
         "yamlfmt",
         "yaml-language-server",
-        "zk",
+        --[[ "zk", ]]
       },
     },
 

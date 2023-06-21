@@ -65,6 +65,7 @@ return {
       ensure_installed = {
         "arduino-language-server",
         "bash-language-server",
+        "black",
         "buf",
         "buf-language-server",
         "clangd",
@@ -72,9 +73,9 @@ return {
         "cueimports",
         "cuelsp",
         "dockerfile-language-server",
+        "flake8",
         "gofumpt",
         "goimports",
-        --[[ "golangci-lint-langserver", ]]
         "gomodifytags",
         "gopls",
         "gospel",
@@ -83,8 +84,6 @@ return {
         "jsonlint",
         "json-lsp",
         "jsonnet-language-server",
-        --[[ "ltex-ls", ]]
-        --[[ "luaformatter", ]]
         "lua-language-server",
         "markdownlint",
         "markdown-toc",
@@ -92,6 +91,7 @@ return {
         "misspell",
         "nginx-language-server",
         "prettierd",
+        "python-lsp-server",
         "shfmt",
         "stylua",
         "terraform-ls",

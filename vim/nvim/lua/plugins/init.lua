@@ -1,5 +1,5 @@
 return {
-  "nvim-lua/popup.nvim",  -- An implementation of the Popup API from vim in Neovim
+  "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -31,8 +31,8 @@ return {
   },
 
   -- snippets
-  "L3MON4D3/LuaSnip",            --snippet engine
-  "rafamadriz/friendly-snippets", -- a bunch of snippets to use
+  --[[ "L3MON4D3/LuaSnip",            --snippet engine ]]
+  --[[ "rafamadriz/friendly-snippets", -- a bunch of snippets to use ]]
 
   -- Debug
   "folke/lua-dev.nvim",
@@ -58,10 +58,10 @@ return {
     },
     opts = {
       reaction_viewer_hint_icon = "", -- marker for user reactions
-      user_icon = "👤",           -- user icon
-      timeline_marker = "🗨",     -- timeline marker
-      right_bubble_delimiter = "", -- Bubble delimiter
-      left_bubble_delimiter = "", -- Bubble delimiter
+      user_icon = "👤",              -- user icon
+      timeline_marker = "🗨",        -- timeline marker
+      right_bubble_delimiter = "",  -- Bubble delimiter
+      left_bubble_delimiter = "",   -- Bubble delimiter
     },
   },
 

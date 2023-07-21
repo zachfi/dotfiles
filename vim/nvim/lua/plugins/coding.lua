@@ -72,12 +72,16 @@ return {
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
+          -- Copilot source
+          { name = "copilot",                 group_index = 2 },
+
+          { name = "nvim_lsp",                group_index = 3 },
+          { name = "nvim_lua",                group_index = 3 },
           { name = "luasnip" },
           { name = "buffer" },
-          { name = "path" },
-          { name = "git" },
-          { name = "nvim_lsp_signature_help" },
+          { name = "path",                    priority = 1 },
+          { name = "git",                     priority = 1 },
+          { name = "nvim_lsp_signature_help", priority = 1 },
         }),
         formatting = {
           format = function(entry, item)
@@ -86,6 +90,7 @@ return {
               item.kind = icons[item.kind] .. item.kind
             end
             item.menu = ({
+              copilot = "[Copilot]",
               nvim_lsp = "[LSP]",
               nvim_lua = "[NvimLua]",
               luasnip = "[Snippet]",
@@ -100,6 +105,20 @@ return {
         experimental = {
           ghost_text = {
             hl_group = "LspCodeLens",
+          },
+        },
+
+        sorting = {
+          comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.locality,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
           },
         },
       }

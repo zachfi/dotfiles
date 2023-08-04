@@ -45,8 +45,8 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 --[[ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts) ]]
 --[[ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts) ]]
 
--- Reflow the current line
-keymap("n", "Q", "gw<CR>", opts)
+-- Reflow the current paragraph
+keymap("n", "Q", "gwap<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter

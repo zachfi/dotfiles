@@ -158,6 +158,19 @@ return {
       -- (Optional) Configure lua language server for neovim
       require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
+      require("lspconfig").jsonnet_ls.setup({
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        flags = {
+          debounce_text_changes = 150,
+        },
+        cmd = { "jsonnet-language-server", "--lint" }, -- Linting can be noisy
+        settings = {
+          formatting = {
+            UseImplicitPlus = true, -- Recommended but might conflict with project-level jsonnetfmt settings
+          },
+        },
+      })
+
       local custom_server_settings = { "gopls" }
 
       for _, server in pairs(custom_server_settings) do

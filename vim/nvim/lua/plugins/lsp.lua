@@ -26,7 +26,7 @@ return {
           completion.spell,
           diagnostics.buf,
           diagnostics.flake8,
-          diagnostics.golangci_lint,
+          --[[ diagnostics.golangci_lint, ]]
           diagnostics.protoc_gen_lint,
           diagnostics.protolint,
           diagnostics.shellcheck,
@@ -81,6 +81,7 @@ return {
         "gospel",
         "gotestsum",
         "golangci-lint",
+        "golangci-lint-langserver",
         "helm-ls",
         "jsonlint",
         "json-lsp",

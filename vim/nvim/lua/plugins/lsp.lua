@@ -39,6 +39,15 @@ return {
           formatting.stylua,
           formatting.shfmt,
           formatting.terraform_fmt,
+          formatting.cbfmt.with({
+            filetypes = { "markdown" },
+            extra_args = {
+              "--config",
+              vim.fn.expand("~/.config/nvim/cbfmt.toml"),
+              "--parser",
+              "markdown",
+            },
+          }),
 
           -- code_actions
           null_ls.builtins.code_actions.gitsigns,

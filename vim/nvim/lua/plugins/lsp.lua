@@ -24,11 +24,11 @@ return {
 				root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
 				sources = {
 					completion.spell,
-					diagnostics.buf,
+					--[[ diagnostics.buf, ]]
 					diagnostics.flake8,
 					--[[ diagnostics.golangci_lint, ]]
 					diagnostics.protoc_gen_lint,
-					diagnostics.protolint,
+					--[[ diagnostics.protolint, ]]
 					diagnostics.shellcheck,
 					diagnostics.zsh,
 					formatting.black.with({ extra_args = { "--fast" } }),
@@ -86,11 +86,11 @@ return {
 				"flake8",
 				"gofumpt",
 				"goimports",
-				"golangci-lint",
 				"gomodifytags",
 				"gopls",
 				"gospel",
 				"gotestsum",
+				"golangci-lint",
 				"golangci-lint-langserver",
 				"helm-ls",
 				"jsonlint",
@@ -173,13 +173,17 @@ return {
 				flags = {
 					debounce_text_changes = 150,
 				},
-				--[[ cmd = { "jsonnet-language-server", "--lint" }, -- Linting can be noisy ]]
-				cmd = { "jsonnet-language-server" }, -- Linting can be noisy
+				cmd = { "jsonnet-language-server", "--lint" }, -- Linting can be noisy
 				settings = {
 					formatting = {
 						UseImplicitPlus = true, -- Recommended but might conflict with project-level jsonnetfmt settings
 					},
 				},
+			})
+
+			require("lspconfig").clangd.setup({
+				capabilities = vim.lsp.protocol.make_client_capabilities(),
+				cmd = { "clangd", "--offset-encoding=utf-16" },
 			})
 
 			local custom_server_settings = { "gopls" }

@@ -25,9 +25,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
-keymap("n", "<C-n>", ":tabnext<cr>", opts)
-keymap("n", "<C-p>", ":tabprev<cr>", opts)
-keymap("n", "<C-t>", ":tabnew<cr>", opts)
+keymap("n", "<C-n>", ":tabnext<CR>", opts)
+keymap("n", "<C-p>", ":tabprev<CR>", opts)
+keymap("n", "<C-t>", ":tabnew<CR>", opts)
 keymap("n", "<leader>t", 'a<c-r>=strftime("%FT%T%z")<CR><Esc>', opts)
 keymap("n", "<S-q>", "gqap", opts)
 
@@ -81,11 +81,13 @@ keymap("n", "<leader>T", ":TroubleToggle<CR>", opts)
 keymap("n", "<leader>B", ":TagbarToggle<CR>", opts)
 
 -- Debug
-keymap("n", "<leader>Xb", "<cmd>lua require('dap').toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>Xn", "<cmd>lua require('dap').step_over()<cr>", opts)
-keymap("n", "<leader>XN", "<cmd>lua require('dap').step_into()<cr>", opts)
-keymap("n", "<leader>XO", "<cmd>lua require('dap').step_out()<cr>", opts)
-keymap("n", "<leader>Xc", "<cmd>lua require('dap').continue()<cr>", opts)
-keymap("n", "<leader>Xr", "<cmd>lua require('dap').repl.open()<cr>", opts)
+keymap("n", "<leader>Dc", "<cmd>lua require('dap').continue()<CR>", opts)
+keymap("n", "<leader>Dn", "<cmd>lua require('dap').step_over()<CR>", opts)
+keymap("n", "<leader>Dd", "<cmd>lua require('dap').step_into()<CR>", opts)
+keymap("n", "<leader>Do", "<cmd>lua require('dap').step_out()<CR>", opts)
+keymap("n", "<leader>Db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", opts)
+keymap("n", "<leader>DB", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Berakpoint condition: '))<CR>", opts)
+keymap("n", "<leader>Dr", "<cmd>lua require('dap').repl.open()<CR>", opts)
+keymap("n", "<leader>Dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
+
 --[[ keymap("n", "<leader>Xo", "<cmd>lua require('dapui').open()<cr>", opts) ]]
-keymap("n", "<leader>Xt", "<cmd>lua require('dap-go').debug_test()<cr>", opts)

@@ -35,12 +35,6 @@ return {
   --[[ "L3MON4D3/LuaSnip",            --snippet engine ]]
   --[[ "rafamadriz/friendly-snippets", -- a bunch of snippets to use ]]
 
-  -- Debug
-  "folke/lua-dev.nvim",
-  "mfussenegger/nvim-dap",
-  "theHamsta/nvim-dap-virtual-text",
-  "rcarriga/nvim-dap-ui",
-
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
@@ -132,8 +126,8 @@ return {
     },
     opts = {
       reaction_viewer_hint_icon = "", -- marker for user reactions
-      user_icon = "👤",           -- user icon
-      timeline_marker = "🗨",     -- timeline marker
+      user_icon = "👤", -- user icon
+      timeline_marker = "🗨", -- timeline marker
       right_bubble_delimiter = "", -- Bubble delimiter
       left_bubble_delimiter = "", -- Bubble delimiter
     },

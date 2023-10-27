@@ -79,3 +79,13 @@ keymap("n", "<leader>ge", ":GoPkgOutline<CR>", opts)
 
 keymap("n", "<leader>T", ":TroubleToggle<CR>", opts)
 keymap("n", "<leader>B", ":TagbarToggle<CR>", opts)
+
+-- Debug
+keymap("n", "<leader>Xb", "<cmd>lua require('dap').toggle_breakpoint()<cr>", opts)
+keymap("n", "<leader>Xn", "<cmd>lua require('dap').step_over()<cr>", opts)
+keymap("n", "<leader>XN", "<cmd>lua require('dap').step_into()<cr>", opts)
+keymap("n", "<leader>XO", "<cmd>lua require('dap').step_out()<cr>", opts)
+keymap("n", "<leader>Xc", "<cmd>lua require('dap').continue()<cr>", opts)
+keymap("n", "<leader>Xr", "<cmd>lua require('dap').repl.open()<cr>", opts)
+--[[ keymap("n", "<leader>Xo", "<cmd>lua require('dapui').open()<cr>", opts) ]]
+keymap("n", "<leader>Xt", "<cmd>lua require('dap-go').debug_test()<cr>", opts)

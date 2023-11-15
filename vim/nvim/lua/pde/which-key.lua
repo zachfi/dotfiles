@@ -204,7 +204,7 @@ return {
           b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
           t = { "<cmd>Twilight<cr>", "Twilight" },
           o = { "<cmd>TodoTrouble<cr>", "Todo" },
-          O = { "<cmd>GoPkgOutline<cr>", "GoPkgOutline" },
+          O = { "<cmd>SymbolsOutline<cr>", "Symbols outline" },
           r = { "<cmd>TroubleToggle<cr>", "Trouble" },
         },
 

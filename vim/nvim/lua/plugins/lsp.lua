@@ -77,8 +77,8 @@ return {
 				"black",
 				"buf",
 				"buf-language-server",
-				"clangd",
-				"clang-format",
+				--[[ "clangd", ]]
+				--[[ "clang-format", ]]
 				"cueimports",
 				"cuelsp",
 				"delve",
@@ -174,7 +174,8 @@ return {
 				flags = {
 					debounce_text_changes = 150,
 				},
-				cmd = { "jsonnet-language-server", "--lint" }, -- Linting can be noisy
+				--[[ cmd = { "jsonnet-language-server", "--lint" }, -- Linting can be noisy ]]
+				cmd = { "jsonnet-language-server" }, -- Linting can be noisy
 				settings = {
 					formatting = {
 						UseImplicitPlus = true, -- Recommended but might conflict with project-level jsonnetfmt settings
@@ -182,10 +183,10 @@ return {
 				},
 			})
 
-			require("lspconfig").clangd.setup({
-				capabilities = vim.lsp.protocol.make_client_capabilities(),
-				cmd = { "clangd", "--offset-encoding=utf-16" },
-			})
+			--[[ require("lspconfig").clangd.setup({ ]]
+			--[[ 	capabilities = vim.lsp.protocol.make_client_capabilities(), ]]
+			--[[ 	cmd = { "clangd", "--offset-encoding=utf-16" }, ]]
+			--[[ }) ]]
 
 			local custom_server_settings = { "gopls" }
 

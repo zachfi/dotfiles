@@ -57,6 +57,7 @@
   "onedarkpro.nvim": { "branch": "main", "commit": "3fb972ee2a835c1b83199c9dbb3661f36e472c97" },
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
+  "solarized-osaka.nvim": { "branch": "main", "commit": "aeaefec4465deb3ec36f094578e880726c8f8e24" },
   "sonokai": { "branch": "master", "commit": "bdce098fc9e7202d3c555e2dc98c755ca1c23835" },
   "starry.nvim": { "branch": "master", "commit": "ee585b622455deace2b59d2f846c713805f69100" },
   "symbols-outline.nvim": { "branch": "master", "commit": "512791925d57a61c545bc303356e8a8f7869763c" },

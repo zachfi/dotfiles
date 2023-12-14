@@ -32,9 +32,11 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 	},
-
+	--[[ { ]]
+	--[[   "olimorris/onedarkpro.nvim", ]]
+	--[[ }, ]]
 	{
-		"olimorris/onedarkpro.nvim",
+		"navarasu/onedark.nvim",
 	},
 	{
 		"cocopon/iceberg.vim",
@@ -92,5 +94,9 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {},
+	},
+
+	{
+		"NLKNguyen/papercolor-theme",
 	},
 }

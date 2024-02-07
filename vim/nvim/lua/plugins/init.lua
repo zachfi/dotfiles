@@ -137,6 +137,17 @@ return {
 		},
 	},
 
+	{
+		"ruifm/gitlinker.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			-- Default <leader>gy
+			require("gitlinker").setup()
+		end,
+	},
+
 	-- ZK for notes
 	{
 		"mickael-menu/zk-nvim",

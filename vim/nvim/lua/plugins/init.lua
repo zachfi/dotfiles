@@ -139,13 +139,11 @@ return {
 
 	{
 		"ruifm/gitlinker.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
+		event = "VeryLazy",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			mappings = "<leader>gy",
 		},
-		config = function()
-			-- Default <leader>gy
-			require("gitlinker").setup()
-		end,
 	},
 
 	-- ZK for notes

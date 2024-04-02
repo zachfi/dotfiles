@@ -5,6 +5,9 @@ return {
   "theHamsta/nvim-dap-virtual-text",
   {
     "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+    },
     keys = {
       {
         "<leader>Xu",

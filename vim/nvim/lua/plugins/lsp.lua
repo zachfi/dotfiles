@@ -28,6 +28,10 @@ return {
 					diagnostics.flake8,
 					--[[ diagnostics.golangci_lint, ]]
 					diagnostics.protoc_gen_lint,
+					--[[ diagnostics.gospel, ]]
+					diagnostics.staticcheck,
+					diagnostics.revive,
+					--[[ diagnostics.semgrep, ]]
 					--[[ diagnostics.protolint, ]]
 					diagnostics.shellcheck,
 					diagnostics.zsh,
@@ -79,6 +83,7 @@ return {
 				"buf-language-server",
 				--[[ "clangd", ]]
 				--[[ "clang-format", ]]
+				"cbfmt",
 				"cueimports",
 				"cuelsp",
 				"delve",
@@ -86,12 +91,12 @@ return {
 				"flake8",
 				"gofumpt",
 				"goimports",
+				"golangci-lint",
+				"golangci-lint-langserver",
 				"gomodifytags",
 				"gopls",
 				"gospel",
 				"gotestsum",
-				"golangci-lint",
-				"golangci-lint-langserver",
 				"helm-ls",
 				"jsonlint",
 				"json-lsp",
@@ -105,6 +110,7 @@ return {
 				"prettier",
 				"prettierd",
 				"python-lsp-server",
+				--[[ "semgrep", ]]
 				"shellcheck",
 				"shfmt",
 				"stylua",

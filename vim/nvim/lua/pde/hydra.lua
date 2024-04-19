@@ -402,7 +402,7 @@ local function pde_menu()
     body = "<A-p>",
     heads = {
       { "t", cmd("Twilight") },
-      { "o", cmd("SymbolsOutline") },
+      { "o", cmd("Outline") },
       { "d", cmd("TodoTrouble") },
       { "r", cmd("TroubleToggle") },
       {

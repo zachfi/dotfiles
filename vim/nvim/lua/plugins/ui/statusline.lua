@@ -107,17 +107,14 @@ local lsp = {
     local client_names = {}
 
     for _, client in pairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        table.insert(client_names, client.name)
-      end
+      table.insert(client_names, client.name)
     end
     return "[" .. table.concat(client_names, ", ") .. "]"
   end,
   icon = ' ',
   color = {
     fg = colors.fg,
-    gui = 'bold',
+    -- gui = 'bold',
   },
   cond = conditions.hide_in_width,
 }

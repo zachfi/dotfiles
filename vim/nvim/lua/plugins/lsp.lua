@@ -63,6 +63,9 @@ return {
   --[[ 		} ]]
   --[[ 	end, ]]
   --[[ }, ]]
+
+
+  -- nvim-lint to replace what null-ls was doing
   {
     "mfussenegger/nvim-lint",
     config = function(_, _)
@@ -70,9 +73,33 @@ return {
         markdown = { "prettier" },
         proto = { "buf_lint" },
         python = { "flake8" },
+        go = { "golangcilint" },
       }
     end,
   },
+
+  -- formatter to replace what null-ls was doing -- I'm not sure this is needed
+  -- Most of the LSP servers seem to have formatters that are working well enough
+  -- https://github.com/mhartington/formatter.nvim/blob/master/lua/formatter/filetypes/go.lua
+  --[[ { ]]
+  --[[   "mhartington/formatter.nvim", ]]
+  --[[   config = function(_, _) ]]
+  --[[     local go = require("formatter.filetypes.go"); ]]
+  --[[     local lua = require("formatter.filetypes.lua"); ]]
+  --[[     require("formatter").setup { ]]
+  --[[       filetype = { ]]
+  --[[         lua = { ]]
+  --[[           lua.stylua ]]
+  --[[         }, ]]
+  --[[         go = { ]]
+  --[[           go.goimports, ]]
+  --[[           go.gofumpt ]]
+  --[[         }, ]]
+  --[[       } ]]
+  --[[     } ]]
+  --[[   end, ]]
+  --[[ }, ]]
+
 
   { "williamboman/mason-lspconfig.nvim" },
   {
@@ -102,7 +129,7 @@ return {
         "gofumpt",
         "goimports",
         "golangci-lint",
-        "golangci-lint-langserver",
+        --[[ "golangci-lint-langserver", ]]
         "gomodifytags",
         "gopls",
         "gospel",

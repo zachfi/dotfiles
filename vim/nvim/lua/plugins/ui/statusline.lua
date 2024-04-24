@@ -1,5 +1,19 @@
 local icons = require("config.icons")
 
+local conditions = {
+  buffer_not_empty = function()
+    return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+  end,
+  hide_in_width = function()
+    return vim.fn.winwidth(0) > 80
+  end,
+  check_git_workspace = function()
+    local filepath = vim.fn.expand('%:p:h')
+    local gitdir = vim.fn.finddir('.git', filepath .. ';')
+    return gitdir and #gitdir > 0 and #gitdir < #filepath
+  end,
+}
+
 local colors = {
   bg = "#202328",
   fg = "#bbc2cf",
@@ -14,12 +28,6 @@ local colors = {
   blue = "#51afef",
   red = "#ec5f67",
 }
-
-local window_width_limit = 70
-
-local function hide_in_width()
-  return vim.fn.winwidth(0) > window_width_limit
-end
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -55,7 +63,7 @@ local treesitter = {
     return ""
   end,
   color = { fg = colors.green },
-  cond = hide_in_width,
+  cond = conditions.hide_in_width,
 };
 
 local diff = {
@@ -67,7 +75,7 @@ local diff = {
     modified = { fg = colors.yellow },
     removed = { fg = colors.red },
   },
-  cond = hide_in_width,
+  cond = conditions.hide_in_width,
 }
 
 local diagnostics = {
@@ -87,42 +95,32 @@ local diagnostics = {
 };
 
 local lsp = {
-  function(msg)
-    msg = msg or "LS Inactive"
-    local buf_clients = vim.lsp.buf_get_clients()
-    if next(buf_clients) == nil then
-      -- TODO: clean up this if statement
-      if type(msg) == "boolean" or #msg == 0 then
-        return "LS Inactive"
-      end
+  -- Lsp server name .
+  function()
+    local msg = 'No Active Lsp'
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local clients = vim.lsp.buf_get_clients()
+    if next(clients) == nil then
       return msg
     end
-    -- local buf_ft = vim.bo.filetype
-    local buf_client_names = {}
 
-    -- add client
-    for _, client in pairs(buf_clients) do
-      --   if client.name ~= "null-ls" then
-      --     table.insert(buf_client_names, client.name)
-      --   end
+    local client_names = {}
+
+    for _, client in pairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        table.insert(client_names, client.name)
+      end
     end
-
-    -- add formatter
-    -- local formatters = require("lvim.lsp.null-ls.formatters")
-    -- local supported_formatters = formatters.list_registered(buf_ft)
-    -- vim.list_extend(buf_client_names, supported_formatters)
-
-    -- add linter
-    -- local linters = require("lvim.lsp.null-ls.linters")
-    -- local supported_linters = linters.list_registered(buf_ft)
-    -- vim.list_extend(buf_client_names, supported_linters)
-
-    return "[" .. table.concat(buf_client_names, ", ") .. "]"
+    return "[" .. table.concat(client_names, ", ") .. "]"
   end,
-  color = { gui = "bold" },
-  cond = hide_in_width,
-};
-
+  icon = ' ',
+  color = {
+    fg = colors.fg,
+    gui = 'bold',
+  },
+  cond = conditions.hide_in_width,
+}
 
 return {
   -- statusline
@@ -137,6 +135,7 @@ return {
           disabled_filetypes = { statusline = { "dashboard", "alpha" } },
           component_separators = '',
           section_separators = { left = '', right = '' },
+
         },
         sections = {
           lualine_a = {
@@ -147,7 +146,23 @@ return {
             diff,
           },
           lualine_c = {
-            "encoding",
+            {
+              "encoding",
+              icon_only = true,
+              separator = "",
+              padding = {
+                left = 1,
+                right = 0,
+              },
+            },
+            {
+              'fileformat',
+              symbols = {
+                unix = '', -- e712
+                dos = '', -- e70f
+                mac = '', -- e711
+              }
+            },
             {
               "filetype",
               icon_only = true,
@@ -177,9 +192,22 @@ return {
             lsp,
           },
           lualine_y = {
-            scrollbar,
-            -- { "progress", separator = " ",                  padding = { left = 1, right = 0 } },
-            { "location", padding = { left = 0, right = 1 } },
+            -- scrollbar,
+            {
+              "progress",
+              separator = " ",
+              padding = {
+                left = 1,
+                right = 0
+              }
+            },
+            {
+              "location",
+              padding = {
+                left = 0,
+                right = 1
+              }
+            },
           },
           lualine_z = {
             function()

@@ -31,6 +31,11 @@ vim.cmd([[
     autocmd BufWinEnter *.tpl setlocal filetype=mustache
   augroup end
 
+  augroup alloy
+    autocmd!
+    autocmd BufWinEnter *.flow setlocal filetype=alloy
+  augroup end
+
   " augroup _notes
   "   autocmd!
   "   autocmd FileType markdown hi tklink guifg=#00dfff|hi tkBrackets guifg=#264F78 |hi tkHighlight guibg=#ff007c guifg=#9d0006 gui=bold
@@ -54,16 +59,16 @@ vim.cmd([[
 ]])
 
 vim.api.nvim_create_autocmd("CursorHold", {
-  buffer = bufnr,
-  callback = function()
-    local opts = {
-      focusable = false,
-      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-      border = "rounded",
-      source = "always",
-      prefix = " ",
-      scope = "cursor",
-    }
-    vim.diagnostic.open_float(nil, opts)
-  end,
+	buffer = bufnr,
+	callback = function()
+		local opts = {
+			focusable = false,
+			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			border = "rounded",
+			source = "always",
+			prefix = " ",
+			scope = "cursor",
+		}
+		vim.diagnostic.open_float(nil, opts)
+	end,
 })

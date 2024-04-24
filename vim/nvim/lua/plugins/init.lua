@@ -51,9 +51,11 @@ return {
 		--[[ }, ]]
 		dependencies = {
 			"nvim-telescope/telescope-fzy-native.nvim",
+			"nvim-telescope/telescope-dap.nvim",
 			--[[ build = "make", ]]
 			config = function()
 				require("telescope").load_extension("fzy_native")
+				require("telescope").load_extension("dap")
 			end,
 		},
 		opts = {
@@ -203,4 +205,6 @@ return {
 			vim.g.startuptime_tries = 10
 		end,
 	},
+
+	"grafana/vim-alloy",
 }

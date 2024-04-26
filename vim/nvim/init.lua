@@ -28,27 +28,6 @@ require("lazy").setup({
     --[[ { import = "plugins.ai" }, ]]
     { import = "pde" },
   },
-  --[[ defaults = { lazy = true, version = nil }, ]]
-  --[[ install = { missing = true, colorscheme = { "tokyonight", "gruvbox" } }, ]]
-  --[[ dev = { patterns = jit.os:find "Windows" and {} or { "alpha2phi" } }, ]]
-  --[[ checker = { enabled = true }, ]]
-  --[[ performance = { ]]
-  --[[   cache = { ]]
-  --[[     enabled = true, ]]
-  --[[   }, ]]
-  --[[   rtp = { ]]
-  --[[     disabled_plugins = { ]]
-  --[[       "gzip", ]]
-  --[[       "matchit", ]]
-  --[[       "matchparen", ]]
-  --[[       "tarPlugin", ]]
-  --[[       "tohtml", ]]
-  --[[       "tutor", ]]
-  --[[       "zipPlugin", ]]
-  --[[       -- "netrwPlugin", ]]
-  --[[     }, ]]
-  --[[ }, ]]
-  --[[ }, ]]
 })
 
 require("user.autocommands")

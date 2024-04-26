@@ -8,99 +8,6 @@ return {
     end,
   },
 
-  --[[ { ]]
-  --[[ 	"jose-elias-alvarez/null-ls.nvim", ]]
-  --[[ 	event = { "BufReadPre", "BufNewFile" }, ]]
-  --[[ 	dependencies = { "mason.nvim" }, ]]
-  --[[ 	opts = function() ]]
-  --[[ 		local null_ls = require("null-ls") ]]
-  --[[ 		-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting ]]
-  --[[ 		local formatting = null_ls.builtins.formatting ]]
-  --[[ 		-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics ]]
-  --[[ 		local diagnostics = null_ls.builtins.diagnostics ]]
-  --[[ 		-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/completion ]]
-  --[[ 		local completion = null_ls.builtins.completion ]]
-  --[[ 		return { ]]
-  --[[ 			root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"), ]]
-  --[[ 			sources = { ]]
-  --[[ 				completion.spell, ]]
-  --[[ 				-- diagnostics.buf, ]]
-  --[[ 				diagnostics.flake8, ]]
-  --[[ 				-- diagnostics.golangci_lint, ]]
-  --[[ 				diagnostics.protoc_gen_lint, ]]
-  --[[ 				-- diagnostics.gospel, ]]
-  --[[ 				diagnostics.staticcheck, ]]
-  --[[ 				diagnostics.revive, ]]
-  --[[ 				--diagnostics.semgrep, ]]
-  --[[ 				--diagnostics.protolint, ]]
-  --[[ 				diagnostics.shellcheck, ]]
-  --[[ 				diagnostics.zsh, ]]
-  --[[ 				formatting.black.with({ extra_args = { "--fast" } }), ]]
-  --[[ 				formatting.buf, ]]
-  --[[ 				formatting.goimports, ]]
-  --[[ 				formatting.gofumpt, ]]
-  --[[ 				formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }), ]]
-  --[[ 				formatting.stylua, ]]
-  --[[ 				formatting.shfmt, ]]
-  --[[ 				formatting.terraform_fmt, ]]
-  --[[ 				formatting.cbfmt.with({ ]]
-  --[[ 					filetypes = { "markdown" }, ]]
-  --[[ 					extra_args = { ]]
-  --[[ 						"--config", ]]
-  --[[ 						vim.fn.expand("~/.config/nvim/cbfmt.toml"), ]]
-  --[[ 						"--parser", ]]
-  --[[ 						"markdown", ]]
-  --[[ 					}, ]]
-  --[[ 				}), ]]
-  --[[]]
-  --[[ 				-- code_actions ]]
-  --[[ 				null_ls.builtins.code_actions.gitsigns, ]]
-  --[[ 				null_ls.builtins.code_actions.gitrebase, ]]
-  --[[]]
-  --[[ 				-- hovers ]]
-  --[[ 				null_ls.builtins.hover.dictionary, ]]
-  --[[ 			}, ]]
-  --[[ 		} ]]
-  --[[ 	end, ]]
-  --[[ }, ]]
-
-
-  -- nvim-lint to replace what null-ls was doing
-  {
-    "mfussenegger/nvim-lint",
-    config = function(_, _)
-      require("lint").linters_by_ft = {
-        markdown = { "prettier" },
-        proto = { "buf_lint" },
-        python = { "flake8" },
-        go = { "golangcilint" },
-      }
-    end,
-  },
-
-  -- formatter to replace what null-ls was doing -- I'm not sure this is needed
-  -- Most of the LSP servers seem to have formatters that are working well enough
-  -- https://github.com/mhartington/formatter.nvim/blob/master/lua/formatter/filetypes/go.lua
-  --[[ { ]]
-  --[[   "mhartington/formatter.nvim", ]]
-  --[[   config = function(_, _) ]]
-  --[[     local go = require("formatter.filetypes.go"); ]]
-  --[[     local lua = require("formatter.filetypes.lua"); ]]
-  --[[     require("formatter").setup { ]]
-  --[[       filetype = { ]]
-  --[[         lua = { ]]
-  --[[           lua.stylua ]]
-  --[[         }, ]]
-  --[[         go = { ]]
-  --[[           go.goimports, ]]
-  --[[           go.gofumpt ]]
-  --[[         }, ]]
-  --[[       } ]]
-  --[[     } ]]
-  --[[   end, ]]
-  --[[ }, ]]
-
-
   { "williamboman/mason-lspconfig.nvim" },
   {
     "williamboman/mason.nvim",
@@ -189,9 +96,8 @@ return {
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
       { "williamboman/mason-lspconfig.nvim" },
-      {
-        "williamboman/mason.nvim",
-      },
+      { "williamboman/mason.nvim", },
+      { "VonHeikemen/lsp-zero.nvim" },
     },
     config = function()
       -- This is where all the LSP shenanigans will live

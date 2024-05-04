@@ -61,8 +61,6 @@ return {
         "stylua",
         "terraform-ls",
         "tflint",
-        "vale",
-        "vale-ls",
         "yamlfmt",
         "yaml-language-server",
         -- "zk",
@@ -96,7 +94,7 @@ return {
     dependencies = {
       { "hrsh7th/cmp-nvim-lsp" },
       { "williamboman/mason-lspconfig.nvim" },
-      { "williamboman/mason.nvim", },
+      { "williamboman/mason.nvim" },
       { "VonHeikemen/lsp-zero.nvim" },
     },
     config = function()

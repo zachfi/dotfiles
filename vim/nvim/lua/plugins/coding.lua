@@ -150,7 +150,6 @@ return {
     "mfussenegger/nvim-lint",
     config = function(_, _)
       require("lint").linters_by_ft = {
-        --[[ markdown = { "prettier" }, ]]
         proto = { "buf_lint" },
         python = { "flake8" },
         go = { "golangcilint" },
@@ -168,6 +167,7 @@ return {
         sh = { "shfmt" },
         yaml = { "yamlfmt" },
         lua = { "stylua" },
+        markdown = { "prettier" },
       },
 
       format_on_save = {

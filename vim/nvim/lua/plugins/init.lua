@@ -154,6 +154,7 @@ return {
       { "<leader>zi", ":ZkIndex<CR>" },
       { "<leader>zl", ":ZkLinks<CR>" },
       { "<leader>zc", ":ZkCd<CR>" },
+      { "<leader>zb", ":ZkBacklinks<CR>" },
       { "<leader>zq", ":lua ToggleTodo()<CR>" },
       { "<leader>zs", ":!make -C ~/notes update<CR>" },
     },

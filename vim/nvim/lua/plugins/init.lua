@@ -161,12 +161,10 @@ return {
     config = function()
       local zk = require("zk")
       zk.setup({
-        {
-          picker = "telescope",
-          lsp = {
-            config = {
-              root_dir = "/home/zach/notes",
-            },
+        picker = "telescope",
+        lsp = {
+          config = {
+            root_dir = "/home/zach/notes",
           },
         },
       })

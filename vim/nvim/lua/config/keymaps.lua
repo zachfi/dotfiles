@@ -80,14 +80,4 @@ keymap("n", "<leader>ge", ":GoPkgOutline<CR>", opts)
 keymap("n", "<leader>T", ":TroubleToggle<CR>", opts)
 keymap("n", "<leader>B", ":TagbarToggle<CR>", opts)
 
--- Debug
-keymap("n", "<leader>Dc", "<cmd>lua require('dap').continue()<CR>", opts)
-keymap("n", "<leader>Dn", "<cmd>lua require('dap').step_over()<CR>", opts)
-keymap("n", "<leader>Dd", "<cmd>lua require('dap').step_into()<CR>", opts)
-keymap("n", "<leader>Do", "<cmd>lua require('dap').step_out()<CR>", opts)
-keymap("n", "<leader>Db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", opts)
-keymap("n", "<leader>DB", "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Berakpoint condition: '))<CR>", opts)
-keymap("n", "<leader>Dr", "<cmd>lua require('dap').repl.open()<CR>", opts)
-keymap("n", "<leader>Dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
-
 --[[ keymap("n", "<leader>Xo", "<cmd>lua require('dapui').open()<cr>", opts) ]]

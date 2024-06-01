@@ -48,7 +48,8 @@ return {
   -- better diagnostics list and others
   {
     "folke/trouble.nvim",
-    branch = "dev", -- IMPORTANT! -- The beta v3 version.  Drop when merged.
+    -- branch = "main", -- IMPORTANT! -- The beta v3 version.  Drop when merged.
+    tag = "v3.1.0",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },

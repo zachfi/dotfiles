@@ -31,8 +31,9 @@ vim.cmd([[
     autocmd BufWinEnter *.tpl setlocal filetype=mustache
   augroup end
 
-  augroup alloy
+  augroup _alloy
     autocmd!
+    autocmd BufWinEnter *.river setlocal filetype=alloy
     autocmd BufWinEnter *.flow setlocal filetype=alloy
   augroup end
 

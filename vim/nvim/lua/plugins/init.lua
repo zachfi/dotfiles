@@ -128,6 +128,7 @@ return {
       timeline_marker = "🗨", -- timeline marker
       right_bubble_delimiter = "", -- Bubble delimiter
       left_bubble_delimiter = "", -- Bubble delimiter
+      enable_builtin = true,
     },
   },
 

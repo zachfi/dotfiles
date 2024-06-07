@@ -5,19 +5,22 @@ local opts = {
       experimentalPostfixCompletions = true,
       analyses = {
         fieldalignment = true,
-        nilness = true,
+        -- nilness = true, -- default on
         shadow = true,
-        unusedparams = true,
-        unusedwrite = true,
+        -- unusedparams = true, -- default on
+        unusedvariable = true,
+        -- unusedwrite = true, -- default on
         useany = true,
       },
       staticcheck = true,
+      semanticTokens = true,
       codelenses = {
         gc_details = true,
         upgrade_dependency = true,
         run_govulncheck = true,
         tidy = true,
         vendor = true,
+        test = true,
       },
 
       hints = {

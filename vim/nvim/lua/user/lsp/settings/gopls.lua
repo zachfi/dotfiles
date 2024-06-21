@@ -22,7 +22,6 @@ local opts = {
         vendor = true,
         test = true,
       },
-
       hints = {
         assignVariableTypes = true,
         compositeLiteralFields = true,

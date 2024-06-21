@@ -1,11 +1,8 @@
 return {
   {
     "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     lazy = true,
-    config = function()
-      require("lsp-zero.settings").preset({})
-    end,
   },
 
   { "williamboman/mason-lspconfig.nvim" },
@@ -104,6 +101,7 @@ return {
       local format = require("plugins.lsp.format")
       local keymaps = require("plugins.lsp.keymaps")
       local illuminate = require("illuminate")
+      local lspconfig = require("lspconfig")
 
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps({ buffer = bufnr })
@@ -113,9 +111,9 @@ return {
       end)
 
       -- (Optional) Configure lua language server for neovim
-      require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+      lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 
-      require("lspconfig").jsonnet_ls.setup({
+      lspconfig.jsonnet_ls.setup({
         capabilities = vim.lsp.protocol.make_client_capabilities(),
         flags = {
           debounce_text_changes = 150,
@@ -129,12 +127,36 @@ return {
         },
       })
 
-      --[[ require("lspconfig").clangd.setup({ ]]
+      require("mason-lspconfig").setup({
+        -- handlers = {
+        --   --- this first function is the "default handler"
+        --   --- it applies to every language server without a "custom handler"
+        --   function(server_name)
+        --     require("lspconfig")[server_name].setup({})
+        --   end,
+        --
+        --   --- this is the "custom handler" for `example_server`
+        --   --- in your own config you should replace `example_server`
+        --   --- with the name of a language server you have installed
+        --   gopls = function()
+        --     --- in this function you can setup
+        --     --- the language server however you want.
+        --     --- in this example we just use lspconfig
+        --     lspconfig.gopls.setup(require("user.lsp.settings.gopls"))
+        --   end,
+        -- },
+      })
+
+      lspconfig.gopls.setup(require("user.lsp.settings.gopls"))
+
+      --[[ lspconfig.clangd.setup({ ]]
       --[[ 	capabilities = vim.lsp.protocol.make_client_capabilities(), ]]
       --[[ 	cmd = { "clangd", "--offset-encoding=utf-16" }, ]]
       --[[ }) ]]
 
-      local custom_server_settings = { "gopls" }
+      local custom_server_settings = {
+        -- "gopls",
+      }
 
       for _, server in pairs(custom_server_settings) do
         local opts = {

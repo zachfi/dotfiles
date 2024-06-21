@@ -10,17 +10,18 @@ return {
     -- https://github.com/ray-x/go.nvim/tree/master?tab=readme-ov-file#configuration
     config = function()
       require("go").setup({
-        goimports = 'goimports', -- goimports command, can be gopls[default] or either goimports or golines if need to split long lines
-        gofmt = 'gofumpt',       -- gofmt through gopls: alternative is gofumpt, goimports, golines, gofmt, etc
+        goimports = "goimports", -- goimports command, can be gopls[default] or either goimports or golines if need to split long lines
+        gofmt = "gofumpt",   -- gofmt through gopls: alternative is gofumpt, goimports, golines, gofmt, etc
 
         --[[ max_line_len = 120, ]]
         tag_transform = false,
         test_dir = "",
         comment_placeholder = "   ",
-        lsp_cfg = true,       -- false: use your own lspconfig
-        lsp_gofumpt = true,   -- true: set default gofmt in gopls format to gofumpt
+        lsp_cfg = true,   -- false: use your own lspconfig
+        lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
         lsp_on_attach = true, -- use on_attach from go.nvim
         dap_debug = true,
+        -- lsp_inlay_hints = { enable = false },
       })
     end,
     event = { "CmdlineEnter" },

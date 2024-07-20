@@ -27,6 +27,7 @@ function M.lsp_keymaps(bufnr)
   keymap(bufnr, "n", "<leader>gt", "<cmd>GoTest -n<CR>", opts)
   keymap(bufnr, "n", "<leader>g<space>", "<cmd>GoCodeLenAct<CR>", opts)
   keymap(bufnr, "n", "<leader>ga", "<cmd>GoCodeAction<CR>", opts)
+  keymap(bufnr, "n", "<leader>gi", "<cmd>GoImplements<CR>", opts)
 
   -- jsonnet
   keymap(bufnr, "n", "<leader>jv", "<cmd>vertical JsonnetEval<CR>", opts)

@@ -147,7 +147,8 @@ return {
         -- },
       })
 
-      lspconfig.gopls.setup(require("user.lsp.settings.gopls"))
+      -- lspconfig.gopls.setup(require("user.lsp.settings.gopls"))
+      -- lspconfig.gopls.setup(require("go.lsp").config())
 
       --[[ lspconfig.clangd.setup({ ]]
       --[[ 	capabilities = vim.lsp.protocol.make_client_capabilities(), ]]
@@ -155,7 +156,7 @@ return {
       --[[ }) ]]
 
       local custom_server_settings = {
-        -- "gopls",
+        "gopls",
       }
 
       for _, server in pairs(custom_server_settings) do

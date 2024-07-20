@@ -23,13 +23,13 @@ local opts = {
         test = true,
       },
       hints = {
-        assignVariableTypes = true,
-        compositeLiteralFields = true,
-        compositeLiteralTypes = true,
+        assignVariableTypes = false,
+        compositeLiteralFields = false,
+        compositeLiteralTypes = false,
         constantValues = true,
         functionTypeParameters = true,
-        parameterNames = true,
-        rangeVariableTypes = true,
+        parameterNames = false,
+        rangeVariableTypes = false,
       },
 
       gofumpt = true,

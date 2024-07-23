@@ -58,6 +58,7 @@ return {
         "stylua",
         "terraform-ls",
         "tflint",
+        "vale",
         "yamlfmt",
         "yaml-language-server",
         -- "zk",

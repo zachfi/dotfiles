@@ -154,7 +154,7 @@ return {
         python = { "flake8" },
         go = { "golangcilint" },
         sh = { "shellcheck" },
-        md = { "vale" },
+        markdown = { "vale" },
       }
     end,
   },

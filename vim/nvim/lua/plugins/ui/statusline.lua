@@ -2,14 +2,14 @@ local icons = require("config.icons")
 
 local conditions = {
   buffer_not_empty = function()
-    return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+    return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
   end,
   hide_in_width = function()
     return vim.fn.winwidth(0) > 80
   end,
   check_git_workspace = function()
-    local filepath = vim.fn.expand('%:p:h')
-    local gitdir = vim.fn.finddir('.git', filepath .. ';')
+    local filepath = vim.fn.expand("%:p:h")
+    local gitdir = vim.fn.finddir(".git", filepath .. ";")
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end,
 }
@@ -52,7 +52,7 @@ local scrollbar = {
   padding = { left = 0, right = 0 },
   color = { fg = colors.yellow, bg = colors.bg },
   cond = nil,
-};
+}
 
 local treesitter = {
   function()
@@ -64,7 +64,7 @@ local treesitter = {
   end,
   color = { fg = colors.green },
   cond = conditions.hide_in_width,
-};
+}
 
 local diff = {
   "diff",
@@ -92,13 +92,13 @@ local diagnostics = {
   --[[ colored = false, ]]
   --[[ update_in_insert = false, ]]
   --[[ always_visible = true, ]]
-};
+}
 
 local lsp = {
   -- Lsp server name .
   function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local msg = "No Active Lsp"
+    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.buf_get_clients()
     if next(clients) == nil then
       return msg
@@ -111,7 +111,7 @@ local lsp = {
     end
     return "[" .. table.concat(client_names, ", ") .. "]"
   end,
-  icon = ' ',
+  icon = " ",
   color = {
     fg = colors.fg,
     -- gui = 'bold',
@@ -130,9 +130,8 @@ return {
           theme = "auto",
           globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "alpha" } },
-          component_separators = '',
-          section_separators = { left = '', right = '' },
-
+          component_separators = "",
+          section_separators = { left = "", right = "" },
         },
         sections = {
           lualine_a = {
@@ -153,12 +152,12 @@ return {
               },
             },
             {
-              'fileformat',
+              "fileformat",
               symbols = {
-                unix = '', -- e712
-                dos = '', -- e70f
-                mac = '', -- e711
-              }
+                unix = "", -- e712
+                dos = "", -- e70f
+                mac = "", -- e711
+              },
             },
             {
               "filetype",
@@ -186,6 +185,7 @@ return {
           lualine_x = {
             treesitter,
             diagnostics,
+            "copilot",
             lsp,
           },
           lualine_y = {
@@ -195,15 +195,15 @@ return {
               separator = " ",
               padding = {
                 left = 1,
-                right = 0
-              }
+                right = 0,
+              },
             },
             {
               "location",
               padding = {
                 left = 0,
-                right = 1
-              }
+                right = 1,
+              },
             },
           },
           lualine_z = {

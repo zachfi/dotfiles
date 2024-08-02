@@ -93,28 +93,6 @@ return {
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
 
-  -- Github
-  --[[ "github/copilot.vim", ]]
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-        auto_trigger = true,
-      })
-    end,
-  },
-
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
-
   {
     "pwntester/octo.nvim",
     dependencies = {

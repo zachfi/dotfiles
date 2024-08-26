@@ -57,6 +57,11 @@ vim.cmd([[
     autocmd!
     autocmd BufRead Tiltfile setf=tiltfile
   augroup end
+
+  augroup _hcl
+    autocmd!
+    autocmd BufWinEnter *.hcl setlocal filetype=hcl
+  augroup end
 ]])
 
 vim.api.nvim_create_autocmd("CursorHold", {

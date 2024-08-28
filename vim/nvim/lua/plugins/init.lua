@@ -88,6 +88,30 @@ return {
       },
     },
   },
+  {
+    "xiyaowong/telescope-emoji.nvim",
+    config = function()
+      require("telescope").load_extension("emoji")
+    end,
+  },
+  {
+    "alduraibi/telescope-glyph.nvim",
+    config = function()
+      require("telescope").load_extension("glyph")
+    end,
+  },
+  {
+    "nvim-telescope/telescope-dap.nvim",
+    config = function()
+      require("telescope").load_extension("dap")
+    end,
+  },
+  {
+    "crispgm/telescope-heading.nvim",
+    config = function()
+      require("telescope").load_extension("heading")
+    end,
+  },
 
   -- Git
   "tpope/vim-fugitive",

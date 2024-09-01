@@ -1,102 +1,119 @@
 return {
 
-	-- tokyonight
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		opts = { style = "moon" },
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			-- load the colorscheme here
-			vim.cmd([[colorscheme tokyonight]])
-		end,
-	},
+  -- tokyonight
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    opts = { style = "moon" },
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme tokyonight]])
+    end,
+  },
 
-	-- catppuccin
-	{
-		"catppuccin/nvim",
-		lazy = true,
-		name = "catppuccin",
-	},
+  -- catppuccin
+  {
+    "catppuccin/nvim",
+    lazy = true,
+    name = "catppuccin",
+  },
 
-	{
-		"marko-cerovac/material.nvim",
-	},
+  {
+    "marko-cerovac/material.nvim",
+  },
 
-	-- gruvbox
-	{
-		"ellisonleao/gruvbox.nvim",
-	},
+  -- gruvbox
+  {
+    "ellisonleao/gruvbox.nvim",
+  },
 
-	--kanagawa
-	{
-		"rebelot/kanagawa.nvim",
-	},
-	--[[ { ]]
-	--[[   "olimorris/onedarkpro.nvim", ]]
-	--[[ }, ]]
-	{
-		"navarasu/onedark.nvim",
-	},
-	{
-		"cocopon/iceberg.vim",
-	},
+  --kanagawa
+  {
+    "rebelot/kanagawa.nvim",
+  },
+  --[[ { ]]
+  --[[   "olimorris/onedarkpro.nvim", ]]
+  --[[ }, ]]
+  {
+    "navarasu/onedark.nvim",
+  },
+  {
+    "cocopon/iceberg.vim",
+  },
 
-	{
-		"jacoborus/tender.vim",
-	},
+  {
+    "jacoborus/tender.vim",
+  },
 
-	{
-		"sainnhe/sonokai",
-	},
+  {
+    "sainnhe/sonokai",
+  },
 
-	{
-		"sainnhe/edge",
-	},
+  {
+    "sainnhe/edge",
+  },
 
-	{
-		"ajmwagar/vim-deus",
-	},
+  {
+    "ajmwagar/vim-deus",
+  },
 
-	{
-		"fenetikm/falcon",
-	},
+  {
+    "fenetikm/falcon",
+  },
 
-	{
-		"bluz71/vim-moonfly-colors",
-		branch = "cterm-compat",
-	},
+  {
+    "bluz71/vim-moonfly-colors",
+    branch = "cterm-compat",
+  },
 
-	{
-		"rakr/vim-one",
-	},
+  {
+    "rakr/vim-one",
+  },
 
-	{
-		"sainnhe/everforest",
-	},
+  {
+    "sainnhe/everforest",
+  },
 
-	{
-		"EdenEast/nightfox.nvim",
-	},
+  {
+    "EdenEast/nightfox.nvim",
+  },
 
-	{ "bluz71/vim-nightfly-colors", as = "nightfly" },
+  { "bluz71/vim-nightfly-colors", as = "nightfly" },
 
-	{
-		"tomasr/molokai",
-	},
+  {
+    "tomasr/molokai",
+  },
 
-	{
-		"ray-x/starry.nvim",
-	},
+  {
+    "ray-x/starry.nvim",
+  },
 
-	{
-		"craftzdog/solarized-osaka.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
 
-	{
-		"NLKNguyen/papercolor-theme",
-	},
+  {
+    "NLKNguyen/papercolor-theme",
+  },
+
+  {
+    "decaycs/decay.nvim",
+    name = "decay",
+    lazy = false,
+    priority = 1000,
+    -- config = function()
+    -- SNIP
+    -- end,
+  },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    -- Add in any other configuration;
+    --   event = foo,
+    --   config = bar
+    --   end,
+  },
 }

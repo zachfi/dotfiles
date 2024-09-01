@@ -101,14 +101,14 @@ return {
       local lsp = require("lsp-zero")
       local format = require("plugins.lsp.format")
       local keymaps = require("plugins.lsp.keymaps")
-      local illuminate = require("illuminate")
+      -- local illuminate = require("illuminate")
       local lspconfig = require("lspconfig")
 
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps({ buffer = bufnr })
         format.on_attach(client, bufnr)
         keymaps.lsp_keymaps(bufnr)
-        illuminate.on_attach(client)
+        -- illuminate.on_attach(client)
       end)
 
       -- (Optional) Configure lua language server for neovim

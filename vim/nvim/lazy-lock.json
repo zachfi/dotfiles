@@ -91,7 +91,7 @@
   "vim-illuminate": { "branch": "master", "commit": "b5713e6ca3f627b46968386d6d3f24d374d3cb17" },
   "vim-moonfly-colors": { "branch": "cterm-compat", "commit": "7b812579edd4136022530fe851754dc494a33037" },
   "vim-mustache-handlebars": { "branch": "master", "commit": "0153fe03a919add2d6cf2d41b2d5b6e1188bc0e0" },
-  "vim-nightfly-colors": { "branch": "master", "commit": "01483bec48d3cc087e61515906e57e3b57f32500" },
+  "vim-nightfly-colors": { "branch": "master", "commit": "4df3ed670ff6acff4cf0b9bf00aa233e732a8788" },
   "vim-one": { "branch": "master", "commit": "187f5c85b682c1933f8780d4d419c55d26a82e24" },
   "vim-rhubarb": { "branch": "master", "commit": "386daa2e9d98e23e27ad089afcbe5c5a903e488d" },
   "vim-startuptime": { "branch": "master", "commit": "b6f0d93f6b8cf6eee0b4c94450198ba2d6a05ff6" },

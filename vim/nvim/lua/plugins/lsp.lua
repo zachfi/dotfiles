@@ -21,7 +21,7 @@ return {
         "bash-language-server",
         "black",
         "buf",
-        "buf-language-server",
+        -- "buf-language-server", -- dead
         -- "clangd",
         -- "clang-format",
         "cbfmt",

@@ -55,7 +55,7 @@ return {
         }, {
           { name = "buffer",                 keyword_length = 4 },
           { name = "nvim_lua" },
-          { name = "luasnip" },
+          -- { name = "luasnip" },
           { name = "path" },
           { name = "git" },
           { name = "nvim_lsp_signature_help" },
@@ -74,7 +74,7 @@ return {
               copilot = "[Copilot]",
               nvim_lsp = "[LSP]",
               nvim_lua = "[NvimLua]",
-              luasnip = "[Snippet]",
+              -- luasnip = "[Snippet]",
               buffer = "[Buffer]",
               path = "[Path]",
               git = "[Git]",

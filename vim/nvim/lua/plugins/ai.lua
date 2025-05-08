@@ -33,6 +33,9 @@ return {
     opts = {
       -- See Configuration section for options
     },
+    -- config = function()
+    --   require("fzf-lua").register_ui_select()
+    -- end,
     -- See Commands section for default commands if you want to lazy load on them
   },
 }

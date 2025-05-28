@@ -128,25 +128,25 @@ return {
         },
       })
 
-      require("mason-lspconfig").setup({
-        -- handlers = {
-        --   --- this first function is the "default handler"
-        --   --- it applies to every language server without a "custom handler"
-        --   function(server_name)
-        --     require("lspconfig")[server_name].setup({})
-        --   end,
-        --
-        --   --- this is the "custom handler" for `example_server`
-        --   --- in your own config you should replace `example_server`
-        --   --- with the name of a language server you have installed
-        --   gopls = function()
-        --     --- in this function you can setup
-        --     --- the language server however you want.
-        --     --- in this example we just use lspconfig
-        --     lspconfig.gopls.setup(require("user.lsp.settings.gopls"))
-        --   end,
-        -- },
-      })
+      -- require("mason-lspconfig").setup({
+      -- handlers = {
+      --   --- this first function is the "default handler"
+      --   --- it applies to every language server without a "custom handler"
+      --   function(server_name)
+      --     require("lspconfig")[server_name].setup({})
+      --   end,
+      --
+      --   --- this is the "custom handler" for `example_server`
+      --   --- in your own config you should replace `example_server`
+      --   --- with the name of a language server you have installed
+      --   gopls = function()
+      --     --- in this function you can setup
+      --     --- the language server however you want.
+      --     --- in this example we just use lspconfig
+      --     lspconfig.gopls.setup(require("user.lsp.settings.gopls"))
+      --   end,
+      -- },
+      -- })
 
       -- lspconfig.gopls.setup(require("user.lsp.settings.gopls"))
       -- lspconfig.gopls.setup(require("go.lsp").config())

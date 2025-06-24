@@ -27,7 +27,9 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
   },
-
+  {
+    "sainnhe/gruvbox-material",
+  },
   --kanagawa
   {
     "rebelot/kanagawa.nvim",

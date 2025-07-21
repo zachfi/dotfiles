@@ -10,12 +10,12 @@ return {
       vim.g.copilot_integration_id = "vscode-chat"
 
       -- Map <M-l> (Alt + L) to accept Copilot suggestions
-      -- vim.keymap.set("i", "<M-l>", 'copilot#Accept("<CR>")', {
-      --   expr = true,
-      --   silent = true,
-      --   replace_keycodes = false,
-      --   desc = "Accept Copilot suggestion",
-      -- })
+      vim.keymap.set("i", "<M-l>", 'copilot#Accept("<CR>")', {
+        expr = true,
+        silent = true,
+        replace_keycodes = false,
+        desc = "Accept Copilot suggestion",
+      })
     end,
   },
 

@@ -450,6 +450,13 @@ return {
         remap = false,
       },
       {
+        "<leader>xdl",
+        "<cmd>lua require('dap-go').debug_last()<CR>",
+        desc = "Test",
+        nowait = true,
+        remap = false,
+      },
+      {
         "<leader>xdu",
         "<cmd>lua require('dapui').open()<CR>",
         desc = "UI",

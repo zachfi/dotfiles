@@ -17,6 +17,7 @@ return {
     dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",
+      "leoluz/nvim-dap-go",
     },
     keys = {
       {
@@ -36,6 +37,14 @@ return {
       --[[ end ]]
 
       local dap, dapui = require("dap"), require("dapui")
+
+      vim.keymap.set("n", "<F1>", dap.continue)
+      vim.keymap.set("n", "<F2>", dap.step_into)
+      vim.keymap.set("n", "<F3>", dap.step_over)
+      vim.keymap.set("n", "<F4>", dap.step_out)
+      vim.keymap.set("n", "<F5>", dap.step_back)
+      vim.keymap.set("n", "<F12>", dap.restart)
+
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
       end
@@ -50,6 +59,7 @@ return {
       end
 
       require("dapui").setup(opts)
+      require("dap-go").setup(opts)
     end,
   },
   {

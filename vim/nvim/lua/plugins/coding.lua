@@ -152,7 +152,7 @@ return {
       require("lint").linters_by_ft = {
         proto = { "buf_lint" },
         python = { "flake8" },
-        go = { "golangcilint" },
+        go = { "golangcilint", "codespell" },
         sh = { "shellcheck" },
         markdown = { "vale" },
       }

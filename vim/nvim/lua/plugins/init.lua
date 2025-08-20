@@ -65,7 +65,7 @@ return {
       defaults = {
         prompt_prefix = " ",
         selection_caret = " ",
-        path_display = { "smart" },
+        path_display = { "truncate" },
         mappings = {
           i = {
             ["<esc>"] = function(...)
@@ -83,6 +83,11 @@ return {
         -- }
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
+        lsp_document_symbols = {
+          fname_width = 0.5,
+          symbol_width = 0.3,
+          symbol_type_width = 0.2,
+        },
       },
       extensions = {
         --[[ fzf = { ]]

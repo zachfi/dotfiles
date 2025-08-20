@@ -27,6 +27,7 @@ return {
         "cbfmt",
         "cueimports",
         "cuelsp",
+        "codespell",
         "delve",
         "dockerfile-language-server",
         "flake8",
@@ -41,6 +42,7 @@ return {
         "helm-ls",
         "jsonlint",
         "json-lsp",
+        "harper-ls",
         "jsonnet-language-server",
         "lua-language-server",
         "markdownlint",
@@ -95,6 +97,23 @@ return {
       { "williamboman/mason.nvim" },
       { "VonHeikemen/lsp-zero.nvim" },
     },
+
+    opts = {
+      servers = {
+        vale_ls = {},
+        harper_ls = {
+          settings = {
+            ["harper-ls"] = {
+              linters = {
+                SpellCheck = false,     -- Spelling done by codespell, which is better at it.
+                SentenceCapitalization = false, -- There are abundant reasons to start with lowercase, specially in go.
+              },
+            },
+          },
+        },
+      },
+    },
+
     config = function()
       -- This is where all the LSP shenanigans will live
 

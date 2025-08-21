@@ -88,6 +88,10 @@ return {
           symbol_width = 0.3,
           symbol_type_width = 0.2,
         },
+
+        colorscheme = {
+          enable_preview = true,
+        },
       },
       extensions = {
         --[[ fzf = { ]]

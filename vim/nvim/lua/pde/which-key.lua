@@ -9,7 +9,59 @@ return {
 
     opts = {
       preset = "helix",
+      icons = {
+        separator = " │ ",
+        group = " ",
+
+        ["<leader>e"] = { name = " neotree" },
+
+        -- builtin = {
+        --   ["?"] = "󰊽", -- question mark
+        --   ["!"] = "󰊾", -- exclamation mark
+        --   ["$"] = "󰊿", -- dollar sign
+        --   ["#"] = "󰋀", -- hash sign
+        --   ["%"] = "󰋁", -- percent sign
+        --   ["&"] = "󰋂", -- ampersand
+        --   ["*"] = "󰋃", -- asterisk
+        -- },
+      },
+      spec = {
+        { "<leader>d", icon = { icon = "", hl = "WhichKeyIconBlue" } },
+        { "<leader>e", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "NeoTree" },
+        { "<leader>f", icon = { icon = "", hl = "WhichKeyIconBlue" } },
+        { "<leader>g", icon = { icon = "󰘭", hl = "WhichKeyIconOrange" }, group = "Code" },
+        { "<leader>l", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "LSP" },
+        { "<leader>x", icon = { icon = "", hl = "WhichKeyIconYellow" }, group = "PDE" },
+      },
+
+      -- defaults = {
+      --   -- NOTE: this is the old spec, but I might want to use some of these later
+      --   -- ["z"] = { name = "+fold" },
+      --   -- ["]"] = { name = "+next" },
+      --   -- ["["] = { name = "+prev" },
+      --   -- ["<leader>b"] = { name = " buffers" },
+      --   -- ["<leader>c"] = { name = " code" },
+      --   -- ["<leader>f"] = { name = " file/find" },
+      --   -- ["<leader>g"] = { name = "󰘭 git" },
+      --   -- ["<leader>i"] = { name = "󰛢 Grapple" },
+      --   -- ["<leader>j"] = { name = " Flash" },
+      --   -- ["<leader>m"] = { name = "󱃲 Visual Multi" },
+      --   -- ["<leader>n"] = { name = " Neorg" },
+      --   -- ["<leader>p"] = { name = " Packages" },
+      --   -- ["<leader>s"] = { name = "󰦅 Search" },
+      --   -- ["<leader>u"] = { name = "󰨇 Ui/Ux" },
+      --   -- ["<leader>w"] = { name = " Windows" },
+      --   -- ["<leader>x"] = { name = "󱁤 Diagnostics/Quickfix" },
+      --   -- ["<leader>t"] = { name = " Terminal" },
+      --   -- ["<leader>k"] = { name = "󰺿 Telekasten" },
+      --   -- ["<leader>z"] = { name = "󰩈 Quit" },
+      -- },
     },
+    -- config = function(_, opts)
+    --   local wk = require("which-key")
+    --   wk.setup(opts)
+    --   wk.register(opts.defaults)
+    -- end,
 
     keys = {
       -- mode = { rn", "v" },
@@ -22,15 +74,9 @@ return {
         remap = false,
       },
       {
-        "<leader>P",
-        "<cmd>lua require('telescope').extensions.projects.projects()<cr>",
-        desc = "Projects",
-        nowait = true,
-        remap = false,
-      },
-      {
         "<leader>b",
-        "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+        -- "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+        "<cmd>Telescope buffers theme=ivy<cr>",
         desc = "Buffers",
         nowait = true,
         remap = false,
@@ -39,11 +85,12 @@ return {
       {
         "<leader>d",
         "<cmd>lua FindFiles()<CR>",
-        desc = "Find files from working directory",
+        desc = "Find relative to the working directory",
         nowait = true,
         remap = false,
       },
-      { "<leader>e",  group = "NeoTree",                nowait = true,    remap = false },
+      -- NeoTree
+      { "<leader>e",  name = "neotree",                 group = "NeoTree", color = "orange" },
       {
         "<leader>eb",
         "<cmd>Neotree toggle show buffers right<cr>",
@@ -58,7 +105,7 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>er", "<cmd>Neotree toggle reveal<cr>", desc = "Explore", nowait = true, remap = false },
+      { "<leader>er", "<cmd>Neotree toggle reveal<cr>", desc = "Explore",  nowait = true,   remap = false },
       {
         "<leader>es",
         "<cmd>Neotree toggle float git_status<cr>",
@@ -66,13 +113,17 @@ return {
         nowait = true,
         remap = false,
       },
+      --
+
       {
         "<leader>f",
         "<cmd>lua FindFilesRelative()<CR>",
-        desc = "Find files relative to the current buffer",
+        desc = "Find relative to the current buffer",
         nowait = true,
         remap = false,
       },
+
+      -- TODO: Git or Go?
       { "<leader>g",  group = "Git",                     nowait = true,            remap = false },
       {
         "<leader>gR",
@@ -192,7 +243,7 @@ return {
         remap = false,
       },
       --
-      { "<leader>lc", group = "LSP Calls",                 nowait = true,      remap = false },
+      { "<leader>lc", group = "LSP Calls",                 nowait = true,   remap = false },
       {
         "<leader>lci",
         "<cmd>Telescope lsp_incoming_calls<cr>",
@@ -243,13 +294,19 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename",    nowait = true, remap = false },
+      { "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", nowait = true, remap = false },
       --
-      { "<leader>q",  "<cmd>q!<CR>",                       desc = "Quit",      nowait = true, remap = false },
-      { "<leader>s",  group = "Search",                    nowait = true,      remap = false },
-      { "<leader>sC", "<cmd>Telescope commands<cr>",       desc = "Commands",  nowait = true, remap = false },
-      { "<leader>sM", "<cmd>Telescope man_pages<cr>",      desc = "Man Pages", nowait = true, remap = false },
-      { "<leader>sR", "<cmd>Telescope registers<cr>",      desc = "Registers", nowait = true, remap = false },
+      {
+        "<leader>q",
+        "<cmd>Telescope quickfix<CR>",
+        desc = "Quit",
+        nowait = true,
+        remap = false,
+      },
+      { "<leader>s",  group = "Search",               nowait = true,      remap = false },
+      { "<leader>sC", "<cmd>Telescope commands<cr>",  desc = "Commands",  nowait = true, remap = false },
+      { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages", nowait = true, remap = false },
+      { "<leader>sR", "<cmd>Telescope registers<cr>", desc = "Registers", nowait = true, remap = false },
       {
         "<leader>sb",
         "<cmd>Telescope git_branches<cr>",
@@ -262,9 +319,21 @@ return {
       { "<leader>sk", "<cmd>Telescope keymaps<cr>",     desc = "Keymaps",          nowait = true, remap = false },
       { "<leader>so", "<cmd>TodoTelescope<cr>",         desc = "Commands",         nowait = true, remap = false },
       { "<leader>sr", "<cmd>Telescope oldfiles<cr>",    desc = "Open Recent File", nowait = true, remap = false },
-      { "<leader>w",  "<cmd>w!<CR>",                    desc = "Save",             nowait = true, remap = false },
-      { "<leader>x",  group = "PDE",                    nowait = true,             remap = false },
-      { "<leader>xO", "<cmd>Outline<cr>",               desc = "Outline",          nowait = true, remap = false },
+
+      --
+      {
+        "<leader>t",
+        'a<c-r>=strftime("%FT%T%z")<CR><Esc>',
+        desc = "Timestamp",
+        nowait = true,
+        remap = false,
+      },
+
+      --
+      -- PDE
+      --
+      { "<leader>x",  group = "PDE",      nowait = true,    remap = false },
+      { "<leader>xO", "<cmd>Outline<cr>", desc = "Outline", nowait = true, remap = false },
       {
         "<leader>xb",
         "<cmd>Telescope git_branches<cr>",
@@ -341,6 +410,38 @@ return {
       { "<leader>xo",  "<cmd>TodoTrouble<cr>",                 desc = "Todo",     nowait = true, remap = false },
       { "<leader>xr",  "<cmd>TroubleToggle<cr>",               desc = "Trouble",  nowait = true, remap = false },
       { "<leader>xt",  "<cmd>Twilight<cr>",                    desc = "Twilight", nowait = true, remap = false },
+
+      -- TODO: clean up conflicting keymaps -- moved from trouble.nvim config
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>xl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
     },
   },
 }

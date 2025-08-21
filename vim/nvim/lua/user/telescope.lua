@@ -9,7 +9,7 @@ function FindFilesRelative(opts)
     prompt_title = "~ find relative files ~",
     cwd = require("telescope.utils").buffer_dir(),
     layout_config = {
-      renter = { preview_cutoff = 1200, height = 0.4, width = 0.5 },
+      center = { preview_cutoff = 1200, height = 0.4, width = 0.5 },
     },
   })
   opts = vim.tbl_deep_extend("force", theme_opts, opts)

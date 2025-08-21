@@ -28,7 +28,6 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-n>", ":tabnext<CR>", opts)
 keymap("n", "<C-p>", ":tabprev<CR>", opts)
 keymap("n", "<C-t>", ":tabnew<CR>", opts)
-keymap("n", "<leader>t", 'a<c-r>=strftime("%FT%T%z")<CR><Esc>', opts)
 keymap("n", "<S-q>", "gqap", opts)
 
 -- Resize with arrows
@@ -75,9 +74,3 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-keymap("n", "<leader>ge", ":GoPkgOutline<CR>", opts)
-
-keymap("n", "<leader>T", ":TroubleToggle<CR>", opts)
-keymap("n", "<leader>B", ":TagbarToggle<CR>", opts)
-
---[[ keymap("n", "<leader>Xo", "<cmd>lua require('dapui').open()<cr>", opts) ]]

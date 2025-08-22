@@ -69,6 +69,7 @@
   "sonokai": { "branch": "master", "commit": "45481a54f9e44b8b9d89509df514b86bbf22aa07" },
   "telescope-dap.nvim": { "branch": "master", "commit": "783366bd6c1e7fa0a5c59c07db37f49c805a28df" },
   "telescope-fzy-native.nvim": { "branch": "master", "commit": "282f069504515eec762ab6d6c89903377252bf5b" },
+  "telescope-git-conflicts.nvim": { "branch": "main", "commit": "1ac7040f601d16ab3800bdda6f5912a0e385cb29" },
   "telescope-heading.nvim": { "branch": "main", "commit": "e85c0f69cb64048f56e76548dcb2f10277576df9" },
   "telescope-symbols.nvim": { "branch": "master", "commit": "a6d0127a53d39b9fc2af75bd169d288166118aec" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },

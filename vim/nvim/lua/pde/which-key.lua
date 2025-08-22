@@ -466,6 +466,20 @@ return {
         remap = false,
       },
       {
+        "<leader>vC",
+        "<cmd>Telescope conflicts<cr>",
+        desc = "Diff",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>vd",
+        "<cmd>Gitsigns diffthis<CR>",
+        desc = "Diff",
+        nowait = true,
+        remap = false,
+      },
+      {
         "<leader>vs",
         "<cmd>Gitsigns stage_hunk<CR>",
         desc = "Stage Hunk",
@@ -494,13 +508,6 @@ return {
         remap = false,
       },
       {
-        "<leader>vd",
-        "<cmd>Gitsigns diffthis<CR>",
-        desc = "Diff",
-        nowait = true,
-        remap = false,
-      },
-      {
         "<leader>vp",
         "<cmd>Gitsigns preview_hunk<CR>",
         desc = "Diff",
@@ -509,10 +516,6 @@ return {
       },
       { "<leader>vy", "<cmd>GitLink remote=origin<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
       { "<leader>vY", "<cmd>GitLink! remote=origin<cr>", mode = { "n", "v" }, desc = "Open git link" },
-
-      --
-      --
-      --
 
       {
         "<leader>vb",

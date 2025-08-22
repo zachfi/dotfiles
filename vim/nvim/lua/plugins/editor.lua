@@ -21,15 +21,22 @@ return {
   -- better diagnostics list and others
   {
     "folke/trouble.nvim",
-    -- branch = "main", -- IMPORTANT! -- The beta v3 version.  Drop when merged.
-    -- tag = "v3.1.0",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
+    cmd = "Trouble",
     keys = {
       -- see which-key.lua
     },
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {
+      modes = {
+        symbols = {
+          win = {
+            size = 0.3, -- 30% of the window
+          },
+        },
+      },
+    }, -- for default options, refer to the configuration section for custom setup.
   },
 
   -- todo comments

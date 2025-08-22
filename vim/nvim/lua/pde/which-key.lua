@@ -32,6 +32,7 @@ return {
         { "<leader>g", icon = { icon = "", hl = "WhichKeyIconCyan" }, group = "Code" },
         { "<leader>h", icon = { icon = "", hl = "WhichKeyIconBlue" }, group = "GitHub" },
         { "<leader>i", icon = { icon = "󱃲", hl = "WhichKeyIcon" }, group = "Insert Special" },
+        { "<leader>j", icon = { icon = "󱃾", hl = "WhichKeyIcon" }, group = "Jsonnet" },
         { "<leader>l", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "LSP" },
         { "<leader>n", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Notifications" },
         { "<leader>s", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Search" },
@@ -211,16 +212,9 @@ return {
       -- Insert Special Chars
       --
       {
-        "<leader>ie",
-        "<cmd>Telescope emoji<cr>",
-        desc = "Insert Emoji",
-        nowait = true,
-        remap = false,
-      },
-      {
-        "<leader>ig",
-        "<cmd>Telescope glyph<cr>",
-        desc = "Insert Glyph",
+        "<leader>ii",
+        "<cmd>Telescope symbols<cr>",
+        desc = "Insert Symbol",
         nowait = true,
         remap = false,
       },
@@ -293,7 +287,13 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename",    nowait = true, remap = false },
+      {
+        "<leader>lR",
+        "<cmd>lua vim.lsp.buf.rename()<cr>",
+        desc = "Rename",
+        nowait = true,
+        remap = false,
+      },
 
       --
       -- Notifications
@@ -306,29 +306,138 @@ return {
         desc = "Dismiss all Notifications",
       },
 
-      {
-        "<leader>q",
-        "<cmd>Telescope quickfix<CR>",
-        desc = "Quit",
-        nowait = true,
-        remap = false,
-      },
-      -- { "<leader>s",  group = "Search",               nowait = true,      remap = false },
-      { "<leader>sC", "<cmd>Telescope commands<cr>",       desc = "Commands",  nowait = true, remap = false },
-      { "<leader>sM", "<cmd>Telescope man_pages<cr>",      desc = "Man Pages", nowait = true, remap = false },
-      { "<leader>sR", "<cmd>Telescope registers<cr>",      desc = "Registers", nowait = true, remap = false },
+      --
+      -- Search
+      --
+
       {
         "<leader>sb",
-        "<cmd>Telescope git_branches<cr>",
-        desc = "Checkout branch",
+        "<cmd>Telescope buffers theme=ivy<cr>",
+        desc = "Buffers",
         nowait = true,
         remap = false,
       },
-      { "<leader>sc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme",      nowait = true, remap = false },
-      { "<leader>sh", "<cmd>Telescope help_tags<cr>",   desc = "Find Help",        nowait = true, remap = false },
-      { "<leader>sk", "<cmd>Telescope keymaps<cr>",     desc = "Keymaps",          nowait = true, remap = false },
-      { "<leader>so", "<cmd>TodoTelescope<cr>",         desc = "Commands",         nowait = true, remap = false },
-      { "<leader>sr", "<cmd>Telescope oldfiles<cr>",    desc = "Open Recent File", nowait = true, remap = false },
+      {
+        "<leader>sC",
+        "<cmd>Telescope command_history theme=ivy<cr>",
+        desc = "Command History",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sS",
+        "<cmd>Telescope search_history theme=ivy<cr>",
+        desc = "Search History",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sC",
+        "<cmd>Telescope commands<cr>",
+        desc = "Commands",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sM",
+        "<cmd>Telescope man_pages<cr>",
+        desc = "Man Pages",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sR",
+        "<cmd>Telescope registers<cr>",
+        desc = "Registers",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sc",
+        "<cmd>Telescope colorscheme<cr>",
+        desc = "Colorscheme",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sh",
+        "<cmd>Telescope help_tags<cr>",
+        desc = "Find Help",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sk",
+        "<cmd>Telescope keymaps<cr>",
+        desc = "Keymaps",
+        nowait = true,
+        remap = false,
+      },
+
+      {
+        "<leader>sL",
+        "<cmd>Telescope loclist<cr>",
+        desc = "Location List",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sl",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>so",
+        "<cmd>TodoTelescope<cr>",
+        desc = "Commands",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sq",
+        "<cmd>Telescope quickfix<cr>",
+        desc = "Document Symbols (Trouble)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sr",
+        "<cmd>Telescope oldfiles<cr>",
+        desc = "Open Recent File",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>ss",
+        "<cmd>Trouble symbols toggle<cr>",
+        desc = "Document Symbols (Trouble)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>st",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Document Diagnostics (Trouble)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>sT",
+        "<cmd>TodoLocList<cr>",
+        desc = "Todo List",
+        nowait = true,
+        remap = false,
+      },
+      -- TODO: re-add this?  ;so seems to handle this with telescope
+      -- {
+      --   "<leader>sT",
+      --   "<cmd>Trouble todo<cr>",
+      --   desc = "Todo List",
+      --   nowait = true,
+      --   remap = false,
+      -- },
 
       --
       {
@@ -428,6 +537,10 @@ return {
       },
 
       --
+      -- VIM
+      --
+
+      --
       -- PDE
       --
       {
@@ -438,16 +551,9 @@ return {
         remap = false,
       },
       {
-        "<leader>xb",
-        "<cmd>Telescope git_branches<cr>",
-        desc = "Checkout branch",
-        nowait = true,
-        remap = false,
-      },
-      {
         "<leader>xc",
         "<cmd>exec &bg=='light'? 'set bg=dark' : 'set bg=light'<cr>",
-        desc = "Trouble",
+        desc = "Switch Background",
         nowait = true,
         remap = false,
       },
@@ -516,40 +622,26 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>xo", "<cmd>TodoTrouble<cr>",   desc = "Todo",     nowait = true, remap = false },
-      { "<leader>xr", "<cmd>TroubleToggle<cr>", desc = "Trouble",  nowait = true, remap = false },
-      { "<leader>xt", "<cmd>Twilight<cr>",      desc = "Twilight", nowait = true, remap = false },
-
-      -- TODO: clean up conflicting keymaps -- moved from trouble.nvim config
       {
-        "<leader>xx",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
+        "<leader>xo",
+        "<cmd>TodoTrouble<cr>",
+        desc = "Todo",
+        nowait = true,
+        remap = false,
       },
       {
-        "<leader>xX",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
+        "<leader>xr",
+        "<cmd>TroubleToggle<cr>",
+        desc = "Trouble",
+        nowait = true,
+        remap = false,
       },
       {
-        "<leader>xs",
-        "<cmd>Trouble symbols toggle focus=false<cr>",
-        desc = "Symbols (Trouble)",
-      },
-      {
-        "<leader>xl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>xL",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>xQ",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
+        "<leader>xt",
+        "<cmd>Twilight<cr>",
+        desc = "Twilight",
+        nowait = true,
+        remap = false,
       },
 
       -- ZK for notes

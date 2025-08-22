@@ -109,16 +109,7 @@ return {
     },
   },
   {
-    "xiyaowong/telescope-emoji.nvim",
-    config = function()
-      require("telescope").load_extension("emoji")
-    end,
-  },
-  {
-    "alduraibi/telescope-glyph.nvim",
-    config = function()
-      require("telescope").load_extension("glyph")
-    end,
+    "nvim-telescope/telescope-symbols.nvim",
   },
   {
     "nvim-telescope/telescope-dap.nvim",

@@ -125,6 +125,20 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
+      -- adds LSP location information to the statusline through trouble.nvim
+      local trouble = require("trouble")
+
+      local troublesymbols = trouble.statusline({
+        mode = "lsp_document_symbols",
+        groups = {},
+        title = false,
+        filter = { range = true },
+        format = "{kind_icon}{symbol.name:Normal}",
+        -- The following line is needed to fix the background color
+        -- Set it to the lualine section you want to use
+        hl_group = "lualine_c_normal",
+      })
+
       return {
         options = {
           theme = "auto",
@@ -184,6 +198,7 @@ return {
             },
           },
           lualine_x = {
+            troublesymbols.get,
             treesitter,
             diagnostics,
             "copilot",
@@ -209,7 +224,7 @@ return {
           },
           lualine_z = {
             function()
-              return " " .. os.date("%R")
+              return " " .. os.date("%R")
             end,
           },
         },

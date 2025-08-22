@@ -162,11 +162,14 @@ return {
   },
 
   {
-    "ruifm/gitlinker.nvim",
-    event = "VeryLazy",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    "linrongbin16/gitlinker.nvim",
+    cmd = "GitLink",
     opts = {
-      mappings = "<leader>gy",
+      message = false,
+      highlight_duration = 2000,
+    },
+    keys = {
+      -- see which-key.lua
     },
   },
 
@@ -174,19 +177,7 @@ return {
   {
     "zk-org/zk-nvim",
     keys = {
-      { "<leader>zd", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/daily" })<CR>' },
-      { "<leader>zw", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/weekly" })<CR>' },
-      { "<leader>zt", ":ZkTags<CR>" },
-      { "<leader>zo", ":ZkOrphans<CR>" },
-      { "<leader>zr", ":ZkRecents<CR>" },
-      { "<leader>za", ":ZkNotes<CR>" },
-      { "<leader>zn", ":ZkNew<CR>" },
-      { "<leader>zi", ":ZkIndex<CR>" },
-      { "<leader>zl", ":ZkLinks<CR>" },
-      { "<leader>zc", ":ZkCd<CR>" },
-      { "<leader>zb", ":ZkBacklinks<CR>" },
-      { "<leader>zq", ":lua ToggleTodo()<CR>" },
-      { "<leader>zs", ":!make -C ~/notes update<CR>" },
+      -- see which-key.lua
     },
 
     config = function()

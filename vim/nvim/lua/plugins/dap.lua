@@ -20,13 +20,7 @@ return {
       "leoluz/nvim-dap-go",
     },
     keys = {
-      {
-        "<leader>Xu",
-        function()
-          require("dapui").toggle()
-        end,
-        silent = true,
-      },
+      -- see which-key.lua
     },
     config = function(_, opts)
       --[[ local icons = require("core.icons").dap ]]

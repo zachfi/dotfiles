@@ -29,9 +29,15 @@ return {
         { "<leader>d", icon = { icon = "", hl = "WhichKeyIconBlue" } },
         { "<leader>e", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "NeoTree" },
         { "<leader>f", icon = { icon = "", hl = "WhichKeyIconBlue" } },
-        { "<leader>g", icon = { icon = "󰘭", hl = "WhichKeyIconOrange" }, group = "Code" },
+        { "<leader>g", icon = { icon = "", hl = "WhichKeyIconCyan" }, group = "Code" },
+        { "<leader>h", icon = { icon = "", hl = "WhichKeyIconBlue" }, group = "GitHub" },
+        { "<leader>i", icon = { icon = "󱃲", hl = "WhichKeyIcon" }, group = "Insert Special" },
         { "<leader>l", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "LSP" },
+        { "<leader>n", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Notifications" },
+        { "<leader>s", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Search" },
+        { "<leader>v", icon = { icon = "󰘭", hl = "WhichKeyIconOrange" }, group = "VCS" },
         { "<leader>x", icon = { icon = "", hl = "WhichKeyIconYellow" }, group = "PDE" },
+        { "<leader>z", icon = { icon = "󰺿", hl = "WhichKeyIconGreen" }, group = "Zettelkasten" },
       },
 
       -- defaults = {
@@ -123,70 +129,48 @@ return {
         remap = false,
       },
 
-      -- TODO: Git or Go?
-      { "<leader>g",  group = "Git",                     nowait = true,            remap = false },
+      --
+      -- Go
+      --
       {
-        "<leader>gR",
-        "<cmd>lua require 'gitsigns'.reset_buffer()<cr>",
-        desc = "Reset Buffer",
-        nowait = true,
-        remap = false,
-      },
-      { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch", nowait = true, remap = false },
-      { "<leader>gc", "<cmd>Telescope git_commits<cr>",  desc = "Checkout commit", nowait = true, remap = false },
-      { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff",            nowait = true, remap = false },
-      { "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>",  desc = "Lazygit",         nowait = true, remap = false },
-      {
-        "<leader>gj",
-        "<cmd>lua require 'gitsigns'.next_hunk()<cr>",
-        desc = "Next Hunk",
+        "<leader>gc",
+        "<cmd>GoCoverage -p<cr>",
+        desc = "Go Coverage",
         nowait = true,
         remap = false,
       },
       {
-        "<leader>gk",
-        "<cmd>lua require 'gitsigns'.prev_hunk()<cr>",
-        desc = "Prev Hunk",
+        "<leader>go",
+        "<cmd>Outline<cr>",
+        desc = "Outline",
         nowait = true,
         remap = false,
       },
       {
-        "<leader>gl",
-        "<cmd>lua require 'gitsigns'.blame_line()<cr>",
-        desc = "Blame",
-        nowait = true,
-        remap = false,
-      },
-      { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file", nowait = true, remap = false },
-      {
-        "<leader>gp",
-        "<cmd>lua require 'gitsigns'.preview_hunk()<cr>",
-        desc = "Preview Hunk",
+        "<leader>gt",
+        "<cmd>GoTest -n<cr>",
+        desc = "Go Test",
         nowait = true,
         remap = false,
       },
       {
-        "<leader>gr",
-        "<cmd>lua require 'gitsigns'.reset_hunk()<cr>",
-        desc = "Reset Hunk",
+        "<leader>gA",
+        "<cmd>GoCodeLenAct<cr>",
+        desc = "Go CodeLens Action",
         nowait = true,
         remap = false,
       },
       {
-        "<leader>gs",
-        "<cmd>lua require 'gitsigns'.stage_hunk()<cr>",
-        desc = "Stage Hunk",
+        "<leader>ga",
+        "<cmd>GoCodeAction<cr>",
+        desc = "Go Code Action",
         nowait = true,
         remap = false,
       },
-      {
-        "<leader>gu",
-        "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-        desc = "Undo Stage Hunk",
-        nowait = true,
-        remap = false,
-      },
-      { "<leader>h",  group = "GitHub",                nowait = true,              remap = false },
+
+      --
+      -- Github
+      --
       {
         "<leader>hI",
         "<cmd>Octo issue browser<cr>",
@@ -194,8 +178,20 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>hP", "<cmd>Octo pr browser<cr>", desc = "Open PR in browser", nowait = true, remap = false },
-      { "<leader>hg", "<cmd>Octo gist list<cr>",  desc = "My open issues",     nowait = true, remap = false },
+      {
+        "<leader>hP",
+        "<cmd>Octo pr browser<cr>",
+        desc = "Open PR in browser",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>hg",
+        "<cmd>Octo gist list<cr>",
+        desc = "My open issues",
+        nowait = true,
+        remap = false,
+      },
       {
         "<leader>hi",
         "<cmd>Octo search is:open is:issue assignee:zalegrala archived:false<cr>",
@@ -210,7 +206,10 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>i", group = "Insert Special Chars", nowait = true, remap = false },
+
+      --
+      -- Insert Special Chars
+      --
       {
         "<leader>ie",
         "<cmd>Telescope emoji<cr>",
@@ -227,7 +226,7 @@ return {
       },
 
       -- LSP
-      { "<leader>l", group = "LSP",                  nowait = true, remap = false },
+      { "<leader>l",  group = "LSP",       nowait = true, remap = false },
       {
         "<leader>la",
         "<cmd>lua vim.lsp.buf.code_action()<cr>",
@@ -243,7 +242,7 @@ return {
         remap = false,
       },
       --
-      { "<leader>lc", group = "LSP Calls",                 nowait = true,   remap = false },
+      { "<leader>lc", group = "LSP Calls", nowait = true, remap = false },
       {
         "<leader>lci",
         "<cmd>Telescope lsp_incoming_calls<cr>",
@@ -294,8 +293,19 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", nowait = true, remap = false },
+      { "<leader>lR", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename",    nowait = true, remap = false },
+
       --
+      -- Notifications
+      --
+      {
+        "<leader>nc",
+        function()
+          require("notify").dismiss({ silent = true, pending = true })
+        end,
+        desc = "Dismiss all Notifications",
+      },
+
       {
         "<leader>q",
         "<cmd>Telescope quickfix<CR>",
@@ -303,10 +313,10 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>s",  group = "Search",               nowait = true,      remap = false },
-      { "<leader>sC", "<cmd>Telescope commands<cr>",  desc = "Commands",  nowait = true, remap = false },
-      { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages", nowait = true, remap = false },
-      { "<leader>sR", "<cmd>Telescope registers<cr>", desc = "Registers", nowait = true, remap = false },
+      -- { "<leader>s",  group = "Search",               nowait = true,      remap = false },
+      { "<leader>sC", "<cmd>Telescope commands<cr>",       desc = "Commands",  nowait = true, remap = false },
+      { "<leader>sM", "<cmd>Telescope man_pages<cr>",      desc = "Man Pages", nowait = true, remap = false },
+      { "<leader>sR", "<cmd>Telescope registers<cr>",      desc = "Registers", nowait = true, remap = false },
       {
         "<leader>sb",
         "<cmd>Telescope git_branches<cr>",
@@ -330,10 +340,103 @@ return {
       },
 
       --
+      -- VCS
+      --
+      {
+        "<leader>v]",
+        "<cmd>Gitsigns next_hunk<CR>",
+        desc = "Next Hunk",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>v[",
+        "<cmd>Gitsigns prev_hunk<CR>",
+        desc = "Prev Hunk",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>vs",
+        "<cmd>Gitsigns stage_hunk<CR>",
+        desc = "Stage Hunk",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>vr",
+        "<cmd>Gitsigns reset_hunk<CR>",
+        desc = "Reset Hunk",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>vS",
+        "<cmd>Gitsigns stage_buffer<CR>",
+        desc = "Stage Buffer",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>vR",
+        "<cmd>Gitsigns reset_buffer<CR>",
+        desc = "Reset Buffer",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>vd",
+        "<cmd>Gitsigns diffthis<CR>",
+        desc = "Diff",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>vp",
+        "<cmd>Gitsigns preview_hunk<CR>",
+        desc = "Diff",
+        nowait = true,
+        remap = false,
+      },
+      { "<leader>vy", "<cmd>GitLink remote=origin<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
+      { "<leader>vY", "<cmd>GitLink! remote=origin<cr>", mode = { "n", "v" }, desc = "Open git link" },
+
+      --
+      --
+      --
+
+      {
+        "<leader>vb",
+        "<cmd>Telescope git_branches<cr>",
+        desc = "Checkout branch",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>vc",
+        "<cmd>Telescope git_commits<cr>",
+        desc = "Checkout commit",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>gg",
+        "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
+        desc = "Lazygit",
+        nowait = true,
+        remap = false,
+      },
+
+      --
       -- PDE
       --
-      { "<leader>x",  group = "PDE",      nowait = true,    remap = false },
-      { "<leader>xO", "<cmd>Outline<cr>", desc = "Outline", nowait = true, remap = false },
+      {
+        "<leader>xO",
+        "<cmd>Outline<cr>",
+        desc = "Outline",
+        nowait = true,
+        remap = false,
+      },
       {
         "<leader>xb",
         "<cmd>Telescope git_branches<cr>",
@@ -406,10 +509,16 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>xdu", "<cmd>lua require('dapui').open()<CR>", desc = "UI",       nowait = true, remap = false },
-      { "<leader>xo",  "<cmd>TodoTrouble<cr>",                 desc = "Todo",     nowait = true, remap = false },
-      { "<leader>xr",  "<cmd>TroubleToggle<cr>",               desc = "Trouble",  nowait = true, remap = false },
-      { "<leader>xt",  "<cmd>Twilight<cr>",                    desc = "Twilight", nowait = true, remap = false },
+      {
+        "<leader>xdu",
+        "<cmd>lua require('dapui').toggle()<CR>",
+        desc = "UI",
+        nowait = true,
+        remap = false,
+      },
+      { "<leader>xo", "<cmd>TodoTrouble<cr>",   desc = "Todo",     nowait = true, remap = false },
+      { "<leader>xr", "<cmd>TroubleToggle<cr>", desc = "Trouble",  nowait = true, remap = false },
+      { "<leader>xt", "<cmd>Twilight<cr>",      desc = "Twilight", nowait = true, remap = false },
 
       -- TODO: clean up conflicting keymaps -- moved from trouble.nvim config
       {
@@ -442,6 +551,21 @@ return {
         "<cmd>Trouble qflist toggle<cr>",
         desc = "Quickfix List (Trouble)",
       },
+
+      -- ZK for notes
+      { "<leader>zd", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/daily" })<CR>' },
+      { "<leader>zw", ':lua require("zk.commands").get("ZkNew")({ dir = "journal/weekly" })<CR>' },
+      { "<leader>zt", ":ZkTags<CR>" },
+      { "<leader>zo", ":ZkOrphans<CR>" },
+      { "<leader>zr", ":ZkRecents<CR>" },
+      { "<leader>za", ":ZkNotes<CR>" },
+      { "<leader>zn", ":ZkNew<CR>" },
+      { "<leader>zi", ":ZkIndex<CR>" },
+      { "<leader>zl", ":ZkLinks<CR>" },
+      { "<leader>zc", ":ZkCd<CR>" },
+      { "<leader>zb", ":ZkBacklinks<CR>" },
+      { "<leader>zq", ":lua ToggleTodo()<CR>" },
+      { "<leader>zs", ":!make -C ~/notes update<CR>" },
     },
   },
 }

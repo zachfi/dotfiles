@@ -4,7 +4,6 @@ local opts = {
       -- buildFlags = { "-tags=requires_docker" }, -- custom build flags
       experimentalPostfixCompletions = true,
       analyses = {
-        fieldalignment = true,
         -- nilness = true, -- default on
         shadow = true,
         -- unusedparams = true, -- default on

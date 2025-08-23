@@ -5,7 +5,7 @@ function FindFilesRelative(opts)
   local theme_opts = themes.get_dropdown({
     sorting_strategy = "ascending",
     layout_strategy = "center",
-    prompt_prefix = " ",
+    prompt_prefix = "  ",
     prompt_title = "~ find relative files ~",
     cwd = require("telescope.utils").buffer_dir(),
     layout_config = {
@@ -29,10 +29,10 @@ function FindFiles(opts)
         -- },
       }
   local themes = require("telescope.themes")
-  local theme_opts = themes.get_dropdown({
+  local theme_opts = themes.get_ivy({
     sorting_strategy = "ascending",
     layout_strategy = "center",
-    prompt_prefix = " ",
+    prompt_prefix = "  ",
     prompt_title = "~ find files ~",
     cwd = vim.fn.getcwd(),
     layout_config = {

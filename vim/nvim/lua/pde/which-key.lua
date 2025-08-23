@@ -220,7 +220,6 @@ return {
       },
 
       -- LSP
-      { "<leader>l",  group = "LSP",       nowait = true, remap = false },
       {
         "<leader>la",
         "<cmd>lua vim.lsp.buf.code_action()<cr>",
@@ -228,15 +227,6 @@ return {
         nowait = true,
         remap = false,
       },
-      {
-        "<leader>ld",
-        "<cmd>Telescope diagnostics<cr>",
-        desc = "Diagnostics",
-        nowait = true,
-        remap = false,
-      },
-      --
-      { "<leader>lc", group = "LSP Calls", nowait = true, remap = false },
       {
         "<leader>lci",
         "<cmd>Telescope lsp_incoming_calls<cr>",
@@ -251,11 +241,26 @@ return {
         nowait = true,
         remap = false,
       },
-      --
       {
         "<leader>lgd",
         "<cmd>Telescope lsp_definitions<cr>",
         desc = "Go to Definition",
+        nowait = true,
+        remap = false,
+      },
+
+      -- Diagnostics -- k because its near by the finger
+      {
+        "<leader>lk",
+        "<cmd>Telescope diagnostics bufnr=0<cr>",
+        desc = "Diagnostics",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>lK",
+        "<cmd>Telescope diagnostics<cr>",
+        desc = "Diagnostics",
         nowait = true,
         remap = false,
       },

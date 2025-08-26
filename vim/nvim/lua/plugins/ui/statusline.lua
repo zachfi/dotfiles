@@ -106,10 +106,17 @@ local lsp = {
 
     local client_names = {}
 
+    local name_map = {
+      ["lua_ls"] = "",
+      ["GitHub Copilot"] = "",
+      ["gopls"] = "",
+    }
+
     for _, client in pairs(clients) do
-      table.insert(client_names, client.name)
+      table.insert(client_names, name_map[client.name] or client.name)
     end
-    return "[" .. table.concat(client_names, ", ") .. "]"
+
+    return "[ " .. table.concat(client_names, " ") .. " ]"
   end,
   icon = " ",
   color = {

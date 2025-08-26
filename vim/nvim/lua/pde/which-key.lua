@@ -242,7 +242,7 @@ return {
         remap = false,
       },
       {
-        "<leader>lgd",
+        "<leader>ld",
         "<cmd>Telescope lsp_definitions<cr>",
         desc = "Go to Definition",
         nowait = true,

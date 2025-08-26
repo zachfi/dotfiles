@@ -147,6 +147,8 @@ return {
         },
       })
 
+      lspconfig.marksman.setup({})
+
       -- require("mason-lspconfig").setup({
       -- handlers = {
       --   --- this first function is the "default handler"

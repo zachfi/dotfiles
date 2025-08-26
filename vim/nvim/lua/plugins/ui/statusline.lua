@@ -110,6 +110,8 @@ local lsp = {
       ["lua_ls"] = "",
       ["GitHub Copilot"] = "",
       ["gopls"] = "",
+      ["zk"] = "󰎚",
+      ["marksman"] = "",
     }
 
     for _, client in pairs(clients) do
@@ -208,7 +210,6 @@ return {
             troublesymbols.get,
             treesitter,
             diagnostics,
-            "copilot",
             lsp,
           },
           lualine_y = {

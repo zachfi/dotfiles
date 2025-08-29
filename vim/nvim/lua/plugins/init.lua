@@ -164,14 +164,20 @@ return {
 
   {
     "linrongbin16/gitlinker.nvim",
+    dependencies = {
+      "rcarriga/nvim-notify",
+    },
     cmd = "GitLink",
+    lzay = true,
     opts = {
       message = false,
       highlight_duration = 2000,
     },
-    keys = {
-      -- see which-key.lua
-    },
+    config = function()
+      -- require("notify").setup()
+      vim.notify = require("notify")
+      require("gitlinker").setup()
+    end,
   },
 
   -- ZK for notes

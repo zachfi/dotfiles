@@ -109,6 +109,7 @@ local lsp = {
     local name_map = {
       ["lua_ls"] = "",
       ["GitHub Copilot"] = "",
+      ["node"] = "",
       ["gopls"] = "",
       ["zk"] = "󰎚",
       ["marksman"] = "",

@@ -36,7 +36,7 @@ function FindFiles(opts)
     prompt_title = "~ find files ~",
     cwd = vim.fn.getcwd(),
     layout_config = {
-      center = { preview_cutoff = 1200, height = 0.4, width = 0.5 },
+      center = { preview_cutoff = 1200, height = 0.5, width = 0.6 },
     },
   })
   opts = vim.tbl_deep_extend("force", theme_opts, opts)

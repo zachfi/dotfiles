@@ -168,6 +168,13 @@ return {
         nowait = true,
         remap = false,
       },
+      {
+        "<leader>gr",
+        "<cmd>GoRename<cr>",
+        desc = "Go Rename",
+        nowait = true,
+        remap = false,
+      },
 
       --
       -- Github

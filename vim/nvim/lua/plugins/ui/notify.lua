@@ -6,8 +6,8 @@ return {
       render = "compact",
       stages = "static",
     },
-    -- init = function()
-    --   vim.notify = require("notify")
-    -- end,
+    init = function()
+      vim.notify = require("notify")
+    end,
   },
 }

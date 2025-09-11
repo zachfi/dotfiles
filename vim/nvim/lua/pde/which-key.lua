@@ -35,6 +35,7 @@ return {
         { "<leader>j", icon = { icon = "󱃾", hl = "WhichKeyIcon" }, group = "Jsonnet" },
         { "<leader>l", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "LSP" },
         { "<leader>n", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Notifications" },
+        { "<leader>r", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Trouble" },
         { "<leader>s", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Search" },
         { "<leader>v", icon = { icon = "󰘭", hl = "WhichKeyIconOrange" }, group = "VCS" },
         { "<leader>x", icon = { icon = "", hl = "WhichKeyIconYellow" }, group = "PDE" },
@@ -319,6 +320,38 @@ return {
       },
 
       --
+      -- Trouble
+      --
+      {
+        "<leader>rd",
+        "<cmd>Trouble cascade filter.buf=0<cr>",
+        desc = "Document Diagnostics (Trouble)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>rl",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>rs",
+        "<cmd>Trouble symbols toggle<cr>",
+        desc = "Document Symbols (Trouble)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>rt",
+        "<cmd>Trouble todo toggle filter.buf=0<cr>",
+        desc = "Todo",
+        nowait = true,
+        remap = false,
+      },
+
+      --
       -- Search
       --
 
@@ -394,13 +427,6 @@ return {
         remap = false,
       },
       {
-        "<leader>sl",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-        nowait = true,
-        remap = false,
-      },
-      {
         "<leader>so",
         "<cmd>TodoTelescope<cr>",
         desc = "Commands",
@@ -418,27 +444,6 @@ return {
         "<leader>sr",
         "<cmd>Telescope oldfiles<cr>",
         desc = "Open Recent File",
-        nowait = true,
-        remap = false,
-      },
-      {
-        "<leader>ss",
-        "<cmd>Trouble symbols toggle<cr>",
-        desc = "Document Symbols (Trouble)",
-        nowait = true,
-        remap = false,
-      },
-      {
-        "<leader>st",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Document Diagnostics (Trouble)",
-        nowait = true,
-        remap = false,
-      },
-      {
-        "<leader>sT",
-        "<cmd>TodoLocList<cr>",
-        desc = "Todo List",
         nowait = true,
         remap = false,
       },

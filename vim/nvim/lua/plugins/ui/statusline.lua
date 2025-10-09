@@ -113,6 +113,7 @@ local lsp = {
       ["gopls"] = "",
       ["zk"] = "󰎚",
       ["marksman"] = "",
+      ["jsonnet_ls"] = "",
     }
 
     for _, client in pairs(clients) do

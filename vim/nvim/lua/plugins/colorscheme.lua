@@ -22,7 +22,7 @@ return {
   {
     "marko-cerovac/material.nvim",
     lazy = false,
-    -- opts = { style = "moon" },
+    opts = { theme = "palenight" },
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
@@ -108,8 +108,8 @@ return {
   {
     "decaycs/decay.nvim",
     name = "decay",
-    lazy = false,
-    priority = 1000,
+    -- lazy = false,
+    -- priority = 1000,
     -- config = function()
     -- SNIP
     -- end,

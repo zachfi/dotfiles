@@ -1,3 +1,4 @@
+-- FIXME: this is unused
 local M = {}
 
 function M.lsp_keymaps(bufnr)

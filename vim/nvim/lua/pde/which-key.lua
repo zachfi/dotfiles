@@ -26,6 +26,18 @@ return {
         -- },
       },
       spec = {
+        {
+          "K",
+          function()
+            vim.lsp.buf.hover({
+              border = "single",
+              max_height = 25,
+              max_width = 120,
+            })
+          end,
+          desc = "Hover documentation",
+        },
+
         { "<leader>d", icon = { icon = "", hl = "WhichKeyIconBlue" } },
         { "<leader>e", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "NeoTree" },
         { "<leader>f", icon = { icon = "", hl = "WhichKeyIconBlue" } },

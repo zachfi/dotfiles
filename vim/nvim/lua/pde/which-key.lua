@@ -9,6 +9,11 @@ return {
 
     opts = {
       preset = "helix",
+      plugins = {
+        spelling = {
+          enabled = false,
+        },
+      },
       icons = {
         separator = " │ ",
         group = " ",
@@ -87,6 +92,13 @@ return {
       -- mode = { rn", "v" },
       { "<leader>/", ":nohls<CR>",      desc = "Clear search", nowait = true, remap = false },
       {
+        "<leader>=",
+        ":Telescope spell_suggest<CR>",
+        desc = "Spelling suggestions",
+        nowait = true,
+        remap = false,
+      },
+      {
         "<leader>F",
         "<cmd>Telescope live_grep theme=ivy<cr>",
         desc = "Find Text",
@@ -110,7 +122,7 @@ return {
         remap = false,
       },
       -- NeoTree
-      { "<leader>e",  name = "neotree",                 group = "NeoTree", color = "orange" },
+      { "<leader>e",  name = "neotree",                  group = "NeoTree",   color = "orange" },
       {
         "<leader>eb",
         "<cmd>Neotree toggle show buffers right<cr>",
@@ -125,7 +137,13 @@ return {
         nowait = true,
         remap = false,
       },
-      { "<leader>er", "<cmd>Neotree toggle reveal<cr>", desc = "Explore",  nowait = true,   remap = false },
+      {
+        "<leader>er",
+        "<cmd>Neotree toggle reveal<cr>",
+        desc = "Explore",
+        nowait = true,
+        remap = false,
+      },
       {
         "<leader>es",
         "<cmd>Neotree toggle float git_status<cr>",

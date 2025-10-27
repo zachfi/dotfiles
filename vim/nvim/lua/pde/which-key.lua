@@ -100,7 +100,7 @@ return {
       },
       {
         "<leader>F",
-        "<cmd>Telescope live_grep theme=ivy<cr>",
+        "<cmd>Telescope live_grep<cr>",
         desc = "Find Text",
         nowait = true,
         remap = false,
@@ -108,7 +108,7 @@ return {
       {
         "<leader>b",
         -- "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-        "<cmd>Telescope buffers theme=ivy<cr>",
+        "<cmd>Telescope buffers<cr>",
         desc = "Buffers",
         nowait = true,
         remap = false,
@@ -387,21 +387,21 @@ return {
 
       {
         "<leader>sb",
-        "<cmd>Telescope buffers theme=ivy<cr>",
+        "<cmd>Telescope buffers<cr>",
         desc = "Buffers",
         nowait = true,
         remap = false,
       },
       {
         "<leader>sC",
-        "<cmd>Telescope command_history theme=ivy<cr>",
+        "<cmd>Telescope command_history<cr>",
         desc = "Command History",
         nowait = true,
         remap = false,
       },
       {
         "<leader>sS",
-        "<cmd>Telescope search_history theme=ivy<cr>",
+        "<cmd>Telescope search_history<cr>",
         desc = "Search History",
         nowait = true,
         remap = false,

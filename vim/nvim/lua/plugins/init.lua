@@ -63,9 +63,9 @@ return {
     },
     opts = {
       defaults = {
-        prompt_prefix = " ",
+        sorting_strategy = "ascending",
+        prompt_prefix = "  ",
         selection_caret = " ",
-        path_display = { "truncate" },
         mappings = {
           i = {
             ["<esc>"] = function(...)
@@ -74,7 +74,40 @@ return {
             ["<C-u>"] = false,
           },
         },
+        layout_strategy = "horizontal",
+
+        layout_config = {
+          horizontal = {
+            width = { 0.7, max = 1200, min = 80 },
+            height = 0.6,
+          },
+          vertical = {
+            width = { 0.7, max = 1200, min = 80 },
+            height = 0.6,
+          },
+          center = {
+            width = { 0.7, max = 1200, min = 80 },
+            height = 0.6,
+          },
+        },
       },
+
+      -- defaults = {
+      --   prompt_prefix = " ",
+      --   selection_caret = " ",
+      --   path_display = { "truncate" },
+      --   mappings = {
+      --     i = {
+      --       ["<esc>"] = function(...)
+      --         return require("telescope.actions").close(...)
+      --       end,
+      --       ["<C-u>"] = false,
+      --     },
+      --   },
+      --   layout_config = {
+      --     center = { preview_cutoff = 1200, height = 0.7, width = 0.8 },
+      --   },
+      -- },
       pickers = {
         -- Default configuration for builtin pickers goes here:
         -- picker_name = {
@@ -83,14 +116,27 @@ return {
         -- }
         -- Now the picker_config_key will be applied every time you call this
         -- builtin picker
+        buffers = {
+          sort_mru = true,
+          -- ignore_current_buffer = true,
+          previewer = false,
+          -- layout_strategy = "vertical",
+          -- layout_config = {
+          --   preview_cutoff = 800,
+          --   height = 0.7,
+          --   width = 0.8,
+          -- },
+        },
+        colorscheme = {
+          enable_preview = true,
+        },
+        find_files = {
+          previewer = false,
+        },
         lsp_document_symbols = {
           fname_width = 0.5,
           symbol_width = 0.3,
           symbol_type_width = 0.2,
-        },
-
-        colorscheme = {
-          enable_preview = true,
         },
       },
       extensions = {

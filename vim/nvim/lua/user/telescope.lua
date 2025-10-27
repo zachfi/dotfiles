@@ -4,12 +4,14 @@ function FindFilesRelative(opts)
   local themes = require("telescope.themes")
   local theme_opts = themes.get_dropdown({
     sorting_strategy = "ascending",
-    layout_strategy = "center",
-    prompt_prefix = "  ",
     prompt_title = "~ find relative files ~",
     cwd = require("telescope.utils").buffer_dir(),
+    layout_strategy = "center",
     layout_config = {
-      center = { preview_cutoff = 1200, height = 0.5, width = 0.6 },
+      center = {
+        width = { 0.7, max = 1200, min = 80 },
+        height = 0.6,
+      },
     },
   })
   opts = vim.tbl_deep_extend("force", theme_opts, opts)
@@ -31,12 +33,14 @@ function FindFiles(opts)
   local themes = require("telescope.themes")
   local theme_opts = themes.get_dropdown({
     sorting_strategy = "ascending",
-    layout_strategy = "center",
-    prompt_prefix = "  ",
     prompt_title = "~ find files ~",
     cwd = vim.fn.getcwd(),
+    layout_strategy = "center",
     layout_config = {
-      center = { preview_cutoff = 1200, height = 0.5, width = 0.6 },
+      center = {
+        width = { 0.7, max = 1200, min = 80 },
+        height = 0.6,
+      },
     },
   })
   opts = vim.tbl_deep_extend("force", theme_opts, opts)

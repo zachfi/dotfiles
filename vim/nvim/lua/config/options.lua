@@ -35,6 +35,7 @@ local options = {
   guifont = "Berkeley Mono:h12",                                  -- the font used in graphical neovim applications
   background = "dark",
   list = false,
+  textwidth = 80,
 }
 
 for k, v in pairs(options) do

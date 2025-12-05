@@ -83,7 +83,7 @@ return {
     cmd = "LspInfo",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
+      -- { "hrsh7th/cmp-nvim-lsp" },
       { "mason-org/mason.nvim" },
     },
 
@@ -112,7 +112,7 @@ return {
         end,
       })
 
-      vim.lsp.enable({ "marksman", "lua_ls", "jsonnet_ls" })
+      vim.lsp.enable({ "marksman", "lua_ls", "jsonnet_ls", "ollama_lsp" })
 
       local custom_server_settings = {
         "gopls",

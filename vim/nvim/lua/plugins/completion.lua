@@ -92,9 +92,9 @@ return {
         menu = {
           draw = {
             columns = {
-              { "label",       "label_description", gap = 10 },
-              { "kind_icon",   "kind" },
-              { "source_name", "source_id" },
+              { "kind_icon" },
+              { "label",      "label_description", gap = 1 },
+              { "source_name" },
             },
             padding = { 0, 1 }, -- padding only on right side
             components = {
@@ -102,6 +102,13 @@ return {
                 text = function(ctx)
                   return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
                 end,
+              },
+              source_name = {
+                width = { max = 30 },
+                text = function(ctx)
+                  return "[" .. ctx.source_name .. "]"
+                end,
+                highlight = "BlinkCmpSource",
               },
             },
           },
@@ -113,7 +120,7 @@ return {
       -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
       --
       -- See the fuzzy documentation for more information
-      -- fuzzy = { implementation = "prefer_rust_with_warning" },
+      -- fuzzy = { implementation = "lua" },
     },
     opts_extend = { "sources.default" },
   },

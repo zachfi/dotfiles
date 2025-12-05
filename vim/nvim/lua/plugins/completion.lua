@@ -3,7 +3,7 @@ return {
 	{
 		"saghen/blink.cmp",
 		-- optional: provides snippets for the snippet source
-		-- NOTE: the minuuet source requires minuet
+		-- NOTE: the minuet source requires minuet
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			"saghen/blink.cmp",
@@ -90,7 +90,7 @@ return {
 			},
 			completion = {
 				keyword = {
-					range = "prefix",
+					range = "full", -- "full" or "prefix"
 				},
 
 				ghost_text = {
@@ -104,6 +104,17 @@ return {
 
 				trigger = {
 					prefetch_on_insert = true,
+					show_on_insert = true,
+					show_on_backspace = true,
+					show_on_backspace_in_keyword = true,
+					show_on_trigger_character = true,
+					-- show_on_blocked_trigger_characters = { " ", "\n", "\t" },
+					show_on_blocked_trigger_characters = function(ctx)
+						if vim.bo.filetype == "markdown" then
+							return { " ", "\n", "\t", ".", "/", "(", "[" }
+						end
+						return { " ", "\n", "\t" }
+					end,
 				},
 
 				menu = {

@@ -24,7 +24,3 @@ require("lazy").setup({
     { import = "plugins.lang" },
   },
 })
-
-require("user.autocommands")
-require("user.functions")
-require("user.telescope")

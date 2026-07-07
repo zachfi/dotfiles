@@ -22,9 +22,6 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.ui" },
     { import = "plugins.lang" },
-    --[[ { import = "plugins.notes" }, ]]
-    --[[ { import = "plugins.ai" }, ]]
-    { import = "pde" },
   },
 })
 

@@ -112,6 +112,7 @@ return {
 		-- optional = true,
 		opts = {
 			formatters_by_ft = {
+				go = { "goimports", "gofumpt" },
 				sh = { "shfmt" },
 				yaml = { "yamlfmt" },
 				lua = { "stylua" },
@@ -120,8 +121,9 @@ return {
 
 			format_on_save = {
 				-- These options will be passed to conform.format()
-				timeout_ms = 700,
-				lsp_fallback = true,
+				timeout_ms = 1000,
+				-- Use the LSP formatter for filetypes without a formatter above.
+				lsp_format = "fallback",
 			},
 		},
 	},

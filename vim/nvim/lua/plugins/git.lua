@@ -1,5 +1,9 @@
 return {
-  -- git signs
+  -- Git
+  "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
+  { "sindrets/diffview.nvim" },
+
   {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -7,8 +11,8 @@ return {
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
+        delete = { text = "" },
+        topdelete = { text = "" },
         changedelete = { text = "▎" },
         untracked = { text = "▎" },
       },
@@ -50,5 +54,39 @@ return {
         col = 1,
       },
     },
+  },
+
+  {
+    "pwntester/octo.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    },
+    opts = {
+      reaction_viewer_hint_icon = "", -- marker for user reactions
+      user_icon = "👤", -- user icon
+      timeline_marker = "🗨", -- timeline marker
+      right_bubble_delimiter = "", -- Bubble delimiter
+      left_bubble_delimiter = "", -- Bubble delimiter
+      enable_builtin = true,
+    },
+  },
+
+  {
+    "linrongbin16/gitlinker.nvim",
+    dependencies = {
+      "rcarriga/nvim-notify",
+    },
+    cmd = "GitLink",
+    opts = {
+      message = false,
+      highlight_duration = 2000,
+    },
+    config = function()
+      -- require("notify").setup()
+      vim.notify = require("notify")
+      require("gitlinker").setup()
+    end,
   },
 }

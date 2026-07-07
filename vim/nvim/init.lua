@@ -15,9 +15,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.opt.shortmess:append({ I = true }) -- Disable the nvim intro
 
--- Unless you are still migrating, remove the deprecated commands from v1.x
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-
 require("config")
 
 require("lazy").setup({

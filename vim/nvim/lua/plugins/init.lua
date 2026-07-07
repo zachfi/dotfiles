@@ -15,7 +15,7 @@ return {
   "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
   {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -23,13 +23,13 @@ return {
     },
     opts = {
       filesystem = {
-        follow_current_file = true,
+        follow_current_file = { enabled = true },
         filtered_items = {
           hide_dotfiles = false,
         },
       },
       buffers = {
-        follow_current_file = true,
+        follow_current_file = { enabled = true },
       },
     },
   },
@@ -45,22 +45,16 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    --[[ dependencies = { ]]
-    --[[ 	"nvim-telescope/telescope-fzf-native.nvim", ]]
-    --[[ 	build = "make", ]]
-    --[[ 	config = function() ]]
-    --[[ 		require("telescope").load_extension("fzf") ]]
-    --[[ 	end, ]]
-    --[[ }, ]]
     dependencies = {
-      "nvim-telescope/telescope-fzy-native.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-telescope/telescope-dap.nvim",
-      --[[ build = "make", ]]
-      config = function()
-        require("telescope").load_extension("fzy_native")
-        require("telescope").load_extension("dap")
-      end,
     },
+    config = function(_, opts)
+      local telescope = require("telescope")
+      telescope.setup(opts)
+      telescope.load_extension("fzf")
+      telescope.load_extension("dap")
+    end,
     opts = {
       defaults = {
         sorting_strategy = "ascending",
@@ -140,17 +134,7 @@ return {
         },
       },
       extensions = {
-        --[[ fzf = { ]]
-        --[[ 	fuzzy = true, -- false will only do exact matching ]]
-        --[[ 	override_generic_sorter = true, -- override the generic sorter ]]
-        --[[ 	override_file_sorter = true, -- override the file sorter ]]
-        --[[ 	case_mode = "smart_case", -- or "ignore_case" or "respect_case" ]]
-        --[[ 	-- the default case_mode is "smart_case" ]]
-        --[[ }, ]]
-        fzy_native = {
-          override_generic_sorter = false,
-          override_file_sorter = true,
-        },
+        fzf = {},
       },
     },
   },

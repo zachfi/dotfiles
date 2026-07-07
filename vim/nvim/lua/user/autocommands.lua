@@ -1,12 +1,10 @@
 vim.cmd([[
   autocmd BufWritePre $HOME/notes/**/*.md mark a|silent! 1,10s/^modified: \d\d\d\d.*/\=strftime('modified: %FT%T%z')/|norm!`a
 
-  autocmd BufWritePre (InsertLeave?) <buffer> lua vim.lsp.buf.formatting_sync(nil,500)
-
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
+    autocmd TextYankPost * silent!lua vim.hl.on_yank({higroup = 'Visual', timeout = 200})
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
   augroup end
@@ -46,11 +44,6 @@ vim.cmd([[
   augroup _auto_resize
     autocmd!
     autocmd VimResized * tabdo wincmd =
-  augroup end
-
-  augroup _alpha
-    autocmd!
-    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
   augroup _tilt

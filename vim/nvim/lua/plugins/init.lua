@@ -78,16 +78,16 @@ return {
 
         layout_config = {
           horizontal = {
-            width = { 0.7, max = 1200, min = 80 },
+            width = { 0.8, max = 1200, min = 80 },
             height = 0.6,
           },
           vertical = {
-            width = { 0.7, max = 1200, min = 80 },
+            width = { 0.8, max = 1200, min = 80 },
             height = 0.6,
           },
           center = {
-            width = { 0.7, max = 1200, min = 80 },
-            height = 0.6,
+            width = { 0.8, max = 1200, min = 80 },
+            height = 0.7,
           },
         },
       },
@@ -214,7 +214,6 @@ return {
       "rcarriga/nvim-notify",
     },
     cmd = "GitLink",
-    lzay = true,
     opts = {
       message = false,
       highlight_duration = 2000,

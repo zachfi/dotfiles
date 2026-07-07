@@ -7,7 +7,6 @@ return {
     dependencies = {
       "L3MON4D3/LuaSnip",
       "saghen/blink.cmp",
-      "fang2hou/blink-copilot",
     },
 
     -- use a release tag to download pre-built binaries
@@ -86,28 +85,6 @@ return {
           "path",
           "snippets",
           "buffer",
-          -- "copilot",
-          -- "minuet",
-        },
-
-        providers = {
-
-          -- minuet = {
-          --   name = "minuet",
-          --   module = "minuet.blink",
-          --   async = true,
-          --   -- Should match minuet.config.request_timeout * 1000,
-          --   -- since minuet.config.request_timeout is in seconds
-          --   timeout_ms = 10000,
-          --   score_offset = 50, -- Gives minuet higher priority among suggestions
-          -- },
-
-          copilot = {
-            name = "copilot",
-            module = "blink-copilot",
-            score_offset = 100,
-            async = true,
-          },
         },
       },
       completion = {

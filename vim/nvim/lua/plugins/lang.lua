@@ -5,7 +5,7 @@ return {
   "towolf/vim-helm",
   {
     "iamcco/markdown-preview.nvim",
-    run = function()
+    build = function()
       vim.fn["mkdp#util#install"]()
     end,
   },

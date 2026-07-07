@@ -112,7 +112,7 @@ return {
         end,
       })
 
-      vim.lsp.enable({ "marksman", "lua_ls", "jsonnet_ls", "ollama_lsp" })
+      vim.lsp.enable({ "marksman", "lua_ls", "jsonnet_ls" })
 
       local custom_server_settings = {
         "gopls",

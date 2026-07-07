@@ -41,136 +41,6 @@ return {
   --[[ "L3MON4D3/LuaSnip",            --snippet engine ]]
   --[[ "rafamadriz/friendly-snippets", -- a bunch of snippets to use ]]
 
-  -- Telescope
-  {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    dependencies = {
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "nvim-telescope/telescope-dap.nvim",
-    },
-    config = function(_, opts)
-      local telescope = require("telescope")
-      telescope.setup(opts)
-      telescope.load_extension("fzf")
-      telescope.load_extension("dap")
-    end,
-    opts = {
-      defaults = {
-        sorting_strategy = "ascending",
-        prompt_prefix = "  ",
-        selection_caret = " ",
-        mappings = {
-          i = {
-            ["<esc>"] = function(...)
-              return require("telescope.actions").close(...)
-            end,
-            ["<C-u>"] = false,
-          },
-        },
-        layout_strategy = "horizontal",
-
-        layout_config = {
-          horizontal = {
-            width = { 0.8, max = 1200, min = 80 },
-            height = 0.6,
-          },
-          vertical = {
-            width = { 0.8, max = 1200, min = 80 },
-            height = 0.6,
-          },
-          center = {
-            width = { 0.8, max = 1200, min = 80 },
-            height = 0.7,
-          },
-        },
-      },
-
-      -- defaults = {
-      --   prompt_prefix = " ",
-      --   selection_caret = " ",
-      --   path_display = { "truncate" },
-      --   mappings = {
-      --     i = {
-      --       ["<esc>"] = function(...)
-      --         return require("telescope.actions").close(...)
-      --       end,
-      --       ["<C-u>"] = false,
-      --     },
-      --   },
-      --   layout_config = {
-      --     center = { preview_cutoff = 1200, height = 0.7, width = 0.8 },
-      --   },
-      -- },
-      pickers = {
-        -- Default configuration for builtin pickers goes here:
-        -- picker_name = {
-        --   picker_config_key = value,
-        --   ...
-        -- }
-        -- Now the picker_config_key will be applied every time you call this
-        -- builtin picker
-        buffers = {
-          sort_mru = true,
-          -- ignore_current_buffer = true,
-          previewer = false,
-          -- layout_strategy = "vertical",
-          -- layout_config = {
-          --   preview_cutoff = 800,
-          --   height = 0.7,
-          --   width = 0.8,
-          -- },
-        },
-        colorscheme = {
-          enable_preview = true,
-        },
-        find_files = {
-          previewer = false,
-        },
-        lsp_document_symbols = {
-          fname_width = 0.5,
-          symbol_width = 0.3,
-          symbol_type_width = 0.2,
-        },
-      },
-      extensions = {
-        fzf = {},
-      },
-    },
-  },
-  {
-    "nvim-telescope/telescope-symbols.nvim",
-  },
-  {
-    "nvim-telescope/telescope-dap.nvim",
-    config = function()
-      require("telescope").load_extension("dap")
-    end,
-  },
-  {
-    "crispgm/telescope-heading.nvim",
-    config = function()
-      require("telescope").load_extension("heading")
-    end,
-  },
-
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-    config = function()
-      require("telescope").load_extension("ui-select")
-    end,
-  },
-
-  {
-    "Snikimonkd/telescope-git-conflicts.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("telescope").load_extension("conflicts")
-    end,
-  },
-
   -- Git
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
@@ -183,11 +53,11 @@ return {
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
     },
     opts = {
-      reaction_viewer_hint_icon = "", -- marker for user reactions
+      reaction_viewer_hint_icon = "", -- marker for user reactions
       user_icon = "👤", -- user icon
       timeline_marker = "🗨", -- timeline marker
-      right_bubble_delimiter = "", -- Bubble delimiter
-      left_bubble_delimiter = "", -- Bubble delimiter
+      right_bubble_delimiter = "", -- Bubble delimiter
+      left_bubble_delimiter = "", -- Bubble delimiter
       enable_builtin = true,
     },
   },

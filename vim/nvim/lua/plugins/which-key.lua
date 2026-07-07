@@ -602,8 +602,8 @@ return {
       },
       {
         "<leader>xc",
-        "<cmd>exec &bg=='light'? 'set bg=dark' : 'set bg=light'<cr>",
-        desc = "Switch Background",
+        "<cmd>lua require('config.theme').toggle()<cr>",
+        desc = "Toggle light/dark theme",
         nowait = true,
         remap = false,
       },

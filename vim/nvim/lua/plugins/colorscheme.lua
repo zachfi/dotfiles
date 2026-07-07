@@ -22,11 +22,11 @@ return {
   {
     "marko-cerovac/material.nvim",
     lazy = false,
-    opts = { theme = "palenight" },
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme material-palenight]])
+      -- Apply the default (dark) theme. The dark/light pair and the <leader>xc
+      -- toggle live in config/theme.lua.
+      require("config.theme").dark()
     end,
   },
 

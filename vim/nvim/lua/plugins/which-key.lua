@@ -439,7 +439,7 @@ return {
         remap = false,
       },
       {
-        "<leader>sC",
+        "<leader>sH",
         "<cmd>Telescope command_history<cr>",
         desc = "Command History",
         nowait = true,
@@ -624,14 +624,6 @@ return {
         nowait = true,
         remap = false,
       },
-      {
-        "<leader>gg",
-        "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
-        desc = "Lazygit",
-        nowait = true,
-        remap = false,
-      },
-
       --
       -- VIM
       --

@@ -52,6 +52,7 @@ return {
         { "<leader>j", icon = { icon = "󱃾", hl = "WhichKeyIcon" }, group = "Jsonnet" },
         { "<leader>l", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "LSP" },
         { "<leader>n", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Notifications" },
+        { "<leader>p", icon = { icon = "", hl = "WhichKeyIconGreen" }, group = "Review" },
         { "<leader>r", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Trouble" },
         { "<leader>s", icon = { icon = "", hl = "WhichKeyIcon" }, group = "Search" },
         { "<leader>v", icon = { icon = "󰘭", hl = "WhichKeyIconOrange" }, group = "VCS" },
@@ -242,6 +243,51 @@ return {
         "<leader>hp",
         "<cmd>Octo search is:open is:pr author:zalegrala archived:false<cr>",
         desc = "My open PRs",
+        nowait = true,
+        remap = false,
+      },
+
+      --
+      -- Review (PRs)
+      --
+      {
+        "<leader>pc",
+        function()
+          require("config.review").checkout_menu()
+        end,
+        desc = "Checkout PR (detached)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>pr",
+        function()
+          require("config.review").review()
+        end,
+        desc = "Review diff (vs default branch)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>pf",
+        "<cmd>DiffviewFileHistory %<cr>",
+        desc = "File history (current file)",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>pq",
+        "<cmd>DiffviewClose<cr>",
+        desc = "Quit review",
+        nowait = true,
+        remap = false,
+      },
+      {
+        "<leader>pb",
+        function()
+          require("config.review").back()
+        end,
+        desc = "Back to my branch",
         nowait = true,
         remap = false,
       },

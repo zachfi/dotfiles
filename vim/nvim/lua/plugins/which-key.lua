@@ -609,6 +609,7 @@ return {
       },
       { "<leader>vy", "<cmd>GitLink remote=origin<cr>",  mode = { "n", "v" }, desc = "Yank git link" },
       { "<leader>vY", "<cmd>GitLink! remote=origin<cr>", mode = { "n", "v" }, desc = "Open git link" },
+      { "<leader>vl", function() YankLocalRef() end,     mode = { "n", "v" }, desc = "Yank local ref" },
 
       {
         "<leader>vb",

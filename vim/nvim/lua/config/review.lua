@@ -3,21 +3,53 @@
 -- reverted as a unit. Keymaps live under <leader>p ("Review") in which-key.lua.
 local M = {}
 
--- KNOB: ref that `pr` diffs against. Resolved per-repo from origin/HEAD
--- (usually origin/main); this constant is only the fallback. Change it if a
--- repo you review defaults to something else.
+-- KNOB: last-resort base if no usable remote HEAD is found.
 local REVIEW_BASE = "origin/main"
+
+-- KNOB: the remote you open PRs against. In a fork workflow this is the
+-- canonical repo (conventionally "upstream") while "origin" is your fork, so
+-- base_ref() prefers it. If it does not exist we fall back to origin. Set to
+-- "origin" if you PR directly into origin.
+local PREFERRED_REMOTE = "upstream"
 
 -- KNOB: how many PRs the list-based pickers fetch.
 local LIST_LIMIT = "50"
 
--- Resolve the repo's default branch, falling back to REVIEW_BASE.
-local function base_ref()
-  local out = vim.fn.systemlist("git symbolic-ref --short refs/remotes/origin/HEAD")
+-- True if the named git remote exists.
+local function has_remote(name)
+  local out = vim.fn.systemlist({ "git", "remote" })
+  if vim.v.shell_error ~= 0 then
+    return false
+  end
+  return vim.tbl_contains(out, name)
+end
+
+-- Resolve a remote's default branch as "<remote>/<branch>", preferring its
+-- recorded HEAD symref (e.g. upstream/main), falling back to <remote>/main.
+-- Returns nil if neither is available.
+local function remote_head(remote)
+  local out = vim.fn.systemlist({ "git", "symbolic-ref", "--short", "refs/remotes/" .. remote .. "/HEAD" })
   if vim.v.shell_error == 0 and out[1] and out[1] ~= "" then
     return out[1]
   end
-  return REVIEW_BASE
+  vim.fn.systemlist({ "git", "rev-parse", "--verify", "--quiet", "refs/remotes/" .. remote .. "/main" })
+  if vim.v.shell_error == 0 then
+    return remote .. "/main"
+  end
+  return nil
+end
+
+-- Resolve the ref that reviews diff against. Prefers PREFERRED_REMOTE (the
+-- canonical repo in a fork workflow), then origin, then REVIEW_BASE. This is
+-- what makes the range match the PR when origin is a fork.
+local function base_ref()
+  if has_remote(PREFERRED_REMOTE) then
+    local head = remote_head(PREFERRED_REMOTE)
+    if head then
+      return head
+    end
+  end
+  return remote_head("origin") or REVIEW_BASE
 end
 
 -- Absolute path of the repo (or worktree) root, so git calls and file opens

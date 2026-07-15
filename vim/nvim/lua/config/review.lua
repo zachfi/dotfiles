@@ -20,6 +20,16 @@ local function base_ref()
   return REVIEW_BASE
 end
 
+-- Absolute path of the repo (or worktree) root, so git calls and file opens
+-- work regardless of the cwd we launched nvim from. Falls back to cwd.
+local function git_root()
+  local out = vim.fn.systemlist({ "git", "rev-parse", "--show-toplevel" })
+  if vim.v.shell_error == 0 and out[1] and out[1] ~= "" then
+    return out[1]
+  end
+  return vim.fn.getcwd()
+end
+
 -- Run `gh pr checkout <ref> --detach` and report the result.
 local function checkout(ref)
   ref = vim.trim(ref or "")
@@ -92,6 +102,58 @@ end
 -- range diffs from the merge-base, matching what GitHub shows on the PR.
 function M.review()
   vim.cmd("DiffviewOpen " .. base_ref() .. "...HEAD")
+end
+
+-- <leader>pl — Telescope picker of files changed on the branch vs the default
+-- branch. Same 3-dot merge-base range as review(), so it lists exactly the
+-- PR's files. Preview shows each file's diff; <cr> opens the file for reading.
+function M.changed_files()
+  local base = base_ref()
+  local range = base .. "...HEAD"
+  local root = git_root()
+
+  local files = vim.fn.systemlist({ "git", "-C", root, "diff", "--name-only", range })
+  if vim.v.shell_error ~= 0 then
+    vim.notify("git diff failed:\n" .. table.concat(files, "\n"), vim.log.levels.ERROR)
+    return
+  end
+  files = vim.tbl_filter(function(f)
+    return f ~= ""
+  end, files)
+  if #files == 0 then
+    vim.notify("No files changed vs " .. base, vim.log.levels.INFO)
+    return
+  end
+
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local previewers = require("telescope.previewers")
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+
+  pickers
+    .new({}, {
+      prompt_title = "Changed vs " .. base,
+      finder = finders.new_table({ results = files }),
+      sorter = conf.generic_sorter({}),
+      previewer = previewers.new_termopen_previewer({
+        get_command = function(entry)
+          return { "git", "-C", root, "-c", "color.ui=always", "diff", range, "--", entry.value }
+        end,
+      }),
+      attach_mappings = function(prompt_bufnr)
+        actions.select_default:replace(function()
+          local entry = action_state.get_selected_entry()
+          actions.close(prompt_bufnr)
+          if entry then
+            vim.cmd("edit " .. vim.fn.fnameescape(root .. "/" .. entry.value))
+          end
+        end)
+        return true
+      end,
+    })
+    :find()
 end
 
 -- <leader>pb — leave detached HEAD and return to the branch you were on.

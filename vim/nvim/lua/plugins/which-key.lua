@@ -276,6 +276,15 @@ return {
         remap = false,
       },
       {
+        "<leader>pl",
+        function()
+          require("config.review").changed_files()
+        end,
+        desc = "List changed files (vs default branch)",
+        nowait = true,
+        remap = false,
+      },
+      {
         "<leader>pq",
         "<cmd>DiffviewClose<cr>",
         desc = "Quit review",

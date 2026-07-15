@@ -15,6 +15,18 @@ local PREFERRED_REMOTE = "upstream"
 -- KNOB: how many PRs the list-based pickers fetch.
 local LIST_LIMIT = "50"
 
+-- Per-repo override: `git config review.base <ref>` pins the base for one repo
+-- and wins over the remote heuristic below. Use it where the heuristic guesses
+-- wrong, e.g. a personal repo that has an unrelated `upstream` remote but PRs
+-- into origin (`git config review.base origin/main`), or an odd default branch.
+local function configured_base()
+  local out = vim.fn.systemlist({ "git", "config", "--get", "review.base" })
+  if vim.v.shell_error == 0 and out[1] and out[1] ~= "" then
+    return out[1]
+  end
+  return nil
+end
+
 -- True if the named git remote exists.
 local function has_remote(name)
   local out = vim.fn.systemlist({ "git", "remote" })
@@ -39,10 +51,15 @@ local function remote_head(remote)
   return nil
 end
 
--- Resolve the ref that reviews diff against. Prefers PREFERRED_REMOTE (the
--- canonical repo in a fork workflow), then origin, then REVIEW_BASE. This is
--- what makes the range match the PR when origin is a fork.
+-- Resolve the ref that reviews diff against. Order: per-repo `review.base`
+-- config, then PREFERRED_REMOTE (the canonical repo in a fork workflow), then
+-- origin, then REVIEW_BASE. This is what makes the range match the PR when
+-- origin is a fork.
 local function base_ref()
+  local configured = configured_base()
+  if configured then
+    return configured
+  end
   if has_remote(PREFERRED_REMOTE) then
     local head = remote_head(PREFERRED_REMOTE)
     if head then

@@ -205,6 +205,25 @@ function M.changed_files()
     :find()
 end
 
+-- <leader>ph — toggle gitsigns' diff base between the branch base and the
+-- index, globally. With the branch base active, the gutter signs and the
+-- hunk-nav maps (v]/v[) track your committed branch changes instead of
+-- staged/unstaged, so you can jump straight to the sections a PR touched.
+local base_active = false
+function M.toggle_base()
+  local gs = require("gitsigns")
+  if base_active then
+    gs.change_base(nil, true)
+    base_active = false
+    vim.notify("gitsigns base: index (staged/unstaged)", vim.log.levels.INFO)
+  else
+    local base = base_ref()
+    gs.change_base(base, true)
+    base_active = true
+    vim.notify("gitsigns base: " .. base .. " (committed branch changes)", vim.log.levels.INFO)
+  end
+end
+
 -- <leader>pb — leave detached HEAD and return to the branch you were on.
 function M.back()
   local out = vim.fn.system({ "git", "switch", "-" })

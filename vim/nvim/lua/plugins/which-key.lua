@@ -285,6 +285,15 @@ return {
         remap = false,
       },
       {
+        "<leader>ph",
+        function()
+          require("config.review").toggle_base()
+        end,
+        desc = "Toggle hunks vs base (committed changes)",
+        nowait = true,
+        remap = false,
+      },
+      {
         "<leader>pq",
         "<cmd>DiffviewClose<cr>",
         desc = "Quit review",

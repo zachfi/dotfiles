@@ -1,6 +1,7 @@
--- PR review flow: check out a pull request into a detached HEAD and read the
--- diff with diffview. Kept self-contained so the whole flow can be moved or
--- reverted as a unit. Keymaps live under <leader>p ("Review") in which-key.lua.
+-- PR review flow: check out a pull request (GitHub via `gh`, Forgejo via
+-- `fj`, auto-detected from the repo's remote) and read the diff with
+-- diffview. Kept self-contained so the whole flow can be moved or reverted
+-- as a unit. Keymaps live under <leader>p ("Review") in which-key.lua.
 local M = {}
 
 -- KNOB: last-resort base if no usable remote HEAD is found.
@@ -69,6 +70,54 @@ local function base_ref()
   return remote_head("origin") or REVIEW_BASE
 end
 
+-- Resolve a remote's URL, or nil if the remote doesn't exist.
+local function remote_url(remote)
+  local out = vim.fn.systemlist({ "git", "remote", "get-url", remote })
+  if vim.v.shell_error == 0 and out[1] and out[1] ~= "" then
+    return out[1]
+  end
+  return nil
+end
+
+-- Resolve which host <leader>pc should talk to, using the same remote
+-- preference as base_ref() (PREFERRED_REMOTE, then origin): github.com uses
+-- `gh`, anything else is assumed to be a Forgejo instance (e.g. code.znet)
+-- reached via `fj -H <host>`. Returns nil (and notifies) if neither remote
+-- exists or its URL can't be parsed.
+local function detect_host()
+  local remote = has_remote(PREFERRED_REMOTE) and PREFERRED_REMOTE or "origin"
+  local url = remote_url(remote)
+  if not url then
+    vim.notify("No usable git remote (" .. remote .. ") to detect review host", vim.log.levels.ERROR)
+    return nil
+  end
+  local host = url:match("@([%w%.%-]+)[:/]") or url:match("://([%w%.%-]+)")
+  if not host then
+    vim.notify("Could not parse host from remote url: " .. url, vim.log.levels.ERROR)
+    return nil
+  end
+  if host == "github.com" then
+    return { kind = "github" }
+  end
+  return { kind = "forgejo", host = host }
+end
+
+-- `fj whoami` prints "currently signed into <user>@<host>" with no --json
+-- form, so pull the bare username out of that sentence for `-c` filters.
+local function fj_whoami(host)
+  local out = vim.fn.system({ "fj", "-H", host, "whoami" })
+  if vim.v.shell_error ~= 0 then
+    vim.notify("fj whoami failed:\n" .. out, vim.log.levels.ERROR)
+    return nil
+  end
+  local user = out:match("into%s+([^@%s]+)@")
+  if not user then
+    vim.notify("Could not parse fj whoami output:\n" .. out, vim.log.levels.ERROR)
+    return nil
+  end
+  return user
+end
+
 -- Absolute path of the repo (or worktree) root, so git calls and file opens
 -- work regardless of the cwd we launched nvim from. Falls back to cwd.
 local function git_root()
@@ -79,44 +128,40 @@ local function git_root()
   return vim.fn.getcwd()
 end
 
--- Run `gh pr checkout <ref> --detach` and report the result.
-local function checkout(ref)
+-- Check out a PR: `gh pr checkout <ref> --detach` on GitHub, or
+-- `fj pr checkout <id>` on Forgejo (which takes a bare ID rather than a URL,
+-- and lands on a named branch rather than a detached HEAD).
+local function checkout(host, ref)
   ref = vim.trim(ref or "")
   if ref == "" then
     return
   end
-  vim.notify("Checking out PR " .. ref .. " …", vim.log.levels.INFO)
-  local out = vim.fn.system({ "gh", "pr", "checkout", ref, "--detach" })
-  if vim.v.shell_error ~= 0 then
-    vim.notify("gh pr checkout failed:\n" .. out, vim.log.levels.ERROR)
+  if host.kind == "github" then
+    vim.notify("Checking out PR " .. ref .. " …", vim.log.levels.INFO)
+    local out = vim.fn.system({ "gh", "pr", "checkout", ref, "--detach" })
+    if vim.v.shell_error ~= 0 then
+      vim.notify("gh pr checkout failed:\n" .. out, vim.log.levels.ERROR)
+      return
+    end
+    vim.cmd("checktime") -- refresh open buffers to the checked-out revision
+    vim.notify("Checked out PR " .. ref .. " (detached)", vim.log.levels.INFO)
     return
   end
-  vim.cmd("checktime") -- refresh open buffers to the checked-out revision
-  vim.notify("Checked out PR " .. ref .. " (detached)", vim.log.levels.INFO)
+
+  local id = ref:match("/pulls?/(%d+)%s*$") or ref
+  vim.notify("Checking out PR " .. id .. " …", vim.log.levels.INFO)
+  local out = vim.fn.system({ "fj", "-H", host.host, "pr", "checkout", id })
+  if vim.v.shell_error ~= 0 then
+    vim.notify("fj pr checkout failed:\n" .. out, vim.log.levels.ERROR)
+    return
+  end
+  vim.cmd("checktime")
+  vim.notify("Checked out PR " .. id, vim.log.levels.INFO)
 end
 
--- List PRs with `gh pr list <extra...>`, let the user pick one, then check it
--- out. Picking renders through telescope-ui-select.
-local function pick_and_checkout(extra)
-  local args = { "gh", "pr", "list", "--limit", LIST_LIMIT, "--json", "number,title,author" }
-  vim.list_extend(args, extra or {})
-  local raw = vim.fn.system(args)
-  if vim.v.shell_error ~= 0 then
-    vim.notify("gh pr list failed:\n" .. raw, vim.log.levels.ERROR)
-    return
-  end
-  local ok, prs = pcall(vim.json.decode, raw)
-  if not ok or type(prs) ~= "table" or #prs == 0 then
-    vim.notify("No open PRs found", vim.log.levels.INFO)
-    return
-  end
-  local items = {}
-  for _, pr in ipairs(prs) do
-    table.insert(items, {
-      number = pr.number,
-      label = string.format("#%d  %s  (%s)", pr.number, pr.title, pr.author.login),
-    })
-  end
+-- Render `items` ({number, label}) through telescope-ui-select and check out
+-- whichever one gets picked.
+local function select_and_checkout(host, items)
   vim.ui.select(items, {
     prompt = "Checkout PR",
     format_item = function(it)
@@ -124,13 +169,73 @@ local function pick_and_checkout(extra)
     end,
   }, function(choice)
     if choice then
-      checkout(tostring(choice.number))
+      checkout(host, tostring(choice.number))
     end
   end)
 end
 
--- <leader>pc — small menu covering the three ways to reach a PR.
+-- List PRs — `gh pr list <extra...>` on GitHub, `fj pr search -s open
+-- <extra...>` on Forgejo — let the user pick one, then check it out.
+local function pick_and_checkout(host, extra)
+  extra = extra or {}
+  if host.kind == "github" then
+    local args = { "gh", "pr", "list", "--limit", LIST_LIMIT, "--json", "number,title,author" }
+    vim.list_extend(args, extra)
+    local raw = vim.fn.system(args)
+    if vim.v.shell_error ~= 0 then
+      vim.notify("gh pr list failed:\n" .. raw, vim.log.levels.ERROR)
+      return
+    end
+    local ok, prs = pcall(vim.json.decode, raw)
+    if not ok or type(prs) ~= "table" or #prs == 0 then
+      vim.notify("No open PRs found", vim.log.levels.INFO)
+      return
+    end
+    local items = {}
+    for _, pr in ipairs(prs) do
+      table.insert(items, {
+        number = pr.number,
+        label = string.format("#%d  %s  (%s)", pr.number, pr.title, pr.author.login),
+      })
+    end
+    select_and_checkout(host, items)
+    return
+  end
+
+  -- Forgejo: plain-text lines, "#123: title (by author)" — there's no --json
+  -- form, and `--all` avoids silently truncating to search's first page.
+  local args = { "fj", "-H", host.host, "pr", "search", "-s", "open", "--all" }
+  vim.list_extend(args, extra)
+  local raw = vim.fn.system(args)
+  if vim.v.shell_error ~= 0 then
+    vim.notify("fj pr search failed:\n" .. raw, vim.log.levels.ERROR)
+    return
+  end
+  local items = {}
+  for _, line in ipairs(vim.split(raw, "\n", { trimempty = true })) do
+    local number, title, author = line:match("^#(%d+):%s*(.*)%s+%(by (.-)%)%s*$")
+    if number then
+      table.insert(items, {
+        number = number,
+        label = string.format("#%s  %s  (%s)", number, title, author),
+      })
+    end
+  end
+  if #items == 0 then
+    vim.notify("No open PRs found", vim.log.levels.INFO)
+    return
+  end
+  select_and_checkout(host, items)
+end
+
+-- <leader>pc — small menu covering the three ways to reach a PR. Dispatches
+-- to GitHub (`gh`) or Forgejo (`fj`) based on the detected review host; the
+-- menu itself is identical either way.
 function M.checkout_menu()
+  local host = detect_host()
+  if not host then
+    return
+  end
   local modes = {
     "My open PRs",
     "Specify PR (number or URL)",
@@ -138,11 +243,20 @@ function M.checkout_menu()
   }
   vim.ui.select(modes, { prompt = "Checkout PR" }, function(choice)
     if choice == modes[1] then
-      pick_and_checkout({ "--author", "@me" })
+      if host.kind == "github" then
+        pick_and_checkout(host, { "--author", "@me" })
+      else
+        local user = fj_whoami(host.host)
+        if user then
+          pick_and_checkout(host, { "-c", user })
+        end
+      end
     elseif choice == modes[2] then
-      vim.ui.input({ prompt = "PR number or URL: " }, checkout)
+      vim.ui.input({ prompt = "PR number or URL: " }, function(ref)
+        checkout(host, ref)
+      end)
     elseif choice == modes[3] then
-      pick_and_checkout({})
+      pick_and_checkout(host, {})
     end
   end)
 end
